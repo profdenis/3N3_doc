@@ -106,3 +106,11 @@ VALUES ('alice', 'alice@example.com', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN
 - Ajouter éventuellement une colonne pour le sel si vous n'utilisez pas bcrypt
 - Considérer l'ajout de colonnes pour la gestion des tentatives de connexion échouées
 - Prévoir un mécanisme de réinitialisation de mot de passe
+
+
+-------
+
+??? info "Utilisation de l'IA"
+   Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des
+   explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
+   été vérifiées, éditées et complétées par l'auteur.

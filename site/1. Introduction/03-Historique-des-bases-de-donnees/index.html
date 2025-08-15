@@ -1,299 +1,2482 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Historique des bases de données - Cours de bases de données</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="../../style.css" rel="stylesheet" />
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Historique des bases de donn\u00e9es";
-        var mkdocs_page_input_path = "1. Introduction/03-Historique-des-bases-de-donnees.md";
-        var mkdocs_page_url = null;
-      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://profdenis.github.io/3N3_doc/1.%20Introduction/03-Historique-des-bases-de-donnees/">
+      
+      
+        <link rel="prev" href="../02-Types-de-bases-de-donnees/">
+      
+      
+        <link rel="next" href="../04-Exemples-de-Bases-de-Donnees/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.50">
     
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
+    
+      
+        <title>Historique des bases de données - Cours de bases de données</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
 
-<body class="wy-body-for-nav" role="document">
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Cours de bases de données
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
-                </li>
-              </ul>
-              <p class="caption"><span class="caption-text">1. Introduction</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../02-Types-de-bases-de-donnees/">Types de bases de données</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Historique des bases de données</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#annees-1960-les-debuts">Années 1960 : Les débuts</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#systemes-de-fichiers">Systèmes de fichiers</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-hierarchiques">Bases de données hiérarchiques</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#exemple-de-structure-hierarchique">Exemple de structure hiérarchique</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#annees-1970-lere-des-bases-de-donnees-relationnelles">Années 1970 : L'ère des bases de données relationnelles</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#modele-relationnel">Modèle relationnel</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#sgbd-relationnels">SGBD relationnels</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#annees-1980-commercialisation-et-standardisation">Années 1980 : Commercialisation et standardisation</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#sgbd-commerciaux">SGBD commerciaux</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#standardisation-de-sql">Standardisation de SQL</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#annees-1990-evolution-et-diversification">Années 1990 : Évolution et diversification</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-orientees-objets">Bases de données orientées objets</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-distribuees">Bases de données distribuées</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#annees-2000-lessor-des-bases-de-donnees-nosql">Années 2000 : L'essor des bases de données NoSQL</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#big-data">Big Data</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-nosql">Bases de données NoSQL</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#annees-2010-a-aujourdhui-nouvelles-tendances-et-technologies">Années 2010 à aujourd'hui : Nouvelles tendances et technologies</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-en-memoire">Bases de données en mémoire</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#bases-de-donnees-multi-modeles">Bases de données multi-modèles</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#cloud-et-bases-de-donnees-en-tant-que-service-dbaas">Cloud et bases de données en tant que service (DBaaS)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
-    </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
-                </li>
-    </ul>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">3. SQL</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/01-intro/">1 - Introduction à SQL</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02a-bases-contacts/">2a - Base de Données de Contacts</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/05-survol-op%C3%A9rations-SQL/">5 - Survol des opérations faisant partie des requêtes SQL</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/06-imbriqu%C3%A9es/">6 - Requêtes SQL imbriquées</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/07-r%C3%A9cursives/">7 - Requêtes récursives</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../3.%20SQL/08-dates/">8 - Utilisation de date et timestamp</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/04-transactions/">Transactions</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/04-mots-de-passe/">Gestion des mots de passe d'application dans une BD</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">7. Exercices</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/01-blog/">1. Blog</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/02-livres/">2. Livres</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/03-transport/">3. Réseau de transports en commun</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/04-restaurants/">4. Chaîne de restaurants</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/05-voyages/">5. Agence de voyages</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/06-hopital/">6. Système de gestion d'un hôpital</a>
-                </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">1. Base de données Pagila</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">2. Recettes de cuisine</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">3. BD Northwind</a>
-                </li>
-    </ul>
-                  </li>
-              </ul>
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#historique-des-bases-de-donnees" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cours de bases de données" class="md-header__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de bases de données
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Historique des bases de données
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Cours de bases de données</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
         
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
       </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">1. Introduction</li>
-      <li class="breadcrumb-item active">Historique des bases de données</li>
-    <li class="wy-breadcrumbs-aside">
-    </li>
-  </ul>
-  <hr/>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/profdenis/3N3_doc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    profdenis/3N3_doc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Cours de bases de données
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-Introduction-aux-bd/" class="md-tabs__link">
+          
+  
+  1. Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-tabs__link">
+          
+  
+  2. Le modèle relationnel
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../3.%20SQL/01-intro/" class="md-tabs__link">
+          
+  
+  3. SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-tabs__link">
+          
+  
+  4. Modélisation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../5.%20SQL%20Avanc%C3%A9/01-vues/" class="md-tabs__link">
+          
+  
+  5. SQL Avancé
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-tabs__link">
+          
+  
+  6. Sécurité et Utilisateurs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../7.%20Exercices/01-exercices/" class="md-tabs__link">
+          
+  
+  7. Exercices
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <h1 id="historique-des-bases-de-donnees">Historique des bases de données</h1>
-<h2 id="annees-1960-les-debuts">Années 1960 : Les débuts</h2>
-<h3 id="systemes-de-fichiers">Systèmes de fichiers</h3>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cours de bases de données" class="md-nav__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cours de bases de données
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/profdenis/3N3_doc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    profdenis/3N3_doc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cours de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    1. Introduction
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduction-aux-bd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Qu&rsquo;est-ce qu&rsquo;une base de données ?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Types-de-bases-de-donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Types de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Historique des bases de données
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Historique des bases de données
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#annees-1960-les-debuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 1960 : Les débuts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 1960 : Les débuts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemes-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systèmes de fichiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-hierarchiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données hiérarchiques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bases de données hiérarchiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-de-structure-hierarchique" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple de structure hiérarchique
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-1970-lere-des-bases-de-donnees-relationnelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 1970 : L&rsquo;ère des bases de données relationnelles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 1970 : L’ère des bases de données relationnelles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-relationnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modèle relationnel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sgbd-relationnels" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGBD relationnels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-1980-commercialisation-et-standardisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 1980 : Commercialisation et standardisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 1980 : Commercialisation et standardisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sgbd-commerciaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGBD commerciaux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standardisation-de-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standardisation de SQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-1990-evolution-et-diversification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 1990 : Évolution et diversification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 1990 : Évolution et diversification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-orientees-objets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données orientées objets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-distribuees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données distribuées
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-2000-lessor-des-bases-de-donnees-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 2000 : L&rsquo;essor des bases de données NoSQL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 2000 : L’essor des bases de données NoSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#big-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Big Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données NoSQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-2010-a-aujourdhui-nouvelles-tendances-et-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 2010 à aujourd&rsquo;hui : Nouvelles tendances et technologies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 2010 à aujourd’hui : Nouvelles tendances et technologies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-en-memoire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données en mémoire
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-multi-modeles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données multi-modèles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-et-bases-de-donnees-en-tant-que-service-dbaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud et bases de données en tant que service (DBaaS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Exemples-de-Bases-de-Donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemples de Bases de Données dans Différents Contextes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PostgreSQL/01-Intro-a-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction à PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PostgreSQL/02-Avantages-de-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avantages de PostgreSQL par rapport à d&rsquo;autres SGBD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PostgreSQL/03-Entreprises-utilisant-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entreprises utilisant PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PostgreSQL/04-Configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration de PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Le modèle relationnel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Le modèle relationnel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Présentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction aux Diagrammes Entité-Association
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/01-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 - Introduction à SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/02a-bases-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2a - Base de Données de Contacts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/02b-bases-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2b - Base de Données Université
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/03a-jointures-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3a - Requêtes avec plus d&rsquo;une table (Contacts)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/03b-jointures-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3b - Requêtes avec plus d&rsquo;une table (Université)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/04a-groupes-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4a - Groupement et Agrégats (Contacts)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/04b-groupes-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4b - Groupement et Agrégats (Université)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/05-survol-op%C3%A9rations-SQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 - Survol des opérations faisant partie des requêtes SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/06-imbriqu%C3%A9es/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 - Requêtes SQL imbriquées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/07-r%C3%A9cursives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 - Requêtes récursives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/08-dates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8 - Utilisation de date et timestamp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Modélisation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. Modélisation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modélisation Entité-Association
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les Entités Faibles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/02-notation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Différentes notations pour les DEA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/03-exemples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conversion d&rsquo;un diagramme EA en schéma relationnel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. SQL Avancé
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            5. SQL Avancé
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/01-vues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contraintes et Déclencheurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modèle objet-relationel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/04-transactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transactions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Sécurité et Utilisateurs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            6. Sécurité et Utilisateurs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des Utilisateurs et Sécurité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contrôle d&rsquo;Accès Basé sur les Rôles (RBAC)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des Utilisateurs dans PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/04-mots-de-passe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des mots de passe d&rsquo;application dans une BD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    7. Exercices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            7. Exercices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/01-exercices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DEA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            DEA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/01-blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/02-livres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Livres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/03-transport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Réseau de transports en commun
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/04-restaurants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Chaîne de restaurants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/05-voyages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Agence de voyages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/06-hopital/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Système de gestion d&rsquo;un hôpital
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/01-pagila/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Base de données Pagila
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/02-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Recettes de cuisine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/03-northwind/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. BD Northwind
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Université
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#annees-1960-les-debuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 1960 : Les débuts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 1960 : Les débuts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemes-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systèmes de fichiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-hierarchiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données hiérarchiques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bases de données hiérarchiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-de-structure-hierarchique" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple de structure hiérarchique
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-1970-lere-des-bases-de-donnees-relationnelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 1970 : L&rsquo;ère des bases de données relationnelles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 1970 : L’ère des bases de données relationnelles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-relationnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modèle relationnel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sgbd-relationnels" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGBD relationnels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-1980-commercialisation-et-standardisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 1980 : Commercialisation et standardisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 1980 : Commercialisation et standardisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sgbd-commerciaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGBD commerciaux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standardisation-de-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standardisation de SQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-1990-evolution-et-diversification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 1990 : Évolution et diversification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 1990 : Évolution et diversification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-orientees-objets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données orientées objets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-distribuees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données distribuées
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-2000-lessor-des-bases-de-donnees-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 2000 : L&rsquo;essor des bases de données NoSQL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 2000 : L’essor des bases de données NoSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#big-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Big Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données NoSQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annees-2010-a-aujourdhui-nouvelles-tendances-et-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Années 2010 à aujourd&rsquo;hui : Nouvelles tendances et technologies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Années 2010 à aujourd’hui : Nouvelles tendances et technologies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-en-memoire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données en mémoire
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-donnees-multi-modeles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de données multi-modèles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-et-bases-de-donnees-en-tant-que-service-dbaas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud et bases de données en tant que service (DBaaS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="historique-des-bases-de-donnees">Historique des bases de données<a class="headerlink" href="#historique-des-bases-de-donnees" title="Permanent link">&para;</a></h1>
+<h2 id="annees-1960-les-debuts">Années 1960 : Les débuts<a class="headerlink" href="#annees-1960-les-debuts" title="Permanent link">&para;</a></h2>
+<h3 id="systemes-de-fichiers">Systèmes de fichiers<a class="headerlink" href="#systemes-de-fichiers" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Stockage séquentiel</strong> : Les premiers systèmes de gestion des données
   utilisaient des fichiers séquentiels pour stocker les informations. Les
   données étaient enregistrées dans un ordre spécifique, ce qui rendait les
   opérations de recherche et de mise à jour lentes et inefficaces.</li>
 </ul>
-<h3 id="bases-de-donnees-hierarchiques">Bases de données hiérarchiques</h3>
+<h3 id="bases-de-donnees-hierarchiques">Bases de données hiérarchiques<a class="headerlink" href="#bases-de-donnees-hierarchiques" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>IMS (Information Management System)</strong> : Développé par IBM en 1966, IMS est
-  l'un des premiers systèmes de gestion de bases de données (SGBD)
+  l&rsquo;un des premiers systèmes de gestion de bases de données (SGBD)
   hiérarchiques. Les données sont organisées en une structure arborescente, avec
   des enregistrements parents et enfants.</li>
 </ul>
-<h4 id="exemple-de-structure-hierarchique">Exemple de structure hiérarchique</h4>
-<pre><code>Entreprise
-│
-├── Département A
-│   ├── Employé 1
-│   └── Employé 2
-│
-└── Département B
-    ├── Employé 3
-    └── Employé 4
-</code></pre>
-<h2 id="annees-1970-lere-des-bases-de-donnees-relationnelles">Années 1970 : L'ère des bases de données relationnelles</h2>
-<h3 id="modele-relationnel">Modèle relationnel</h3>
+<h4 id="exemple-de-structure-hierarchique">Exemple de structure hiérarchique<a class="headerlink" href="#exemple-de-structure-hierarchique" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Entreprise
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── Département A
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── Employé 1
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   └── Employé 2
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>└── Département B
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ├── Employé 3
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    └── Employé 4
+</span></code></pre></div>
+<h2 id="annees-1970-lere-des-bases-de-donnees-relationnelles">Années 1970 : L&rsquo;ère des bases de données relationnelles<a class="headerlink" href="#annees-1970-lere-des-bases-de-donnees-relationnelles" title="Permanent link">&para;</a></h2>
+<h3 id="modele-relationnel">Modèle relationnel<a class="headerlink" href="#modele-relationnel" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Edgar F. Codd</strong> : En 1970, Edgar F. Codd, un chercheur chez IBM, propose le
-  modèle relationnel dans son article "A Relational Model of Data for Large
-  Shared Data Banks". Ce modèle organise les données en tables (relations) et
+  modèle relationnel dans son article &ldquo;A Relational Model of Data for Large
+  Shared Data Banks&rdquo;. Ce modèle organise les données en tables (relations) et
   utilise des clés pour établir des relations entre les tables.</li>
 </ul>
-<h3 id="sgbd-relationnels">SGBD relationnels</h3>
+<h3 id="sgbd-relationnels">SGBD relationnels<a class="headerlink" href="#sgbd-relationnels" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>System R</strong> : IBM développe System R dans les années 1970 pour démontrer la
   faisabilité du modèle relationnel. Ce projet conduit à la création du langage
   SQL (<em>Structured Query Language</em>).</li>
 <li><strong>Ingres</strong> : Un autre projet de recherche majeur, Ingres, est développé à
-  l'Université de Californie, Berkeley, et contribue également à la
+  l&rsquo;Université de Californie, Berkeley, et contribue également à la
   popularisation des bases de données relationnelles. Ce système aura comme
   successeur Postgres et plus tard PostgreSQL.</li>
 </ul>
-<h2 id="annees-1980-commercialisation-et-standardisation">Années 1980 : Commercialisation et standardisation</h2>
-<h3 id="sgbd-commerciaux">SGBD commerciaux</h3>
+<h2 id="annees-1980-commercialisation-et-standardisation">Années 1980 : Commercialisation et standardisation<a class="headerlink" href="#annees-1980-commercialisation-et-standardisation" title="Permanent link">&para;</a></h2>
+<h3 id="sgbd-commerciaux">SGBD commerciaux<a class="headerlink" href="#sgbd-commerciaux" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Oracle</strong> : Fondée en 1977, Oracle Corporation lance son premier SGBD
   relationnel commercial en 1979. Oracle devient rapidement un leader dans le
@@ -303,34 +2486,34 @@
 <li><strong>Microsoft SQL Server</strong> : Lancé en 1989, SQL Server devient un acteur majeur
   dans le domaine des bases de données relationnelles.</li>
 </ul>
-<h3 id="standardisation-de-sql">Standardisation de SQL</h3>
+<h3 id="standardisation-de-sql">Standardisation de SQL<a class="headerlink" href="#standardisation-de-sql" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>ANSI SQL</strong> : En 1986, l'<em>American National Standards Institute</em> (ANSI)
+<li><strong>ANSI SQL</strong> : En 1986, l&rsquo;<em>American National Standards Institute</em> (ANSI)
   publie la première norme SQL, standardisant le langage de requête pour les
   bases de données relationnelles.</li>
 </ul>
-<h2 id="annees-1990-evolution-et-diversification">Années 1990 : Évolution et diversification</h2>
-<h3 id="bases-de-donnees-orientees-objets">Bases de données orientées objets</h3>
+<h2 id="annees-1990-evolution-et-diversification">Années 1990 : Évolution et diversification<a class="headerlink" href="#annees-1990-evolution-et-diversification" title="Permanent link">&para;</a></h2>
+<h3 id="bases-de-donnees-orientees-objets">Bases de données orientées objets<a class="headerlink" href="#bases-de-donnees-orientees-objets" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Emergence</strong> : Les bases de données orientées objets gagnent en popularité
   pour gérer des données complexes et des objets de programmation.</li>
 <li><strong>db4o et ObjectDB</strong> : Des exemples de SGBD orientés objets qui apparaissent
   durant cette période.</li>
 </ul>
-<h3 id="bases-de-donnees-distribuees">Bases de données distribuées</h3>
+<h3 id="bases-de-donnees-distribuees">Bases de données distribuées<a class="headerlink" href="#bases-de-donnees-distribuees" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Scalabilité</strong> : Les bases de données distribuées sont développées pour
   permettre la répartition des données sur plusieurs serveurs, améliorant ainsi
   la scalabilité et la tolérance aux pannes.</li>
 </ul>
-<h2 id="annees-2000-lessor-des-bases-de-donnees-nosql">Années 2000 : L'essor des bases de données NoSQL</h2>
-<h3 id="big-data">Big Data</h3>
+<h2 id="annees-2000-lessor-des-bases-de-donnees-nosql">Années 2000 : L&rsquo;essor des bases de données NoSQL<a class="headerlink" href="#annees-2000-lessor-des-bases-de-donnees-nosql" title="Permanent link">&para;</a></h2>
+<h3 id="big-data">Big Data<a class="headerlink" href="#big-data" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Explosion des données</strong> : Avec l'essor d'internet et des applications web,
+<li><strong>Explosion des données</strong> : Avec l&rsquo;essor d&rsquo;internet et des applications web,
   le volume des données explose, nécessitant de nouvelles approches de gestion
   des données.</li>
 </ul>
-<h3 id="bases-de-donnees-nosql">Bases de données NoSQL</h3>
+<h3 id="bases-de-donnees-nosql">Bases de données NoSQL<a class="headerlink" href="#bases-de-donnees-nosql" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>MongoDB</strong> : Lancé en 2009, MongoDB est une base de données de documents qui
   permet de stocker des données semi-structurées.</li>
@@ -340,89 +2523,150 @@
 <li><strong>Redis</strong> : Une base de données en mémoire, utilisée pour des applications
   nécessitant des performances élevées.</li>
 </ul>
-<h2 id="annees-2010-a-aujourdhui-nouvelles-tendances-et-technologies">Années 2010 à aujourd'hui : Nouvelles tendances et technologies</h2>
-<h3 id="bases-de-donnees-en-memoire">Bases de données en mémoire</h3>
+<h2 id="annees-2010-a-aujourdhui-nouvelles-tendances-et-technologies">Années 2010 à aujourd&rsquo;hui : Nouvelles tendances et technologies<a class="headerlink" href="#annees-2010-a-aujourdhui-nouvelles-tendances-et-technologies" title="Permanent link">&para;</a></h2>
+<h3 id="bases-de-donnees-en-memoire">Bases de données en mémoire<a class="headerlink" href="#bases-de-donnees-en-memoire" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Performance</strong> : Les bases de données en mémoire, comme Redis et Memcached,
   gagnent en popularité pour les applications nécessitant des temps de réponse
   ultra-rapides.</li>
 </ul>
-<h3 id="bases-de-donnees-multi-modeles">Bases de données multi-modèles</h3>
+<h3 id="bases-de-donnees-multi-modeles">Bases de données multi-modèles<a class="headerlink" href="#bases-de-donnees-multi-modeles" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Flexibilité</strong> : Les bases de données multi-modèles, comme ArangoDB et
   OrientDB, permettent de combiner plusieurs modèles de données (relationnel,
   document, graphe) dans un même SGBD.</li>
 </ul>
-<h3 id="cloud-et-bases-de-donnees-en-tant-que-service-dbaas">Cloud et bases de données en tant que service (DBaaS)</h3>
+<h3 id="cloud-et-bases-de-donnees-en-tant-que-service-dbaas">Cloud et bases de données en tant que service (DBaaS)<a class="headerlink" href="#cloud-et-bases-de-donnees-en-tant-que-service-dbaas" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Accessibilité</strong> : Les services de bases de données dans le cloud, comme
   Amazon RDS, Google Cloud SQL et Azure SQL Database, permettent aux entreprises
   de déployer et de gérer des bases de données sans avoir à se soucier de
-  l'infrastructure sous-jacente.</li>
+  l&rsquo;infrastructure sous-jacente.</li>
 </ul>
-<h2 id="conclusion">Conclusion</h2>
-<p>L'histoire des bases de données est marquée par une évolution constante,
-répondant aux besoins croissants de stockage, de gestion et d'accès aux données.
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>L&rsquo;histoire des bases de données est marquée par une évolution constante,
+répondant aux besoins croissants de stockage, de gestion et d&rsquo;accès aux données.
 Des premiers systèmes hiérarchiques aux bases de données relationnelles, en
 passant par les bases de données NoSQL et les solutions en mémoire, chaque étape
-a apporté des innovations significatives. Aujourd'hui, les bases de données
-continuent d'évoluer pour répondre aux défis du Big Data, de l'Internet des
+a apporté des innovations significatives. Aujourd&rsquo;hui, les bases de données
+continuent d&rsquo;évoluer pour répondre aux défis du Big Data, de l&rsquo;Internet des
 objets (IoT) et des applications en temps réel.</p>
 <hr />
-<p><small>
-   <cite>
-      <strong>Note</strong> : Page rédigée en partie avec l'aide d'un assistant IA, principalement
-      à l'aide de Perplexity AI, avec les LLM <code>GPT-4 Omni</code> et <code>Claude 3.5 Sonnet</code>. L'IA
-      a été utilisée pour générer des explications, des exemples et/ou des suggestions de
-      structure. Toutes les informations ont été vérifiées, éditées et complétées par
-      l'auteur.
-   </cite>
-</small></p>
-              
+<details class="info">
+<summary>Utilisation de l&rsquo;IA</summary>
+<p>Page rédigée en partie avec l&rsquo;aide d&rsquo;un assistant IA, principalement à l&rsquo;aide de Perplexity AI. L&rsquo;IA a été 
+  utilisée pour générer des explications, des exemples et/ou des suggestions de structure. Toutes les informations 
+  ont été vérifiées, éditées et complétées par l&rsquo;auteur.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../02-Types-de-bases-de-donnees/" class="btn btn-neutral float-left" title="Types de bases de données"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../04-Exemples-de-Bases-de-Donnees/" class="btn btn-neutral float-right" title="Exemples de Bases de Données dans Différents Contextes">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02-Types-de-bases-de-donnees/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Types de bases de données">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Types de bases de données
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04-Exemples-de-Bases-de-Donnees/" class="md-footer__link md-footer__link--next" aria-label="Next: Exemples de Bases de Données dans Différents Contextes">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exemples de Bases de Données dans Différents Contextes
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
-      <span><a href="../02-Types-de-bases-de-donnees/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../04-Exemples-de-Bases-de-Donnees/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../..";</script>
-    <script src="../../js/theme_extra.js"></script>
-    <script src="../../js/theme.js"></script>
-      <script src="../../search/main.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
 </html>

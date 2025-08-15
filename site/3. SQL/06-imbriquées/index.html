@@ -1,373 +1,2383 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>6 - Requêtes SQL imbriquées - Cours de bases de données</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="../../style.css" rel="stylesheet" />
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "6 - Requ\u00eates SQL imbriqu\u00e9es";
-        var mkdocs_page_input_path = "3. SQL/06-imbriqu\u00e9es.md";
-        var mkdocs_page_url = null;
-      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://profdenis.github.io/3N3_doc/3.%20SQL/06-imbriqu%C3%A9es/">
+      
+      
+        <link rel="prev" href="../05-survol-op%C3%A9rations-SQL/">
+      
+      
+        <link rel="next" href="../07-r%C3%A9cursives/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.50">
     
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
+    
+      
+        <title>6 - Requêtes SQL imbriquées - Cours de bases de données</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
 
-<body class="wy-body-for-nav" role="document">
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> Cours de bases de données
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">Cours de bases de données</a>
-                </li>
-              </ul>
-              <p class="caption"><span class="caption-text">1. Introduction</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/01-Introduction-aux-bd/">Qu'est-ce qu'une base de données ?</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/02-Types-de-bases-de-donnees/">Types de bases de données</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/">Historique des bases de données</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/">Exemples de Bases de Données dans Différents Contextes</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >PostgreSQL</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/">Introduction à PostgreSQL</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/">Avantages de PostgreSQL par rapport à d'autres SGBD</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/">Entreprises utilisant PostgreSQL</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../1.%20Introduction/PostgreSQL/04-Configuration/">Configuration de PostgreSQL</a>
-                </li>
-    </ul>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">2. Le modèle relationnel</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/">Présentation</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/">Introduction aux Diagrammes Entité-Association</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">3. SQL</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../01-intro/">1 - Introduction à SQL</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../02a-bases-contacts/">2a - Base de Données de Contacts</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../02b-bases-universit%C3%A9/">2b - Base de Données Université</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../03a-jointures-contacts/">3a - Requêtes avec plus d'une table (Contacts)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../03b-jointures-universit%C3%A9/">3b - Requêtes avec plus d'une table (Université)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../04a-groupes-contacts/">4a - Groupement et Agrégats (Contacts)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../04b-groupes-universit%C3%A9/">4b - Groupement et Agrégats (Université)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../05-survol-op%C3%A9rations-SQL/">5 - Survol des opérations faisant partie des requêtes SQL</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">6 - Requêtes SQL imbriquées</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#base-de-donnees-universitaire">Base de Données Universitaire</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#sous-requetes-non-correlees">Sous-requêtes Non Corrélées</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#exemples-avec-2-sous-requetes-non-correlees">Exemples : avec 2 sous-requêtes non corrélées</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#sous-requetes-scalaires">Sous-requêtes Scalaires</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#exemples">Exemples</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#format-de-requete-sql-with">Format de Requête SQL with</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#valeurs-null-en-sql">Valeurs NULL en SQL</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#sous-requetes-non-scalaires">Sous-requêtes Non-Scalaires</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#in">IN</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#recommandation-ne-pas-utiliser-not-in">Recommandation : ne pas utiliser NOT IN</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#recommandation-utiliser-une-left-join-a-la-place">Recommandation : utiliser une left join à la place</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#any-et-all">ANY et ALL</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../07-r%C3%A9cursives/">7 - Requêtes récursives</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../08-dates/">8 - Utilisation de date et timestamp</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">4. Modélisation</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/">Modélisation Entité-Association</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/">Les Entités Faibles</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/02-notation/">Différentes notations pour les DEA</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/03-exemples/">Exemples</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/">Conversion d'un diagramme EA en schéma relationnel</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">5. SQL Avancé</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/01-vues/">Vues</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/">Contraintes et Déclencheurs</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/">Modèle objet-relationel</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../5.%20SQL%20Avanc%C3%A9/04-transactions/">Transactions</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">6. Sécurité et Utilisateurs</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/">Gestion des Utilisateurs et Sécurité</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/">Contrôle d'Accès Basé sur les Rôles (RBAC)</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/">Gestion des Utilisateurs dans PostgreSQL</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/04-mots-de-passe/">Gestion des mots de passe d'application dans une BD</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">7. Exercices</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../7.%20Exercices/01-exercices/">Exercices</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >DEA</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/01-blog/">1. Blog</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/02-livres/">2. Livres</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/03-transport/">3. Réseau de transports en commun</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/04-restaurants/">4. Chaîne de restaurants</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/05-voyages/">5. Agence de voyages</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/DEA/06-hopital/">6. Système de gestion d'un hôpital</a>
-                </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >SQL</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/01-pagila/">1. Base de données Pagila</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/02-recettes/">2. Recettes de cuisine</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../7.%20Exercices/SQL/03-northwind/">3. BD Northwind</a>
-                </li>
-    </ul>
-                  </li>
-              </ul>
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-requetes-sql-imbriquees" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cours de bases de données" class="md-header__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de bases de données
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6 - Requêtes SQL imbriquées
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">Cours de bases de données</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
         
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
       </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">3. SQL</li>
-      <li class="breadcrumb-item active">6 - Requêtes SQL imbriquées</li>
-    <li class="wy-breadcrumbs-aside">
-    </li>
-  </ul>
-  <hr/>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/profdenis/3N3_doc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    profdenis/3N3_doc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Cours de bases de données
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1.%20Introduction/01-Introduction-aux-bd/" class="md-tabs__link">
+          
+  
+  1. Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-tabs__link">
+          
+  
+  2. Le modèle relationnel
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-intro/" class="md-tabs__link">
+          
+  
+  3. SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-tabs__link">
+          
+  
+  4. Modélisation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../5.%20SQL%20Avanc%C3%A9/01-vues/" class="md-tabs__link">
+          
+  
+  5. SQL Avancé
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-tabs__link">
+          
+  
+  6. Sécurité et Utilisateurs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../7.%20Exercices/01-exercices/" class="md-tabs__link">
+          
+  
+  7. Exercices
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <h1 id="6-requetes-sql-imbriquees">6 - Requêtes SQL imbriquées</h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cours de bases de données" class="md-nav__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cours de bases de données
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/profdenis/3N3_doc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    profdenis/3N3_doc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cours de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Introduction
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/01-Introduction-aux-bd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Qu&rsquo;est-ce qu&rsquo;une base de données ?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/02-Types-de-bases-de-donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Types de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historique des bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemples de Bases de Données dans Différents Contextes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction à PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avantages de PostgreSQL par rapport à d&rsquo;autres SGBD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entreprises utilisant PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/04-Configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration de PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Le modèle relationnel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Le modèle relationnel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Présentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction aux Diagrammes Entité-Association
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    3. SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 - Introduction à SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02a-bases-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2a - Base de Données de Contacts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02b-bases-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2b - Base de Données Université
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03a-jointures-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3a - Requêtes avec plus d&rsquo;une table (Contacts)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03b-jointures-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3b - Requêtes avec plus d&rsquo;une table (Université)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04a-groupes-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4a - Groupement et Agrégats (Contacts)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04b-groupes-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4b - Groupement et Agrégats (Université)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-survol-op%C3%A9rations-SQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 - Survol des opérations faisant partie des requêtes SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6 - Requêtes SQL imbriquées
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6 - Requêtes SQL imbriquées
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#base-de-donnees-universitaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base de Données Universitaire
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Base de Données Universitaire">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sous-requetes-non-correlees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sous-requêtes Non Corrélées
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sous-requêtes Non Corrélées">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemples-avec-2-sous-requetes-non-correlees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemples : avec 2 sous-requêtes non corrélées
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sous-requetes-scalaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sous-requêtes Scalaires
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sous-requêtes Scalaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#format-de-requete-sql-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format de Requête SQL with
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valeurs-null-en-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Valeurs NULL en SQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sous-requetes-non-scalaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sous-requêtes Non-Scalaires
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sous-requêtes Non-Scalaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    <span class="md-ellipsis">
+      IN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommandation-ne-pas-utiliser-not-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommandation : ne pas utiliser NOT IN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommandation-utiliser-une-left-join-a-la-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommandation : utiliser une left join à la place
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-et-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      ANY et ALL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-r%C3%A9cursives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 - Requêtes récursives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-dates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8 - Utilisation de date et timestamp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Modélisation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. Modélisation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modélisation Entité-Association
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les Entités Faibles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/02-notation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Différentes notations pour les DEA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/03-exemples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conversion d&rsquo;un diagramme EA en schéma relationnel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. SQL Avancé
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            5. SQL Avancé
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/01-vues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contraintes et Déclencheurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modèle objet-relationel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/04-transactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transactions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Sécurité et Utilisateurs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            6. Sécurité et Utilisateurs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des Utilisateurs et Sécurité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contrôle d&rsquo;Accès Basé sur les Rôles (RBAC)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des Utilisateurs dans PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/04-mots-de-passe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des mots de passe d&rsquo;application dans une BD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    7. Exercices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            7. Exercices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/01-exercices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DEA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            DEA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/01-blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/02-livres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Livres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/03-transport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Réseau de transports en commun
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/04-restaurants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Chaîne de restaurants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/05-voyages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Agence de voyages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/06-hopital/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Système de gestion d&rsquo;un hôpital
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/01-pagila/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Base de données Pagila
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/02-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Recettes de cuisine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/03-northwind/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. BD Northwind
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Université
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#base-de-donnees-universitaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base de Données Universitaire
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Base de Données Universitaire">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sous-requetes-non-correlees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sous-requêtes Non Corrélées
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sous-requêtes Non Corrélées">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemples-avec-2-sous-requetes-non-correlees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemples : avec 2 sous-requêtes non corrélées
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sous-requetes-scalaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sous-requêtes Scalaires
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sous-requêtes Scalaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#format-de-requete-sql-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format de Requête SQL with
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valeurs-null-en-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Valeurs NULL en SQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sous-requetes-non-scalaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sous-requêtes Non-Scalaires
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sous-requêtes Non-Scalaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    <span class="md-ellipsis">
+      IN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommandation-ne-pas-utiliser-not-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommandation : ne pas utiliser NOT IN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommandation-utiliser-une-left-join-a-la-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommandation : utiliser une left join à la place
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-et-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      ANY et ALL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="6-requetes-sql-imbriquees">6 - Requêtes SQL imbriquées<a class="headerlink" href="#6-requetes-sql-imbriquees" title="Permanent link">&para;</a></h1>
 <ul>
-<li>Une <em>sous-requête</em> est une requête à l'intérieur d'une autre requête (ou d'une
+<li>Une <em>sous-requête</em> est une requête à l&rsquo;intérieur d&rsquo;une autre requête (ou d&rsquo;une
   autre sous-requête).</li>
 <li>Nous pouvons avoir plusieurs niveaux de sous-requêtes.</li>
 <li>Parfois, nous faisons référence aux sous-requêtes comme des requêtes
   <em>internes</em> et aux requêtes englobantes comme des requêtes <em>externes</em>.</li>
 </ul>
-<h2 id="base-de-donnees-universitaire">Base de Données Universitaire</h2>
-<pre><code class="language-sql">set search_path to university;
-</code></pre>
-<h3 id="sous-requetes-non-correlees">Sous-requêtes Non Corrélées</h3>
+<h2 id="base-de-donnees-universitaire">Base de Données Universitaire<a class="headerlink" href="#base-de-donnees-universitaire" title="Permanent link">&para;</a></h2>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">set</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">university</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="sous-requetes-non-correlees">Sous-requêtes Non Corrélées<a class="headerlink" href="#sous-requetes-non-correlees" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Aussi appelées sous-requêtes <strong><em>simples</em></strong>.</li>
 <li>Les sous-requêtes <em>corrélées</em> seront abordées plus tard.</li>
 <li>Les sous-requêtes non corrélées sont indépendantes de leurs requêtes
   externes (englobantes).</li>
-<li>Elles peuvent s'exécuter seules.</li>
+<li>Elles peuvent s&rsquo;exécuter seules.</li>
 <li>Elles ne dépendent pas de quelque chose défini dans les requêtes externes.</li>
 </ul>
-<h4 id="exemples-avec-2-sous-requetes-non-correlees">Exemples : avec 2 sous-requêtes non corrélées</h4>
+<h4 id="exemples-avec-2-sous-requetes-non-correlees">Exemples : avec 2 sous-requêtes non corrélées<a class="headerlink" href="#exemples-avec-2-sous-requetes-non-correlees" title="Permanent link">&para;</a></h4>
 <p>1- Trouver les étudiants et les instructeurs avec une adresse
 email <code>@example.com</code></p>
-<pre><code class="language-sql">select name, email
-from student
-where email like '%@example.com'
-union
-select name, email
-from instructor
-where email like '%@example.com';
-</code></pre>
-<p>2- Vérifier s'il y a des étudiants et des instructeurs avec la même adresse
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">from</span><span class="w"> </span><span class="n">student</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">where</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%@example.com&#39;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">union</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">where</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%@example.com&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+<p>2- Vérifier s&rsquo;il y a des étudiants et des instructeurs avec la même adresse
 email</p>
-<pre><code class="language-sql">select email
-from student
-intersect
-select email
-from instructor;
-</code></pre>
-<p>3- Trouver les cours qui n'ont jamais été offerts</p>
-<pre><code class="language-sql">select cid
-from course
-except
-select cid
-from offering;
-
-select c.cid
-from course c
-         left join offering o on c.cid = o.cid
-where o.oid is null;
-</code></pre>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">select</span><span class="w"> </span><span class="n">email</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">from</span><span class="w"> </span><span class="n">student</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">intersect</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">select</span><span class="w"> </span><span class="n">email</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="p">;</span>
+</span></code></pre></div>
+<p>3- Trouver les cours qui n&rsquo;ont jamais été offerts</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">select</span><span class="w"> </span><span class="n">cid</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">except</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">select</span><span class="w"> </span><span class="n">cid</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">from</span><span class="w"> </span><span class="n">offering</span><span class="p">;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">where</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+</span></code></pre></div>
 <p>4- Trouver les étudiants non inscrits à un cours</p>
-<pre><code class="language-sql">select sid
-from student
-except
-select sid
-from enrollment;
-</code></pre>
-<p>5- Trouver les offres de cours dans lesquelles aucun étudiant n'est inscrit</p>
-<pre><code class="language-sql">select oid
-from offering
-except
-select oid
-from enrollment;
-</code></pre>
-<h3 id="sous-requetes-scalaires">Sous-requêtes Scalaires</h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">select</span><span class="w"> </span><span class="n">sid</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">from</span><span class="w"> </span><span class="n">student</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">except</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">select</span><span class="w"> </span><span class="n">sid</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">from</span><span class="w"> </span><span class="n">enrollment</span><span class="p">;</span>
+</span></code></pre></div>
+<p>5- Trouver les offres de cours dans lesquelles aucun étudiant n&rsquo;est inscrit</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">select</span><span class="w"> </span><span class="n">oid</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">from</span><span class="w"> </span><span class="n">offering</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">except</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">select</span><span class="w"> </span><span class="n">oid</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">from</span><span class="w"> </span><span class="n">enrollment</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="sous-requetes-scalaires">Sous-requêtes Scalaires<a class="headerlink" href="#sous-requetes-scalaires" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Les sous-requêtes scalaires sont le type le plus simple de sous-requêtes.</li>
 <li>Elles renvoient toujours exactement 1 ligne contenant exactement 1 colonne.</li>
 <li>Elles sont souvent (mais pas toujours) obtenues en calculant une fonction
-  d'agrégat.</li>
+  d&rsquo;agrégat.</li>
 </ul>
-<h4 id="exemples">Exemples</h4>
-<p>1- Trouver le nombre d'étudiants avec une adresse email <code>@example.com</code></p>
-<pre><code class="language-sql">select count(sid) as n_students
-from student
-where email like '%@example.com';
-</code></pre>
+<h4 id="exemples">Exemples<a class="headerlink" href="#exemples" title="Permanent link">&para;</a></h4>
+<p>1- Trouver le nombre d&rsquo;étudiants avec une adresse email <code>@example.com</code></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n_students</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">from</span><span class="w"> </span><span class="n">student</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">where</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%@example.com&#39;</span><span class="p">;</span>
+</span></code></pre></div>
 <p>2- Trouver les cours qui ont été offerts plus souvent que le cours <code>DB</code></p>
-<p>a) Trouver le nombre de fois que <code>DB</code> a été offert</p>
-<pre><code class="language-sql">select count(o.cid)
-from course c
-         left join offering o on c.cid = o.cid
-where c.code = 'DB';
-</code></pre>
-<p>b) Insérer le résultat précédent dans la clause <code>HAVING</code> d'une requête calculant
+<ol type="a">
+<li>Trouver le nombre de fois que <code>DB</code> a été offert</li>
+</ol>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">cid</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">where</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DB&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+<ol start="2" type="a">
+<li>Insérer le résultat précédent dans la clause <code>HAVING</code> d&rsquo;une requête calculant
 le nombre de fois que chaque cours a été offert. Il pourrait être préférable de
-commencer avec un nombre fixe (par exemple 3) au lieu d'insérer immédiatement la
-première requête dans la seconde</p>
-<pre><code class="language-sql">select c.cid, c.code
-from course c
-         left join offering o on c.cid = o.cid
-group by c.cid, c.code
-having count(o.oid) &gt; 3;
-</code></pre>
-<pre><code class="language-sql">select c.cid, c.code
-from course c
-         left join offering o on c.cid = o.cid
-group by c.cid, c.code
-having count(o.oid) &gt; (select count(o.cid)
-                       from course c
-                                left join offering o on c.cid = o.cid
-                       where c.code = 'DB');
-</code></pre>
+commencer avec un nombre fixe (par exemple 3) au lieu d&rsquo;insérer immédiatement la
+première requête dans la seconde</li>
+</ol>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">having</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">having</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">cid</span><span class="p">)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">                       </span><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">                                </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">                       </span><span class="k">where</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DB&#39;</span><span class="p">);</span>
+</span></code></pre></div>
 <p>3- Trouver le nombre moyen de fois que chaque cours a été offert. Commencer par
 trouver le nombre de fois que chaque cours a été offert, puis prendre la moyenne</p>
-<pre><code class="language-sql">select c.cid, c.code, count(o.oid) as n_offerings
-from course c
-         left join offering o on c.cid = o.cid
-group by c.cid;
-</code></pre>
-<pre><code class="language-sql">-- ne fonctionnera pas
-select c.cid, c.code, avg(count(o.oid)) as n_offerings
-from course c
-         left join offering o on c.cid = o.cid
-group by c.cid;
-</code></pre>
-<pre><code class="language-sql">select round(avg(n_offerings), 2) as avg_n_offerings
-from (select count(o.oid) as n_offerings
-      from course c
-               left join offering o on c.cid = o.cid
-      group by c.cid) as T;
-
-with T as (select count(o.oid) as n_offerings
-           from course c
-                    left join offering o on c.cid = o.cid
-           group by c.cid)
-select round(avg(n_offerings), 2) as avg_n_offerings
-from T;
-</code></pre>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n_offerings</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">-- ne fonctionnera pas</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n_offerings</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">select</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">n_offerings</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_n_offerings</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n_offerings</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">      </span><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">               </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">      </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">with</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n_offerings</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">           </span><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">                    </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">           </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">)</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="k">select</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">n_offerings</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_n_offerings</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="k">from</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
+</span></code></pre></div>
 <p>4- Trouver les cours qui ont été offerts plus souvent que la moyenne (nombre de
 fois que chaque cours a été offert)</p>
-<pre><code class="language-sql">select c.cid, c.code
-from course c
-         left join offering o on c.cid = o.cid
-group by c.cid
-having count(o.oid) &gt; (select avg(n_offerings) as avg_n_offerings
-                       from (select count(o.oid) as n_offerings
-                             from course c
-                                      left join offering o on c.cid = o.cid
-                             group by c.cid) as T);
-</code></pre>
-<h3 id="format-de-requete-sql-with">Format de Requête SQL <code>with</code></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">having</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">n_offerings</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_n_offerings</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">                       </span><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n_offerings</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">                             </span><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">                                      </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">                             </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+</span></code></pre></div>
+<h3 id="format-de-requete-sql-with">Format de Requête SQL <code>with</code><a class="headerlink" href="#format-de-requete-sql-with" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Afin d'exprimer plus facilement des requêtes avec plusieurs niveaux de
+<li>Afin d&rsquo;exprimer plus facilement des requêtes avec plusieurs niveaux de
   sous-requêtes, nous pouvons utiliser le style de
   requête <code>with ... select ...</code>.</li>
 <li>Nous définissons (en quelque sorte) des tables temporaires avant que la
@@ -376,67 +2386,67 @@ having count(o.oid) &gt; (select avg(n_offerings) as avg_n_offerings
   principale <code>select</code> comme si elles étaient des tables stockées dans la base de
   données.</li>
 </ul>
-<pre><code class="language-sql">with T2 as (select avg(n_offerings) as avg_n_offerings
-            from (select c.cid, c.code, count(o.oid) as n_offerings
-                  from course c
-                           left join offering o on c.cid = o.cid
-                  group by c.cid) as T1)
-select c.cid, c.code
-from course c
-         left join offering o on c.cid = o.cid
-group by c.cid
-having count(o.oid) &gt; (select * from T2);
-
-with n_offerings_per_course as (select c.cid,
-                                       c.code,
-                                       count(o.oid) as n_offerings
-                                from course c
-                                         left join offering o on c.cid = o.cid
-                                group by c.cid)
-select cid, code
-from n_offerings_per_course
-where n_offerings &gt; (select avg(n_offerings) as avg_n_offerings
-                     from n_offerings_per_course);
-</code></pre>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">with</span><span class="w"> </span><span class="n">T2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">n_offerings</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_n_offerings</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">            </span><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n_offerings</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">                  </span><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">                           </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">                  </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T1</span><span class="p">)</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">code</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="k">having</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">T2</span><span class="p">);</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="k">with</span><span class="w"> </span><span class="n">n_offerings_per_course</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">                                       </span><span class="k">c</span><span class="p">.</span><span class="n">code</span><span class="p">,</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">                                       </span><span class="k">count</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n_offerings</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">                                </span><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">                                         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">                                </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">)</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="k">select</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="n">code</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="k">from</span><span class="w"> </span><span class="n">n_offerings_per_course</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="k">where</span><span class="w"> </span><span class="n">n_offerings</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">n_offerings</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_n_offerings</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">                     </span><span class="k">from</span><span class="w"> </span><span class="n">n_offerings_per_course</span><span class="p">);</span>
+</span></code></pre></div>
 <ul>
 <li>Ne pas <em>sur-utiliser</em> la syntaxe <code>with</code></li>
 <li>Par exemple, ne réécrivez pas cette requête</li>
 </ul>
-<pre><code class="language-sql">select name, email 
-from student 
-where email like '%@example.com'
-union
-select name, email 
-from instructor 
-where email like '%@example.com';
-</code></pre>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">where</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%@example.com&#39;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="k">union</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="k">where</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%@example.com&#39;</span><span class="p">;</span>
+</span></code></pre></div>
 <p>comme</p>
-<pre><code class="language-sql">with students_example as (select name, email from student where email like '%@example.com'),
-   instructor_example as (select name, email from instructor where email like '%@example.com')
-select * from students_example
-union
-select * from instructor_example;
-</code></pre>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">with</span><span class="w"> </span><span class="n">students_example</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%@example.com&#39;</span><span class="p">),</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">   </span><span class="n">instructor_example</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%@example.com&#39;</span><span class="p">)</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">students_example</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">union</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor_example</span><span class="p">;</span>
+</span></code></pre></div>
 <ul>
 <li>Bien que cette requête soit techniquement correcte et équivalente à la requête
-  originale, l'utilisation de <code>with</code> pour définir 2 tables temporaires est
+  originale, l&rsquo;utilisation de <code>with</code> pour définir 2 tables temporaires est
   excessive ici et réduit en fait la lisibilité.</li>
 <li>Utilisez <code>with</code> uniquement lorsque les sous-requêtes sont compliquées ou
-  lorsqu'il y a plusieurs niveaux de sous-requêtes.</li>
+  lorsqu&rsquo;il y a plusieurs niveaux de sous-requêtes.</li>
 <li>Nous pouvons également utiliser <code>with recursive</code> pour écrire des requêtes
   récursives.</li>
 </ul>
-<h3 id="valeurs-null-en-sql">Valeurs <code>NULL</code> en SQL</h3>
+<h3 id="valeurs-null-en-sql">Valeurs <code>NULL</code> en SQL<a class="headerlink" href="#valeurs-null-en-sql" title="Permanent link">&para;</a></h3>
 <ul>
 <li>SQL utilise une <em>logique à 3 valeurs</em> au lieu de la logique booléenne (une
   logique à 2 valeurs).</li>
 <li>Les 3 valeurs sont <code>true</code>, <code>false</code> et <code>null</code> (ou <code>T</code>, <code>F</code> et <code>N</code> dans le
-  tableau ci-dessous)...</li>
+  tableau ci-dessous)&hellip;</li>
 <li>Les 2 premières valeurs ont le sens habituel, tandis que <code>null</code> peut avoir
   différentes significations :<ul>
 <li><em>inconnu</em></li>
 <li><em>non applicable</em></li>
-<li><em>n'a pas d'importance</em></li>
+<li><em>n&rsquo;a pas d&rsquo;importance</em></li>
 </ul>
 </li>
 <li>Les opérateurs logiques doivent être mis à jour pour tenir compte des
@@ -518,12 +2528,12 @@ select * from instructor_example;
 </tr>
 </tbody>
 </table>
-<h3 id="sous-requetes-non-scalaires">Sous-requêtes Non-Scalaires</h3>
+<h3 id="sous-requetes-non-scalaires">Sous-requêtes Non-Scalaires<a class="headerlink" href="#sous-requetes-non-scalaires" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Si une (sous-)requête renvoie plus d'une ligne et/ou plus d'une colonne, alors
-  ce n'est <strong>pas</strong> une sous-requête scalaire.</li>
-<li>Tenter d'utiliser les opérateurs de comparaison ou arithmétiques normaux avec
-  des sous-requêtes non-scalaires échouera s'il y a plus d'une ligne.</li>
+<li>Si une (sous-)requête renvoie plus d&rsquo;une ligne et/ou plus d&rsquo;une colonne, alors
+  ce n&rsquo;est <strong>pas</strong> une sous-requête scalaire.</li>
+<li>Tenter d&rsquo;utiliser les opérateurs de comparaison ou arithmétiques normaux avec
+  des sous-requêtes non-scalaires échouera s&rsquo;il y a plus d&rsquo;une ligne.</li>
 <li>Certains SGBD, comme PostgreSQL, permettent à certains opérateurs de
   fonctionner avec des sous-requêtes donnant exactement 1 ligne mais plusieurs
   colonnes.</li>
@@ -536,19 +2546,19 @@ select * from instructor_example;
 </ul>
 </li>
 </ul>
-<h4 id="in"><code>IN</code></h4>
+<h4 id="in"><code>IN</code><a class="headerlink" href="#in" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>expression IN (sub-query)</code><ul>
-<li>c'est la même chose que $\in$ en notation mathématique (sauf que nous
+<li>c&rsquo;est la même chose que <span class="arithmatex">\(\in\)</span> en notation mathématique (sauf que nous
   devons gérer les valeurs <code>null</code>)</li>
 <li>la sous-requête doit renvoyer exactement 1 colonne</li>
-<li><code>true</code> si l'expression est égale à 1 des lignes dans les résultats de la
+<li><code>true</code> si l&rsquo;expression est égale à 1 des lignes dans les résultats de la
   sous-requête</li>
-<li><code>false</code> si l'expression n'est pas <code>null</code> et qu'il n'y a pas de
-  valeurs <code>null</code> dans la sous-requête et que l'expression n'est égale à
+<li><code>false</code> si l&rsquo;expression n&rsquo;est pas <code>null</code> et qu&rsquo;il n&rsquo;y a pas de
+  valeurs <code>null</code> dans la sous-requête et que l&rsquo;expression n&rsquo;est égale à
   aucune ligne de la sous-requête</li>
-<li><code>null</code> si l'expression est <code>null</code> ou si l'expression n'est égale à aucune
-  ligne de la sous-requête et qu'il y a au moins 1 valeur <code>null</code> dans la
+<li><code>null</code> si l&rsquo;expression est <code>null</code> ou si l&rsquo;expression n&rsquo;est égale à aucune
+  ligne de la sous-requête et qu&rsquo;il y a au moins 1 valeur <code>null</code> dans la
   sous-requête</li>
 </ul>
 </li>
@@ -557,28 +2567,28 @@ select * from instructor_example;
 </li>
 <li>
 <p>Rappelez-vous que si nous voulons savoir si une valeur de colonne est <code>null</code>,
-  nous ne pouvons pas utiliser l'opérateur d'égalité <code>=</code> car il renverra
+  nous ne pouvons pas utiliser l&rsquo;opérateur d&rsquo;égalité <code>=</code> car il renverra
   toujours <code>null</code></p>
 <ul>
 <li><code>null</code> signifie <em>inconnu</em> dans ce cas, donc nous ne savons pas comment
   comparer des valeurs à une valeur inconnue</li>
-<li>Nous devons donc utiliser <code>is null</code> au lieu de <code>= null</code>...</li>
+<li>Nous devons donc utiliser <code>is null</code> au lieu de <code>= null</code>&hellip;</li>
 </ul>
 </li>
 <li>
-<p>L'opérateur <code>IN</code> compare les valeurs avec <code>=</code>, donc dès qu'il compare avec
+<p>L&rsquo;opérateur <code>IN</code> compare les valeurs avec <code>=</code>, donc dès qu&rsquo;il compare avec
   un <code>null</code>, il évaluera à <code>null</code></p>
 <ul>
-<li>Donc si l'expression est égale à <code>null</code>, <code>IN</code> évaluera à <code>null</code></li>
-<li>Si l'expression n'est pas <code>null</code>, alors elle comparera l'expression avec
-  des valeurs non-nulles d'abord dans la sous-requête<ul>
+<li>Donc si l&rsquo;expression est égale à <code>null</code>, <code>IN</code> évaluera à <code>null</code></li>
+<li>Si l&rsquo;expression n&rsquo;est pas <code>null</code>, alors elle comparera l&rsquo;expression avec
+  des valeurs non-nulles d&rsquo;abord dans la sous-requête<ul>
 <li>si elle trouve une correspondance, alors la valeur de <code>IN</code> sera vraie</li>
 <li>si nous ne trouvons pas de correspondance, alors elle vérifiera si la
   sous-requête contient des valeurs <code>null</code><ul>
-<li>si non, alors nous savons avec certitude que l'expression n'est
+<li>si non, alors nous savons avec certitude que l&rsquo;expression n&rsquo;est
   pas dans la sous-requête, donc la valeur de <code>IN</code> sera <code>false</code></li>
-<li>s'il y a des valeurs <code>null</code>, alors nous ne savons pas avec
-  certitude si l'expression est dans la sous-requête parce que nous
+<li>s&rsquo;il y a des valeurs <code>null</code>, alors nous ne savons pas avec
+  certitude si l&rsquo;expression est dans la sous-requête parce que nous
   avons des valeurs <em>inconnues</em> (<code>null</code>), donc la valeur de <code>IN</code>
   est <code>null</code></li>
 </ul>
@@ -591,64 +2601,64 @@ select * from instructor_example;
 <p>Cet exemple fonctionne comme prévu</p>
 </li>
 </ul>
-<pre><code class="language-sql">-- notez que (1, 2, 3) n'est pas vraiment une sous-requête, mais agit comme une sous-requête
--- il est utilisé pour simplifier l'exemple
-select *
-from course
-where cid in (1, 2, 3);
-</code></pre>
-<pre><code class="language-sql">-- notez que (2, 3, 4, null) n'est pas vraiment une sous-requête, mais agit comme une sous-requête
--- il est utilisé pour simplifier l'exemple
-select *
-from course
-where cid in (2, 3, 4, null);
-</code></pre>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">-- notez que (1, 2, 3) n&#39;est pas vraiment une sous-requête, mais agit comme une sous-requête</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1">-- il est utilisé pour simplifier l&#39;exemple</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="k">where</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">-- notez que (2, 3, 4, null) n&#39;est pas vraiment une sous-requête, mais agit comme une sous-requête</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1">-- il est utilisé pour simplifier l&#39;exemple</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="k">where</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
+</span></code></pre></div>
 <ul>
 <li>Cet exemple est équivalent et montre comment les opérateurs <code>IN</code> sont évalués
   en interne</li>
 </ul>
-<pre><code class="language-sql">select * from course where cid = 2 or cid = 3 or cid = 4 or cid = null;
-</code></pre>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+</span></code></pre></div>
 <ul>
-<li>Cela fonctionne pour les cours avec une valeur <code>cid</code> de 2, 3 ou 4 parce qu'au
+<li>Cela fonctionne pour les cours avec une valeur <code>cid</code> de 2, 3 ou 4 parce qu&rsquo;au
   moins 1 des comparaisons sera vraie et nous obtiendrons quelque chose
   comme <code>T OR F OR F OR N</code>, ce qui est vrai</li>
-<li>Mais pour les cours avec un <code>cid</code> non inclus dans l'ensemble fourni, nous
+<li>Mais pour les cours avec un <code>cid</code> non inclus dans l&rsquo;ensemble fourni, nous
   obtiendrons <code>null</code> parce que <code>F OR F OR F OR N</code> est <code>N</code></li>
 <li>Cela ne crée pas de problème car les lignes avec une condition <code>where</code> seront
   supprimées</li>
 <li>Mais si nous nions <code>IN</code> pour obtenir un opérateur <code>NOT IN</code>, nous aurons des
   ennuis</li>
 </ul>
-<pre><code class="language-sql">select *
-from course
-where cid not in (2, 3, 4, null);
-
-select *
-from course
-where cid not in (select cid from offering);
-
-select *
-from course
-except
-select c.*
-from course c
-         inner join offering o on c.cid = o.cid;
-
-select c.*
-from course c
-         left join offering o on c.cid = o.cid
-where o.oid is null;
-
-select *
-from instructor
-where iid not in (select iid from offering);
-</code></pre>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">where</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="k">where</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">offering</span><span class="p">);</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="k">except</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="o">*</span>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">         </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="o">*</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span>
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="k">where</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">oid</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a><span class="k">where</span><span class="w"> </span><span class="n">iid</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">iid</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">offering</span><span class="p">);</span>
+</span></code></pre></div>
 <ul>
-<li>Nous n'obtenons rien</li>
-<li>Mais le cours avec <code>cid = 1</code> n'est pas dans la sous-requête, alors pourquoi ne
-  l'obtenons-nous pas ?</li>
-<li>C'est à cause de la valeur <code>null</code><ul>
+<li>Nous n&rsquo;obtenons rien</li>
+<li>Mais le cours avec <code>cid = 1</code> n&rsquo;est pas dans la sous-requête, alors pourquoi ne
+  l&rsquo;obtenons-nous pas ?</li>
+<li>C&rsquo;est à cause de la valeur <code>null</code><ul>
 <li><code>1 in (2, 3, 4, null)</code> évalue à <code>null</code></li>
 <li>et <code>1 not in (2, 3, 4, null)</code> évalue à <code>not null</code>, ce qui est <code>null</code></li>
 </ul>
@@ -656,37 +2666,37 @@ where iid not in (select iid from offering);
 <li>Donc les requêtes <code>NOT IN</code> sont dangereuses à cause des valeurs <code>null</code></li>
 <li>La requête suivante est correcte parce que nous savons avec certitude
   que <code>cid</code> dans course ne peut pas être <code>null</code><ul>
-<li>Donc nous pouvons trouver les cours qui n'ont jamais été offerts de cette
+<li>Donc nous pouvons trouver les cours qui n&rsquo;ont jamais été offerts de cette
   manière</li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-sql">--insert into course(name, code, credits) --values ('Data Structures', 'DS', 3);
--- delete from course where code = 'DS';
-select *
-from course
-where cid not in (select cid from offering);
-</code></pre>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1">--insert into course(name, code, credits) --values (&#39;Data Structures&#39;, &#39;DS&#39;, 3);</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1">-- delete from course where code = &#39;DS&#39;;</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="k">where</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">offering</span><span class="p">);</span>
+</span></code></pre></div>
 <ul>
 <li>Mais essayer de faire quelque chose de similaire pour les instructeurs créera
   des problèmes car <code>iid</code> dans offering peut être <code>null</code></li>
 <li>Nous devons explicitement exclure les valeurs <code>null</code> dans la sous-requête pour
   que la requête renvoie les résultats corrects</li>
 </ul>
-<pre><code class="language-sql">--insert into instructor(name, email, department) --values ('John', 'john@bbb.com', 'ECE');
--- delete from instructor where name = 'John';
-select *
-from instructor
-where iid not in (select iid from offering);
-</code></pre>
-<pre><code class="language-sql">select *
-from instructor
-where iid not in (select iid
-                  from offering
-                  where iid is not null);
-</code></pre>
-<h4 id="recommandation-ne-pas-utiliser-not-in">Recommandation : ne pas utiliser <code>NOT IN</code></h4>
-<h4 id="recommandation-utiliser-une-left-join-a-la-place">Recommandation : utiliser une <code>left join</code> à la place</h4>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1">--insert into instructor(name, email, department) --values (&#39;John&#39;, &#39;john@bbb.com&#39;, &#39;ECE&#39;);</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="c1">-- delete from instructor where name = &#39;John&#39;;</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="k">where</span><span class="w"> </span><span class="n">iid</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">iid</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">offering</span><span class="p">);</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">where</span><span class="w"> </span><span class="n">iid</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">iid</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">                  </span><span class="k">from</span><span class="w"> </span><span class="n">offering</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">                  </span><span class="k">where</span><span class="w"> </span><span class="n">iid</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
+</span></code></pre></div>
+<h4 id="recommandation-ne-pas-utiliser-not-in">Recommandation : ne pas utiliser <code>NOT IN</code><a class="headerlink" href="#recommandation-ne-pas-utiliser-not-in" title="Permanent link">&para;</a></h4>
+<h4 id="recommandation-utiliser-une-left-join-a-la-place">Recommandation : utiliser une <code>left join</code> à la place<a class="headerlink" href="#recommandation-utiliser-une-left-join-a-la-place" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Non seulement la jointure gauche (ou les jointures externes en général) vous
   oblige à penser aux valeurs <code>null</code> (et à les gérer correctement), mais en
@@ -695,34 +2705,34 @@ where iid not in (select iid
 <li>Utiliser des jointures gauches évite de traiter avec la logique à 3 valeurs de
   SQL.</li>
 </ul>
-<pre><code class="language-sql">select i.*
-from instructor i
-         left join offering o on i.iid = o.iid
-where o.iid is null;
-</code></pre>
-<h4 id="any-et-all"><code>ANY</code> et <code>ALL</code></h4>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">select</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="o">*</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="n">i</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">iid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">iid</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="k">where</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">iid</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+</span></code></pre></div>
+<h4 id="any-et-all"><code>ANY</code> et <code>ALL</code><a class="headerlink" href="#any-et-all" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>ANY</code> et <code>ALL</code> sont utilisés comme modificateurs d'opérateurs (généralement
+<li><code>ANY</code> et <code>ALL</code> sont utilisés comme modificateurs d&rsquo;opérateurs (généralement
   des opérateurs de comparaison)<ul>
 <li><code>expression operator ANY (sub-query)</code><ul>
-<li><code>true</code> lorsqu'il existe une ligne $r$ dans la sous-requête telle
+<li><code>true</code> lorsqu&rsquo;il existe une ligne <span class="arithmatex">\(r\)</span> dans la sous-requête telle
   que <code>expression operator r</code> est vrai</li>
 <li><code>false</code> lorsque pour toutes les lignes r dans la
-  sous-requête, <code>expression operator r</code> est faux et qu'il n'y a pas de
-  valeurs <code>null</code> dans la sous-requête...</li>
+  sous-requête, <code>expression operator r</code> est faux et qu&rsquo;il n&rsquo;y a pas de
+  valeurs <code>null</code> dans la sous-requête&hellip;</li>
 <li><code>null</code> lorsque pour toutes les lignes r dans la
-  sous-requête, <code>expression operator r</code> est faux et qu'il y a au moins 1
+  sous-requête, <code>expression operator r</code> est faux et qu&rsquo;il y a au moins 1
   valeur <code>null</code> dans la sous-requête</li>
 </ul>
 </li>
 <li><code>IN</code> est équivalent à <code>=ANY</code></li>
 <li><code>expression operator ALL (sub-query)</code><ul>
-<li><code>true</code> lorsque pour toutes les lignes $r$ dans la
+<li><code>true</code> lorsque pour toutes les lignes <span class="arithmatex">\(r\)</span> dans la
   sous-requête, <code>expression operator r</code> est vrai</li>
 <li><code>false</code> lorsque <code>expression operator r</code> est faux pour au moins 1 ligne
   dans la sous-requête</li>
-<li><code>null</code> lorsque pour toutes les lignes $r$ dans la
-  sous-requête, <code>expression operator r</code> n'est pas faux et qu'il y a au
+<li><code>null</code> lorsque pour toutes les lignes <span class="arithmatex">\(r\)</span> dans la
+  sous-requête, <code>expression operator r</code> n&rsquo;est pas faux et qu&rsquo;il y a au
   moins 1 valeur <code>null</code> dans la sous-requête</li>
 </ul>
 </li>
@@ -730,51 +2740,115 @@ where o.iid is null;
 </ul>
 </li>
 </ul>
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../05-survol-op%C3%A9rations-SQL/" class="btn btn-neutral float-left" title="5 - Survol des opérations faisant partie des requêtes SQL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../07-r%C3%A9cursives/" class="btn btn-neutral float-right" title="7 - Requêtes récursives">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../05-survol-op%C3%A9rations-SQL/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 5 - Survol des opérations faisant partie des requêtes SQL">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                5 - Survol des opérations faisant partie des requêtes SQL
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../07-r%C3%A9cursives/" class="md-footer__link md-footer__link--next" aria-label="Next: 7 - Requêtes récursives">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                7 - Requêtes récursives
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
-      <span><a href="../05-survol-op%C3%A9rations-SQL/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../07-r%C3%A9cursives/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "../..";</script>
-    <script src="../../js/theme_extra.js"></script>
-    <script src="../../js/theme.js"></script>
-      <script src="../../search/main.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
 </html>

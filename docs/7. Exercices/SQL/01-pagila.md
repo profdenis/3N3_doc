@@ -176,8 +176,7 @@ store          -[#595959,plain]-^  address       : "address_id"
 
 ```
 </details>
-![pagila_plantuml.png](../../images/pagila_plantuml.png)
-![pagila.png](../../images/pagila.png)
+
 
 ## Requêtes
 
@@ -862,12 +861,8 @@ ORDER BY ap.films_together DESC, a1.last_name, a1.first_name, a2.last_name, a2.f
 
 
 -------
-<small>
-   <cite>
-      **Note** : Page rédigée en partie avec l'aide d'un assistant IA, principalement
-      à l'aide de Perplexity AI, avec les LLM `GPT-4 Omni` et `Claude 3.5 Sonnet`. L'IA
-      a été utilisée pour générer des explications, des exemples et/ou des suggestions de
-      structure. Toutes les informations ont été vérifiées, éditées et complétées par
-      l'auteur.
-   </cite>
-</small>
+
+??? info "Utilisation de l'IA"
+    Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des 
+    explications, des exemples et/ou des suggestions de structure. Toutes les informations ont 
+    été vérifiées, éditées et complétées par l'auteur.

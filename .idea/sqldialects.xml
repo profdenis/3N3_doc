@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/docs/src/create/blog_create.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/docs/src/create/contact_create.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/docs/src/create/football_create.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/docs/src/create/northwind_create.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/docs/src/create/university_create.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/docs/src/exemples_fk.sql" dialect="PostgreSQL" />
+    <file url="PROJECT" dialect="PostgreSQL" />
+  </component>
+</project>
