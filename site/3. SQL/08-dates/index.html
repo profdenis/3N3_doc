@@ -2452,18 +2452,36 @@
 termes de stockage si seule la date est nécessaire.</p>
 <h3 id="conversion">Conversion<a class="headerlink" href="#conversion" title="Permanent link">&para;</a></h3>
 <p>Pour convertir un <code>timestamp</code> en <code>date</code>, ou vice-versa, on peut <em>caster</em> dans l&rsquo;un ou dans l&rsquo;autre :</p>
-<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">select</span><span class="w"> </span><span class="p">(</span><span class="n">now</span><span class="p">()::</span><span class="nb">date</span><span class="p">);</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">select</span><span class="w"> </span><span class="p">(</span><span class="n">now</span><span class="p">()::</span><span class="nb">date</span><span class="p">);</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">-- now() donne le timestamp courant</span>
 </span></code></pre></div>
-| now        |
-|:-----------|
-| 2024-09-27 |</p>
-<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">select</span><span class="w"> </span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">::</span><span class="k">timestamp</span><span class="p">);</span>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2024-09-27</td>
+</tr>
+</tbody>
+</table>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">select</span><span class="w"> </span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">::</span><span class="k">timestamp</span><span class="p">);</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">-- CURRENT_DATE donne la date d&#39;aujourd&#39;hui</span>
 </span></code></pre></div>
-| current_date              |
-|:---------------------------|
-| 2024-09-27 00:00:00.000000 |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">current_date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2024-09-27 00:00:00.000000</td>
+</tr>
+</tbody>
+</table>
 <p>Citations:</p>
 <ul>
 <li>[1] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/</li>
@@ -2833,45 +2851,91 @@ lorsque seule la date est nécessaire[1][3][4].</p>
 </ul>
 <h2 id="operations-avec-interval">Opérations avec <code>interval</code><a class="headerlink" href="#operations-avec-interval" title="Permanent link">&para;</a></h2>
 <p>L&rsquo;utilisation d&rsquo;<code>interval</code> permet d&rsquo;effectuer des calculs sur les dates[5]:</p>
-<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">-- Ajouter 1 mois à la date actuelle</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">-- Ajouter 1 mois à la date actuelle</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">select</span><span class="w"> </span><span class="k">current_date</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;1 month&#39;</span><span class="p">;</span>
 </span></code></pre></div>
-| ?column?                   |
-|:---------------------------|
-| 2024-10-25 00:00:00.000000 |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">?column?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">2024-10-25 00:00:00.000000</td>
+</tr>
+</tbody>
+</table>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">-- Soustraire 2 semaines à une date spécifique</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">select</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="s1">&#39;2023-01-15&#39;</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;2 weeks&#39;</span><span class="p">;</span>
 </span></code></pre></div>
-<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">-- les utilisateurs créés dans le dernier mois</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">-- les utilisateurs créés dans le dernier mois</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p">.</span><span class="n">created</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">from</span><span class="w"> </span><span class="n">users</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">where</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">current_date</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;1 month&#39;</span><span class="p">;</span>
 </span></code></pre></div>
-| name  | created                    |
-|:------|:---------------------------|
-| denis | 2024-09-25 20:42:08.200074 |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">created</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">2024-09-25 20:42:08.200074</td>
+</tr>
+</tbody>
+</table>
 <h2 id="exemples-avances">Exemples avancés<a class="headerlink" href="#exemples-avances" title="Permanent link">&para;</a></h2>
 <h3 id="calculer-lage">Calculer l&rsquo;âge<a class="headerlink" href="#calculer-lage" title="Permanent link">&para;</a></h3>
-<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">(</span><span class="n">created</span><span class="p">)</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">(</span><span class="n">created</span><span class="p">)</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">from</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1">-- Retourne l&#39;intervalle entre la date spécifiée et la date actuelle</span>
 </span></code></pre></div>
-| name  | age                                                     |
-|:------|:--------------------------------------------------------|
-| denis | 0 years 0 mons 0 days -20 hours -42 mins -8.200074 secs |
-| bob   | 1 years 1 mons 15 days 11 hours 48 mins 0.0 secs        |
-| alice | 0 years 1 mons 30 days 21 hours 17 mins 51.799926 secs  |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">denis</td>
+<td style="text-align: left;">0 years 0 mons 0 days -20 hours -42 mins -8.200074 secs</td>
+</tr>
+<tr>
+<td style="text-align: left;">bob</td>
+<td style="text-align: left;">1 years 1 mons 15 days 11 hours 48 mins 0.0 secs</td>
+</tr>
+<tr>
+<td style="text-align: left;">alice</td>
+<td style="text-align: left;">0 years 1 mons 30 days 21 hours 17 mins 51.799926 secs</td>
+</tr>
+</tbody>
+</table>
 <h3 id="convertir-une-chaine-en-date">Convertir une chaîne en date<a class="headerlink" href="#convertir-une-chaine-en-date" title="Permanent link">&para;</a></h3>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">select</span><span class="w"> </span><span class="n">to_date</span><span class="p">(</span><span class="s1">&#39;2023-09-21&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy-mm-dd&#39;</span><span class="p">);</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1">-- Convertit la chaîne en date</span>
 </span></code></pre></div>
 <h3 id="formater-une-date">Formater une date<a class="headerlink" href="#formater-une-date" title="Permanent link">&para;</a></h3>
-<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">select</span><span class="w"> </span><span class="n">to_char</span><span class="p">(</span><span class="k">current_date</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;DD/MM/YYYY&#39;</span><span class="p">);</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">select</span><span class="w"> </span><span class="n">to_char</span><span class="p">(</span><span class="k">current_date</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;DD/MM/YYYY&#39;</span><span class="p">);</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1">-- Formate la date actuelle au format JJ/MM/AAAA</span>
 </span></code></pre></div>
-| to_char   |
-|:-----------|
-| 25/09/2024 |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">to_char</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">25/09/2024</td>
+</tr>
+</tbody>
+</table>
 <p>Ces exemples couvrent les opérations les plus courantes sur les dates et timestamps dans PostgreSQL. N&rsquo;oubliez pas que
 PostgreSQL offre de nombreuses autres fonctions et possibilités pour manipuler les dates et les heures selon vos besoins
 spécifiques.</p>

@@ -34,7 +34,7 @@ group by year;
 select iid, count(*)
 from offering
 group by iid;
-   ```
+```
 
 5- Obtenir le nombre d'étudiants inscrits dans chaque offre de cours
 

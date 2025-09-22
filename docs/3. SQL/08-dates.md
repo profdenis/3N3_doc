@@ -54,6 +54,7 @@ Pour convertir un `timestamp` en `date`, ou vice-versa, on peut _caster_ dans l'
 select (now()::date);
 -- now() donne le timestamp courant
 ```
+
 | now        |
 |:-----------|
 | 2024-09-27 |
@@ -63,6 +64,7 @@ select (now()::date);
 select (CURRENT_DATE::timestamp);
 -- CURRENT_DATE donne la date d'aujourd'hui
 ```
+
 | current\_date              |
 |:---------------------------|
 | 2024-09-27 00:00:00.000000 |
@@ -293,6 +295,7 @@ L'utilisation d'`interval` permet d'effectuer des calculs sur les dates[5]:
 -- Ajouter 1 mois à la date actuelle
 select current_date + interval '1 month';
 ```
+
 | ?column?                   |
 |:---------------------------|
 | 2024-10-25 00:00:00.000000 |
@@ -308,6 +311,7 @@ select name, users.created
 from users
 where created > current_date - interval '1 month';
 ```
+
 | name  | created                    |
 |:------|:---------------------------|
 | denis | 2024-09-25 20:42:08.200074 |
@@ -321,6 +325,7 @@ select name, age(created)
 from users;
 -- Retourne l'intervalle entre la date spécifiée et la date actuelle
 ```
+
 | name  | age                                                     |
 |:------|:--------------------------------------------------------|
 | denis | 0 years 0 mons 0 days -20 hours -42 mins -8.200074 secs |
@@ -340,6 +345,7 @@ select to_date('2023-09-21', 'yyyy-mm-dd');
 select to_char(current_date, 'DD/MM/YYYY');
 -- Formate la date actuelle au format JJ/MM/AAAA
 ```
+
 | to\_char   |
 |:-----------|
 | 25/09/2024 |

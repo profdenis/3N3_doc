@@ -19,7 +19,6 @@ from student;
 2- Supposons que l'université facture 200$ par crédit pour un cours. Trouvez le
 prix pour chaque cours.
 
--
 - `price` est un alias pour la colonne calculée
 
 ```sql
