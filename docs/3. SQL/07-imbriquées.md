@@ -1,4 +1,4 @@
-# 6 - Requêtes SQL imbriquées
+# 7 - Requêtes SQL imbriquées
 
 - Une *sous-requête* est une requête à l'intérieur d'une autre requête (ou d'une
   autre sous-requête).

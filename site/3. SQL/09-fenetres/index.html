@@ -1,0 +1,3631 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://profdenis.github.io/3N3_doc/3.%20SQL/09-fenetres/">
+      
+      
+        <link rel="prev" href="../08-rank/">
+      
+      
+        <link rel="next" href="../Plus%20de%20fonctions/01-coalesce-case-when/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>9 - Autres fonctions fenêtrées essentielles en SQL - Cours de bases de données</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-autres-fonctions-fenetrees-essentielles-en-sql" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cours de bases de données" class="md-header__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de bases de données
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9 - Autres fonctions fenêtrées essentielles en SQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/profdenis/3N3_doc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    profdenis/3N3_doc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Cours de bases de données
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1.%20Introduction/01-Introduction-aux-bd/" class="md-tabs__link">
+          
+  
+  1. Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-tabs__link">
+          
+  
+  2. Le modèle relationnel
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-intro/" class="md-tabs__link">
+          
+  
+  3. SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-tabs__link">
+          
+  
+  4. Modélisation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../5.%20SQL%20Avanc%C3%A9/01-r%C3%A9cursives/" class="md-tabs__link">
+          
+  
+  5. SQL Avancé
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-tabs__link">
+          
+  
+  6. Sécurité et Utilisateurs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../7.%20Exercices/01-exercices/" class="md-tabs__link">
+          
+  
+  7. Exercices
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cours de bases de données" class="md-nav__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cours de bases de données
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/profdenis/3N3_doc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    profdenis/3N3_doc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cours de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Introduction
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/01-Introduction-aux-bd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Qu&rsquo;est-ce qu&rsquo;une base de données ?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/02-Types-de-bases-de-donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Types de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historique des bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemples de Bases de Données dans Différents Contextes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction à PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avantages de PostgreSQL par rapport à d&rsquo;autres SGBD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entreprises utilisant PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/04-Configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration de PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Le modèle relationnel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Le modèle relationnel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Présentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction aux Diagrammes Entité-Association
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    3. SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 - Introduction à SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02a-bases-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2a - Base de Données de Contacts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02b-bases-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2b - Base de Données Université
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03a-jointures-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3a - Requêtes avec plus d&rsquo;une table (Contacts)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03b-jointures-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3b - Requêtes avec plus d&rsquo;une table (Université)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04a-groupes-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4a - Groupement et Agrégats (Contacts)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04b-groupes-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4b - Groupement et Agrégats (Université)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-survol-op%C3%A9rations-SQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 - Survol des opérations faisant partie des requêtes SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-dates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 - Utilisation de date et timestamp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-imbriqu%C3%A9es/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 - Requêtes SQL imbriquées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-rank/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8 - Fonction SQL RANK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    9 - Autres fonctions fenêtrées essentielles en SQL
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    9 - Autres fonctions fenêtrées essentielles en SQL
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-row_number-numerotation-sequentielle" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ROW_NUMBER() — Numérotation séquentielle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ROW_NUMBER() — Numérotation séquentielle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dense_rank-classement-sans-trous" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. DENSE_RANK() — Classement sans trous
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. DENSE_RANK() — Classement sans trous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-comparatif-avec-rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple comparatif avec RANK()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ntilen-segmentation-en-groupes-egaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. NTILE(n) — Segmentation en groupes égaux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. NTILE(n) — Segmentation en groupes égaux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-diviser-les-employes-en-4-quartiles-de-salaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple : Diviser les employés en 4 quartiles de salaire
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-lag-et-lead-acceder-aux-lignes-precedentes-ou-suivantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. LAG() et LEAD() — Accéder aux lignes précédentes ou suivantes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. LAG() et LEAD() — Accéder aux lignes précédentes ou suivantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-evolution-des-ventes-mensuelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple : Évolution des ventes mensuelles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-first_value-et-last_value-valeurs-extremes-dans-la-fenetre" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. FIRST_VALUE() et LAST_VALUE() — Valeurs extrêmes dans la fenêtre
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. FIRST_VALUE() et LAST_VALUE() — Valeurs extrêmes dans la fenêtre">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-comparer-chaque-salaire-au-meilleur-salaire-du-departement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple : Comparer chaque salaire au meilleur salaire du département
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sum-avg-count-en-mode-fenetre" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. SUM(), AVG(), COUNT() … en mode fenêtré
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. SUM(), AVG(), COUNT() … en mode fenêtré">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-1-cumul-des-ventes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 1 : Cumul des ventes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-2-moyenne-mobile-sur-3-mois" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 2 : Moyenne mobile sur 3 mois
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-percent_rank-et-cume_dist-classement-en-pourcentage" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. PERCENT_RANK() et CUME_DIST() — Classement en pourcentage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. PERCENT_RANK() et CUME_DIST() — Classement en pourcentage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#percent_rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      PERCENT_RANK()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cume_dist" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUME_DIST()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-framing-cadrage-de-fenetre-controler-precisement-la-fenetre" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Framing (cadrage de fenêtre) — Contrôler précisément la fenêtre
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Framing (cadrage de fenêtre) — Contrôler précisément la fenêtre">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options-courantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Options courantes :
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-somme-des-2-mois-precedents-mois-courant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple : Somme des 2 mois précédents + mois courant
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-comparaison-des-fonctions-fenetrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Comparaison des fonctions fenêtrées
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-exemples-avances-combinant-plusieurs-fonctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Exemples avancés combinant plusieurs fonctions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Exemples avancés combinant plusieurs fonctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-1-tableau-de-bord-analytique-des-ventes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 1 : Tableau de bord analytique des ventes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-2-analyse-des-performances-etudiantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 2 : Analyse des performances étudiantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-bonnes-pratiques-et-pieges-a-eviter" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Bonnes pratiques et pièges à éviter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Bonnes pratiques et pièges à éviter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bonnes-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bonnes pratiques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pieges-courants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pièges courants
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-exercices-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Exercices pratiques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Exercices pratiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice-1-evolution-des-prix-boursiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 1 : Évolution des prix boursiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-2-segmentation-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 2 : Segmentation client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-3-palmares-par-categorie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 3 : Palmarès par catégorie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-4-analyse-cumulative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 4 : Analyse cumulative
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-avance-classement-complexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice avancé : Classement complexe
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Résumé
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-prochaines-etapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Prochaines étapes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Plus de fonctions
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13">
+            <span class="md-nav__icon md-icon"></span>
+            Plus de fonctions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plus%20de%20fonctions/01-coalesce-case-when/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    COALESCE et CASE WHEN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plus%20de%20fonctions/02-more-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Présentation et formatage des données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plus%20de%20fonctions/03-regexp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expressions régulières
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. Modélisation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. Modélisation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modélisation Entité-Association
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les Entités Faibles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/02-notation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Différentes notations pour les DEA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/03-exemples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conversion d&rsquo;un diagramme EA en schéma relationnel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/05-circular-dep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5- Gestion des dépendances circulaires dans la conception de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/06-cycles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 - Cycles entre les tables Utilisateurs et Profil
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. SQL Avancé
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            5. SQL Avancé
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/01-r%C3%A9cursives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 - Requêtes récursives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/02-vues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/03-contraintes-et-d%C3%A9clencheurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contraintes et Déclencheurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/04-transactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transactions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20SQL%20Avanc%C3%A9/05-objet-relationel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modèle objet-relationel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    6. Sécurité et Utilisateurs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            6. Sécurité et Utilisateurs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des Utilisateurs et Sécurité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contrôle d&rsquo;Accès Basé sur les Rôles (RBAC)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des Utilisateurs dans PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/04-mots-de-passe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des mots de passe d&rsquo;application dans une BD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    7. Exercices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            7. Exercices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/01-exercices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DEA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            DEA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/01-blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/02-livres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Livres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/03-transport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Réseau de transports en commun
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/04-restaurants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Chaîne de restaurants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/05-voyages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Agence de voyages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/06-hopital/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Système de gestion d&rsquo;un hôpital
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/01-pagila/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Base de données Pagila
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/02-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Recettes de cuisine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/03-northwind/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. BD Northwind
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-row_number-numerotation-sequentielle" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ROW_NUMBER() — Numérotation séquentielle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ROW_NUMBER() — Numérotation séquentielle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dense_rank-classement-sans-trous" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. DENSE_RANK() — Classement sans trous
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. DENSE_RANK() — Classement sans trous">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-comparatif-avec-rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple comparatif avec RANK()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ntilen-segmentation-en-groupes-egaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. NTILE(n) — Segmentation en groupes égaux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. NTILE(n) — Segmentation en groupes égaux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-diviser-les-employes-en-4-quartiles-de-salaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple : Diviser les employés en 4 quartiles de salaire
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-lag-et-lead-acceder-aux-lignes-precedentes-ou-suivantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. LAG() et LEAD() — Accéder aux lignes précédentes ou suivantes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. LAG() et LEAD() — Accéder aux lignes précédentes ou suivantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-evolution-des-ventes-mensuelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple : Évolution des ventes mensuelles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-first_value-et-last_value-valeurs-extremes-dans-la-fenetre" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. FIRST_VALUE() et LAST_VALUE() — Valeurs extrêmes dans la fenêtre
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. FIRST_VALUE() et LAST_VALUE() — Valeurs extrêmes dans la fenêtre">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-comparer-chaque-salaire-au-meilleur-salaire-du-departement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple : Comparer chaque salaire au meilleur salaire du département
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sum-avg-count-en-mode-fenetre" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. SUM(), AVG(), COUNT() … en mode fenêtré
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. SUM(), AVG(), COUNT() … en mode fenêtré">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-quoi-ca-sert_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      À quoi ça sert ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-1-cumul-des-ventes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 1 : Cumul des ventes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-2-moyenne-mobile-sur-3-mois" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 2 : Moyenne mobile sur 3 mois
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-percent_rank-et-cume_dist-classement-en-pourcentage" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. PERCENT_RANK() et CUME_DIST() — Classement en pourcentage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. PERCENT_RANK() et CUME_DIST() — Classement en pourcentage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#percent_rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      PERCENT_RANK()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cume_dist" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUME_DIST()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-framing-cadrage-de-fenetre-controler-precisement-la-fenetre" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Framing (cadrage de fenêtre) — Contrôler précisément la fenêtre
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Framing (cadrage de fenêtre) — Contrôler précisément la fenêtre">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options-courantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Options courantes :
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-somme-des-2-mois-precedents-mois-courant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple : Somme des 2 mois précédents + mois courant
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-comparaison-des-fonctions-fenetrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Comparaison des fonctions fenêtrées
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-exemples-avances-combinant-plusieurs-fonctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Exemples avancés combinant plusieurs fonctions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Exemples avancés combinant plusieurs fonctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-1-tableau-de-bord-analytique-des-ventes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 1 : Tableau de bord analytique des ventes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-2-analyse-des-performances-etudiantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 2 : Analyse des performances étudiantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-bonnes-pratiques-et-pieges-a-eviter" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Bonnes pratiques et pièges à éviter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Bonnes pratiques et pièges à éviter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bonnes-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bonnes pratiques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pieges-courants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pièges courants
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-exercices-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Exercices pratiques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Exercices pratiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercice-1-evolution-des-prix-boursiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 1 : Évolution des prix boursiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-2-segmentation-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 2 : Segmentation client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-3-palmares-par-categorie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 3 : Palmarès par catégorie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-4-analyse-cumulative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice 4 : Analyse cumulative
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercice-avance-classement-complexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercice avancé : Classement complexe
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Résumé
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-prochaines-etapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Prochaines étapes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="9-autres-fonctions-fenetrees-essentielles-en-sql">9 - Autres fonctions fenêtrées essentielles en SQL<a class="headerlink" href="#9-autres-fonctions-fenetrees-essentielles-en-sql" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Après avoir maîtrisé <code>RANK()</code>, il est temps d’explorer d’autres fonctions fenêtrées puissantes qui vous permettront de
+répondre à des besoins analytiques plus complexes : comparaisons temporelles, calculs cumulatifs, segmentation, et bien
+plus encore.</p>
+<p>Les fonctions fenêtrées ne se limitent pas au classement — elles permettent de <strong>calculer des agrégats, des décalages,
+des pourcentages, et des statistiques avancées</strong> tout en conservant le détail ligne par ligne.</p>
+<hr />
+<h2 id="1-row_number-numerotation-sequentielle">1. ROW_NUMBER() — Numérotation séquentielle<a class="headerlink" href="#1-row_number-numerotation-sequentielle" title="Permanent link">&para;</a></h2>
+<h3 id="a-quoi-ca-sert">À quoi ça sert ?<a class="headerlink" href="#a-quoi-ca-sert" title="Permanent link">&para;</a></h3>
+<p>Attribue un numéro unique à chaque ligne dans la fenêtre, même en cas d’égalité.</p>
+<h3 id="syntaxe">Syntaxe<a class="headerlink" href="#syntaxe" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">([</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">colonne</span><span class="p">(</span><span class="n">s</span><span class="p">)]</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">colonne</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="exemple">Exemple<a class="headerlink" href="#exemple" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">employee_name</span><span class="p">,</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">       </span><span class="n">department_id</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">       </span><span class="n">salary</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">       </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">           </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department_id</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">           </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">           </span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">row_num_in_dept</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</span></code></pre></div>
+<p>→ Utile pour sélectionner <strong>la première ou la dernière ligne</strong> d’un groupe (ex. : top 1 par département).</p>
+<hr />
+<h2 id="2-dense_rank-classement-sans-trous">2. DENSE_RANK() — Classement sans trous<a class="headerlink" href="#2-dense_rank-classement-sans-trous" title="Permanent link">&para;</a></h2>
+<h3 id="a-quoi-ca-sert_1">À quoi ça sert ?<a class="headerlink" href="#a-quoi-ca-sert_1" title="Permanent link">&para;</a></h3>
+<p>Comme <code>RANK()</code>, mais <strong>sans sauter de numéros</strong> après les égalités.</p>
+<h3 id="exemple-comparatif-avec-rank">Exemple comparatif avec RANK()<a class="headerlink" href="#exemple-comparatif-avec-rank" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Salaire</th>
+<th>RANK()</th>
+<th>DENSE_RANK()</th>
+<th>ROW_NUMBER()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90000</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>85000</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>85000</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>80000</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>→ Idéal pour les classements “denses” comme les palmarès académiques ou sportifs.</p>
+<hr />
+<h2 id="3-ntilen-segmentation-en-groupes-egaux">3. NTILE(n) — Segmentation en groupes égaux<a class="headerlink" href="#3-ntilen-segmentation-en-groupes-egaux" title="Permanent link">&para;</a></h2>
+<h3 id="a-quoi-ca-sert_2">À quoi ça sert ?<a class="headerlink" href="#a-quoi-ca-sert_2" title="Permanent link">&para;</a></h3>
+<p>Divise les lignes en <strong>n groupes de taille égale (ou presque)</strong>, utile pour la segmentation (quartiles, déciles, etc.).</p>
+<h3 id="syntaxe_1">Syntaxe<a class="headerlink" href="#syntaxe_1" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">NTILE</span><span class="w"> </span><span class="p">(</span><span class="n">nombre_groupes</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">([</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...)</span>
+</span></code></pre></div>
+<h3 id="exemple-diviser-les-employes-en-4-quartiles-de-salaire">Exemple : Diviser les employés en 4 quartiles de salaire<a class="headerlink" href="#exemple-diviser-les-employes-en-4-quartiles-de-salaire" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">employee_name</span><span class="p">,</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">       </span><span class="n">salary</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">       </span><span class="n">NTILE</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">salary_quartile</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</span></code></pre></div>
+<p>→ Résultat : chaque employé est assigné à un quartile (1 = top 25%, 4 = bas 25%).</p>
+<hr />
+<h2 id="4-lag-et-lead-acceder-aux-lignes-precedentes-ou-suivantes">4. LAG() et LEAD() — Accéder aux lignes précédentes ou suivantes<a class="headerlink" href="#4-lag-et-lead-acceder-aux-lignes-precedentes-ou-suivantes" title="Permanent link">&para;</a></h2>
+<h3 id="a-quoi-ca-sert_3">À quoi ça sert ?<a class="headerlink" href="#a-quoi-ca-sert_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>LAG()</code> : récupère la valeur de la <strong>ligne précédente</strong></li>
+<li><code>LEAD()</code> : récupère la valeur de la <strong>ligne suivante</strong></li>
+</ul>
+<p>Parfait pour les <strong>comparaisons temporelles</strong> (évolution mensuelle, différence d’une période à l’autre).</p>
+<h3 id="syntaxe_2">Syntaxe<a class="headerlink" href="#syntaxe_2" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">LAG</span><span class="p">(</span><span class="n">colonne</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="k">offset</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">valeur_par_défaut</span><span class="p">]])</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">LEAD</span><span class="p">(</span><span class="n">colonne</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="k">offset</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">valeur_par_défaut</span><span class="p">]])</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...)</span>
+</span></code></pre></div>
+<h3 id="exemple-evolution-des-ventes-mensuelles">Exemple : Évolution des ventes mensuelles<a class="headerlink" href="#exemple-evolution-des-ventes-mensuelles" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">month</span><span class="p">,</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">       </span><span class="n">sales</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">       </span><span class="n">LAG</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">)</span><span class="w">         </span><span class="k">as</span><span class="w"> </span><span class="n">previous_month_sales</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">       </span><span class="n">sales</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">LAG</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">monthly_change</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">FROM</span><span class="w"> </span><span class="n">monthly_sales</span><span class="p">;</span>
+</span></code></pre></div>
+<p>→ Vous pouvez aussi utiliser <code>offset = 2</code> pour remonter de 2 lignes, ou définir une valeur par défaut si la ligne
+n’existe pas.</p>
+<hr />
+<h2 id="5-first_value-et-last_value-valeurs-extremes-dans-la-fenetre">5. FIRST_VALUE() et LAST_VALUE() — Valeurs extrêmes dans la fenêtre<a class="headerlink" href="#5-first_value-et-last_value-valeurs-extremes-dans-la-fenetre" title="Permanent link">&para;</a></h2>
+<h3 id="a-quoi-ca-sert_4">À quoi ça sert ?<a class="headerlink" href="#a-quoi-ca-sert_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>FIRST_VALUE()</code> : renvoie la première valeur de la fenêtre</li>
+<li><code>LAST_VALUE()</code> : renvoie la dernière valeur de la fenêtre (attention au cadrage !)</li>
+</ul>
+<h3 id="syntaxe_3">Syntaxe<a class="headerlink" href="#syntaxe_3" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">FIRST_VALUE</span><span class="p">(</span><span class="n">colonne</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">([</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">[</span><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="p">...])</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">LAST_VALUE</span><span class="p">(</span><span class="n">colonne</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">([</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">FOLLOWING</span><span class="w">  </span><span class="c1">-- Important !)</span>
+</span></code></pre></div>
+<h3 id="exemple-comparer-chaque-salaire-au-meilleur-salaire-du-departement">Exemple : Comparer chaque salaire au meilleur salaire du département<a class="headerlink" href="#exemple-comparer-chaque-salaire-au-meilleur-salaire-du-departement" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">employee_name</span><span class="p">,</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">       </span><span class="n">department_id</span><span class="p">,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">       </span><span class="n">salary</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">       </span><span class="n">FIRST_VALUE</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">highest_salary_in_dept</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+</span></code></pre></div>
+<p>⚠️ <strong>Attention avec LAST_VALUE</strong> : par défaut, la fenêtre s’arrête à la ligne courante. Pour obtenir la vraie dernière
+valeur, il faut spécifier :</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">UNBOUNDED</span><span class="w"> </span><span class="n">FOLLOWING</span>
+</span></code></pre></div>
+<hr />
+<h2 id="6-sum-avg-count-en-mode-fenetre">6. SUM(), AVG(), COUNT() … en mode fenêtré<a class="headerlink" href="#6-sum-avg-count-en-mode-fenetre" title="Permanent link">&para;</a></h2>
+<h3 id="a-quoi-ca-sert_5">À quoi ça sert ?<a class="headerlink" href="#a-quoi-ca-sert_5" title="Permanent link">&para;</a></h3>
+<p>Calculer des <strong>agrégats cumulatifs ou glissants</strong> sans perdre le détail ligne par ligne.</p>
+<h3 id="syntaxe_4">Syntaxe<a class="headerlink" href="#syntaxe_4" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">SUM</span><span class="p">(</span><span class="n">colonne</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">([</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">[</span><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="p">...])</span>
+</span></code></pre></div>
+<h3 id="exemple-1-cumul-des-ventes">Exemple 1 : Cumul des ventes<a class="headerlink" href="#exemple-1-cumul-des-ventes" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">month</span><span class="p">,</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">       </span><span class="n">sales</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">       </span><span class="k">SUM</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">cumulative_sales</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">FROM</span><span class="w"> </span><span class="n">monthly_sales</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="exemple-2-moyenne-mobile-sur-3-mois">Exemple 2 : Moyenne mobile sur 3 mois<a class="headerlink" href="#exemple-2-moyenne-mobile-sur-3-mois" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">month</span><span class="p">,</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">       </span><span class="n">sales</span><span class="p">,</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">       </span><span class="k">AVG</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="w"> </span><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">CURRENT</span><span class="w"> </span><span class="k">ROW</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">moving_avg_3_months</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">FROM</span><span class="w"> </span><span class="n">monthly_sales</span><span class="p">;</span>
+</span></code></pre></div>
+<p>→ Très utile en analyse financière, prévisions, indicateurs de tendance.</p>
+<hr />
+<h2 id="7-percent_rank-et-cume_dist-classement-en-pourcentage">7. PERCENT_RANK() et CUME_DIST() — Classement en pourcentage<a class="headerlink" href="#7-percent_rank-et-cume_dist-classement-en-pourcentage" title="Permanent link">&para;</a></h2>
+<h3 id="percent_rank">PERCENT_RANK()<a class="headerlink" href="#percent_rank" title="Permanent link">&para;</a></h3>
+<p>Calcule le <strong>rang relatif en pourcentage</strong> (0 à 1) d’une ligne dans sa partition.</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">PERCENT_RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">([</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...)</span>
+</span></code></pre></div>
+<p>→ 0 = pire, 1 = meilleur (mais jamais exactement 1 — formule : <code>(rank - 1) / (total_rows - 1)</code>)</p>
+<h3 id="cume_dist">CUME_DIST()<a class="headerlink" href="#cume_dist" title="Permanent link">&para;</a></h3>
+<p>Calcule la <strong>distribution cumulative</strong> — proportion de lignes avec une valeur ≤ à la ligne courante.</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">CUME_DIST</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">([</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">...)</span>
+</span></code></pre></div>
+<p>→ Peut atteindre 1 — formule : <code>nombre de lignes &lt;= valeur courante / total lignes</code></p>
+<h3 id="exemple_1">Exemple<a class="headerlink" href="#exemple_1" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">student_name</span><span class="p">,</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">       </span><span class="n">score</span><span class="p">,</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">       </span><span class="n">PERCENT_RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">pct_rank</span><span class="p">,</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">       </span><span class="n">CUME_DIST</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w">    </span><span class="k">as</span><span class="w"> </span><span class="n">cume_dist</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">FROM</span><span class="w"> </span><span class="n">exam_results</span><span class="p">;</span>
+</span></code></pre></div>
+<p>→ Utile pour les analyses statistiques, benchmarks, normalisation.</p>
+<hr />
+<h2 id="8-framing-cadrage-de-fenetre-controler-precisement-la-fenetre">8. Framing (cadrage de fenêtre) — Contrôler précisément la fenêtre<a class="headerlink" href="#8-framing-cadrage-de-fenetre-controler-precisement-la-fenetre" title="Permanent link">&para;</a></h2>
+<p>Vous pouvez définir <strong>exactement quelles lignes</strong> inclure dans le calcul avec <code>ROWS BETWEEN</code> ou <code>RANGE BETWEEN</code>.</p>
+<h3 id="options-courantes">Options courantes :<a class="headerlink" href="#options-courantes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code> → cumul depuis le début</li>
+<li><code>ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING</code> → fenêtre de 3 lignes (précédente, courante, suivante)</li>
+<li><code>ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING</code> → cumul jusqu’à la fin</li>
+</ul>
+<h3 id="exemple-somme-des-2-mois-precedents-mois-courant">Exemple : Somme des 2 mois précédents + mois courant<a class="headerlink" href="#exemple-somme-des-2-mois-precedents-mois-courant" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">SUM</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="w"> </span><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">CURRENT</span><span class="w"> </span><span class="k">ROW</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">rolling_3_months</span>
+</span></code></pre></div>
+<p>→ Essentiel pour les calculs de fenêtres glissantes, cumuls partiels, etc.</p>
+<hr />
+<h2 id="9-comparaison-des-fonctions-fenetrees">9. Comparaison des fonctions fenêtrées<a class="headerlink" href="#9-comparaison-des-fonctions-fenetrees" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Objectif principal</th>
+<th>Gère les égalités ?</th>
+<th>Crée des trous ?</th>
+<th>Partition ?</th>
+<th>Ordre requis ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROW_NUMBER()</td>
+<td>Numérotation unique</td>
+<td>Non</td>
+<td>Non</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>RANK()</td>
+<td>Classement compétitif</td>
+<td>Oui</td>
+<td>Oui</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>DENSE_RANK()</td>
+<td>Classement dense</td>
+<td>Oui</td>
+<td>Non</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>NTILE(n)</td>
+<td>Segmentation en groupes</td>
+<td>Oui</td>
+<td>Non</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>LAG()/LEAD()</td>
+<td>Accès aux lignes voisines</td>
+<td>—</td>
+<td>—</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>FIRST_VALUE()</td>
+<td>Première valeur de la fenêtre</td>
+<td>—</td>
+<td>—</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>LAST_VALUE()</td>
+<td>Dernière valeur de la fenêtre</td>
+<td>—</td>
+<td>—</td>
+<td>Oui</td>
+<td>Oui*</td>
+</tr>
+<tr>
+<td>SUM() OVER()</td>
+<td>Agrégats cumulatifs/glissants</td>
+<td>—</td>
+<td>—</td>
+<td>Oui</td>
+<td>Oui (souvent)</td>
+</tr>
+<tr>
+<td>PERCENT_RANK()</td>
+<td>Rang en pourcentage (0-1)</td>
+<td>Oui</td>
+<td>Oui</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>CUME_DIST()</td>
+<td>Distribution cumulative</td>
+<td>Oui</td>
+<td>Non</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>*LAST_VALUE nécessite souvent un cadrage explicite pour fonctionner correctement.</p>
+</blockquote>
+<hr />
+<h2 id="10-exemples-avances-combinant-plusieurs-fonctions">10. Exemples avancés combinant plusieurs fonctions<a class="headerlink" href="#10-exemples-avances-combinant-plusieurs-fonctions" title="Permanent link">&para;</a></h2>
+<h3 id="exemple-1-tableau-de-bord-analytique-des-ventes">Exemple 1 : Tableau de bord analytique des ventes<a class="headerlink" href="#exemple-1-tableau-de-bord-analytique-des-ventes" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">month</span><span class="p">,</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">       </span><span class="n">sales</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">       </span><span class="n">LAG</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">)</span><span class="w">    </span><span class="k">as</span><span class="w"> </span><span class="n">prev_month_sales</span><span class="p">,</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">       </span><span class="n">ROUND</span><span class="p">(</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">               </span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">sales</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">LAG</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">))</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">                   </span><span class="o">/</span><span class="w"> </span><span class="n">LAG</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">       </span><span class="p">)</span><span class="w">                                   </span><span class="k">as</span><span class="w"> </span><span class="n">growth_percent</span><span class="p">,</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">       </span><span class="k">SUM</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">)</span><span class="w">    </span><span class="k">as</span><span class="w"> </span><span class="n">cumulative_sales</span><span class="p">,</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">       </span><span class="k">AVG</span><span class="p">(</span><span class="n">sales</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">           </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">           </span><span class="k">ROWS</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">PRECEDING</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">CURRENT</span><span class="w"> </span><span class="k">ROW</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">           </span><span class="p">)</span><span class="w">                               </span><span class="k">as</span><span class="w"> </span><span class="n">moving_avg_3_months</span><span class="p">,</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">       </span><span class="n">NTILE</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sales</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sales_quartile</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="k">FROM</span><span class="w"> </span><span class="n">monthly_sales</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">month</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="exemple-2-analyse-des-performances-etudiantes">Exemple 2 : Analyse des performances étudiantes<a class="headerlink" href="#exemple-2-analyse-des-performances-etudiantes" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">student_name</span><span class="p">,</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">       </span><span class="n">subject</span><span class="p">,</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">       </span><span class="n">score</span><span class="p">,</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">       </span><span class="n">RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">subject</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w">         </span><span class="k">as</span><span class="w"> </span><span class="n">subject_rank</span><span class="p">,</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">       </span><span class="n">PERCENT_RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">subject</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">subject_pct_rank</span><span class="p">,</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">       </span><span class="k">AVG</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">subject</span><span class="p">)</span><span class="w">                         </span><span class="k">as</span><span class="w"> </span><span class="n">subject_avg</span><span class="p">,</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">       </span><span class="n">score</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">subject</span><span class="p">)</span><span class="w">                 </span><span class="k">as</span><span class="w"> </span><span class="n">diff_from_avg</span><span class="p">,</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">       </span><span class="n">FIRST_VALUE</span><span class="p">(</span><span class="n">student_name</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">           </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">subject</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">           </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">DESC</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">           </span><span class="p">)</span><span class="w">                                                          </span><span class="k">as</span><span class="w"> </span><span class="n">top_student_in_subject</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="k">FROM</span><span class="w"> </span><span class="n">student_grades</span><span class="p">;</span>
+</span></code></pre></div>
+<hr />
+<h2 id="11-bonnes-pratiques-et-pieges-a-eviter">11. Bonnes pratiques et pièges à éviter<a class="headerlink" href="#11-bonnes-pratiques-et-pieges-a-eviter" title="Permanent link">&para;</a></h2>
+<h3 id="bonnes-pratiques">Bonnes pratiques<a class="headerlink" href="#bonnes-pratiques" title="Permanent link">&para;</a></h3>
+<ol type="1">
+<li><strong>Toujours spécifier ORDER BY</strong> sauf si intentionnel (ex. : <code>COUNT(*) OVER()</code>).</li>
+<li><strong>Utiliser PARTITION BY</strong> pour des calculs par groupe.</li>
+<li><strong>Documenter la logique de fenêtrage</strong> dans les requêtes complexes.</li>
+<li><strong>Tester les bords</strong> (première/dernière ligne, valeurs NULL, égalités).</li>
+<li><strong>Optimiser les performances</strong> : indexer les colonnes de <code>ORDER BY</code> et <code>PARTITION BY</code>.</li>
+</ol>
+<h3 id="pieges-courants">Pièges courants<a class="headerlink" href="#pieges-courants" title="Permanent link">&para;</a></h3>
+<ol type="1">
+<li><strong>Oublier le framing</strong> avec <code>LAST_VALUE()</code> → résultat inattendu.</li>
+<li><strong>Confondre ROWS et RANGE</strong> → comportement différent avec valeurs égales.</li>
+<li><strong>Calculer des agrégats sans ORDER BY</strong> → résultat non déterministe.</li>
+<li><strong>Ne pas gérer les NULL</strong> dans <code>LAG/LEAD</code> → utiliser une valeur par défaut.</li>
+<li><strong>Sur-utiliser les fenêtres</strong> → parfois, une sous-requête ou un <code>JOIN</code> est plus lisible ou performant.</li>
+</ol>
+<hr />
+<h2 id="12-exercices-pratiques">12. Exercices pratiques<a class="headerlink" href="#12-exercices-pratiques" title="Permanent link">&para;</a></h2>
+<h3 id="exercice-1-evolution-des-prix-boursiers">Exercice 1 : Évolution des prix boursiers<a class="headerlink" href="#exercice-1-evolution-des-prix-boursiers" title="Permanent link">&para;</a></h3>
+<p>Créez une table <code>stock_prices</code> avec colonnes : <code>ticker</code>, <code>date</code>, <code>price</code>.
+Calculez :</p>
+<ul>
+<li>Le prix de la veille (<code>LAG</code>)</li>
+<li>Le changement en % par rapport à la veille</li>
+<li>La moyenne mobile sur 5 jours</li>
+</ul>
+<h3 id="exercice-2-segmentation-client">Exercice 2 : Segmentation client<a class="headerlink" href="#exercice-2-segmentation-client" title="Permanent link">&para;</a></h3>
+<p>Avec une table <code>customers</code> (id, total_purchases), assignez chaque client à un décile d’achat (<code>NTILE(10)</code>).</p>
+<h3 id="exercice-3-palmares-par-categorie">Exercice 3 : Palmarès par catégorie<a class="headerlink" href="#exercice-3-palmares-par-categorie" title="Permanent link">&para;</a></h3>
+<p>Dans une table <code>products</code> (name, category, rating), affichez :</p>
+<ul>
+<li>Le rang par catégorie (<code>RANK</code>)</li>
+<li>Le meilleur produit de chaque catégorie (<code>FIRST_VALUE</code>)</li>
+<li>La différence de note avec le meilleur produit de la catégorie</li>
+</ul>
+<h3 id="exercice-4-analyse-cumulative">Exercice 4 : Analyse cumulative<a class="headerlink" href="#exercice-4-analyse-cumulative" title="Permanent link">&para;</a></h3>
+<p>Avec une table <code>orders</code> (order_date, amount), calculez :</p>
+<ul>
+<li>Le cumul des ventes par mois</li>
+<li>Le pourcentage du cumul par rapport au total annuel (<code>CUME_DIST</code> ou calcul manuel)</li>
+</ul>
+<h3 id="exercice-avance-classement-complexe">Exercice avancé : Classement complexe<a class="headerlink" href="#exercice-avance-classement-complexe" title="Permanent link">&para;</a></h3>
+<p>Créez un classement général des étudiants basé sur :</p>
+<ul>
+<li>50% du rang en mathématiques</li>
+<li>30% du rang en sciences</li>
+<li>20% du rang en littérature
+  (Utilisez <code>DENSE_RANK()</code> par matière, puis calculez un score pondéré)</li>
+</ul>
+<hr />
+<h2 id="13-resume">13. Résumé<a class="headerlink" href="#13-resume" title="Permanent link">&para;</a></h2>
+<p>Les fonctions fenêtrées transforment SQL d’un langage de requêtes en un <strong>langage d’analyse puissant</strong>. En combinant :</p>
+<ul>
+<li>Classements (<code>RANK</code>, <code>DENSE_RANK</code>, <code>ROW_NUMBER</code>, <code>NTILE</code>)</li>
+<li>Comparaisons temporelles (<code>LAG</code>, <code>LEAD</code>)</li>
+<li>Agrégats contextuels (<code>SUM</code>, <code>AVG</code>, <code>COUNT</code> OVER)</li>
+<li>Statistiques avancées (<code>PERCENT_RANK</code>, <code>CUME_DIST</code>)</li>
+<li>Contrôle fin de la fenêtre (<code>ROWS BETWEEN</code>, <code>RANGE</code>)</li>
+</ul>
+<p>… vous pouvez répondre à des questions analytiques complexes <strong>sans quitter la base de données</strong>, avec une grande
+efficacité et lisibilité.</p>
+<hr />
+<h2 id="14-prochaines-etapes">14. Prochaines étapes<a class="headerlink" href="#14-prochaines-etapes" title="Permanent link">&para;</a></h2>
+<p>Après ce chapitre, vous pouvez explorer :</p>
+<ol type="1">
+<li><strong>Fonctions conditionnelles fenêtrées</strong> : <code>CASE</code> + fonctions fenêtrées</li>
+<li><strong>Fenêtres nommées</strong> (WINDOW clause) pour éviter la répétition</li>
+<li><strong>Optimisation avancée</strong> : index, materialized views, partition pruning</li>
+<li><strong>Intégration avec BI tools</strong> : comment ces fonctions se traduisent dans Tableau, Power BI, etc.</li>
+<li><strong>Analyse temporelle avancée</strong> : fonctions de série temporelle, prédictions simples</li>
+</ol>
+<hr />
+<p><strong>Vous maîtrisez désormais l’essentiel des fonctions fenêtrées en SQL.</strong><br />
+Ces outils sont utilisés quotidiennement par les analystes de données, data scientists, et ingénieurs en bases de
+données pour transformer des données brutes en insights actionnables — directement dans la base.</p>
+<hr />
+<details class="info">
+<summary>Utilisation de l&rsquo;IA</summary>
+<p>Page rédigée en partie avec l&rsquo;aide d&rsquo;un assistant IA, principalement à l&rsquo;aide de Perplexity AI. L&rsquo;IA a été 
+  utilisée pour générer des explications, des exemples et/ou des suggestions de structure. Toutes les informations 
+  ont été vérifiées, éditées et complétées par l&rsquo;auteur.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../08-rank/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 8 - Fonction SQL RANK">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                8 - Fonction SQL RANK
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Plus%20de%20fonctions/01-coalesce-case-when/" class="md-footer__link md-footer__link--next" aria-label="Next: COALESCE et CASE WHEN">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                COALESCE et CASE WHEN
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>

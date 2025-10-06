@@ -1,4 +1,4 @@
-# 8 - Utilisation de `date` et `timestamp`
+# 6 - Utilisation de `date` et `timestamp`
 
 Voici un guide sur les opérations et fonctions sur les dates et les `timestamp` dans PostgreSQL.
 

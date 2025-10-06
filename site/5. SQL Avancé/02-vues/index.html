@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://profdenis.github.io/3N3_doc/7.%20Exercices/SQL/universit%C3%A9/">
+        <link rel="canonical" href="https://profdenis.github.io/3N3_doc/5.%20SQL%20Avanc%C3%A9/02-vues/">
       
       
-        <link rel="prev" href="../03-northwind/">
+        <link rel="prev" href="../01-r%C3%A9cursives/">
       
       
+        <link rel="next" href="../03-contraintes-et-d%C3%A9clencheurs/">
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.50">
     
     
       
-        <title>Université - Cours de bases de données</title>
+        <title>Vues - Cours de bases de données</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,13 +48,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../style.css">
+      <link rel="stylesheet" href="../../style.css">
     
-      <link rel="stylesheet" href="../../../assets/mkdocs_puml/puml.css">
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
     
-      <link rel="stylesheet" href="../../../assets/mkdocs_puml/interaction.css">
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -77,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#vues" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +96,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Cours de bases de données" class="md-header__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+    <a href="../.." title="Cours de bases de données" class="md-header__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -109,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Université
+              Vues
             
           </span>
         </div>
@@ -222,7 +229,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -241,7 +248,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../1.%20Introduction/01-Introduction-aux-bd/" class="md-tabs__link">
+        <a href="../../1.%20Introduction/01-Introduction-aux-bd/" class="md-tabs__link">
           
   
   1. Introduction
@@ -259,7 +266,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-tabs__link">
+        <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-tabs__link">
           
   
   2. Le modèle relationnel
@@ -277,7 +284,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../3.%20SQL/01-intro/" class="md-tabs__link">
+        <a href="../../3.%20SQL/01-intro/" class="md-tabs__link">
           
   
   3. SQL
@@ -295,7 +302,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-tabs__link">
+        <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-tabs__link">
           
   
   4. Modélisation
@@ -309,11 +316,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../5.%20SQL%20Avanc%C3%A9/01-vues/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-r%C3%A9cursives/" class="md-tabs__link">
           
   
   5. SQL Avancé
@@ -331,7 +340,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-tabs__link">
+        <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-tabs__link">
           
   
   6. Sécurité et Utilisateurs
@@ -345,13 +354,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../01-exercices/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../7.%20Exercices/01-exercices/" class="md-tabs__link">
           
   
   7. Exercices
@@ -390,7 +397,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Cours de bases de données" class="md-nav__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+    <a href="../.." title="Cours de bases de données" class="md-nav__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -420,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -482,7 +489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.%20Introduction/01-Introduction-aux-bd/" class="md-nav__link">
+      <a href="../../1.%20Introduction/01-Introduction-aux-bd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -503,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.%20Introduction/02-Types-de-bases-de-donnees/" class="md-nav__link">
+      <a href="../../1.%20Introduction/02-Types-de-bases-de-donnees/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -524,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.%20Introduction/03-Historique-des-bases-de-donnees/" class="md-nav__link">
+      <a href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -545,7 +552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/" class="md-nav__link">
+      <a href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -608,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/" class="md-nav__link">
+      <a href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -629,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/" class="md-nav__link">
+      <a href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -650,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/" class="md-nav__link">
+      <a href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -671,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.%20Introduction/PostgreSQL/04-Configuration/" class="md-nav__link">
+      <a href="../../1.%20Introduction/PostgreSQL/04-Configuration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -749,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-nav__link">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -770,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/" class="md-nav__link">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -840,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/01-intro/" class="md-nav__link">
+      <a href="../../3.%20SQL/01-intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -861,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/02a-bases-contacts/" class="md-nav__link">
+      <a href="../../3.%20SQL/02a-bases-contacts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -882,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/02b-bases-universit%C3%A9/" class="md-nav__link">
+      <a href="../../3.%20SQL/02b-bases-universit%C3%A9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -903,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/03a-jointures-contacts/" class="md-nav__link">
+      <a href="../../3.%20SQL/03a-jointures-contacts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -924,7 +931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/03b-jointures-universit%C3%A9/" class="md-nav__link">
+      <a href="../../3.%20SQL/03b-jointures-universit%C3%A9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -945,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/04a-groupes-contacts/" class="md-nav__link">
+      <a href="../../3.%20SQL/04a-groupes-contacts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -966,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/04b-groupes-universit%C3%A9/" class="md-nav__link">
+      <a href="../../3.%20SQL/04b-groupes-universit%C3%A9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -987,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/05-survol-op%C3%A9rations-SQL/" class="md-nav__link">
+      <a href="../../3.%20SQL/05-survol-op%C3%A9rations-SQL/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1008,11 +1015,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/06-imbriqu%C3%A9es/" class="md-nav__link">
+      <a href="../../3.%20SQL/06-dates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    6 - Requêtes SQL imbriquées
+    6 - Utilisation de date et timestamp
   </span>
   
 
@@ -1029,11 +1036,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/07-r%C3%A9cursives/" class="md-nav__link">
+      <a href="../../3.%20SQL/07-imbriqu%C3%A9es/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7 - Requêtes récursives
+    7 - Requêtes SQL imbriquées
   </span>
   
 
@@ -1050,15 +1057,149 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.%20SQL/08-dates/" class="md-nav__link">
+      <a href="../../3.%20SQL/08-rank/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    8 - Utilisation de date et timestamp
+    8 - Fonction SQL RANK
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/09-fenetres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9 - Autres fonctions fenêtrées essentielles en SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plus de fonctions
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13">
+            <span class="md-nav__icon md-icon"></span>
+            Plus de fonctions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/Plus%20de%20fonctions/01-coalesce-case-when/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    COALESCE et CASE WHEN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/Plus%20de%20fonctions/02-more-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Présentation et formatage des données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/Plus%20de%20fonctions/03-regexp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expressions régulières
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1120,7 +1261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-nav__link">
+      <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1141,7 +1282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/" class="md-nav__link">
+      <a href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1162,7 +1303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../4.%20Mod%C3%A9lisation/02-notation/" class="md-nav__link">
+      <a href="../../4.%20Mod%C3%A9lisation/02-notation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1183,7 +1324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../4.%20Mod%C3%A9lisation/03-exemples/" class="md-nav__link">
+      <a href="../../4.%20Mod%C3%A9lisation/03-exemples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1204,11 +1345,53 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/" class="md-nav__link">
+      <a href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Conversion d&rsquo;un diagramme EA en schéma relationnel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/05-circular-dep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5- Gestion des dépendances circulaires dans la conception de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Mod%C3%A9lisation/06-cycles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 - Cycles entre les tables Utilisateurs et Profil
   </span>
   
 
@@ -1229,27 +1412,30 @@
       
   
   
+    
   
   
+  
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1260,7 +1446,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             5. SQL Avancé
@@ -1274,11 +1460,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.%20SQL%20Avanc%C3%A9/01-vues/" class="md-nav__link">
+      <a href="../01-r%C3%A9cursives/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Vues
+    7 - Requêtes récursives
   </span>
   
 
@@ -1292,10 +1478,89 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Vues
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Vues
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#independance-logique-des-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indépendance logique des données
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-vues-sont-elles-modifiables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les vues sont-elles modifiables ?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
-      <a href="../../../5.%20SQL%20Avanc%C3%A9/02-contraintes-et-d%C3%A9clencheurs/" class="md-nav__link">
+      <a href="../03-contraintes-et-d%C3%A9clencheurs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1316,11 +1581,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.%20SQL%20Avanc%C3%A9/03-objet-relationel/" class="md-nav__link">
+      <a href="../04-transactions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Modèle objet-relationel
+    Transactions
   </span>
   
 
@@ -1337,11 +1602,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.%20SQL%20Avanc%C3%A9/04-transactions/" class="md-nav__link">
+      <a href="../05-objet-relationel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Transactions
+    Modèle objet-relationel
   </span>
   
 
@@ -1407,7 +1672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-nav__link">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1428,7 +1693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/" class="md-nav__link">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1449,7 +1714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/" class="md-nav__link">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1470,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/04-mots-de-passe/" class="md-nav__link">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/04-mots-de-passe/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1495,30 +1760,27 @@
       
   
   
-    
   
   
-  
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1529,7 +1791,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             7. Exercices
@@ -1543,7 +1805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01-exercices/" class="md-nav__link">
+      <a href="../../7.%20Exercices/01-exercices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1569,13 +1831,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1584,7 +1843,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
         
           
-          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1609,7 +1868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DEA/01-blog/" class="md-nav__link">
+      <a href="../../7.%20Exercices/DEA/01-blog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1630,7 +1889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DEA/02-livres/" class="md-nav__link">
+      <a href="../../7.%20Exercices/DEA/02-livres/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1651,7 +1910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DEA/03-transport/" class="md-nav__link">
+      <a href="../../7.%20Exercices/DEA/03-transport/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1672,7 +1931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DEA/04-restaurants/" class="md-nav__link">
+      <a href="../../7.%20Exercices/DEA/04-restaurants/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1693,7 +1952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DEA/05-voyages/" class="md-nav__link">
+      <a href="../../7.%20Exercices/DEA/05-voyages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1714,7 +1973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DEA/06-hopital/" class="md-nav__link">
+      <a href="../../7.%20Exercices/DEA/06-hopital/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1740,30 +1999,27 @@
                 
   
   
-    
   
   
-  
     
     
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
         
           
-          
         
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
         
           
-          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1774,7 +2030,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
             SQL
@@ -1788,7 +2044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-pagila/" class="md-nav__link">
+      <a href="../../7.%20Exercices/SQL/01-pagila/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1809,7 +2065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-recettes/" class="md-nav__link">
+      <a href="../../7.%20Exercices/SQL/02-recettes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1830,7 +2086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03-northwind/" class="md-nav__link">
+      <a href="../../7.%20Exercices/SQL/03-northwind/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1839,35 +2095,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Université
-  </span>
-  
-
-      </a>
-      
     </li>
   
 
@@ -1905,6 +2132,34 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#independance-logique-des-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indépendance logique des données
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-vues-sont-elles-modifiables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les vues sont-elles modifiables ?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1922,13 +2177,128 @@
   
 
 
-  <h1>Université</h1>
-
+<h1 id="vues">Vues<a class="headerlink" href="#vues" title="Permanent link">&para;</a></h1>
 <ul>
-<li>Obtenir le nombre d&rsquo;offres de cours pour chaque instructeur</li>
-<li>Obtenir le nombre d&rsquo;offres de cours pour l&rsquo;instructeur avec l&rsquo;ID 1, pour chaque année</li>
-<li>Obtenir le nombre d&rsquo;offres de cours pour chaque instructeur pour chaque année</li>
-<li>Obtenir le nombre d&rsquo;offres de cours pour chaque instructeur pour chaque semestre et chaque année</li>
+<li>Les vues sont essentiellement des tables virtuelles</li>
+<li>Elles sont une couche au-dessus d&rsquo;autres tables</li>
+<li>Avec le contrôle d&rsquo;accès, elles peuvent être utilisées pour assurer différents
+  niveaux de confidentialité et de sécurité</li>
+<li>Par exemple, le département des ressources humaines a généralement besoin de
+  connaître les numéros d&rsquo;assurance sociale (NAS) de leurs employés pour les
+  déclarer aux différents gouvernements pour les impôts, etc.</li>
+<li>Mais les services informatiques (sauf peut-être les DBA de haut niveau), le
+  marketing, etc. ne devraient pas avoir accès aux NAS</li>
+<li>L&rsquo;accès à la table de base des employés, avec les NAS, peut être accordé à
+  certains employés (ou à certains rôles si l&rsquo;on utilise le contrôle d&rsquo;accès
+  basé sur les rôles)</li>
+<li>Une vue au-dessus de la table des employés peut être créée sans les NAS, et
+  l&rsquo;accès à d&rsquo;autres employés peut être accordé sur la vue</li>
+</ul>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">drop</span><span class="w"> </span><span class="k">schema</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">company</span><span class="w"> </span><span class="k">cascade</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">create</span><span class="w"> </span><span class="k">schema</span><span class="w"> </span><span class="n">company</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">set</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">company</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">employee_priv</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">(</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">eid</span><span class="w">   </span><span class="nb">integer</span><span class="w"> </span><span class="k">generated</span><span class="w"> </span><span class="n">always</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">identity</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">sin</span><span class="w">   </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">unique</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">name</span><span class="w">  </span><span class="nb">text</span><span class="w">    </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">phone</span><span class="w"> </span><span class="nb">text</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">);</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">employee_priv</span><span class="p">(</span><span class="n">sin</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;123456789&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Denis&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;123-456-7890&#39;</span><span class="p">),</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">       </span><span class="p">(</span><span class="s1">&#39;987654321&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Jane&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;987-654-3210&#39;</span><span class="p">);</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">from</span><span class="w"> </span><span class="n">employee_priv</span><span class="p">;</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">AS</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">select</span><span class="w"> </span><span class="n">eid</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">from</span><span class="w"> </span><span class="n">employee_priv</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">--drop role hr;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">--drop role itsupport;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">create</span><span class="w"> </span><span class="k">role</span><span class="w"> </span><span class="n">hr</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">create</span><span class="w"> </span><span class="k">role</span><span class="w"> </span><span class="n">itsupport</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">grant</span><span class="w"> </span><span class="k">select</span><span class="p">,</span><span class="w"> </span><span class="k">insert</span><span class="p">,</span><span class="w"> </span><span class="k">update</span><span class="p">,</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">employee_priv</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">hr</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">grant</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">itsupport</span><span class="p">;</span>
+</span></code></pre></div>
+<ul>
+<li>La création d&rsquo;utilisateurs et de rôles n&rsquo;est pas complètement standardisée
+  dans tous les SGBDR</li>
+<li>Chaque SGBDR devrait avoir les commandes SQL <code>grant</code> et <code>revoke</code></li>
+<li><a href="https://www.postgresql.org/docs/current/sql-createuser.html">PostgreSQL - create user</a></li>
+<li><a href="https://www.postgresql.org/docs/current/sql-alteruser.html">PostgreSQL - alter user</a></li>
+<li><a href="https://www.postgresql.org/docs/current/sql-grant.html">PostgreSQL - grant</a></li>
+<li>Les vues peuvent être créées sur des requêtes couramment utilisées, souvent
+  incluant des jointures, pour simplifier l&rsquo;écriture d&rsquo;autres requêtes</li>
+</ul>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">set</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">university</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">studentcourse</span><span class="w"> </span><span class="k">as</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">select</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sid</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">       </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">student_name</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">       </span><span class="k">c</span><span class="p">.</span><span class="n">code</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">       </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">course_name</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">       </span><span class="n">o</span><span class="p">.</span><span class="n">semester</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">       </span><span class="n">o</span><span class="p">.</span><span class="k">year</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">s</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">enrollment</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sid</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">         </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">oid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">oid</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">         </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="k">from</span><span class="w"> </span><span class="n">studentcourse</span><span class="p">;</span>
+</span></code></pre></div>
+<ul>
+<li>Nous pouvons restreindre les lignes de la vue à un étudiant spécifique, pour
+  un semestre et une année spécifiques</li>
+<li>cela pourrait être utile lors de la création d&rsquo;horaires</li>
+</ul>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">from</span><span class="w"> </span><span class="n">studentcourse</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">where</span><span class="w"> </span><span class="n">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">semester</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;W&#39;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2020</span><span class="p">;</span>
+</span></code></pre></div>
+<h2 id="independance-logique-des-donnees">Indépendance logique des données<a class="headerlink" href="#independance-logique-des-donnees" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Les vues peuvent également être utilisées pour minimiser l&rsquo;impact des
+  changements de schéma dans la base de données</li>
+<li>Supposons qu&rsquo;un schéma de table doive être modifié, éventuellement parce
+  qu&rsquo;une table doit être décomposée pour réduire la redondance en raison d&rsquo;une
+  dépendance fonctionnelle précédemment inconnue</li>
+<li>Ensuite, toutes les requêtes utilisant cette table doivent être mises à jour,
+  ce qui pourrait être difficile à faire</li>
+<li>Une vue avec le même nom et les mêmes colonnes peut être créée pour remplacer
+  l&rsquo;ancienne table</li>
+<li>cette vue serait définie sur les nouvelles tables remplaçant l&rsquo;ancienne table</li>
+</ul>
+<h2 id="les-vues-sont-elles-modifiables">Les vues sont-elles modifiables ?<a class="headerlink" href="#les-vues-sont-elles-modifiables" title="Permanent link">&para;</a></h2>
+<ul>
+<li>La meilleure réponse est <em>peut-être, mais probablement pas</em> (du moins pas en
+  général)</li>
+<li>Si nous voulons mettre à jour le numéro de téléphone d&rsquo;un employé, nous
+  pourrions probablement le faire via la vue, car la vue a une correspondance
+  directe avec exactement 1 table, moins la colonne NAS</li>
+<li>la mise à jour peut être redirigée vers la table <code>employee_priv</code></li>
+<li>Mais nous ne pouvons pas insérer une nouvelle ligne dans la vue des employés
+  car la table <code>employee_priv</code> a la colonne NAS, qui ne peut pas être <code>null</code></li>
+<li>de plus, comme elle a la contrainte <code>unique</code>, nous ne pouvons pas la définir
+  sur une valeur par défaut</li>
+<li>en fait, nous pourrions la définir sur une valeur par défaut pour au plus 1
+  employé</li>
+<li>De même, essayer de mettre à jour la vue <code>studentcourse</code> pourrait être
+  compliqué car elle provient de la jointure de 4 tables</li>
+<li>mettre à jour 1 ligne dans <code>studentcourse</code> pourrait signifier que nous devons
+  modifier plusieurs lignes dans 1 ou plusieurs tables sous-jacentes</li>
+<li>si nous essayons de changer l&rsquo;inscription d&rsquo;un étudiant à une offre de cours
+  via la vue, nous devrons mettre à jour la table d&rsquo;inscription, qui n&rsquo;apparaît
+  pas directement dans la vue (ses colonnes ne sont pas sélectionnées par la
+  requête de la vue)</li>
+<li>même genre de problème pour l&rsquo;insertion de lignes</li>
+<li>cela pourrait être possible dans certains cas, mais il n&rsquo;y a pas de moyen
+  universel de le faire</li>
+<li>Il y a des problèmes similaires avec la suppression de lignes via une vue</li>
+<li>c&rsquo;est possible dans certains cas, mais pas tous</li>
 </ul>
 
 
@@ -1965,7 +2335,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../03-northwind/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3. BD Northwind">
+          <a href="../01-r%C3%A9cursives/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 7 - Requêtes récursives">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1975,11 +2345,27 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                3. BD Northwind
+                7 - Requêtes récursives
               </div>
             </div>
           </a>
         
+        
+          
+          <a href="../03-contraintes-et-d%C3%A9clencheurs/" class="md-footer__link md-footer__link--next" aria-label="Next: Contraintes et Déclencheurs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Contraintes et Déclencheurs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
@@ -2006,22 +2392,22 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.select", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
-        <script src="../../../javascripts/config.js"></script>
+        <script src="../../javascripts/config.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../../assets/mkdocs_puml/puml.js"></script>
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
       
         <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
       
-        <script src="../../../assets/mkdocs_puml/interaction.js"></script>
+        <script src="../../assets/mkdocs_puml/interaction.js"></script>
       
     
   </body>
