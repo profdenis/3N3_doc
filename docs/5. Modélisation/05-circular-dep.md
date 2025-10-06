@@ -1,4 +1,4 @@
-# 5- Gestion des dépendances circulaires dans la conception de bases de données
+# Gestion des dépendances circulaires dans la conception de bases de données
 
 ## Introduction
 

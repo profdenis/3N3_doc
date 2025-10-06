@@ -449,3 +449,10 @@ FROM pg_stat_archiver;
 **N’oubliez pas** : une stratégie de sauvegarde n’est efficace que si votre dernière restauration testée a été un succès.
 Les tests réguliers ne sont pas optionnels — ils sont essentiels pour garantir que votre stratégie de protection des
 données fonctionnera au moment où vous en aurez le plus besoin.
+
+-------
+
+??? info "Utilisation de l'IA"
+      Page rédigée en partie avec l'aide d'un assistant IA, principalement à l'aide de Perplexity AI. L'IA a été 
+      utilisée pour générer des explications, des exemples et/ou des suggestions de structure. Toutes les informations 
+      ont été vérifiées, éditées et complétées par l'auteur.

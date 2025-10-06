@@ -111,6 +111,6 @@ VALUES ('alice', 'alice@example.com', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN
 -------
 
 ??? info "Utilisation de l'IA"
-   Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des
-   explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
-   été vérifiées, éditées et complétées par l'auteur.
+      Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des
+      explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
+      été vérifiées, éditées et complétées par l'auteur.

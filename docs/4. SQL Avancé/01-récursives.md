@@ -1,4 +1,4 @@
-# 7 - Requêtes récursives
+# Requêtes récursives
 
 ## Syntaxe PostgreSQL
 

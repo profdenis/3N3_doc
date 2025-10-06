@@ -1,4 +1,4 @@
-# 6 - Cycles entre les tables Utilisateurs et Profil
+# Cycles entre les tables Utilisateurs et Profil
 
 Exemples montrant comment gérer les cycles dans les définitions de tables.
 
