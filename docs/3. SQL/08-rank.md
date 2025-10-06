@@ -191,13 +191,10 @@ ORDER BY academic_rank;
 
 ## Exemples sur la BD Pagila
 
-# Exemples progressifs de requêtes SQL avec RANK, DENSE_RANK et ROW_NUMBER sur la BD Pagila
 
-Voici une série d'exercices de difficulté croissante utilisant les fonctions de classement sur la base de données Pagila.
+### Niveau 1 : RANK - Débutant
 
-## 📊 Niveau 1 : RANK - Débutant
-
-### Exercice 1.1 : Classement simple des films par durée
+#### Exercice 1.1 : Classement simple des films par durée
 
 ```sql
 -- Classer tous les films par leur durée (du plus long au plus court)
@@ -210,7 +207,7 @@ ORDER BY rang, title;
 ```
 
 
-### Exercice 1.2 : Classement des clients par nombre de locations
+#### Exercice 1.2 : Classement des clients par nombre de locations
 
 ```sql
 -- Classer les clients selon leur nombre de locations
@@ -228,7 +225,7 @@ LIMIT 15;
 ```
 
 
-### Exercice 1.3 : Films les moins chers à louer
+#### Exercice 1.3 : Films les moins chers à louer
 
 ```sql
 -- Classer les films par tarif de location (du moins cher au plus cher)
@@ -242,9 +239,9 @@ LIMIT 20;
 ```
 
 
-## 📊 Niveau 2 : RANK avec PARTITION BY - Intermédiaire
+### Niveau 2 : RANK avec PARTITION BY - Intermédiaire
 
-### Exercice 2.1 : Meilleurs films par catégorie (selon la durée)
+#### Exercice 2.1 : Meilleurs films par catégorie (selon la durée)
 
 ```sql
 -- Classer les films par durée dans chaque catégorie
@@ -261,7 +258,7 @@ LIMIT 30;
 ```
 
 
-### Exercice 2.2 : Top 3 des acteurs par nombre de films, par catégorie
+#### Exercice 2.2 : Top 3 des acteurs par nombre de films, par catégorie
 
 ```sql
 -- Trouver les 3 acteurs les plus prolifiques dans chaque catégorie
@@ -287,7 +284,7 @@ ORDER BY categorie, rank_categorie;
 ```
 
 
-### Exercice 2.3 : Classement des ventes par magasin et par mois
+#### Exercice 2.3 : Classement des ventes par magasin et par mois
 
 ```sql
 -- Classer les montants de paiement par mois pour chaque magasin
@@ -307,9 +304,9 @@ ORDER BY s.store_id, rank_mois;
 ```
 
 
-## 📊 Niveau 3 : Comparaison RANK, DENSE_RANK et ROW_NUMBER - Avancé
+### Niveau 3 : Comparaison RANK, DENSE_RANK et ROW_NUMBER - Avancé
 
-### Exercice 3.1 : Comprendre les différences sur les revenus par film
+#### Exercice 3.1 : Comprendre les différences sur les revenus par film
 
 ```sql
 -- Comparer les trois fonctions de classement sur les revenus par film
@@ -329,7 +326,7 @@ LIMIT 20;
 ```
 
 
-### Exercice 3.2 : Classement des clients VIP avec égalités
+#### Exercice 3.2 : Classement des clients VIP avec égalités
 
 ```sql
 -- Identifier les clients VIP en utilisant les trois méthodes
@@ -354,7 +351,7 @@ LIMIT 25;
 ```
 
 
-### Exercice 3.3 : Films les plus loués par catégorie avec DENSE_RANK
+#### Exercice 3.3 : Films les plus loués par catégorie avec DENSE_RANK
 
 ```sql
 -- Top 5 des films les plus loués dans chaque catégorie (sans trous dans le classement)
@@ -380,9 +377,9 @@ ORDER BY categorie, rank_dense, nb_locations DESC;
 ```
 
 
-## 📊 Niveau 4 : Requêtes complexes - Expert
+### Niveau 4 : Requêtes complexes - Expert
 
-### Exercice 4.1 : Analyse comparative des performances des magasins
+#### Exercice 4.1 : Analyse comparative des performances des magasins
 
 ```sql
 -- Analyse détaillée avec classement multi-critères
@@ -412,7 +409,7 @@ ORDER BY store_id, rank_revenus_magasin;
 ```
 
 
-### Exercice 4.2 : Acteurs polyvalents - Classement par diversité de catégories
+#### Exercice 4.2 : Acteurs polyvalents - Classement par diversité de catégories
 
 ```sql
 -- Identifier les acteurs les plus polyvalents (jouant dans plusieurs catégories)
@@ -443,7 +440,7 @@ LIMIT 20;
 ```
 
 
-### Exercice 4.3 : Analyse temporelle des locations avec fenêtres mobiles
+#### Exercice 4.3 : Analyse temporelle des locations avec fenêtres mobiles
 
 ```sql
 -- Classement des films par popularité avec tendance temporelle
@@ -484,6 +481,6 @@ LIMIT 30;
 -----------
 
 ??? info "Utilisation de l'IA"
-  Page rédigée en partie avec l'aide d'un assistant IA, principalement à l'aide de Perplexity AI. L'IA a été
-  utilisée pour générer des explications, des exemples et/ou des suggestions de structure. Toutes les informations
-  ont été vérifiées, éditées et complétées par l'auteur.
+    Page rédigée en partie avec l'aide d'un assistant IA, principalement à l'aide de Perplexity AI. L'IA a été
+    utilisée pour générer des explications, des exemples et/ou des suggestions de structure. Toutes les informations
+    ont été vérifiées, éditées et complétées par l'auteur.

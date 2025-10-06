@@ -387,12 +387,6 @@ Après ce chapitre, vous pouvez explorer :
 4. **Intégration avec BI tools** : comment ces fonctions se traduisent dans Tableau, Power BI, etc.
 5. **Analyse temporelle avancée** : fonctions de série temporelle, prédictions simples
 
----
-
-**Vous maîtrisez désormais l’essentiel des fonctions fenêtrées en SQL.**  
-Ces outils sont utilisés quotidiennement par les analystes de données, data scientists, et ingénieurs en bases de
-données pour transformer des données brutes en insights actionnables — directement dans la base.
-
 
 -------
 
