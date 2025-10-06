@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://profdenis.github.io/3N3_doc/5.%20SQL%20Avanc%C3%A9/02-vues/">
+        <link rel="canonical" href="https://profdenis.github.io/3N3_doc/4.%20SQL%20Avanc%C3%A9/01-r%C3%A9cursives/">
       
       
-        <link rel="prev" href="../01-r%C3%A9cursives/">
+        <link rel="prev" href="../../3.%20SQL/Plus%20de%20fonctions/03-regexp/">
       
       
-        <link rel="next" href="../03-contraintes-et-d%C3%A9clencheurs/">
+        <link rel="next" href="../02-vues/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Vues - Cours de bases de données</title>
+        <title>7 - Requêtes récursives - Cours de bases de données</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vues" class="md-skip">
+        <a href="#7-requetes-recursives" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vues
+              7 - Requêtes récursives
             
           </span>
         </div>
@@ -298,14 +298,16 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
-  4. Modélisation
+  4. SQL Avancé
 
         </a>
       </li>
@@ -316,16 +318,14 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../01-r%C3%A9cursives/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../5.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-tabs__link">
           
   
-  5. SQL Avancé
+  5. Modélisation
 
         </a>
       </li>
@@ -1216,202 +1216,6 @@
       
   
   
-  
-  
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    4. Modélisation
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            4. Modélisation
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Modélisation Entité-Association
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Les Entités Faibles
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../4.%20Mod%C3%A9lisation/02-notation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Différentes notations pour les DEA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../4.%20Mod%C3%A9lisation/03-exemples/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Exemples
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Conversion d&rsquo;un diagramme EA en schéma relationnel
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../4.%20Mod%C3%A9lisation/05-circular-dep/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    5- Gestion des dépendances circulaires dans la conception de bases de données
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../4.%20Mod%C3%A9lisation/06-cycles/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6 - Cycles entre les tables Utilisateurs et Profil
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -1432,47 +1236,26 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
-    5. SQL Avancé
+    4. SQL Avancé
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            5. SQL Avancé
+            4. SQL Avancé
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-r%C3%A9cursives/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    7 - Requêtes récursives
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1494,7 +1277,7 @@
           
   
   <span class="md-ellipsis">
-    Vues
+    7 - Requêtes récursives
   </span>
   
 
@@ -1505,7 +1288,7 @@
         
   
   <span class="md-ellipsis">
-    Vues
+    7 - Requêtes récursives
   </span>
   
 
@@ -1527,18 +1310,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#independance-logique-des-donnees" class="md-nav__link">
+  <a href="#syntaxe-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
-      Indépendance logique des données
+      Syntaxe PostgreSQL
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#les-vues-sont-elles-modifiables" class="md-nav__link">
+  <a href="#exemple-sur-la-base-de-donnees-du-blog" class="md-nav__link">
     <span class="md-ellipsis">
-      Les vues sont-elles modifiables ?
+      Exemple sur la base de données du blog
     </span>
   </a>
   
@@ -1548,6 +1331,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-vues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vues
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1595,6 +1399,55 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Modélisation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            5. Modélisation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -1602,7 +1455,154 @@
   
   
     <li class="md-nav__item">
-      <a href="../05-objet-relationel/" class="md-nav__link">
+      <a href="../../5.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modélisation Entité-Association
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les Entités Faibles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/02-notation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Différentes notations pour les DEA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/03-exemples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/04-ea-vers-relationnel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conversion d&rsquo;un diagramme EA en schéma relationnel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/05-circular-dep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5- Gestion des dépendances circulaires dans la conception de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/06-cycles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 - Cycles entre les tables Utilisateurs et Profil
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/07-objet-relationel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1740,6 +1740,27 @@
   
   <span class="md-ellipsis">
     Gestion des mots de passe d&rsquo;application dans une BD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/05-backups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide complet des sauvegardes de données
   </span>
   
 
@@ -2142,18 +2163,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#independance-logique-des-donnees" class="md-nav__link">
+  <a href="#syntaxe-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
-      Indépendance logique des données
+      Syntaxe PostgreSQL
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#les-vues-sont-elles-modifiables" class="md-nav__link">
+  <a href="#exemple-sur-la-base-de-donnees-du-blog" class="md-nav__link">
     <span class="md-ellipsis">
-      Les vues sont-elles modifiables ?
+      Exemple sur la base de données du blog
     </span>
   </a>
   
@@ -2177,129 +2198,90 @@
   
 
 
-<h1 id="vues">Vues<a class="headerlink" href="#vues" title="Permanent link">&para;</a></h1>
+<h1 id="7-requetes-recursives">7 - Requêtes récursives<a class="headerlink" href="#7-requetes-recursives" title="Permanent link">&para;</a></h1>
+<h2 id="syntaxe-postgresql">Syntaxe PostgreSQL<a class="headerlink" href="#syntaxe-postgresql" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Les vues sont essentiellement des tables virtuelles</li>
-<li>Elles sont une couche au-dessus d&rsquo;autres tables</li>
-<li>Avec le contrôle d&rsquo;accès, elles peuvent être utilisées pour assurer différents
-  niveaux de confidentialité et de sécurité</li>
-<li>Par exemple, le département des ressources humaines a généralement besoin de
-  connaître les numéros d&rsquo;assurance sociale (NAS) de leurs employés pour les
-  déclarer aux différents gouvernements pour les impôts, etc.</li>
-<li>Mais les services informatiques (sauf peut-être les DBA de haut niveau), le
-  marketing, etc. ne devraient pas avoir accès aux NAS</li>
-<li>L&rsquo;accès à la table de base des employés, avec les NAS, peut être accordé à
-  certains employés (ou à certains rôles si l&rsquo;on utilise le contrôle d&rsquo;accès
-  basé sur les rôles)</li>
-<li>Une vue au-dessus de la table des employés peut être créée sans les NAS, et
-  l&rsquo;accès à d&rsquo;autres employés peut être accordé sur la vue</li>
+<li>Syntaxe de
+  base (<a href="https://www.postgresqltutorial.com/postgresql-recursive-query/">https://www.postgresqltutorial.com/postgresql-recursive-query/</a>) :</li>
 </ul>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">drop</span><span class="w"> </span><span class="k">schema</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">company</span><span class="w"> </span><span class="k">cascade</span><span class="p">;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">create</span><span class="w"> </span><span class="k">schema</span><span class="w"> </span><span class="n">company</span><span class="p">;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">set</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">company</span><span class="p">;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">employee_priv</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">(</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">eid</span><span class="w">   </span><span class="nb">integer</span><span class="w"> </span><span class="k">generated</span><span class="w"> </span><span class="n">always</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">identity</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">sin</span><span class="w">   </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">unique</span><span class="p">,</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">name</span><span class="w">  </span><span class="nb">text</span><span class="w">    </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">phone</span><span class="w"> </span><span class="nb">text</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">);</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">employee_priv</span><span class="p">(</span><span class="n">sin</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p">)</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;123456789&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Denis&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;123-456-7890&#39;</span><span class="p">),</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">       </span><span class="p">(</span><span class="s1">&#39;987654321&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Jane&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;987-654-3210&#39;</span><span class="p">);</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">from</span><span class="w"> </span><span class="n">employee_priv</span><span class="p">;</span>
-</span></code></pre></div>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">AS</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">select</span><span class="w"> </span><span class="n">eid</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">from</span><span class="w"> </span><span class="n">employee_priv</span><span class="p">;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">from</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
-</span></code></pre></div>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">--drop role hr;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">--drop role itsupport;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">create</span><span class="w"> </span><span class="k">role</span><span class="w"> </span><span class="n">hr</span><span class="p">;</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">create</span><span class="w"> </span><span class="k">role</span><span class="w"> </span><span class="n">itsupport</span><span class="p">;</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">grant</span><span class="w"> </span><span class="k">select</span><span class="p">,</span><span class="w"> </span><span class="k">insert</span><span class="p">,</span><span class="w"> </span><span class="k">update</span><span class="p">,</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">employee_priv</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">hr</span><span class="p">;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">grant</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">itsupport</span><span class="p">;</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">cte_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">CTE_query_definition</span><span class="w"> </span><span class="c1">-- terme non récursif</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">UNION</span><span class="w"> </span><span class="p">[</span><span class="k">ALL</span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">CTE_query_definition</span><span class="w"> </span><span class="c1">-- terme récursif</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">FROM</span><span class="w"> </span><span class="n">cte_name</span><span class="p">;</span>
 </span></code></pre></div>
 <ul>
-<li>La création d&rsquo;utilisateurs et de rôles n&rsquo;est pas complètement standardisée
-  dans tous les SGBDR</li>
-<li>Chaque SGBDR devrait avoir les commandes SQL <code>grant</code> et <code>revoke</code></li>
-<li><a href="https://www.postgresql.org/docs/current/sql-createuser.html">PostgreSQL - create user</a></li>
-<li><a href="https://www.postgresql.org/docs/current/sql-alteruser.html">PostgreSQL - alter user</a></li>
-<li><a href="https://www.postgresql.org/docs/current/sql-grant.html">PostgreSQL - grant</a></li>
-<li>Les vues peuvent être créées sur des requêtes couramment utilisées, souvent
-  incluant des jointures, pour simplifier l&rsquo;écriture d&rsquo;autres requêtes</li>
+<li>CTE : <em>common table expression</em> (expression de table commune)</li>
+<li>Étant donné que les requêtes récursives sont (bien sûr) récursives, nous avons
+  besoin d&rsquo;un <em>cas de base</em>, appelé ici un <em>terme non récursif</em></li>
+<li>Ensuite, nous avons besoin d&rsquo;un ou plusieurs termes récursifs</li>
+<li><code>with recursive</code> fonctionne, au début, un peu comme les requêtes <code>with</code> (
+  sans <code>recursive</code>)</li>
+<li>Il évaluera d&rsquo;abord le terme non récursif pour initialiser l&rsquo;ensemble des
+  résultats</li>
+<li>Ensuite, il commencera à évaluer le terme récursif plusieurs fois, en boucle,
+  jusqu&rsquo;à ce qu&rsquo;aucune nouvelle ligne ne soit ajoutée aux résultats</li>
+<li>chaque fois qu&rsquo;il évalue le terme récursif, il essaiera d&rsquo;ajouter de nouvelles
+  lignes à l&rsquo;ensemble des résultats</li>
+<li>le terme récursif est corrélé au <code>cte_name</code></li>
 </ul>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">set</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">university</span><span class="p">;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">studentcourse</span><span class="w"> </span><span class="k">as</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">select</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sid</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">       </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">student_name</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">       </span><span class="k">c</span><span class="p">.</span><span class="n">code</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">       </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">course_name</span><span class="p">,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">       </span><span class="n">o</span><span class="p">.</span><span class="n">semester</span><span class="p">,</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">       </span><span class="n">o</span><span class="p">.</span><span class="k">year</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">s</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">         </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">enrollment</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sid</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">         </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">offering</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">oid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">oid</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">         </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="k">from</span><span class="w"> </span><span class="n">studentcourse</span><span class="p">;</span>
+<h2 id="exemple-sur-la-base-de-donnees-du-blog">Exemple sur la base de données du blog<a class="headerlink" href="#exemple-sur-la-base-de-donnees-du-blog" title="Permanent link">&para;</a></h2>
+<p><img alt="Blogpost DB" src="../../images/blogpost.png" /></p>
+<ul>
+<li>Nous voulons trouver toutes les réponses à un commentaire donné de manière
+  récursive</li>
+<li>nous ne voulons pas seulement les réponses directes, mais aussi toutes les
+  réponses des réponses</li>
+<li>Première tentative pour récupérer uniquement les réponses directes :</li>
+</ul>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">set</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">blog3</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">select</span><span class="w"> </span><span class="n">comment_id</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="p">,</span><span class="w"> </span><span class="n">reply_to_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">from</span><span class="w"> </span><span class="k">comment</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">where</span><span class="w"> </span><span class="n">blogpost_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">reply_to_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 </span></code></pre></div>
 <ul>
-<li>Nous pouvons restreindre les lignes de la vue à un étudiant spécifique, pour
-  un semestre et une année spécifiques</li>
-<li>cela pourrait être utile lors de la création d&rsquo;horaires</li>
+<li>Pour obtenir les réponses aux réponses, nous devons utiliser la
+  syntaxe <code>with recursive</code> décrite ci-dessus :</li>
 </ul>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">from</span><span class="w"> </span><span class="n">studentcourse</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">where</span><span class="w"> </span><span class="n">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">semester</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;W&#39;</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2020</span><span class="p">;</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">with</span><span class="w"> </span><span class="k">recursive</span><span class="w"> </span><span class="n">replies</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">comment_id</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="p">,</span><span class="w"> </span><span class="n">reply_to_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">                           </span><span class="k">from</span><span class="w"> </span><span class="k">comment</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">                           </span><span class="k">where</span><span class="w"> </span><span class="n">reply_to_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">                           </span><span class="k">union</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                           </span><span class="k">select</span><span class="w"> </span><span class="k">comment</span><span class="p">.</span><span class="n">comment_id</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">                                  </span><span class="k">comment</span><span class="p">.</span><span class="n">contents</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                                  </span><span class="k">comment</span><span class="p">.</span><span class="n">reply_to_id</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                                  </span><span class="k">comment</span><span class="p">.</span><span class="n">user_id</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                           </span><span class="k">from</span><span class="w"> </span><span class="k">comment</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                                    </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">replies</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                                               </span><span class="k">on</span><span class="w"> </span><span class="n">replies</span><span class="p">.</span><span class="n">comment_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">comment</span><span class="p">.</span><span class="n">reply_to_id</span><span class="p">)</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">from</span><span class="w"> </span><span class="n">replies</span><span class="p">;</span>
 </span></code></pre></div>
-<h2 id="independance-logique-des-donnees">Indépendance logique des données<a class="headerlink" href="#independance-logique-des-donnees" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Les vues peuvent également être utilisées pour minimiser l&rsquo;impact des
-  changements de schéma dans la base de données</li>
-<li>Supposons qu&rsquo;un schéma de table doive être modifié, éventuellement parce
-  qu&rsquo;une table doit être décomposée pour réduire la redondance en raison d&rsquo;une
-  dépendance fonctionnelle précédemment inconnue</li>
-<li>Ensuite, toutes les requêtes utilisant cette table doivent être mises à jour,
-  ce qui pourrait être difficile à faire</li>
-<li>Une vue avec le même nom et les mêmes colonnes peut être créée pour remplacer
-  l&rsquo;ancienne table</li>
-<li>cette vue serait définie sur les nouvelles tables remplaçant l&rsquo;ancienne table</li>
+<li>Si nous devons inclure le commentaire original avec lequel nous commençons
+  dans le résultat, nous avons besoin d&rsquo;un terme non récursif légèrement
+  différent</li>
+<li>utiliser <code>comment_id = 1</code> au lieu de <code>reply_to_id = 1</code></li>
+<li>Si nous devons inclure les commentaires commençant par un article de blog,
+  nous avons besoin d&rsquo;un terme non récursif légèrement différent&hellip;</li>
+<li>utiliser <code>blogpost_id = 1</code> au lieu de <code>reply_to_id = 1</code></li>
 </ul>
-<h2 id="les-vues-sont-elles-modifiables">Les vues sont-elles modifiables ?<a class="headerlink" href="#les-vues-sont-elles-modifiables" title="Permanent link">&para;</a></h2>
-<ul>
-<li>La meilleure réponse est <em>peut-être, mais probablement pas</em> (du moins pas en
-  général)</li>
-<li>Si nous voulons mettre à jour le numéro de téléphone d&rsquo;un employé, nous
-  pourrions probablement le faire via la vue, car la vue a une correspondance
-  directe avec exactement 1 table, moins la colonne NAS</li>
-<li>la mise à jour peut être redirigée vers la table <code>employee_priv</code></li>
-<li>Mais nous ne pouvons pas insérer une nouvelle ligne dans la vue des employés
-  car la table <code>employee_priv</code> a la colonne NAS, qui ne peut pas être <code>null</code></li>
-<li>de plus, comme elle a la contrainte <code>unique</code>, nous ne pouvons pas la définir
-  sur une valeur par défaut</li>
-<li>en fait, nous pourrions la définir sur une valeur par défaut pour au plus 1
-  employé</li>
-<li>De même, essayer de mettre à jour la vue <code>studentcourse</code> pourrait être
-  compliqué car elle provient de la jointure de 4 tables</li>
-<li>mettre à jour 1 ligne dans <code>studentcourse</code> pourrait signifier que nous devons
-  modifier plusieurs lignes dans 1 ou plusieurs tables sous-jacentes</li>
-<li>si nous essayons de changer l&rsquo;inscription d&rsquo;un étudiant à une offre de cours
-  via la vue, nous devrons mettre à jour la table d&rsquo;inscription, qui n&rsquo;apparaît
-  pas directement dans la vue (ses colonnes ne sont pas sélectionnées par la
-  requête de la vue)</li>
-<li>même genre de problème pour l&rsquo;insertion de lignes</li>
-<li>cela pourrait être possible dans certains cas, mais il n&rsquo;y a pas de moyen
-  universel de le faire</li>
-<li>Il y a des problèmes similaires avec la suppression de lignes via une vue</li>
-<li>c&rsquo;est possible dans certains cas, mais pas tous</li>
-</ul>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">with</span><span class="w"> </span><span class="k">recursive</span><span class="w"> </span><span class="n">replies</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">comment_id</span><span class="p">,</span><span class="w"> </span><span class="n">contents</span><span class="p">,</span><span class="w"> </span><span class="n">reply_to_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">                           </span><span class="k">from</span><span class="w"> </span><span class="k">comment</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">                           </span><span class="k">where</span><span class="w"> </span><span class="n">blogpost_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">                           </span><span class="k">union</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">                           </span><span class="k">select</span><span class="w"> </span><span class="k">comment</span><span class="p">.</span><span class="n">comment_id</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">                                  </span><span class="k">comment</span><span class="p">.</span><span class="n">contents</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">                                  </span><span class="k">comment</span><span class="p">.</span><span class="n">reply_to_id</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">                                  </span><span class="k">comment</span><span class="p">.</span><span class="n">user_id</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">                           </span><span class="k">from</span><span class="w"> </span><span class="k">comment</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">                                    </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">replies</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">                                               </span><span class="k">on</span><span class="w"> </span><span class="n">replies</span><span class="p">.</span><span class="n">comment_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">comment</span><span class="p">.</span><span class="n">reply_to_id</span><span class="p">)</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">from</span><span class="w"> </span><span class="n">replies</span><span class="p">;</span>
+</span></code></pre></div>
 
 
 
@@ -2335,7 +2317,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../01-r%C3%A9cursives/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 7 - Requêtes récursives">
+          <a href="../../3.%20SQL/Plus%20de%20fonctions/03-regexp/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Expressions régulières">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2345,20 +2327,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                7 - Requêtes récursives
+                Expressions régulières
               </div>
             </div>
           </a>
         
         
           
-          <a href="../03-contraintes-et-d%C3%A9clencheurs/" class="md-footer__link md-footer__link--next" aria-label="Next: Contraintes et Déclencheurs">
+          <a href="../02-vues/" class="md-footer__link md-footer__link--next" aria-label="Next: Vues">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Contraintes et Déclencheurs
+                Vues
               </div>
             </div>
             <div class="md-footer__button md-icon">

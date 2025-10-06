@@ -1,0 +1,3362 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://profdenis.github.io/3N3_doc/6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/05-backups/">
+      
+      
+        <link rel="prev" href="../04-mots-de-passe/">
+      
+      
+        <link rel="next" href="../../7.%20Exercices/01-exercices/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Guide complet des sauvegardes de données - Cours de bases de données</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guide-complet-des-sauvegardes-de-donnees" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cours de bases de données" class="md-header__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de bases de données
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guide complet des sauvegardes de données
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/profdenis/3N3_doc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    profdenis/3N3_doc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Cours de bases de données
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1.%20Introduction/01-Introduction-aux-bd/" class="md-tabs__link">
+          
+  
+  1. Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-tabs__link">
+          
+  
+  2. Le modèle relationnel
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../3.%20SQL/01-intro/" class="md-tabs__link">
+          
+  
+  3. SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../4.%20SQL%20Avanc%C3%A9/01-r%C3%A9cursives/" class="md-tabs__link">
+          
+  
+  4. SQL Avancé
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../5.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-tabs__link">
+          
+  
+  5. Modélisation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-s%C3%A9curit%C3%A9/" class="md-tabs__link">
+          
+  
+  6. Sécurité et Utilisateurs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../7.%20Exercices/01-exercices/" class="md-tabs__link">
+          
+  
+  7. Exercices
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cours de bases de données" class="md-nav__button md-logo" aria-label="Cours de bases de données" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cours de bases de données
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/profdenis/3N3_doc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    profdenis/3N3_doc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cours de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    1. Introduction
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            1. Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/01-Introduction-aux-bd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Qu&rsquo;est-ce qu&rsquo;une base de données ?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/02-Types-de-bases-de-donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Types de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/03-Historique-des-bases-de-donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Historique des bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/04-Exemples-de-Bases-de-Donnees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemples de Bases de Données dans Différents Contextes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction à PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avantages de PostgreSQL par rapport à d&rsquo;autres SGBD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entreprises utilisant PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.%20Introduction/PostgreSQL/04-Configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration de PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2. Le modèle relationnel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            2. Le modèle relationnel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Présentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction aux Diagrammes Entité-Association
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    3. SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            3. SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/01-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 - Introduction à SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/02a-bases-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2a - Base de Données de Contacts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/02b-bases-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2b - Base de Données Université
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/03a-jointures-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3a - Requêtes avec plus d&rsquo;une table (Contacts)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/03b-jointures-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3b - Requêtes avec plus d&rsquo;une table (Université)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/04a-groupes-contacts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4a - Groupement et Agrégats (Contacts)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/04b-groupes-universit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4b - Groupement et Agrégats (Université)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/05-survol-op%C3%A9rations-SQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 - Survol des opérations faisant partie des requêtes SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/06-dates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 - Utilisation de date et timestamp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/07-imbriqu%C3%A9es/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 - Requêtes SQL imbriquées
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/08-rank/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8 - Fonction SQL RANK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/09-fenetres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9 - Autres fonctions fenêtrées essentielles en SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plus de fonctions
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13">
+            <span class="md-nav__icon md-icon"></span>
+            Plus de fonctions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/Plus%20de%20fonctions/01-coalesce-case-when/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    COALESCE et CASE WHEN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/Plus%20de%20fonctions/02-more-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Présentation et formatage des données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20SQL/Plus%20de%20fonctions/03-regexp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expressions régulières
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    4. SQL Avancé
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            4. SQL Avancé
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20SQL%20Avanc%C3%A9/01-r%C3%A9cursives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 - Requêtes récursives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20SQL%20Avanc%C3%A9/02-vues/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20SQL%20Avanc%C3%A9/03-contraintes-et-d%C3%A9clencheurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contraintes et Déclencheurs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20SQL%20Avanc%C3%A9/04-transactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transactions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    5. Modélisation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            5. Modélisation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modélisation Entité-Association
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les Entités Faibles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/02-notation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Différentes notations pour les DEA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/03-exemples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/04-ea-vers-relationnel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conversion d&rsquo;un diagramme EA en schéma relationnel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/05-circular-dep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5- Gestion des dépendances circulaires dans la conception de bases de données
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/06-cycles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 - Cycles entre les tables Utilisateurs et Profil
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Mod%C3%A9lisation/07-objet-relationel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modèle objet-relationel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    6. Sécurité et Utilisateurs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            6. Sécurité et Utilisateurs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-s%C3%A9curit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des Utilisateurs et Sécurité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-rbac/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contrôle d&rsquo;Accès Basé sur les Rôles (RBAC)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-utilisateurs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des Utilisateurs dans PostgreSQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-mots-de-passe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gestion des mots de passe d&rsquo;application dans une BD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Guide complet des sauvegardes de données
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Guide complet des sauvegardes de données
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-pourquoi-les-sauvegardes-de-donnees-sont-essentielles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction : Pourquoi les sauvegardes de données sont essentielles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-de-sauvegardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types de sauvegardes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types de sauvegardes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sauvegardes-completes-full-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sauvegardes complètes (Full Backups)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sauvegardes-incrementielles-incremental-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sauvegardes incrémentielles (Incremental Backups)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sauvegardes-differentielles-differential-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Sauvegardes différentielles (Differential Backups)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-sauvegardes-miroir-instantanes-mirrorsnapshot-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Sauvegardes miroir / instantanés (Mirror/Snapshot Backups)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-replication-en-temps-reel-real-time-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Réplication en temps réel (Real-time Replication)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-et-planification-des-sauvegardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stratégies et planification des sauvegardes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stratégies et planification des sauvegardes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-regle-3-2-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      La règle 3-2-1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequence-recommandee-des-sauvegardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fréquence recommandée des sauvegardes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#politiques-de-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Politiques de rétention
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonnes-pratiques-generales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bonnes pratiques générales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonnes pratiques générales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#considerations-liees-au-stockage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Considérations liées au stockage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mesures-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mesures de sécurité
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatisation-et-surveillance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatisation et surveillance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-specifiques-a-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stratégies spécifiques à PostgreSQL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stratégies spécifiques à PostgreSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sauvegardes-logiques-avec-pg_dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sauvegardes logiques avec pg_dump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sauvegardes-physiques-avec-pg_basebackup" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sauvegardes physiques avec pg_basebackup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-archivage-continu-et-recuperation-a-un-instant-precis-pitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Archivage continu et récupération à un instant précis (PITR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-replication-en-continu-pour-la-haute-disponibilite" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Réplication en continu pour la haute disponibilité
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedures-de-recuperation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procédures de récupération
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procédures de récupération">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recuperation-a-partir-dune-sauvegarde-logique" class="md-nav__link">
+    <span class="md-ellipsis">
+      Récupération à partir d’une sauvegarde logique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recuperation-a-un-instant-precis-pitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Récupération à un instant précis (PITR)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-et-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests et vérification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests et vérification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#procedures-de-test-regulieres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procédures de test régulières
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#surveillance-et-alertes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Surveillance et alertes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erreurs-courantes-a-eviter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erreurs courantes à éviter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erreurs courantes à éviter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-erreurs-liees-aux-sauvegardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Erreurs liées aux sauvegardes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pieges-specifiques-a-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pièges spécifiques à PostgreSQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-problemes-de-planification-de-la-recuperation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Problèmes de planification de la récupération
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liste-de-verification-pour-la-mise-en-uvre-dune-strategie-de-sauvegarde" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liste de vérification pour la mise en œuvre d’une stratégie de sauvegarde
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Liste de vérification pour la mise en œuvre d’une stratégie de sauvegarde">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-initiale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration initiale
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration PostgreSQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance continue
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    7. Exercices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            7. Exercices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/01-exercices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DEA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            DEA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/01-blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/02-livres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Livres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/03-transport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Réseau de transports en commun
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/04-restaurants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Chaîne de restaurants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/05-voyages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Agence de voyages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/DEA/06-hopital/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Système de gestion d&rsquo;un hôpital
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/01-pagila/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Base de données Pagila
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/02-recettes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Recettes de cuisine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Exercices/SQL/03-northwind/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. BD Northwind
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-pourquoi-les-sauvegardes-de-donnees-sont-essentielles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction : Pourquoi les sauvegardes de données sont essentielles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-de-sauvegardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types de sauvegardes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types de sauvegardes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sauvegardes-completes-full-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sauvegardes complètes (Full Backups)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sauvegardes-incrementielles-incremental-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sauvegardes incrémentielles (Incremental Backups)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sauvegardes-differentielles-differential-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Sauvegardes différentielles (Differential Backups)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-sauvegardes-miroir-instantanes-mirrorsnapshot-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Sauvegardes miroir / instantanés (Mirror/Snapshot Backups)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-replication-en-temps-reel-real-time-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Réplication en temps réel (Real-time Replication)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-et-planification-des-sauvegardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stratégies et planification des sauvegardes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stratégies et planification des sauvegardes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-regle-3-2-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      La règle 3-2-1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequence-recommandee-des-sauvegardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fréquence recommandée des sauvegardes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#politiques-de-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Politiques de rétention
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonnes-pratiques-generales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bonnes pratiques générales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonnes pratiques générales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#considerations-liees-au-stockage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Considérations liées au stockage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mesures-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mesures de sécurité
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatisation-et-surveillance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatisation et surveillance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-specifiques-a-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stratégies spécifiques à PostgreSQL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stratégies spécifiques à PostgreSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sauvegardes-logiques-avec-pg_dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sauvegardes logiques avec pg_dump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sauvegardes-physiques-avec-pg_basebackup" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sauvegardes physiques avec pg_basebackup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-archivage-continu-et-recuperation-a-un-instant-precis-pitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Archivage continu et récupération à un instant précis (PITR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-replication-en-continu-pour-la-haute-disponibilite" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Réplication en continu pour la haute disponibilité
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedures-de-recuperation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procédures de récupération
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procédures de récupération">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recuperation-a-partir-dune-sauvegarde-logique" class="md-nav__link">
+    <span class="md-ellipsis">
+      Récupération à partir d’une sauvegarde logique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recuperation-a-un-instant-precis-pitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Récupération à un instant précis (PITR)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-et-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests et vérification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests et vérification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#procedures-de-test-regulieres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procédures de test régulières
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#surveillance-et-alertes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Surveillance et alertes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erreurs-courantes-a-eviter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erreurs courantes à éviter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erreurs courantes à éviter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-erreurs-liees-aux-sauvegardes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Erreurs liées aux sauvegardes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pieges-specifiques-a-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Pièges spécifiques à PostgreSQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-problemes-de-planification-de-la-recuperation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Problèmes de planification de la récupération
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liste-de-verification-pour-la-mise-en-uvre-dune-strategie-de-sauvegarde" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liste de vérification pour la mise en œuvre d’une stratégie de sauvegarde
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Liste de vérification pour la mise en œuvre d’une stratégie de sauvegarde">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-initiale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration initiale
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration PostgreSQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance continue
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="guide-complet-des-sauvegardes-de-donnees">Guide complet des sauvegardes de données<a class="headerlink" href="#guide-complet-des-sauvegardes-de-donnees" title="Permanent link">&para;</a></h1>
+<h2 id="introduction-pourquoi-les-sauvegardes-de-donnees-sont-essentielles">Introduction : Pourquoi les sauvegardes de données sont essentielles<a class="headerlink" href="#introduction-pourquoi-les-sauvegardes-de-donnees-sont-essentielles" title="Permanent link">&para;</a></h2>
+<p>La sauvegarde de données consiste à créer des copies de vos données afin de les protéger contre les pertes causées par
+diverses menaces, notamment les pannes matérielles, les erreurs humaines, les cyberattaques, les catastrophes naturelles
+et la corruption logicielle. Selon les statistiques du secteur, 60 % des entreprises qui perdent leurs données cessent
+leurs activités dans les six mois suivants, ce qui rend les stratégies de sauvegarde indispensables pour toute
+organisation manipulant des données importantes.</p>
+<p><strong>Règle fondamentale</strong> : Si vos données n’existent pas dans au moins trois endroits différents, elles n’existent pas
+vraiment.</p>
+<h2 id="types-de-sauvegardes">Types de sauvegardes<a class="headerlink" href="#types-de-sauvegardes" title="Permanent link">&para;</a></h2>
+<h3 id="1-sauvegardes-completes-full-backups">1. Sauvegardes complètes (Full Backups)<a class="headerlink" href="#1-sauvegardes-completes-full-backups" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Définition</strong> : Copie intégrale de toutes les données</li>
+<li><strong>Avantages</strong> : Restauration la plus rapide, protection complète des données</li>
+<li><strong>Inconvénients</strong> : Besoin d’espace de stockage important, durée de sauvegarde la plus longue</li>
+<li><strong>Quand l’utiliser</strong> : Hebdomadairement ou mensuellement, comme référence de base</li>
+</ul>
+<h3 id="2-sauvegardes-incrementielles-incremental-backups">2. Sauvegardes incrémentielles (Incremental Backups)<a class="headerlink" href="#2-sauvegardes-incrementielles-incremental-backups" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Définition</strong> : Seules les données modifiées depuis la dernière sauvegarde (de tout type) sont sauvegardées</li>
+<li><strong>Avantages</strong> : Sauvegarde très rapide, consommation minimale d’espace</li>
+<li><strong>Inconvénients</strong> : Restauration plus lente (nécessite la sauvegarde complète + toutes les sauvegardes
+  incrémentielles)</li>
+<li><strong>Quand l’utiliser</strong> : Sauvegardes quotidiennes entre deux sauvegardes complètes</li>
+</ul>
+<h3 id="3-sauvegardes-differentielles-differential-backups">3. Sauvegardes différentielles (Differential Backups)<a class="headerlink" href="#3-sauvegardes-differentielles-differential-backups" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Définition</strong> : Toutes les données modifiées depuis la dernière sauvegarde complète</li>
+<li><strong>Avantages</strong> : Restauration plus rapide qu’avec les sauvegardes incrémentielles (seule la sauvegarde complète + la
+  dernière différentielle sont nécessaires)</li>
+<li><strong>Inconvénients</strong> : Taille croissante entre deux sauvegardes complètes</li>
+<li><strong>Quand l’utiliser</strong> : Bon compromis pour des sauvegardes hebdomadaires</li>
+</ul>
+<h3 id="4-sauvegardes-miroir-instantanes-mirrorsnapshot-backups">4. Sauvegardes miroir / instantanés (Mirror/Snapshot Backups)<a class="headerlink" href="#4-sauvegardes-miroir-instantanes-mirrorsnapshot-backups" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Définition</strong> : Copie exacte des données à un instant précis</li>
+<li><strong>Avantages</strong> : Restauration immédiate, efficacité d’espace grâce à la technique « copy-on-write »</li>
+<li><strong>Inconvénients</strong> : Vulnérabilité aux mêmes catastrophes que les données d’origine</li>
+<li><strong>Quand l’utiliser</strong> : Réplication en temps réel et scénarios nécessitant une restauration rapide</li>
+</ul>
+<h3 id="5-replication-en-temps-reel-real-time-replication">5. Réplication en temps réel (Real-time Replication)<a class="headerlink" href="#5-replication-en-temps-reel-real-time-replication" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Définition</strong> : Synchronisation continue des modifications vers une ou plusieurs bases de données répliquées dès
+  qu’elles surviennent</li>
+<li><strong>Fonctionnement</strong> : Les modifications sont transmises immédiatement (ou presque) vers des serveurs de secours</li>
+<li><strong>Types</strong> :<ul>
+<li><strong>Synchrone</strong> : Le serveur principal attend la confirmation de la réplique avant de valider la transaction (plus
+  lent mais garantit la cohérence)</li>
+<li><strong>Asynchrone</strong> : Le serveur principal valide immédiatement, les modifications sont répliquées ensuite (plus rapide
+  mais risque mineur de perte de données)</li>
+</ul>
+</li>
+<li><strong>Avantages</strong> : Perte de données minimale (RPO proche de zéro), basculement rapide en cas de panne</li>
+<li><strong>Inconvénients</strong> : Dépendance au réseau, complexité, impact potentiel sur les performances</li>
+<li><strong>Quand l’utiliser</strong> : Systèmes haute disponibilité, reprise après sinistre, répartition de charge</li>
+</ul>
+<h2 id="strategies-et-planification-des-sauvegardes">Stratégies et planification des sauvegardes<a class="headerlink" href="#strategies-et-planification-des-sauvegardes" title="Permanent link">&para;</a></h2>
+<h3 id="la-regle-3-2-1">La règle 3-2-1<a class="headerlink" href="#la-regle-3-2-1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>3</strong> copies des données importantes</li>
+<li><strong>2</strong> types de supports de stockage différents</li>
+<li><strong>1</strong> copie stockée hors site</li>
+</ul>
+<h3 id="frequence-recommandee-des-sauvegardes">Fréquence recommandée des sauvegardes<a class="headerlink" href="#frequence-recommandee-des-sauvegardes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Données critiques de l’entreprise</strong> : Réplication en temps réel (pour la disponibilité) + sauvegardes quotidiennes (
+  pour la récupération)</li>
+<li><strong>Bases de données importantes</strong> : Sauvegardes quotidiennes complètes ou incrémentielles</li>
+<li><strong>Documents utilisateurs</strong> : Sauvegardes quotidiennes ou hebdomadaires</li>
+<li><strong>Configurations système</strong> : Sauvegardes hebdomadaires</li>
+<li><strong>Données archivées</strong> : Sauvegardes mensuelles ou trimestrielles</li>
+</ul>
+<p><strong>Remarque</strong> : La réplication en temps réel assure une haute disponibilité mais ne remplace pas les sauvegardes
+traditionnelles. Elle protège contre les pannes matérielles, mais pas contre la corruption des données, les erreurs
+humaines ou les catastrophes affectant à la fois le serveur principal et sa réplique.</p>
+<h3 id="politiques-de-retention">Politiques de rétention<a class="headerlink" href="#politiques-de-retention" title="Permanent link">&para;</a></h3>
+<p>Exemple de calendrier de rétention :
+- Sauvegardes quotidiennes : conserver 1 mois
+- Sauvegardes hebdomadaires : conserver 3 mois<br />
+- Sauvegardes mensuelles : conserver 1 an
+- Sauvegardes annuelles : conserver 7 ans (ou selon les exigences réglementaires)</p>
+<h2 id="bonnes-pratiques-generales">Bonnes pratiques générales<a class="headerlink" href="#bonnes-pratiques-generales" title="Permanent link">&para;</a></h2>
+<h3 id="considerations-liees-au-stockage">Considérations liées au stockage<a class="headerlink" href="#considerations-liees-au-stockage" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Stockage local</strong> : Restauration rapide, vulnérable aux catastrophes locales</li>
+<li><strong>Stockage réseau</strong> : Ressources partagées, dépendance au réseau</li>
+<li><strong>Stockage cloud</strong> : Protection hors site, évolutif, coûts récurrents</li>
+<li><strong>Stockage sur bande</strong> : Archivage à long terme, accès plus lent</li>
+</ul>
+<h3 id="mesures-de-securite">Mesures de sécurité<a class="headerlink" href="#mesures-de-securite" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Chiffrement</strong> : Chiffrer les sauvegardes à la fois en transit et au repos</li>
+<li><strong>Contrôle d’accès</strong> : Limiter les personnes autorisées à créer, modifier ou supprimer des sauvegardes</li>
+<li><strong>Gestion des versions</strong> : Conserver plusieurs versions pour se prémunir contre les sauvegardes corrompues</li>
+<li><strong>Sauvegardes « air-gapped »</strong> : Maintenir certaines sauvegardes complètement déconnectées des réseaux</li>
+</ul>
+<h3 id="automatisation-et-surveillance">Automatisation et surveillance<a class="headerlink" href="#automatisation-et-surveillance" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Automatiser les processus de sauvegarde pour réduire les erreurs humaines</li>
+<li>Surveiller l’exécution des sauvegardes et vérifier leur intégrité</li>
+<li>Configurer des alertes en cas d’échec de sauvegarde</li>
+<li>Documenter et tester régulièrement les procédures de restauration</li>
+</ul>
+<h2 id="strategies-specifiques-a-postgresql">Stratégies spécifiques à PostgreSQL<a class="headerlink" href="#strategies-specifiques-a-postgresql" title="Permanent link">&para;</a></h2>
+<h3 id="1-sauvegardes-logiques-avec-pg_dump">1. Sauvegardes logiques avec pg_dump<a class="headerlink" href="#1-sauvegardes-logiques-avec-pg_dump" title="Permanent link">&para;</a></h3>
+<p><strong>Sauvegarde de base de données complète :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Sauvegarde complète d’une base de données</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pg_dump<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>&gt;<span class="w"> </span>backup.sql
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Sauvegarde avec compression</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>pg_dump<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>backup.sql.gz
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Format personnalisé (recommandé pour les grandes bases)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>pg_dump<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>-Fc<span class="w"> </span>&gt;<span class="w"> </span>backup.dump
+</span></code></pre></div>
+<p><strong>Sauvegarde de tables spécifiques :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Sauvegarde de tables spécifiques</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pg_dump<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>-t<span class="w"> </span>table1<span class="w"> </span>-t<span class="w"> </span>table2<span class="w"> </span>&gt;<span class="w"> </span>tables_backup.sql
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Sauvegarde du schéma uniquement (sans données)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>pg_dump<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>--schema-only<span class="w"> </span>&gt;<span class="w"> </span>schema_backup.sql
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Sauvegarde des données uniquement (sans schéma)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>pg_dump<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>--data-only<span class="w"> </span>&gt;<span class="w"> </span>data_backup.sql
+</span></code></pre></div>
+<p><strong>Sauvegarde de l’ensemble du cluster :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Sauvegarde de toutes les bases de données</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>pg_dumpall<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>&gt;<span class="w"> </span>all_databases.sql
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Sauvegarde uniquement des objets globaux (rôles, tablespaces)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>pg_dumpall<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>--globals-only<span class="w"> </span>&gt;<span class="w"> </span>globals.sql
+</span></code></pre></div>
+<h3 id="2-sauvegardes-physiques-avec-pg_basebackup">2. Sauvegardes physiques avec pg_basebackup<a class="headerlink" href="#2-sauvegardes-physiques-avec-pg_basebackup" title="Permanent link">&para;</a></h3>
+<p><strong>Création d’une sauvegarde de base :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Créer une sauvegarde de base</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>pg_basebackup<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>replication_user<span class="w"> </span>-D<span class="w"> </span>/backup/base<span class="w"> </span>-Ft<span class="w"> </span>-z<span class="w"> </span>-P
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Explication des paramètres :</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># -D : répertoire de sauvegarde</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># -Ft : format tar</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># -z : compression</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># -P : afficher la progression</span>
+</span></code></pre></div>
+<p><strong>Configuration de la récupération à un instant précis (PITR) :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 1. Activer l’archivage WAL dans postgresql.conf</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">wal_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>replica
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">archive_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>on
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">archive_command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cp %p /backup/wal/%f&#39;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># 2. Créer une sauvegarde de base</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>pg_basebackup<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-D<span class="w"> </span>/backup/base<span class="w"> </span>-Ft<span class="w"> </span>-z<span class="w"> </span>-P
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># 3. Les fichiers WAL sont archivés en continu</span>
+</span></code></pre></div>
+<h3 id="3-archivage-continu-et-recuperation-a-un-instant-precis-pitr">3. Archivage continu et récupération à un instant précis (PITR)<a class="headerlink" href="#3-archivage-continu-et-recuperation-a-un-instant-precis-pitr" title="Permanent link">&para;</a></h3>
+<p><strong>Configuration dans postgresql.conf :</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a># Activer l’archivage WAL
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>wal_level = replica
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>archive_mode = on
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>archive_command = &#39;rsync %p backup_server:/backup/wal/%f&#39;
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>archive_timeout = 300  # Forcer le changement de WAL toutes les 5 minutes
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a># Paramètres de point de sauvegarde pour les performances
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>checkpoint_timeout = 15min
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>checkpoint_completion_target = 0.9
+</span></code></pre></div>
+<p><strong>Exemple de script de sauvegarde automatisée :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># daily_backup.sh</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;/backups/postgres&quot;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nv">DB_NAME</span><span class="o">=</span><span class="s2">&quot;production_db&quot;</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Créer le répertoire de sauvegarde</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/<span class="nv">$DATE</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># Effectuer une sauvegarde logique</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>pg_dump<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>backup_user<span class="w"> </span>-d<span class="w"> </span><span class="nv">$DB_NAME</span><span class="w"> </span>-Fc<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/<span class="nv">$DATE</span>/logical_backup.dump
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1"># Effectuer une sauvegarde de base (pour PITR)</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>pg_basebackup<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>replication_user<span class="w"> </span>-D<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/<span class="nv">$DATE</span>/base<span class="w"> </span>-Ft<span class="w"> </span>-z<span class="w"> </span>-P
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1"># Nettoyer les anciennes sauvegardes (conserver les 30 derniers jours)</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>find<span class="w"> </span><span class="nv">$BACKUP_DIR</span><span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-mtime<span class="w"> </span>+30<span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="c1"># Journaliser la fin de l’opération</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">: Sauvegarde terminée avec succès&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/var/log/postgres_backup.log
+</span></code></pre></div>
+<h3 id="4-replication-en-continu-pour-la-haute-disponibilite">4. Réplication en continu pour la haute disponibilité<a class="headerlink" href="#4-replication-en-continu-pour-la-haute-disponibilite" title="Permanent link">&para;</a></h3>
+<p><strong>Configuration du serveur maître :</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a># postgresql.conf
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>wal_level = replica
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>max_wal_senders = 3
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>wal_keep_segments = 64  # Pour les versions antérieures
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>wal_keep_size = 1GB     # Pour les versions récentes
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a># pg_hba.conf
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>host replication replicator replica_ip/32 md5
+</span></code></pre></div>
+<p><strong>Configuration du serveur de secours :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 1. Créer une sauvegarde de base sur le serveur de secours</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>pg_basebackup<span class="w"> </span>-h<span class="w"> </span>master_ip<span class="w"> </span>-U<span class="w"> </span>replicator<span class="w"> </span>-D<span class="w"> </span>/var/lib/postgresql/data<span class="w"> </span>-P<span class="w"> </span>-W
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># 2. Créer le fichier de configuration de récupération</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Pour PostgreSQL 12+, créer le fichier standby.signal</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>touch<span class="w"> </span>/var/lib/postgresql/data/standby.signal
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># 3. Configurer postgresql.conf sur le serveur de secours</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nv">primary_conninfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;host=master_ip port=5432 user=replicator&#39;</span>
+</span></code></pre></div>
+<h2 id="procedures-de-recuperation">Procédures de récupération<a class="headerlink" href="#procedures-de-recuperation" title="Permanent link">&para;</a></h2>
+<h3 id="recuperation-a-partir-dune-sauvegarde-logique">Récupération à partir d’une sauvegarde logique<a class="headerlink" href="#recuperation-a-partir-dune-sauvegarde-logique" title="Permanent link">&para;</a></h3>
+<p><strong>Restauration complète de la base de données :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Supprimer et recréer la base de données</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dropdb<span class="w"> </span>database_name
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>createdb<span class="w"> </span>database_name
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Restaurer à partir d’un dump SQL</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>&lt;<span class="w"> </span>backup.sql
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># Restaurer à partir d’un format personnalisé</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>pg_restore<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>backup.dump
+</span></code></pre></div>
+<p><strong>Récupération sélective :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Restaurer des tables spécifiques</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>pg_restore<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>-t<span class="w"> </span>table1<span class="w"> </span>-t<span class="w"> </span>table2<span class="w"> </span>backup.dump
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Restaurer avec transformation des données</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>pg_restore<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>username<span class="w"> </span>-d<span class="w"> </span>database_name<span class="w"> </span>--data-only<span class="w"> </span>--disable-triggers<span class="w"> </span>backup.dump
+</span></code></pre></div>
+<h3 id="recuperation-a-un-instant-precis-pitr">Récupération à un instant précis (PITR)<a class="headerlink" href="#recuperation-a-un-instant-precis-pitr" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 1. Arrêter le service PostgreSQL</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>systemctl<span class="w"> </span>stop<span class="w"> </span>postgresql
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># 2. Restaurer la sauvegarde de base</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/postgresql/data/*
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>tar<span class="w"> </span>-xzf<span class="w"> </span>/backup/base/base.tar.gz<span class="w"> </span>-C<span class="w"> </span>/var/lib/postgresql/data/
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="c1"># 3. Créer la configuration de récupération</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># Pour PostgreSQL 12+</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;restore_command = &#39;cp /backup/wal/%f %p&#39;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/var/lib/postgresql/data/postgresql.auto.conf
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;recovery_target_time = &#39;2024-01-15 14:30:00&#39;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/var/lib/postgresql/data/postgresql.auto.conf
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>touch<span class="w"> </span>/var/lib/postgresql/data/recovery.signal
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="c1"># 4. Démarrer PostgreSQL</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>systemctl<span class="w"> </span>start<span class="w"> </span>postgresql
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="c1"># 5. Surveiller la progression de la récupération</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/postgresql/postgresql.log
+</span></code></pre></div>
+<h2 id="tests-et-verification">Tests et vérification<a class="headerlink" href="#tests-et-verification" title="Permanent link">&para;</a></h2>
+<h3 id="procedures-de-test-regulieres">Procédures de test régulières<a class="headerlink" href="#procedures-de-test-regulieres" title="Permanent link">&para;</a></h3>
+<p><strong>1. Vérification de l’intégrité des sauvegardes :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Tester une sauvegarde logique</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>pg_restore<span class="w"> </span>--list<span class="w"> </span>backup.dump<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Code de sortie : </span><span class="nv">$?</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Doit être 0</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># Tester une sauvegarde compressée</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>gunzip<span class="w"> </span>-t<span class="w"> </span>backup.sql.gz
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Code de sortie : </span><span class="nv">$?</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Doit être 0</span>
+</span></code></pre></div>
+<p><strong>2. Tests de récupération :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Créer un environnement de test</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>createdb<span class="w"> </span>test_restore_db
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Effectuer une restauration de test</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>pg_restore<span class="w"> </span>-d<span class="w"> </span>test_restore_db<span class="w"> </span>backup.dump
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Vérifier l’intégrité des données</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>psql<span class="w"> </span>-d<span class="w"> </span>test_restore_db<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT COUNT(*) FROM critical_table;&quot;</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1"># Nettoyer</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>dropdb<span class="w"> </span>test_restore_db
+</span></code></pre></div>
+<p><strong>3. Script de test automatisé :</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># test_backup.sh</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nv">BACKUP_FILE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nv">TEST_DB</span><span class="o">=</span><span class="s2">&quot;backup_test_</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># Créer une base de données de test</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>createdb<span class="w"> </span><span class="nv">$TEST_DB</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1"># Tenter la restauration</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="k">if</span><span class="w"> </span>pg_restore<span class="w"> </span>-d<span class="w"> </span><span class="nv">$TEST_DB</span><span class="w"> </span><span class="nv">$BACKUP_FILE</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✓ Restauration réussie&quot;</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">    </span><span class="c1"># Effectuer des vérifications d’intégrité basiques</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">    </span><span class="nv">ROW_COUNT</span><span class="o">=</span><span class="k">$(</span>psql<span class="w"> </span>-d<span class="w"> </span><span class="nv">$TEST_DB</span><span class="w"> </span>-t<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT COUNT(*) FROM pg_tables WHERE schemaname = &#39;public&#39;;&quot;</span><span class="k">)</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✓ </span><span class="nv">$ROW_COUNT</span><span class="s2"> tables trouvées dans la sauvegarde&quot;</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">    </span><span class="c1"># Nettoyer</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">    </span>dropdb<span class="w"> </span><span class="nv">$TEST_DB</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✓ Base de données de test supprimée&quot;</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="k">else</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✗ Échec de la restauration&quot;</span>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="w">    </span>dropdb<span class="w"> </span><span class="nv">$TEST_DB</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="k">fi</span>
+</span></code></pre></div>
+<h3 id="surveillance-et-alertes">Surveillance et alertes<a class="headerlink" href="#surveillance-et-alertes" title="Permanent link">&para;</a></h3>
+<p><strong>Requête de surveillance des sauvegardes :</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">-- Vérifier l’ancienneté de la dernière sauvegarde</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">       </span><span class="n">last_backup</span><span class="p">,</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">       </span><span class="k">EXTRACT</span><span class="p">(</span><span class="n">EPOCH</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">last_backup</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3600</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">hours_since_backup</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="k">FROM</span><span class="w"> </span><span class="n">backup_log</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">last_backup</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;25 hours&#39;</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">last_backup</span><span class="p">;</span>
+</span></code></pre></div>
+<p><strong>État de l’archivage WAL :</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">-- Vérifier l’état de l’archivage WAL</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">archived_count</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">       </span><span class="n">last_archived_wal</span><span class="p">,</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">       </span><span class="n">last_archived_time</span><span class="p">,</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">       </span><span class="n">failed_count</span><span class="p">,</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">       </span><span class="n">last_failed_wal</span><span class="p">,</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">       </span><span class="n">last_failed_time</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="k">FROM</span><span class="w"> </span><span class="n">pg_stat_archiver</span><span class="p">;</span>
+</span></code></pre></div>
+<h2 id="erreurs-courantes-a-eviter">Erreurs courantes à éviter<a class="headerlink" href="#erreurs-courantes-a-eviter" title="Permanent link">&para;</a></h2>
+<h3 id="1-erreurs-liees-aux-sauvegardes">1. Erreurs liées aux sauvegardes<a class="headerlink" href="#1-erreurs-liees-aux-sauvegardes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ne pas tester régulièrement les restaurations</strong> : 37 % des sauvegardes échouent au moment où elles sont réellement
+  nécessaires</li>
+<li><strong>Stocker les sauvegardes au même endroit que les données</strong> : Vulnérabilité aux mêmes catastrophes</li>
+<li><strong>Ne pas chiffrer les données sensibles sauvegardées</strong> : Risques de conformité et de sécurité</li>
+<li><strong>Ignorer la surveillance des sauvegardes</strong> : Les échecs passent inaperçus</li>
+<li><strong>Ne pas documenter les procédures</strong> : Retards lors de la récupération en cas d’urgence</li>
+</ul>
+<h3 id="2-pieges-specifiques-a-postgresql">2. Pièges spécifiques à PostgreSQL<a class="headerlink" href="#2-pieges-specifiques-a-postgresql" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Oublier de sauvegarder pg_hba.conf et postgresql.conf</strong> : Ces fichiers de configuration ne sont pas inclus dans
+  pg_dump</li>
+<li><strong>Ne pas coordonner avec les périodes d’indisponibilité applicative</strong> : Sauvegardes incohérentes pendant les pics
+  d’activité</li>
+<li><strong>Rétention WAL insuffisante</strong> : Échec de la PITR à cause de fichiers WAL manquants</li>
+<li><strong>Permissions incorrectes de l’utilisateur de sauvegarde</strong> : Échecs dus à des privilèges insuffisants</li>
+<li><strong>Ne pas tenir compte des objets volumineux</strong> : pg_dump exclut les objets volumineux par défaut</li>
+</ul>
+<h3 id="3-problemes-de-planification-de-la-recuperation">3. Problèmes de planification de la récupération<a class="headerlink" href="#3-problemes-de-planification-de-la-recuperation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Absence de procédures de récupération documentées</strong> : Tentatives de récupération improvisées en situation de crise</li>
+<li><strong>Objectifs de temps de récupération non testés</strong> : Attentes irréalistes en cas d’urgence</li>
+<li><strong>Documentation manquante des dépendances</strong> : Échec des applications après la récupération de la base de données</li>
+<li><strong>Absence de plan de communication</strong> : Parties prenantes non informées pendant les pannes</li>
+</ul>
+<h2 id="liste-de-verification-pour-la-mise-en-uvre-dune-strategie-de-sauvegarde">Liste de vérification pour la mise en œuvre d’une stratégie de sauvegarde<a class="headerlink" href="#liste-de-verification-pour-la-mise-en-uvre-dune-strategie-de-sauvegarde" title="Permanent link">&para;</a></h2>
+<h3 id="configuration-initiale">Configuration initiale<a class="headerlink" href="#configuration-initiale" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Identifier les données critiques et les exigences de récupération</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Définir les objectifs RTO (Recovery Time Objective) et RPO (Recovery Point Objective)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Choisir les types et la fréquence appropriés de sauvegardes</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Mettre en place des emplacements sécurisés pour le stockage des sauvegardes</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Configurer la surveillance et les alertes</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Documenter toutes les procédures</li>
+</ul>
+<h3 id="configuration-postgresql">Configuration PostgreSQL<a class="headerlink" href="#configuration-postgresql" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Configurer l’archivage WAL pour permettre la PITR</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Créer un utilisateur dédié aux sauvegardes avec les permissions appropriées</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Planifier les tâches de sauvegarde automatisées</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Configurer la réplication en continu si nécessaire</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Tester les procédures de sauvegarde et de récupération</li>
+</ul>
+<h3 id="maintenance-continue">Maintenance continue<a class="headerlink" href="#maintenance-continue" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Surveiller quotidiennement l’exécution des sauvegardes</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Tester les procédures de restauration mensuellement</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Réviser et mettre à jour les politiques de rétention trimestriellement</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Organiser des exercices complets de reprise après sinistre annuellement</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Mettre à jour la documentation à mesure que les systèmes évoluent</li>
+</ul>
+<p><strong>N’oubliez pas</strong> : une stratégie de sauvegarde n’est efficace que si votre dernière restauration testée a été un succès.
+Les tests réguliers ne sont pas optionnels — ils sont essentiels pour garantir que votre stratégie de protection des
+données fonctionnera au moment où vous en aurez le plus besoin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04-mots-de-passe/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Gestion des mots de passe d&amp;rsquo;application dans une BD">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Gestion des mots de passe d&rsquo;application dans une BD
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../7.%20Exercices/01-exercices/" class="md-footer__link md-footer__link--next" aria-label="Next: Exercices">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercices
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>

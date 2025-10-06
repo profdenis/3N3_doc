@@ -131,62 +131,62 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/4.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/4.%20SQL%20Avanc%C3%A9/01-r%C3%A9cursives/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/4.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/4.%20SQL%20Avanc%C3%A9/02-vues/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/4.%20Mod%C3%A9lisation/02-notation/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/4.%20SQL%20Avanc%C3%A9/03-contraintes-et-d%C3%A9clencheurs/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/4.%20Mod%C3%A9lisation/03-exemples/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/4.%20SQL%20Avanc%C3%A9/04-transactions/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/4.%20Mod%C3%A9lisation/04-ea-vers-relationnel/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/4.%20Mod%C3%A9lisation/05-circular-dep/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/4.%20Mod%C3%A9lisation/06-cycles/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/02-notation/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/5.%20SQL%20Avanc%C3%A9/01-r%C3%A9cursives/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/03-exemples/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/5.%20SQL%20Avanc%C3%A9/02-vues/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/04-ea-vers-relationnel/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/5.%20SQL%20Avanc%C3%A9/03-contraintes-et-d%C3%A9clencheurs/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/05-circular-dep/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/5.%20SQL%20Avanc%C3%A9/04-transactions/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/06-cycles/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://profdenis.github.io/3N3_doc/5.%20SQL%20Avanc%C3%A9/05-objet-relationel/</loc>
+         <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/07-objet-relationel/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -207,6 +207,11 @@
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/04-mots-de-passe/</loc>
+         <lastmod>2025-10-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://profdenis.github.io/3N3_doc/6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/05-backups/</loc>
          <lastmod>2025-10-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
