@@ -200,7 +200,7 @@ ORDER BY length DESC;
 Difficulté : 1
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT film_id, description
 FROM film
@@ -214,7 +214,7 @@ WHERE title = 'ACADEMY DINOSAUR';
 Difficulté : 2
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT c.name
 FROM category c
@@ -230,7 +230,7 @@ WHERE f.title = 'ACADEMY DINOSAUR';
 Difficulté : 2
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT f.title
 FROM film f
@@ -247,7 +247,7 @@ Meilleure réponse :
 Difficulté : 2
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT c.name
 FROM category c
@@ -261,7 +261,7 @@ Autres réponses :
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 select c.category_id, c.name
 from category c
@@ -274,7 +274,7 @@ having count(fc.film_id) = 0;
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 select category_id, name
 from category
@@ -285,7 +285,7 @@ where category_id not in (select category_id from film_category);
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 select category_id, name
 from category c
@@ -298,7 +298,7 @@ where not exists(select fc.category_id
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 select category_id, name
 from category c
@@ -312,7 +312,7 @@ from category c
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 select c.category_id, name
 from category c
@@ -328,7 +328,7 @@ from category c
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 with T as (select category_id
            from category c
@@ -347,7 +347,7 @@ from category c
 Difficulté : 2
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT f.title
 FROM film f
@@ -363,7 +363,7 @@ WHERE c.name = 'Action';
 Difficulté : 2
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT COUNT(*) AS action_film_count
 FROM film_category fc
@@ -378,7 +378,7 @@ WHERE c.name = 'Action';
 Difficulté : 3
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT c.name, COUNT(fc.film_id) AS film_count
 FROM category c
@@ -394,7 +394,7 @@ ORDER BY film_count DESC;
 Difficulté : 3
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT f.title, COUNT(fc.category_id) AS category_count
 FROM film f
@@ -410,7 +410,7 @@ ORDER BY category_count DESC;
 Difficulté : 1
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT COUNT(*) AS total_films
 FROM film;
@@ -423,7 +423,7 @@ FROM film;
 Difficulté : 1
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT COUNT(*) AS language_count
 FROM language;
@@ -436,7 +436,7 @@ FROM language;
 Difficulté : 1
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT COUNT(DISTINCT language_id) AS film_language_count
 FROM film;
@@ -449,7 +449,7 @@ FROM film;
 Difficulté : 3
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT c.name, COUNT(f.film_id) AS film_count
 FROM category c
@@ -465,7 +465,7 @@ LIMIT 1;
 Difficulté : 4
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 WITH category_counts AS (SELECT c.category_id, c.name, COUNT(f.film_id) AS film_count
                          FROM category c
@@ -483,6 +483,21 @@ ORDER BY cc.name;
 </details>
 <br>
 
+Avec `RANK` :
+??? note "Code"
+    ```sql
+    WITH classement as (SELECT c.name,
+                               COUNT(fc.film_id)                             AS film_count,
+                               RANK() OVER (ORDER BY COUNT(fc.film_id) DESC) as rang
+                        FROM category c
+                                 JOIN film_category fc ON c.category_id = fc.category_id
+                        GROUP BY c.category_id, c.name)
+    SELECT name, film_count
+    FROM classement
+    WHERE rang = 1;
+    ```
+
+
 ### 14. Liste des films les plus loués
 
 Difficulté : 3
@@ -491,7 +506,7 @@ Pour obtenir la liste des 10 films les plus loués, avec leur titre et le nombre
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT f.title, COUNT(r.rental_id) AS rental_count
 FROM film f
@@ -507,7 +522,7 @@ LIMIT 10;
 Difficulté : 4
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 WITH actor_counts AS (
     SELECT a.actor_id, a.first_name, a.last_name, COUNT(fa.film_id) AS film_count
@@ -519,7 +534,7 @@ top_5_count AS (
     SELECT film_count
     FROM actor_counts
     ORDER BY film_count DESC
-    LIMIT 1 OFFSET 4
+    LIMIT 1 OFFSET 9
 )
 SELECT ac.first_name, ac.last_name, ac.film_count
 FROM actor_counts ac, top_5_count t5c
@@ -529,6 +544,21 @@ ORDER BY ac.film_count DESC, ac.last_name, ac.first_name;
 </details>
 <br>
 
+Avec `RANK` :
+??? note "Code"
+    ```sql
+    WITH classement as (SELECT f.title, COUNT(r.rental_id) AS rental_count,
+           RANK() OVER (ORDER BY COUNT(r.rental_id) desc) as rang
+    FROM film f
+             JOIN inventory i ON f.film_id = i.film_id
+             JOIN rental r ON i.inventory_id = r.inventory_id
+    GROUP BY f.film_id, f.title)
+    SELECT title, rental_count, rang
+    FROM classement
+    WHERE rang <= 10
+    ORDER BY rang, title DESC;
+    ```
+
 ### 15. Revenus totaux par catégorie de film
 
 Difficulté : 3
@@ -537,7 +567,7 @@ Pour calculer les revenus totaux générés par chaque catégorie de film :
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT c.name AS category, SUM(p.amount) AS total_revenue
 FROM category c
@@ -560,7 +590,7 @@ Pour obtenir les 10 clients ayant dépensé le plus, avec leur nom et le montant
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT c.first_name, c.last_name, SUM(p.amount) AS total_spent
 FROM customer c
@@ -575,7 +605,7 @@ LIMIT 10;
 Difficulté : 4
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 WITH customer_spending AS (SELECT c.customer_id, c.first_name, c.last_name, SUM(p.amount) AS total_spent
                            FROM customer c
@@ -594,6 +624,23 @@ ORDER BY cs.total_spent DESC, cs.last_name, cs.first_name;
 </details>
 <br>
 
+
+Avec `RANK` :
+??? note "Code"
+    ```sql
+    WITH classement AS (SELECT c.first_name,
+                               c.last_name,
+                               SUM(p.amount)                             AS total_spent,
+                               RANK() OVER (ORDER BY SUM(p.amount) DESC) AS rang
+                        FROM customer c
+                                 JOIN payment p ON c.customer_id = p.customer_id
+                        GROUP BY c.customer_id, c.first_name, c.last_name)
+    SELECT *
+    FROM classement
+    WHERE rang <= 10
+    ORDER BY rang, first_name, last_name DESC;
+    ```
+
 ### 17. Films disponibles dans un magasin spécifique
 
 Difficulté : 2
@@ -602,7 +649,7 @@ Pour obtenir la liste des films disponibles dans le magasin avec l'ID 1 :
 
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT DISTINCT f.title
 FROM film f
@@ -618,7 +665,7 @@ ORDER BY f.title;
 Difficulté : 3
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT a.actor_id, a.first_name, a.last_name, COUNT(fa.film_id) AS film_count
 FROM actor a
@@ -633,7 +680,7 @@ LIMIT 5;
 Difficulté : 4
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 WITH actor_counts AS (SELECT a.actor_id, a.first_name, a.last_name, COUNT(fa.film_id) AS film_count
                       FROM actor a
@@ -652,12 +699,26 @@ ORDER BY ac.film_count DESC, ac.last_name, ac.first_name;
 </details>
 <br>
 
+Avec `RANK` :
+??? note "Code"
+    ```sql
+    WITH classement AS (SELECT a.actor_id, a.first_name, a.last_name, COUNT(fa.film_id) AS film_count,
+           RANK() OVER (ORDER BY COUNT(fa.film_id) DESC ) as rang
+    FROM actor a
+             JOIN film_actor fa ON a.actor_id = fa.actor_id
+    GROUP BY a.actor_id, a.first_name, a.last_name)
+    SELECT *
+    FROM classement
+    WHERE rang <= 5
+    ORDER BY rang, first_name, last_name DESC;
+    ```
+
 ### 19. Quel est le revenu total généré par chaque magasin ?
 
 Difficulté : 3
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT s.store_id, s.address_id, SUM(p.amount) AS total_revenue
 FROM store s
@@ -674,7 +735,7 @@ ORDER BY total_revenue DESC;
 Difficulté : 3
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT f.film_id, f.title, SUM(p.amount) AS total_revenue
 FROM film f
@@ -691,7 +752,7 @@ LIMIT 10;
 Difficulté : 4
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 WITH film_revenue AS (SELECT f.film_id, f.title, SUM(p.amount) AS total_revenue
                       FROM film f
@@ -712,12 +773,28 @@ ORDER BY fr.total_revenue DESC, fr.title;
 </details>
 <br>
 
+Avec `RANK` :
+??? note "Code"
+    ```sql
+    WITH classement AS (SELECT f.film_id, f.title, SUM(p.amount) AS total_revenue,
+           RANK() OVER (ORDER BY SUM(p.amount) DESC ) as rang
+    FROM film f
+             JOIN inventory i ON f.film_id = i.film_id
+             JOIN rental r ON i.inventory_id = r.inventory_id
+             JOIN payment p ON r.rental_id = p.rental_id
+    GROUP BY f.film_id, f.title)
+    SELECT *
+    FROM classement
+    WHERE rang <= 10
+    ORDER BY rang, title DESC;
+    ```
+
 ### 21. Quelle est la durée moyenne de location pour chaque catégorie de film ?
 
 Difficulté : 4
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT c.name, AVG(EXTRACT(DAY FROM (r.return_date - r.rental_date))) AS avg_rental_duration
 FROM category c
@@ -737,7 +814,7 @@ ORDER BY avg_rental_duration DESC;
 Difficulté : 4
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT c.customer_id, c.first_name, c.last_name, MAX(r.rental_date) AS last_rental_date
 FROM customer c
@@ -755,7 +832,7 @@ ORDER BY last_rental_date;
 Difficulté : 3
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT f.film_id, f.title
 FROM film f
@@ -771,7 +848,7 @@ WHERE r.rental_id IS NULL;
 Difficulté : 3
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT c.customer_id, c.first_name, c.last_name, SUM(p.amount) AS total_spent
 FROM customer c
@@ -786,7 +863,7 @@ LIMIT 1;
 Difficulté : 4
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 WITH customer_spending AS (SELECT c.customer_id, c.first_name, c.last_name, SUM(p.amount) AS total_spent
                            FROM customer c
@@ -808,7 +885,7 @@ ORDER BY cs.last_name, cs.first_name;
 Difficulté : 5
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 SELECT a1.actor_id   AS actor1_id,
        a1.first_name AS actor1_first_name,
@@ -831,7 +908,7 @@ LIMIT 5;
 Difficulté : 5
 <details>
     <summary>Code</summary>
-    
+
 ```sql
 WITH actor_pairs AS (SELECT LEAST(fa1.actor_id, fa2.actor_id)    AS actor1_id,
                             GREATEST(fa1.actor_id, fa2.actor_id) AS actor2_id,
@@ -863,6 +940,6 @@ ORDER BY ap.films_together DESC, a1.last_name, a1.first_name, a2.last_name, a2.f
 -------
 
 ??? info "Utilisation de l'IA"
-    Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des 
-    explications, des exemples et/ou des suggestions de structure. Toutes les informations ont 
+    Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des
+    explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
     été vérifiées, éditées et complétées par l'auteur.

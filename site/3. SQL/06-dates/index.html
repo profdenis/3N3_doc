@@ -2682,7 +2682,8 @@ termes de stockage si seule la date est nécessaire.</p>
 </tr>
 </tbody>
 </table>
-<p>Citations:</p>
+<details class="note">
+<summary>Citations</summary>
 <ul>
 <li>[1] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/</li>
 <li>[2] https://stackoverflow.com/questions/5876218/difference-between-timestamps-with-without-time-zone-in-postgresql</li>
@@ -2692,6 +2693,7 @@ termes de stockage si seule la date est nécessaire.</p>
 <li>[6] https://www.sqlines.com/postgresql/how-to/datediff</li>
 <li>[7] https://www.postgresql.org/docs/current/datatype-datetime.html</li>
 </ul>
+</details>
 <h2 id="comparaisons-simples-avec-des-dates-en-format-iso">Comparaisons simples avec des dates en format ISO<a class="headerlink" href="#comparaisons-simples-avec-des-dates-en-format-iso" title="Permanent link">&para;</a></h2>
 <p>PostgreSQL supporte nativement le format de date ISO 8601 (YYYY-MM-DD) pour les comparaisons :</p>
 <ul>
@@ -2914,7 +2916,8 @@ termes de stockage si seule la date est nécessaire.</p>
 <p>En pratique, les deux fonctions sont très similaires et interchangeables dans la plupart des cas. Le choix dépend
 souvent des préférences personnelles ou des conventions de codage. Pour une meilleure portabilité et précision,
 <code>EXTRACT()</code> est généralement recommandé.</p>
-<p>Citations:</p>
+<details class="note">
+<summary>Citations</summary>
 <ul>
 <li>[1] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/</li>
 <li>[2] https://docs.getdbt.com/blog/extract-sql-love-letter</li>
@@ -2925,6 +2928,7 @@ souvent des préférences personnelles ou des conventions de codage. Pour une me
 <li>[7] https://www.timescale.com/learn/postgresql-date-and-time-functions</li>
 <li>[8] https://www.commandprompt.com/education/date-time-functions-in-postgresql-with-examples/</li>
 </ul>
+</details>
 <h3 id="date_trunc">DATE_TRUNC<a class="headerlink" href="#date_trunc" title="Permanent link">&para;</a></h3>
 <p>Tronque une date à une précision spécifiée[2].</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">created</span><span class="p">)</span>
@@ -3038,7 +3042,8 @@ souvent des préférences personnelles ou des conventions de codage. Pour une me
 </ol>
 <p>En résumé, <code>now()</code> offre plus de précision et de flexibilité, tandis que CURRENT_DATE est plus simple et plus rapide
 lorsque seule la date est nécessaire[1][3][4].</p>
-<p>Citations:</p>
+<details class="note">
+<summary>Citations</summary>
 <ul>
 <li>[1] https://www.devart.com/dbforge/postgresql/studio/compare-dates.html</li>
 <li>[2] https://www.cybertec-postgresql.com/en/postgresql-now-vs-nowtimestamp-vs-clock_timestamp/</li>
@@ -3049,6 +3054,7 @@ lorsque seule la date est nécessaire[1][3][4].</p>
 <li>[7] https://www.timescale.com/learn/postgresql-date-and-time-functions</li>
 <li>[8] https://www.postgresql.org/docs/8.1/functions-datetime.html</li>
 </ul>
+</details>
 <h2 id="operations-avec-interval">Opérations avec <code>interval</code><a class="headerlink" href="#operations-avec-interval" title="Permanent link">&para;</a></h2>
 <p>L&rsquo;utilisation d&rsquo;<code>interval</code> permet d&rsquo;effectuer des calculs sur les dates[5]:</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">-- Ajouter 1 mois à la date actuelle</span>
@@ -3139,7 +3145,8 @@ lorsque seule la date est nécessaire[1][3][4].</p>
 <p>Ces exemples couvrent les opérations les plus courantes sur les dates et timestamps dans PostgreSQL. N&rsquo;oubliez pas que
 PostgreSQL offre de nombreuses autres fonctions et possibilités pour manipuler les dates et les heures selon vos besoins
 spécifiques.</p>
-<p>Citations:</p>
+<details class="note">
+<summary>Citations</summary>
 <ul>
 <li>[1] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-extract/</li>
 <li>[2] https://www.postgresqltutorial.com/postgresql-date-functions/</li>
@@ -3156,6 +3163,7 @@ spécifiques.</p>
 <li>[13] https://stackoverflow.com/questions/31123409/interval-days-in-postgresql-with-two-parameters</li>
 <li>[14] https://www.postgresql.org/docs/current/datatype-datetime.html</li>
 </ul>
+</details>
 <h2 id="operations-sur-les-dates">Opérations sur les dates<a class="headerlink" href="#operations-sur-les-dates" title="Permanent link">&para;</a></h2>
 <ol type="1">
 <li>
@@ -3213,7 +3221,8 @@ spécifiques.</p>
 </ol>
 <p>Ces opérations sont très utiles pour effectuer des calculs temporels dans vos requêtes, comme trouver la durée entre
 deux événements ou calculer des dates futures ou passées basées sur une date de référence.</p>
-<p>Citations:</p>
+<details class="note">
+<summary>Citations</summary>
 <ul>
 <li>[1] https://docs.postgresql.fr/16/functions-datetime.html</li>
 <li>[2] https://learnsql.fr/blog/fonctions-de-date-de-postgresql/</li>
@@ -3223,6 +3232,7 @@ deux événements ou calculer des dates futures ou passées basées sur une date
 <li>[6] https://postgresql.developpez.com/documentation/francais/8.2.5/functions-datetime.html</li>
 <li>[7] https://www.postgresql.org/docs/8.1/functions-datetime.html</li>
 </ul>
+</details>
 <h2 id="conversion-dun-intervalle-en-nombre-dheures-float">Conversion d&rsquo;un intervalle en nombre d&rsquo;heures (float)<a class="headerlink" href="#conversion-dun-intervalle-en-nombre-dheures-float" title="Permanent link">&para;</a></h2>
 <p>La méthode la plus courante pour convertir un intervalle en nombre est de le transformer en secondes, puis de le diviser
 pour obtenir l&rsquo;unité souhaitée. Pour obtenir un nombre d&rsquo;heures en float, vous pouvez utiliser la fonction EXTRACT avec
@@ -3247,7 +3257,8 @@ l&rsquo;unité &lsquo;epoch&rsquo; :</p>
    conversion[3].</p>
 </li>
 <li>
-<p><em>Choix de l&rsquo;unité</em> : Vous pouvez ajuster le diviseur (3600.0 dans les exemples ci-dessus) pour obtenir d&rsquo;autres unités.
+<p><em>Choix de l&rsquo;unité</em> : Vous pouvez ajuster le diviseur (3600.0 dans les exemples ci-dessus) pour obtenir d&rsquo;autres
+   unités.
    Par exemple, utilisez 86400.0 pour obtenir des jours, ou 60.0 pour des minutes.</p>
 </li>
 <li>
@@ -3258,7 +3269,9 @@ l&rsquo;unité &lsquo;epoch&rsquo; :</p>
 <p>En conclusion, bien que PostgreSQL ne fournisse pas de conversion directe d&rsquo;un intervalle en float ou numeric, il est
 possible d&rsquo;effectuer cette conversion en utilisant la fonction EXTRACT avec l&rsquo;unité &lsquo;epoch&rsquo;, suivie d&rsquo;une division et
 éventuellement d&rsquo;un CAST si nécessaire.</p>
-<p>Citations:</p>
+<details class="note">
+<summary>Citations</summary>
+</details>
 <ul>
 <li>[1] https://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres</li>
 <li>[2] https://www.postgresql.org/docs/8.1/functions-formatting.html</li>
@@ -3272,8 +3285,8 @@ possible d&rsquo;effectuer cette conversion en utilisant la fonction EXTRACT ave
 <summary>Utilisation de l&rsquo;IA</summary>
 </details>
 <p>Page rédigée en partie avec l&rsquo;aide d&rsquo;un assistant IA. L&rsquo;IA a été utilisée pour générer des
-   explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
-   été vérifiées, éditées et complétées par l&rsquo;auteur.</p>
+explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
+été vérifiées, éditées et complétées par l&rsquo;auteur.</p>
 
 
 

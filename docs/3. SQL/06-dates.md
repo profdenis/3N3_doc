@@ -59,7 +59,6 @@ select (now()::date);
 |:-----------|
 | 2024-09-27 |
 
-
 ```sql
 select (CURRENT_DATE::timestamp);
 -- CURRENT_DATE donne la date d'aujourd'hui
@@ -69,15 +68,14 @@ select (CURRENT_DATE::timestamp);
 |:---------------------------|
 | 2024-09-27 00:00:00.000000 |
 
-Citations:
-
-- [1] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/
-- [2] https://stackoverflow.com/questions/5876218/difference-between-timestamps-with-without-time-zone-in-postgresql
-- [3] https://www.enterprisedb.com/blog/postgresql-interval-date-timestamp-and-time-data-types
-- [4] https://neon.tech/docs/data-types/date-and-time
-- [5] https://stackoverflow.com/questions/60825438/postgres-date-compare-with-iso-timestamp
-- [6] https://www.sqlines.com/postgresql/how-to/datediff
-- [7] https://www.postgresql.org/docs/current/datatype-datetime.html
+??? note "Citations"
+     - [1] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/
+     - [2] https://stackoverflow.com/questions/5876218/difference-between-timestamps-with-without-time-zone-in-postgresql
+     - [3] https://www.enterprisedb.com/blog/postgresql-interval-date-timestamp-and-time-data-types
+     - [4] https://neon.tech/docs/data-types/date-and-time
+     - [5] https://stackoverflow.com/questions/60825438/postgres-date-compare-with-iso-timestamp
+     - [6] https://www.sqlines.com/postgresql/how-to/datediff
+     - [7] https://www.postgresql.org/docs/current/datatype-datetime.html
 
 ## Comparaisons simples avec des dates en format ISO
 
@@ -197,16 +195,15 @@ En pratique, les deux fonctions sont très similaires et interchangeables dans l
 souvent des préférences personnelles ou des conventions de codage. Pour une meilleure portabilité et précision,
 `EXTRACT()` est généralement recommandé.
 
-Citations:
-
-- [1] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/
-- [2] https://docs.getdbt.com/blog/extract-sql-love-letter
-- [3] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-extract/
-- [4] https://materialize.com/docs/sql/functions/date-part/
-- [5] https://stackoverflow.com/questions/38442340/difference-between-extractyear-from-timestamp-function-and-date-partyear-t
-- [6] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-date_part/
-- [7] https://www.timescale.com/learn/postgresql-date-and-time-functions
-- [8] https://www.commandprompt.com/education/date-time-functions-in-postgresql-with-examples/
+??? note "Citations"
+     - [1] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/
+     - [2] https://docs.getdbt.com/blog/extract-sql-love-letter
+     - [3] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-extract/
+     - [4] https://materialize.com/docs/sql/functions/date-part/
+     - [5] https://stackoverflow.com/questions/38442340/difference-between-extractyear-from-timestamp-function-and-date-partyear-t
+     - [6] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-date_part/
+     - [7] https://www.timescale.com/learn/postgresql-date-and-time-functions
+     - [8] https://www.commandprompt.com/education/date-time-functions-in-postgresql-with-examples/
 
 ### DATE_TRUNC
 
@@ -276,16 +273,15 @@ select current_date;
 En résumé, `now()` offre plus de précision et de flexibilité, tandis que CURRENT_DATE est plus simple et plus rapide
 lorsque seule la date est nécessaire[1][3][4].
 
-Citations:
-
-- [1] https://www.devart.com/dbforge/postgresql/studio/compare-dates.html
-- [2] https://www.cybertec-postgresql.com/en/postgresql-now-vs-nowtimestamp-vs-clock_timestamp/
-- [3] https://www.postgresql.org/message-id/48B1BE33.3060505@vieonet.com
-- [4] https://stackoverflow.com/questions/57469642/difference-between-current-timestamp-and-current-date
-- [5] https://stackoverflow.com/questions/5876218/difference-between-timestamps-with-without-time-zone-in-postgresql
-- [6] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/
-- [7] https://www.timescale.com/learn/postgresql-date-and-time-functions
-- [8] https://www.postgresql.org/docs/8.1/functions-datetime.html
+??? note "Citations"
+     - [1] https://www.devart.com/dbforge/postgresql/studio/compare-dates.html
+     - [2] https://www.cybertec-postgresql.com/en/postgresql-now-vs-nowtimestamp-vs-clock_timestamp/
+     - [3] https://www.postgresql.org/message-id/48B1BE33.3060505@vieonet.com
+     - [4] https://stackoverflow.com/questions/57469642/difference-between-current-timestamp-and-current-date
+     - [5] https://stackoverflow.com/questions/5876218/difference-between-timestamps-with-without-time-zone-in-postgresql
+     - [6] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/
+     - [7] https://www.timescale.com/learn/postgresql-date-and-time-functions
+     - [8] https://www.postgresql.org/docs/8.1/functions-datetime.html
 
 ## Opérations avec `interval`
 
@@ -350,27 +346,25 @@ select to_char(current_date, 'DD/MM/YYYY');
 |:-----------|
 | 25/09/2024 |
 
-
 Ces exemples couvrent les opérations les plus courantes sur les dates et timestamps dans PostgreSQL. N'oubliez pas que
 PostgreSQL offre de nombreuses autres fonctions et possibilités pour manipuler les dates et les heures selon vos besoins
 spécifiques.
 
-Citations:
-
-- [1] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-extract/
-- [2] https://www.postgresqltutorial.com/postgresql-date-functions/
-- [3] https://www.timescale.com/learn/postgresql-date-and-time-functions
-- [4] https://www.tutorialspoint.com/postgresql/postgresql_date_time.htm
-- [5] https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-interval/
-- [6] https://www.commandprompt.com/education/postgresql-interval-data-type-with-examples/
-- [7] https://www.commandprompt.com/education/date-time-functions-in-postgresql-with-examples/
-- [8] https://www.geeksforgeeks.org/postgresql-interval-data-type/
-- [9] https://www.tutorialsteacher.com/postgresql/interval-data-type
-- [10] https://www.enterprisedb.com/blog/postgresql-interval-date-timestamp-and-time-data-types
-- [11] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/
-- [12] https://stackoverflow.com/questions/60825438/postgres-date-compare-with-iso-timestamp
-- [13] https://stackoverflow.com/questions/31123409/interval-days-in-postgresql-with-two-parameters
-- [14] https://www.postgresql.org/docs/current/datatype-datetime.html
+??? note "Citations"
+     - [1] https://www.postgresqltutorial.com/postgresql-date-functions/postgresql-extract/
+     - [2] https://www.postgresqltutorial.com/postgresql-date-functions/
+     - [3] https://www.timescale.com/learn/postgresql-date-and-time-functions
+     - [4] https://www.tutorialspoint.com/postgresql/postgresql_date_time.htm
+     - [5] https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-interval/
+     - [6] https://www.commandprompt.com/education/postgresql-interval-data-type-with-examples/
+     - [7] https://www.commandprompt.com/education/date-time-functions-in-postgresql-with-examples/
+     - [8] https://www.geeksforgeeks.org/postgresql-interval-data-type/
+     - [9] https://www.tutorialsteacher.com/postgresql/interval-data-type
+     - [10] https://www.enterprisedb.com/blog/postgresql-interval-date-timestamp-and-time-data-types
+     - [11] https://www.squash.io/how-to-compare-dates-in-postgresql-databases/
+     - [12] https://stackoverflow.com/questions/60825438/postgres-date-compare-with-iso-timestamp
+     - [13] https://stackoverflow.com/questions/31123409/interval-days-in-postgresql-with-two-parameters
+     - [14] https://www.postgresql.org/docs/current/datatype-datetime.html
 
 ## Opérations sur les dates
 
@@ -411,15 +405,14 @@ Citations:
 Ces opérations sont très utiles pour effectuer des calculs temporels dans vos requêtes, comme trouver la durée entre
 deux événements ou calculer des dates futures ou passées basées sur une date de référence.
 
-Citations:
-
-- [1] https://docs.postgresql.fr/16/functions-datetime.html
-- [2] https://learnsql.fr/blog/fonctions-de-date-de-postgresql/
-- [3] https://forums.postgresql.fr/viewtopic.php?id=1067
-- [4] https://postgresql.developpez.com/documentation/francais/10beta4/functions-datetime.html
-- [5] https://sql.sh/fonctions/date-heure
-- [6] https://postgresql.developpez.com/documentation/francais/8.2.5/functions-datetime.html
-- [7] https://www.postgresql.org/docs/8.1/functions-datetime.html
+??? note "Citations"
+     - [1] https://docs.postgresql.fr/16/functions-datetime.html
+     - [2] https://learnsql.fr/blog/fonctions-de-date-de-postgresql/
+     - [3] https://forums.postgresql.fr/viewtopic.php?id=1067
+     - [4] https://postgresql.developpez.com/documentation/francais/10beta4/functions-datetime.html
+     - [5] https://sql.sh/fonctions/date-heure
+     - [6] https://postgresql.developpez.com/documentation/francais/8.2.5/functions-datetime.html
+     - [7] https://www.postgresql.org/docs/8.1/functions-datetime.html
 
 ## Conversion d'un intervalle en nombre d'heures (float)
 
@@ -452,7 +445,8 @@ Cette requête convertira l'intervalle en un nombre de type numeric avec 2 déci
    exemple, '1 year' n'est pas toujours égal à 365 jours, ce qui peut conduire à des résultats inattendus lors de la
    conversion[3].
 
-3. _Choix de l'unité_ : Vous pouvez ajuster le diviseur (3600.0 dans les exemples ci-dessus) pour obtenir d'autres unités.
+3. _Choix de l'unité_ : Vous pouvez ajuster le diviseur (3600.0 dans les exemples ci-dessus) pour obtenir d'autres
+   unités.
    Par exemple, utilisez 86400.0 pour obtenir des jours, ou 60.0 pour des minutes.
 
 4. _Fonction `to_char()`_ : Pour des besoins de formatage plus complexes, vous pouvez utiliser la fonction to_char() qui
@@ -462,8 +456,7 @@ En conclusion, bien que PostgreSQL ne fournisse pas de conversion directe d'un i
 possible d'effectuer cette conversion en utilisant la fonction EXTRACT avec l'unité 'epoch', suivie d'une division et
 éventuellement d'un CAST si nécessaire.
 
-Citations:
-
+??? note "Citations"
 - [1] https://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres
 - [2] https://www.postgresql.org/docs/8.1/functions-formatting.html
 - [3] https://www.alibabacloud.com/blog/how-to-convert-a-postgresql-time-interval-to-a-numeric-value_598990
@@ -476,6 +469,6 @@ Citations:
 -------
 
 ??? info "Utilisation de l'IA"
-   Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des
-   explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
-   été vérifiées, éditées et complétées par l'auteur.
+Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des
+explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
+été vérifiées, éditées et complétées par l'auteur.
