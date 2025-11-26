@@ -19,7 +19,7 @@
               instructions `CREATE TABLE`
         - les colonnes faisant partie d'une clé étrangère sont suivies d'un *
         -
-        *exemple* : `employee(EMP_ID integer, name text, address text, dept_id* integer)`
+      *exemple* : `employee(EMP_ID integer, name text, address text, dept_id* integer)`
     - d'autres formes intermédiaires entre les deux précédentes sont également
       possibles
 - **Diagramme physique** : à partir d'un diagramme logique, convertir toutes les
@@ -29,10 +29,8 @@
 ## Étapes
 
 1. Chaque entité du diagramme ER sera une table dans le schéma relationnel
-    - tous les attributs de l'entité deviennent des colonnes dans le schéma de
-      table
-    - les attributs de clé primaire deviennent des colonnes de clé primaire dans
-      le schéma de table
+    - tous les attributs de l'entité deviennent des colonnes dans le schéma de table
+    - les attributs de clé primaire deviennent des colonnes de clé primaire dans le schéma de table
 
 2. Chaque association plusieurs-à-plusieurs sera une table
     - les attributs de l'association sont ajoutés au schéma de table
@@ -62,6 +60,9 @@
       exactement-un)
 
 ## Exemples
+
+- **Méthode traditionnelle** : lister seulement le nom des tables et des colonnes
+- **Méthode alternative** : modifier le diagramme logique pour insérer les clés étrangères et les tables d'association
 
 ### Contacts
 

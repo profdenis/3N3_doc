@@ -16,7 +16,7 @@ Considérons un cas d'entreprise classique où :
 
 Cela crée une dépendance circulaire : Employé → Département → Employé (responsable)
 
-## Diagramme entité-relation (DER)
+## Diagramme entité-association (DEA)
 
 ```puml
 @startuml
@@ -59,7 +59,7 @@ TABLE(Project, "Projet") {
 Employee "*" -- "0..1" Department : appartient à
 Department "0..1" -- "0..1" Employee : géré par
 
-' Relations supplémentaires (autorisation également des valeurs NULL)
+' associations supplémentaires (autorisation également des valeurs NULL)
 Department "0..1" -- "*" Project : parraine
 Employee "0..1" -- "*" Project : dirige
 
@@ -109,7 +109,7 @@ Employee "0..1" -- "*" Project : dirige
     Employee "*" -- "0..1" Department : appartient à
     Department "0..1" -- "0..1" Employee : géré par
     
-    ' Relations supplémentaires (autorisation également des valeurs NULL)
+    ' associations supplémentaires (autorisation également des valeurs NULL)
     Department "0..1" -- "*" Project : parraine
     Employee "0..1" -- "*" Project : dirige
     
@@ -205,7 +205,7 @@ CREATE TABLE Project
 );
 ```
 
-**Étape 4 :** Ajoutez la relation de clé étrangère manquante à l'aide de ALTER TABLE
+**Étape 4 :** Ajoutez l'association de clé étrangère manquante à l'aide de ALTER TABLE
 
 ```sql
 -- Ajoutez la colonne manager_id
@@ -264,7 +264,7 @@ CREATE TABLE Project
     FOREIGN KEY (department_id) REFERENCES Department (department_id)
 );
 
--- Étape 4 : Ajoutez la relation manager_id pour compléter la dépendance circulaire
+-- Étape 4 : Ajoutez l'association manager_id pour compléter la dépendance circulaire
 ALTER TABLE Department
     ADD COLUMN manager_id INT;
 
@@ -326,7 +326,7 @@ SELECT CONCAT(e.first_name, ' ', e.last_name) AS nom_employe,
 FROM Employee e
          LEFT JOIN Department d ON e.department_id = d.department_id;
 
--- Affichez la relation circulaire en action
+-- Affichez l'association circulaire en action
 SELECT d.name                                     AS departement,
        CONCAT(mgr.first_name, ' ', mgr.last_name) AS responsable,
        CONCAT('Travaille dans : ', dept.name)     AS departement_responsable
@@ -351,7 +351,7 @@ FROM Department d
     - Ajoutez les contraintes restantes en dernier
 
 4. **Scénarios courants :** Les dépendances circulaires surviennent souvent avec :
-    - Les relations Responsable/Employé
+    - Les associations Responsable/Employé
     - Les hiérarchies Parent/Enfant
     - Les références mutuelles entre entités
 
@@ -367,17 +367,17 @@ FROM Department d
 - Ne tentez pas de créer toutes les tables avec toutes les clés étrangères d'un seul coup
 - N'oubliez pas d'ajouter les contraintes manquantes après la création des tables
 - N'insérez pas de données avant que toutes les tables nécessaires n'existent
-- Testez toujours vos relations de clés étrangères avec des requêtes de vérification
+- Testez toujours vos associations de clés étrangères avec des requêtes de vérification
 
-## Comprendre les cardinalités des relations : « Au plus un » vs « Exactement un »
+## Comprendre les cardinalités des associations : « Au plus un » vs « Exactement un »
 
 ### 📋 **Note importante concernant le diagramme**
 
-Dans notre diagramme DER, nous utilisons des relations **« 0..1 » (au plus un)** plutôt que **« 1 » (exactement un)**
+Dans notre diagramme DEA, nous utilisons des associations **« 0..1 » (au plus un)** plutôt que **« 1 » (exactement un)**
 car nos colonnes de clés étrangères autorisent les valeurs NULL. Il s'agit d'une distinction cruciale :
 
-- **« 0..1 » (au plus un)** : La relation est optionnelle – la clé étrangère peut être NULL
-- **« 1 » (exactement un)** : La relation est obligatoire – la clé étrangère ne peut pas être NULL
+- **« 0..1 » (au plus un)** : l'association est optionnelle – la clé étrangère peut être NULL
+- **« 1 » (exactement un)** : l'association est obligatoire – la clé étrangère ne peut pas être NULL
 
 Notre implémentation actuelle permet :
 
@@ -386,24 +386,24 @@ Notre implémentation actuelle permet :
 - Des projets sans chefs de projet (`lead_employee_id` peut être NULL)
 - Des projets sans départements parrains (`department_id` peut être NULL)
 
-### Rendre les relations « Exactement un » (obligatoires)
+### Rendre les associations « Exactement un » (obligatoires)
 
-Si vous souhaitez imposer des relations **« exactement un »**, vous devez ajouter des contraintes `NOT NULL` aux
+Si vous souhaitez imposer des associations **« exactement un »**, vous devez ajouter des contraintes `NOT NULL` aux
 colonnes de clés étrangères.
 
-#### Pour la plupart des relations, c'est simple :
+#### Pour la plupart des associations, c'est simple :
 
 ```sql
 -- Syntaxe PostgreSQL pour ajouter des contraintes NOT NULL
--- Rendre la relation employé-département obligatoire
+-- Rendre l'association employé-département obligatoire
 ALTER TABLE Employee
     ALTER COLUMN department_id SET NOT NULL;
 
--- Rendre la relation projet-département obligatoire  
+-- Rendre l'association projet-département obligatoire  
 ALTER TABLE Project
     ALTER COLUMN department_id SET NOT NULL;
 
--- Rendre la relation chef de projet obligatoire
+-- Rendre l'association chef de projet obligatoire
 ALTER TABLE Project
     ALTER COLUMN lead_employee_id SET NOT NULL;
 ```
@@ -418,9 +418,9 @@ ALTER TABLE Department
     ALTER COLUMN manager_id SET NOT NULL;
 ```
 
-Cela rend la relation **Département → Employé (responsable)** **« exactement un »**.
+Cela rend l'association **Département → Employé (responsable)** **« exactement un »**.
 
-Cependant, notez que **tous les employés ne peuvent pas être responsables** – la relation du point de vue de l'employé
+Cependant, notez que **tous les employés ne peuvent pas être responsables** – l'association du point de vue de l'employé
 reste **« 0..1 » (au plus un)** car :
 
 - Un employé peut gérer au plus un département
@@ -496,10 +496,10 @@ COMMIT;
 Cette technique avancée impliquant des contraintes différables et des transactions sera abordée dans des cours de base
 de données ultérieurs.
 
-## DER mis à jour pour les relations « Exactement un »
+## DEA mis à jour pour les associations « Exactement un »
 
 Avec nos règles métier implémentées (chaque employé doit appartenir à un département, chaque département doit avoir un
-responsable, chaque projet doit avoir un chef et un parrain), le DER ressemblerait à ceci :
+responsable, chaque projet doit avoir un chef et un parrain), le DEA ressemblerait à ceci :
 
 ```puml
 @startuml
@@ -537,11 +537,11 @@ TABLE(Project, "Projet") {
     FK(department_id) : INT NOT NULL
 }
 
-' Relations obligatoires basées sur les règles métier
+' associations obligatoires basées sur les règles métier
 Employee "*" -- "1" Department : appartient à
 Department "0..1" -- "1" Employee : géré par
 
-' Relations obligatoires
+' associations obligatoires
 Department "1" -- "*" Project : parraine
 Employee "1" -- "*" Project : dirige
 
@@ -586,11 +586,11 @@ Employee "1" -- "*" Project : dirige
         FK(department_id) : INT NOT NULL
     }
     
-    ' Relations obligatoires basées sur les règles métier
+    ' associations obligatoires basées sur les règles métier
     Employee "*" -- "1" Department : appartient à
     Department "0..1" -- "1" Employee : géré par
     
-    ' Relations obligatoires
+    ' associations obligatoires
     Department "1" -- "*" Project : parraine
     Employee "1" -- "*" Project : dirige
     
@@ -611,10 +611,10 @@ Essayez de concevoir votre propre scénario de dépendance circulaire avec :
 - Une table **Utilisateur** (user_id, username, email, best_friend_id)
 - Une table **Amitié** (friendship_id, user1_id, user2_id, status)
 
-Où les utilisateurs peuvent avoir une relation de « meilleur ami » qui crée une dépendance circulaire. Implémentez la
+Où les utilisateurs peuvent avoir une association de « meilleur ami » qui crée une dépendance circulaire. Implémentez la
 solution en utilisant les techniques apprises dans ce guide !
 
-**Défi :** Réfléchissez à savoir si la relation de « meilleur ami » devrait être « 0..1 » ou « 1 » – est-ce que chaque
+**Défi :** Réfléchissez à savoir si l'association de « meilleur ami » devrait être « 0..1 » ou « 1 » – est-ce que chaque
 utilisateur doit avoir un meilleur ami ?
 
 ---------------
