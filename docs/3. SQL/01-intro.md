@@ -41,6 +41,8 @@ de données. Voici quelques-unes des versions clés :
   temporelles.
 - **SQL:2016** : Ajout de fonctionnalités JSON et de nouvelles extensions pour
   les types de données géospatiales.
+- **SQL:2019** : Ajout des tableaux multidimensionnels (type MDarray et opérateurs)
+- **SQL:2023** : Ajout du type de données JSON (SQL/Foundation) et des requêtes de propriété sur les graphes (SQL/PGQ)
 
 ## Principes d'un Langage Non-Procedural
 

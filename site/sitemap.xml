@@ -2,267 +2,214 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://profdenis.github.io/3N3_doc/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/1.%20Introduction/01-Introduction-aux-bd/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/1.%20Introduction/02-Types-de-bases-de-donnees/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/1.%20Introduction/03-Historique-des-bases-de-donnees/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/1.%20Introduction/04-Exemples-de-Bases-de-Donnees/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/1.%20Introduction/PostgreSQL/01-Intro-a-PostgreSQL/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/1.%20Introduction/PostgreSQL/02-Avantages-de-PostgreSQL/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/1.%20Introduction/PostgreSQL/03-Entreprises-utilisant-PostgreSQL/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/1.%20Introduction/PostgreSQL/04-Configuration/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/2.%20Le%20mod%C3%A8le%20relationnel/01-Pr%C3%A9sentation/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/2.%20Le%20mod%C3%A8le%20relationnel/02-DEA/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/01-intro/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/02a-bases-contacts/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/02b-bases-universit%C3%A9/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/03a-jointures-contacts/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/03b-jointures-universit%C3%A9/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/04a-groupes-contacts/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/04b-groupes-universit%C3%A9/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/05-survol-op%C3%A9rations-SQL/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/06-dates/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/07-imbriqu%C3%A9es/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/08-rank/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/09-fenetres/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/Plus%20de%20fonctions/01-coalesce-case-when/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/Plus%20de%20fonctions/02-more-functions/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/3.%20SQL/Plus%20de%20fonctions/03-regexp/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/4.%20SQL%20Avanc%C3%A9/01-r%C3%A9cursives/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/4.%20SQL%20Avanc%C3%A9/02-vues/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/4.%20SQL%20Avanc%C3%A9/03-contraintes-et-d%C3%A9clencheurs/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/4.%20SQL%20Avanc%C3%A9/04-transactions/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/01-mod%C3%A9lisation-EA/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/01b-enit%C3%A9s-faibles/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/02-notation/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/03-exemples/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/04-ea-vers-relationnel/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/05-circular-dep/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/06-cycles/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/07-objet-relationel/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/01-s%C3%A9curit%C3%A9/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/02-rbac/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/03-utilisateurs/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/04-mots-de-passe/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/6.%20S%C3%A9curit%C3%A9%20et%20Utilisateurs/05-backups/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/01-exercices/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/DEA/01-blog/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/DEA/02-livres/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/DEA/03-transport/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/DEA/04-restaurants/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/DEA/05-voyages/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/DEA/06-hopital/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/SQL/01-pagila/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/SQL/02-recettes/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
     <url>
          <loc>https://profdenis.github.io/3N3_doc/7.%20Exercices/SQL/03-northwind/</loc>
-         <lastmod>2026-06-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2026-08-25</lastmod>
     </url>
 </urlset>
