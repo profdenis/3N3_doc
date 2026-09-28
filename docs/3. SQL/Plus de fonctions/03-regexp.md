@@ -54,7 +54,7 @@ Une Regex est un langage formel très puissant qui définit un modèle de recher
 | `.`     | Point                 | N'importe quel caractère unique (sauf saut de ligne)      | `c.t` $\rightarrow$ cat, cot, c8t                                  |
 | `^`     | Accent circonflexe    | Début de la chaîne                                        | `^A` $\rightarrow$ commence par A                                  |
 | `$`     | Dollar                | Fin de la chaîne                                          | `z$` $\rightarrow$ finit par z                                     |
-| `\|`    | Pipe                  | **OU** logique (choix entre plusieurs motifs)             | `chat\|chien` $\rightarrow$ cherche l'un ou l'autre                |
+| `|`    | Pipe                   | **OU** logique (choix entre plusieurs motifs)             | `chat|chien` $\rightarrow$ cherche l'un ou l'autre                 |
 | `()`    | Parenthèses           | **Groupe** de caractères (permet de lier des éléments)    | `(abc)+` $\rightarrow$ cherche "abcabc..."                         |
 | `[]`    | Crochets              | **Classe** de caractères (un seul élément parmi la liste) | `[aeiou]` $\rightarrow$ une voyelle                                |
 | `{n}`   | Accolades (fixe)      | Répétition **exactement $n$ fois**                        | `\d{3}` $\rightarrow$ exactement 3 chiffres                        |
