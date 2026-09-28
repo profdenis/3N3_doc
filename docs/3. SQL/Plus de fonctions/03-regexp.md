@@ -61,7 +61,7 @@ Une Regex est un langage formel très puissant qui définit un modèle de recher
 | `{n,m}` | Accolades (plage)     | Répétition **entre $n$ et $m$ fois**                      | `\d{2,4}` $\rightarrow$ de 2 à 4 chiffres                          |
 | `*`     | Astérisque            | **0 ou plusieurs** fois l'élément précédent               | `ab*` $\rightarrow$ a, ab, abb...                                  |
 | `+`     | Plus                  | **1 ou plusieurs** fois l'élément précédent               | `ab+` $\rightarrow$ ab, abb... (mais pas "a")                      |
-| `?`     | Point d'interrogation | **0 ou 1 fois** (rend l'élément optionnel)                | `chais?e` $\rightarrow$ chaise ou chise                            |
+| `?`     | Point d'interrogation | **0 ou 1 fois** (rend l'élément optionnel)                | `chaises?` $\rightarrow$ chaise ou chaises                         |
 | `\`     | Backslash             | **Échappement** (pour un caractère spécial ou un code)    | `\.` $\rightarrow$ un vrai point (pas le symbole "n'importe quoi") |
 | `\d`    | Séquence              | Un **chiffre** (digit)                                    | `\d\d` $\rightarrow$ deux chiffres                                 |
 | `\w`    | Séquence              | Un **caractère de mot** (lettre, chiffre, _)              |                                                                    |
