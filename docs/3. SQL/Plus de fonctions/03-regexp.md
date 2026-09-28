@@ -1,866 +1,309 @@
-# Expressions régulières
+# Guide des Expressions Régulières (Regex) pour les Bases de Données
 
-## Introduction aux expressions régulières
+- [PostgreSQL Doc](https://www.postgresql.org/docs/current/functions-matching.html)
+- [RegEx101](https://regex101.com) (choisir POSIX ERE)
 
-### Qu’est-ce qu’une expression régulière ?
+## 1. Le Pattern Matching (Recherche de motifs)
 
-Les expressions régulières (regex) sont des outils puissants de correspondance de motifs qui permettent de rechercher,
-faire correspondre et manipuler du texte en fonction de motifs spécifiques. Elles offrent un moyen concis et flexible
-d’identifier des chaînes de texte pertinentes, comme des caractères, mots ou motifs de caractères particuliers.
+Avant de plonger dans les expressions régulières, il est crucial de comprendre le concept de **Pattern Matching**.
 
-### Concepts fondamentaux des regex
+Le *pattern matching* est une technique qui consiste à chercher une séquence de caractères spécifique (un "motif") à
+l'intérieur d'un texte. Dans une base de données, on ne cherche pas seulement une correspondance exacte (ex:
+`nom = 'Dupont'`), mais souvent des correspondances partielles (ex: "tous les noms qui commencent par D").
 
-#### Métacaractères de base
+### L'opérateur `LIKE` et `ILIKE` (Standard SQL)
 
-- `.` – Correspond à n’importe quel caractère unique (sauf un saut de ligne)
-- `*` – Correspond à zéro ou plusieurs occurrences du caractère précédent
-- `+` – Correspond à une ou plusieurs occurrences du caractère précédent
-- `?` – Correspond à zéro ou une occurrence du caractère précédent
-- `^` – Correspond au début d’une chaîne
-- `$` – Correspond à la fin d’une chaîne
-- `[]` – Classe de caractères (correspond à n’importe quel caractère entre crochets)
-- `()` – Groupement (crée un groupe de capture)
-- `|` – Alternative (opérateur OU)
+En SQL (et particulièrement dans PostgreSQL), on utilise d'abord des opérateurs simples pour le pattern matching avant
+d'utiliser les Regex.
 
-#### Quantificateurs
+#### L'opérateur `LIKE` (Sensible à la casse)
 
-- `{n}` – Exactement n occurrences
-- `{n,}` – n occurrences ou plus
-- `{n,m}` – Entre n et m occurrences
+Il utilise deux caractères spéciaux (wildcards) :
 
-#### Classes de caractères
+* `%` : Représente **zéro, un ou plusieurs** caractères.
+* `_` : Représente **un seul** caractère.
 
-- `\d` – Tout chiffre (0-9)
-- `\w` – Tout caractère alphanumérique (lettres, chiffres + underscore)
-- `\s` – Tout caractère d’espacement
-- `\D` – Tout caractère non-chiffre
-- `\W` – Tout caractère non-alphanumérique
-- `\S` – Tout caractère non-espacement
+**Exemples :**
 
----
+* `WHERE nom LIKE 'D%'` $\rightarrow$ Tous les noms commençant par 'D' (*Dupont, Durand, D*).
+* `WHERE nom LIKE '%son'` $\rightarrow$ Tous les noms finissant par 'son' (*Harrison, Wilson*).
+* `WHERE code LIKE 'A_Z'` $\rightarrow$ Un code de 3 lettres commençant par A et finissant par Z (*ABZ, A1Z, A-Z*).
 
-## Les regex dans différents systèmes
+#### L'opérateur `ILIKE` (Insensible à la casse)
 
-### Langages de programmation
-
-#### JavaScript
-
-```javascript
-// Objet regex global
-const pattern = /^[A-Z]{2}\d{4}$/i;
-const isValid = pattern.test("AB1234");
-
-// Méthodes sur les chaînes
-const result = "ABC123".match(/\d+/);
-const replaced = "ABC123".replace(/\d+/, "XXX");
-```
-
-#### Python
-
-```python
-import re
-
-# Compilation du motif
-pattern = re.compile(r'^[A-Z]{2}\d{4}$', re.IGNORECASE)
-is_valid = pattern.match("AB1234")
-
-# Utilisation directe
-result = re.search(r'\d+', "ABC123")
-replaced = re.sub(r'\d+', "XXX", "ABC123")
-```
-
-#### Java
-
-```java
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-
-Pattern pattern = Pattern.compile("^[A-Z]{2}\\d{4}$", Pattern.CASE_INSENSITIVE);
-Matcher matcher = pattern.matcher("AB1234");
-boolean isValid = matcher.matches();
-```
-
-### Outils en ligne de commande
-
-#### grep
-
-```bash
-# Trouver les lignes correspondant au motif
-grep '^[A-Z]{2}[0-9]{4}$' filename.txt
-
-# Recherche insensible à la casse
-grep -i 'error\|warning' logfile.txt
-```
-
-#### sed
-
-```bash
-# Remplacement avec regex
-sed 's/[0-9]\{4\}/XXXX/g' filename.txt
-```
-
-### Différences clés entre les systèmes
-
-1. **Variations de syntaxe** : Les exigences d’échappement diffèrent (ex. : `\d` vs `[0-9]`)
-2. **Drapeaux/modificateurs** : Différentes façons de spécifier la sensibilité à la casse, le mode multiligne
-3. **Groupes de capture** : Syntaxe variable pour les références arrière
-4. **Performance** : Les implémentations des moteurs varient considérablement
-5. **Support des fonctionnalités** : Tous les systèmes ne prennent pas en charge toutes les fonctionnalités regex
-
----
-
-## Expressions régulières dans les bases de données SQL
-
-### Pourquoi utiliser les regex en SQL ?
-
-La correspondance de motifs traditionnelle en SQL avec `LIKE` se limite aux caractères génériques simples (`%` et `_`).
-Les expressions régulières offrent :
-
-- Une correspondance de motifs complexes
-- La validation des données
-- L’extraction et la manipulation de texte
-- Des capacités de recherche avancées
-- Le nettoyage et la transformation des données
-
-### Limitations courantes de la correspondance de motifs SQL
-
-```sql
--- LIKE est limité aux motifs simples
-SELECT *
-FROM Customer
-WHERE phone LIKE '___-___-____'; -- Format fixe uniquement
-SELECT *
-FROM Customer
-WHERE email LIKE '%@%.%';
--- Vérification très basique d'email
-
--- Les regex offrent une précision bien supérieure
--- Exemple PostgreSQL (nous le détaillerons plus bas)
-SELECT *
-FROM Customer
-WHERE phone ~ '^\(\d{3}\)\s\d{3}-\d{4}$';
-```
-
-### Capacités générales des regex en SQL
-
-La plupart des bases de données SQL modernes proposent des fonctionnalités regex pour :
-
-1. **Correspondance de motifs** – Tester si un texte correspond à un motif
-2. **Extraction de texte** – Extraire des portions de texte correspondant à des motifs
-3. **Remplacement de texte** – Remplacer du texte selon des motifs
-4. **Validation des données** – S’assurer que les données respectent des formats attendus
-5. **Optimisation des recherches** – Trouver des enregistrements à l’aide de motifs textuels complexes
-
----
-
-## Plongée approfondie dans les regex PostgreSQL
-
-PostgreSQL dispose du support regex le plus complet et standardisé parmi les bases de données SQL, implémentant les
-expressions régulières POSIX avec des extensions.
-
-### Opérateurs regex PostgreSQL
-
-#### Opérateurs de correspondance de base
-
-```sql
--- ~ : Correspondance sensible à la casse
-SELECT *
-FROM Customer
-WHERE email ~ '^[a-z]+@[a-z]+\.[a-z]{2,}$';
-
--- ~* : Correspondance insensible à la casse  
-SELECT *
-FROM Customer
-WHERE email ~* '^[A-Z]+@[A-Z]+\.[A-Z]{2,}$';
-
--- !~ : Non-correspondance sensible à la casse
-SELECT *
-FROM Customer
-WHERE phone !~ '^\d{10}$';
-
--- !~* : Non-correspondance insensible à la casse
-SELECT *
-FROM Customer
-WHERE name !~* '^test.*';
-```
-
-#### Fonctions avancées
-
-##### REGEXP_REPLACE
-
-```sql
--- Remplacement de base
-SELECT phone,
-       REGEXP_REPLACE(phone, '[^0-9]', '', 'g') AS digits_only
-FROM Customer;
-
--- Plusieurs remplacements avec drapeaux
-SELECT name,
-       REGEXP_REPLACE(name, '\s+', '_', 'g') AS url_friendly_name
-FROM Customer;
-
--- Utilisation de groupes de capture
-SELECT phone,
-       REGEXP_REPLACE(phone, '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3') AS formatted_phone
-FROM Customer
-WHERE phone ~ '^\d{10}$';
-```
-
-##### REGEXP_SPLIT_TO_TABLE
-
-```sql
--- Diviser le texte en lignes
-SELECT customer_id,
-       REGEXP_SPLIT_TO_TABLE(name, '\s+') AS name_parts
-FROM Customer;
-```
-
-##### REGEXP_SPLIT_TO_ARRAY
-
-```sql
--- Diviser le texte en tableau
-SELECT customer_id,
-       name,
-       REGEXP_SPLIT_TO_ARRAY(name, '\s+') AS name_array
-FROM Customer;
-```
-
-##### REGEXP_MATCHES
-
-```sql
--- Extraire toutes les correspondances (renvoie un tableau)
-SELECT license_plate,
-       REGEXP_MATCHES(license_plate, '([A-Z]+)(\d+)', 'g') AS plate_parts
-FROM Car;
-
--- Extraire des groupes spécifiques
-SELECT email,
-       (REGEXP_MATCHES(email, '^([^@]+)@([^.]+)\.(.+)$'))[1] AS username,
-       (REGEXP_MATCHES(email, '^([^@]+)@([^.]+)\.(.+)$'))[2] AS domain,
-       (REGEXP_MATCHES(email, '^([^@]+)@([^.]+)\.(.+)$'))[3] AS tld
-FROM Customer
-WHERE email ~ '^[^@]+@[^.]+\..+$';
-```
-
-### Drapeaux regex PostgreSQL
-
-```sql
--- 'i' - Insensible à la casse
-SELECT *
-FROM Customer
-WHERE name ~* 'john|jane';
--- Équivalent à l'opérateur ~*
-
--- 'g' - Global (trouve toutes les correspondances, pas seulement la première)
-SELECT REGEXP_REPLACE('abc123def456', '\d+', 'X', 'g');
--- Renvoie 'abcXdefX'
-
--- 'm' - Mode multiligne (^ et $ correspondent aux limites de ligne)
--- 's' - Le point correspond au saut de ligne
--- 'x' - Syntaxe étendue (ignore les espaces, autorise les commentaires)
--- 'n' - Correspondance sensible aux sauts de ligne
-```
-
-### Classes de caractères POSIX dans PostgreSQL
-
-```sql
--- [:alnum:] - Caractères alphanumériques
-SELECT *
-FROM Customer
-WHERE driver_license ~ '^[[:alnum:]]{8,}$';
-
--- [:alpha:] - Caractères alphabétiques
-SELECT *
-FROM Customer
-WHERE name ~ '^[[:alpha:]\s]+$';
-
--- [:digit:] - Chiffres numériques
-SELECT *
-FROM Car
-WHERE license_plate ~ '[[:digit:]]{3,}';
-
--- [:lower:] - Lettres minuscules
--- [:upper:] - Lettres majuscules  
--- [:space:] - Caractères d’espacement
--- [:punct:] - Caractères de ponctuation
-```
-
----
-
-## Comparaison entre systèmes de gestion de bases de données
-
-### PostgreSQL
-
-**Points forts :**
-
-- Support complet des regex POSIX
-- Ensemble riche de fonctions regex (REGEXP_REPLACE, REGEXP_MATCHES, etc.)
-- Plusieurs opérateurs (~, ~*, !~, !~*)
-- Support complet des drapeaux
-- Fonctions de division en tableaux et tables
+PostgreSQL propose `ILIKE`, qui fonctionne exactement comme `LIKE` mais ignore la différence entre majuscules et
+minuscules.
 
 **Exemple :**
 
-```sql
--- PostgreSQL
-SELECT REGEXP_REPLACE(phone, '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3')
-FROM Customer
-WHERE phone ~ '^\d{10}$';
-```
-
-### MySQL
-
-**Points forts :**
-
-- Opérateurs REGEXP/RLIKE
-- Fonctions REGEXP_REPLACE, REGEXP_SUBSTR, REGEXP_INSTR (8.0+)
-- Bon support regex de base
-
-**Limitations :**
-
-- Moins complet que PostgreSQL
-- Moins de fonctions regex dans les anciennes versions
-- Support limité des drapeaux
-
-**Exemple :**
-
-```sql
--- MySQL 8.0+
-SELECT REGEXP_REPLACE(phone, '([0-9]{3})([0-9]{3})([0-9]{4})', '(\\1) \\2-\\3')
-FROM Customer
-WHERE phone REGEXP '^[0-9]{10}$';
-
--- Anciennes versions MySQL
-SELECT *
-FROM Customer
-WHERE phone REGEXP '^[0-9]{10}$';
-```
-
-### SQL Server
-
-**Points forts :**
-
-- Correspondance de motifs de base avec LIKE et caractères génériques
-- Certaines fonctionnalités regex via CLR dans les nouvelles versions
-
-**Limitations :**
-
-- Pas d’opérateurs regex natifs avant SQL Server 2022
-- Fonctionnalités regex limitées comparées à PostgreSQL/MySQL
-
-**Exemple :**
-
-```sql
--- SQL Server 2022+
-SELECT *
-FROM Customer
-WHERE phone LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]';
-
--- Ou en utilisant le nouveau LIKE avec classes de caractères (limité)
-SELECT *
-FROM Customer
-WHERE email LIKE '%_@_%.__%';
-```
-
-### Oracle
-
-**Points forts :**
-
-- Fonctions REGEXP_LIKE, REGEXP_REPLACE, REGEXP_SUBSTR, REGEXP_INSTR
-- Support des regex POSIX
-- Bonne performance
-
-**Limitations :**
-
-- Syntaxe différente de PostgreSQL
-- Nommage des opérateurs moins intuitif
-
-**Exemple :**
-
-```sql
--- Oracle
-SELECT REGEXP_REPLACE(phone, '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3')
-FROM Customer
-WHERE REGEXP_LIKE(phone, '^\d{10}$');
-```
-
-### SQLite
-
-**Points forts :**
-
-- Opérateur REGEXP disponible avec extension
-- Léger et rapide
-
-**Limitations :**
-
-- Pas de support regex intégré
-- Nécessite de charger une extension ou des fonctions personnalisées
-
-**Exemple :**
-
-```sql
--- SQLite (avec extension regex chargée)
-SELECT *
-FROM Customer
-WHERE phone REGEXP '^[0-9]{10}$';
-```
-
-### Tableau comparatif des fonctionnalités
-
-| Fonctionnalité         | PostgreSQL | MySQL        | SQL Server       | Oracle          | SQLite       |
-|------------------------|------------|--------------|------------------|-----------------|--------------|
-| Correspondance de base | ✅ (~, ~*)  | ✅ (REGEXP)   | ❌ (jusqu’à 2022) | ✅ (REGEXP_LIKE) | ✅ (avec ext) |
-| Insensible à la casse  | ✅ (~*)     | ✅ (drapeaux) | ❌                | ✅ (drapeaux)    | ✅            |
-| Remplacement           | ✅          | ✅ (8.0+)     | ❌                | ✅               | ❌            |
-| Extraction             | ✅          | ✅ (8.0+)     | ❌                | ✅               | ❌            |
-| Division               | ✅          | ❌            | ❌                | ❌               | ❌            |
-| Classes POSIX          | ✅          | ✅            | ❌                | ✅               | ✅            |
-| Performance            | ✅          | ✅            | N/A              | ✅               | ✅            |
+* `WHERE nom ILIKE 'dupont'` $\rightarrow$ Trouvera 'Dupont', 'DUPONT', 'duPont', etc.
 
 ---
 
-## Exemples pratiques avec la base de données de location de voitures
+## 2. Les Expressions Régulières (Regex) en Général
 
-### Validation des données
+Le `LIKE` est limité. Si vous voulez chercher "un numéro de téléphone qui commence par 06 ou 07" ou "une adresse email
+valide", le `LIKE` devient vite illisible. C'est là qu'interviennent les **Expressions Régulières (Regex)**.
 
-#### Validation des emails
+Une Regex est un langage formel très puissant qui définit un modèle de recherche complexe.
+
+### La syntaxe de base (Les métacaractères)
+
+C'est une excellente observation. Effectivement, le rendu du symbole `|` a été altéré par le formatage et l'absence de
+certains symboles rendait le tableau incomplet pour comprendre les exemples qui suivaient.
+
+Voici le tableau de la syntaxe de base mis à jour, plus complet et corrigé, incluant les parenthèses, les accolades et
+le caractère d'échappement.
+
+### Syntaxe de base des Expressions Régulières (Regex)
+
+| Symbole | Nom                   | Signification                                             | Exemple                                                            |
+|:--------|:----------------------|:----------------------------------------------------------|:-------------------------------------------------------------------|
+| `.`     | Point                 | N'importe quel caractère unique (sauf saut de ligne)      | `c.t` $\rightarrow$ cat, cot, c8t                                  |
+| `^`     | Accent circonflexe    | Début de la chaîne                                        | `^A` $\rightarrow$ commence par A                                  |
+| `$`     | Dollar                | Fin de la chaîne                                          | `z$` $\rightarrow$ finit par z                                     |
+| `\|`    | Pipe                  | **OU** logique (choix entre plusieurs motifs)             | `chat\|chien` $\rightarrow$ cherche l'un ou l'autre                |
+| `()`    | Parenthèses           | **Groupe** de caractères (permet de lier des éléments)    | `(abc)+` $\rightarrow$ cherche "abcabc..."                         |
+| `[]`    | Crochets              | **Classe** de caractères (un seul élément parmi la liste) | `[aeiou]` $\rightarrow$ une voyelle                                |
+| `{n}`   | Accolades (fixe)      | Répétition **exactement $n$ fois**                        | `\d{3}` $\rightarrow$ exactement 3 chiffres                        |
+| `{n,m}` | Accolades (plage)     | Répétition **entre $n$ et $m$ fois**                      | `\d{2,4}` $\rightarrow$ de 2 à 4 chiffres                          |
+| `*`     | Astérisque            | **0 ou plusieurs** fois l'élément précédent               | `ab*` $\rightarrow$ a, ab, abb...                                  |
+| `+`     | Plus                  | **1 ou plusieurs** fois l'élément précédent               | `ab+` $\rightarrow$ ab, abb... (mais pas "a")                      |
+| `?`     | Point d'interrogation | **0 ou 1 fois** (rend l'élément optionnel)                | `chais?e` $\rightarrow$ chaise ou chise                            |
+| `\`     | Backslash             | **Échappement** (pour un caractère spécial ou un code)    | `\.` $\rightarrow$ un vrai point (pas le symbole "n'importe quoi") |
+| `\d`    | Séquence              | Un **chiffre** (digit)                                    | `\d\d` $\rightarrow$ deux chiffres                                 |
+| `\w`    | Séquence              | Un **caractère de mot** (lettre, chiffre, _)              |                                                                    |
+| `\s`    | Séquence              | Un **espace** blanc (espace, tabulation)                  |                                                                    |
+
+---
+
+## 3. Les Regex dans PostgreSQL
+
+PostgreSQL utilise l'implémentation des expressions régulières de type **POSIX**. Contrairement au `LIKE`, on utilise
+des opérateurs spécifiques.
+
+### Les opérateurs de comparaison
+
+* `~` : Correspondance (match) avec respect de la casse.
+* `~*` : Correspondance avec **insensibilité** à la casse.
+* `!~` : Ne correspond **pas** (respect de la casse).
+* `!~*` : Ne correspond **pas** (insensibilité à la casse).
+
+---
+
+### A. Niveau Simple : Utilisation basique
+
+On utilise ici les opérateurs pour filtrer des données avec des motifs simples.
+
+**Exemple 1 : Trouver des noms commençant par 'S' ou 'T' (insensible à la casse)**
 
 ```sql
--- Validation complète des emails
-SELECT customer_id,
-       name,
-       email,
-       CASE
-           WHEN email ~ '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
-               THEN 'Valide'
-           WHEN email IS NULL OR email = ''
-               THEN 'Manquant'
-           ELSE 'Invalide'
-           END AS email_status
-FROM Customer;
-
--- Trouver les clients avec des formats d'email invalides
-SELECT *
-FROM Customer
-WHERE email IS NOT NULL
-  AND email !~ '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$';
+SELECT nom
+FROM clients
+WHERE nom ~* '^[st]';
+-- ^ : début de chaîne
+-- [st] : soit s, soit t
 ```
 
-#### Validation des numéros de téléphone
+**Exemple 2 : Trouver des codes produits qui sont composés d'exactement 3 chiffres**
 
 ```sql
--- Valider différents formats de numéros de téléphone
-SELECT customer_id,
-       name,
-       phone,
-       CASE
-           WHEN phone ~ '^\(\d{3}\)\s\d{3}-\d{4}$' THEN 'Format : (123) 456-7890'
-           WHEN phone ~ '^\d{3}-\d{3}-\d{4}$' THEN 'Format : 123-456-7890'
-           WHEN phone ~ '^\d{10}$' THEN 'Format : 1234567890'
-           WHEN phone ~ '^\+1\d{10}$' THEN 'Format : +11234567890'
-           WHEN phone IS NULL OR phone = '' THEN 'Manquant'
-           ELSE 'Format invalide'
-           END AS phone_format
-FROM Customer;
-```
-
-#### Validation des plaques d’immatriculation
-
-```sql
--- Valider les formats de plaques (divers motifs)
-SELECT license_plate,
-       make,
-       model,
-       CASE
-           WHEN license_plate ~ '^[A-Z]{3}\d{3}$' THEN 'Format État : ABC123'
-           WHEN license_plate ~ '^\d{3}[A-Z]{3}$' THEN 'Format État : 123ABC'
-           WHEN license_plate ~ '^[A-Z]{2}\d{4}$' THEN 'Format État : AB1234'
-           WHEN license_plate ~ '^[A-Z]\d{2}[A-Z]\d{2}$' THEN 'Format État : A12B34'
-           ELSE 'Format non standard'
-           END AS plate_format,
-       -- Extraire les composants
-       CASE
-           WHEN license_plate ~ '^([A-Z]+)(\d+)$' THEN
-               (REGEXP_MATCHES(license_plate, '^([A-Z]+)(\d+)$'))[1]
-           ELSE NULL
-           END AS letter_part,
-       CASE
-           WHEN license_plate ~ '^([A-Z]+)(\d+)$' THEN
-               (REGEXP_MATCHES(license_plate, '^([A-Z]+)(\d+)$'))[2]
-           ELSE NULL
-           END AS number_part
-FROM Car;
-```
-
-### Nettoyage et standardisation des données
-
-#### Standardisation des numéros de téléphone
-
-```sql
--- Nettoyer et standardiser les numéros de téléphone
-SELECT customer_id,
-       phone   AS original_phone,
-       CASE
-           WHEN phone ~ '^\d{10}$' THEN
-               REGEXP_REPLACE(phone, '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3')
-           WHEN phone ~ '^\d{3}-\d{3}-\d{4}$' THEN
-               REGEXP_REPLACE(phone, '(\d{3})-(\d{3})-(\d{4})', '(\1) \2-\3')
-           WHEN phone ~ '^\(\d{3}\)\s*\d{3}-\d{4}$' THEN
-               phone -- Déjà dans le format préféré
-           ELSE
-               REGEXP_REPLACE(
-                       REGEXP_REPLACE(phone, '[^0-9]', '', 'g'),
-                       '(\d{3})(\d{3})(\d{4})',
-                       '(\1) \2-\3'
-               )
-           END AS standardized_phone
-FROM Customer
-WHERE phone IS NOT NULL;
-```
-
-#### Analyse des domaines d’email
-
-```sql
--- Extraire et analyser les domaines d’email
-SELECT (REGEXP_MATCHES(email, '^[^@]+@([^.]+\..+)$'))[1] AS domain,
-       COUNT(*)                                          AS customer_count,
-       ARRAY_AGG(name)                                   AS customers
-FROM Customer
-WHERE email ~ '^[^@]+@[^.]+\..+$'
-GROUP BY (REGEXP_MATCHES(email, '^[^@]+@([^.]+\..+)$'))[1]
-ORDER BY customer_count DESC;
-```
-
-#### Traitement des noms
-
-```sql
--- Diviser les noms de clients en composants
-SELECT customer_id,
-       name,
-       CASE
-           WHEN name ~ '^\s*(\S+)\s+(\S+)\s*$' THEN
-               (REGEXP_MATCHES(name, '^\s*(\S+)\s+(\S+)\s*$'))[1]
-           WHEN name ~ '^\s*(\S+)' THEN
-               (REGEXP_MATCHES(name, '^\s*(\S+)'))[1]
-           ELSE NULL
-           END AS first_name,
-       CASE
-           WHEN name ~ '^\s*(\S+)\s+(\S+)\s*$' THEN
-               (REGEXP_MATCHES(name, '^\s*(\S+)\s+(\S+)\s*$'))[2]
-           ELSE NULL
-           END AS last_name,
-       CASE
-           WHEN name ~ '^\s*(\S+)\s+(\S+)\s+(.+)$' THEN
-               (REGEXP_MATCHES(name, '^\s*(\S+)\s+(\S+)\s+(.+)$'))[3]
-           ELSE NULL
-           END AS additional_names
-FROM Customer;
-```
-
-### Recherche et filtrage
-
-#### Recherche avancée de voitures
-
-```sql
--- Recherche flexible de voitures avec regex
-SELECT license_plate,
-       make,
-       model,
-       year,
-       color,
-       daily_rate
-FROM Car
-WHERE
-  -- Recherche flexible sur marque/modèle
-    (make ~* 'toy|honda|ford' OR model ~* 'cam|acc|civic')
-  AND
-  -- Plage d’années avec regex
-    CAST(year AS TEXT) ~ '^20(1[5-9]|2[0-5])$' -- 2015-2025
-  AND
-  -- Correspondance de couleurs (gère les variations)
-    color ~* '^(red|blue|black|white|silver|gr[ae]y)';
-```
-
-#### Analyse des journaux de maintenance
-
-```sql
--- Analyser les descriptions de maintenance pour détecter des motifs
-SELECT maintenance_id,
-       service_type,
-       description,
-       CASE
-           WHEN description ~* 'oil.*change|change.*oil' THEN 'Changement d’huile'
-           WHEN description ~* 'tire|wheel' THEN 'Service pneus'
-           WHEN description ~* 'brake|pad' THEN 'Service freins'
-           WHEN description ~* 'engine|motor' THEN 'Moteur'
-           WHEN description ~* 'transmission|trans' THEN 'Transmission'
-           WHEN description ~* 'battery|electrical' THEN 'Électrique'
-           ELSE 'Autre'
-           END AS service_category,
-       -- Extraire les mentions de coût dans la description
-       CASE
-           WHEN description ~ '\$([0-9,]+(?:\.[0-9]{2})?)' THEN
-               (REGEXP_MATCHES(description, '\$([0-9,]+(?:\.[0-9]{2})?)'))[1]
-           ELSE NULL
-           END AS mentioned_cost
-FROM MaintenanceRecord
-WHERE description IS NOT NULL;
+SELECT code_produit
+FROM produits
+WHERE code_produit ~ '^\d{3}$';
+-- ^ : début
+-- \d{3} : exactement 3 chiffres
+-- $ : fin
 ```
 
 ---
 
-## Modèles et techniques avancés
+### B. Niveau Complexe : Combinaisons et classes
 
-### Lookahead et Lookbehind (non supportés par PostgreSQL, mais présentation du concept)
+Ici, on commence à utiliser des parenthèses pour grouper des éléments et des quantificateurs plus précis.
+
+**Exemple 3 : Valider un format de date simple (JJ/MM/AAAA)**
+On veut vérifier que la date ressemble à `01/01/2023`.
 
 ```sql
--- PostgreSQL ne supporte pas lookahead/lookbehind, mais voici comment contourner
-
--- Objectif : Trouver les emails avec un domaine spécifique mais pas les sous-domaines
--- Au lieu de : email ~ '^[^@]+@(?!mail\.)example\.com$'  -- Non supporté
--- Utiliser : Conditions multiples
-SELECT *
-FROM Customer
-WHERE email ~ '^[^@]+@example\.com$'
-  AND email !~ '^[^@]+@mail\.example\.com$';
+SELECT date_commande
+FROM commandes
+WHERE date_commande ~ '^\d{2}/\d{2}/\d{4}$';
 ```
 
-### Motifs de validation complexes
-
-#### Validation de numéros de permis de conduire
-
-```sql
--- Valider les numéros de permis (formats variés selon les États)
-SELECT customer_id,
-       driver_license,
-       CASE
-           -- Format Californie : 1 lettre + 7 chiffres
-           WHEN driver_license ~ '^[A-Z]\d{7}$' THEN 'Format CA'
-           -- Format New York : 3 lettres + 6 chiffres  
-           WHEN driver_license ~ '^[A-Z]{3}\d{6}$' THEN 'Format NY'
-           -- Format Texas : 8 chiffres
-           WHEN driver_license ~ '^\d{8}$' THEN 'Format TX'
-           -- Format Floride : 1 lettre + 12 chiffres
-           WHEN driver_license ~ '^[A-Z]\d{12}$' THEN 'Format FL'
-           ELSE 'Format inconnu'
-           END                AS license_format,
-       LENGTH(driver_license) AS license_length
-FROM Customer
-WHERE driver_license IS NOT NULL;
-```
-
-#### Validation de numéros VIN (si nous en avions)
+**Exemple 4 : Extraire des domaines d'emails**
+On cherche tous les utilisateurs ayant une adresse email finissant par `.com` ou `.fr`.
 
 ```sql
--- Exemple de validation de VIN (17 caractères, motif spécifique)
--- Ceci serait dans une table hypothétique vehicle_details
-/*
-SELECT 
-    vin,
-    CASE 
-        WHEN vin ~ '^[A-HJ-NPR-Z0-9]{17}$' THEN 'Format VIN valide'
-        ELSE 'Format VIN invalide'
-    END AS vin_status,
-    -- Extraire le code fabricant (3 premiers caractères)
-    LEFT(vin, 3) AS manufacturer_code,
-    -- Extraire l’année du modèle (10e caractère)
-    SUBSTRING(vin, 10, 1) AS model_year_code
-FROM vehicle_details;
-*/
-```
-
-### Exploration et analyse de texte
-
-#### Analyse des descriptions
-
-```sql
--- Analyser les descriptions de rapports de dommages pour identifier les problèmes courants
-WITH damage_analysis AS (SELECT report_id,
-                                damage_description,
-                                -- Extraire les indicateurs de gravité
-                                CASE
-                                    WHEN damage_description ~* 'severe|major|extensive|total' THEN 'Élevée'
-                                    WHEN damage_description ~* 'minor|small|light|slight' THEN 'Faible'
-                                    WHEN damage_description ~* 'moderate|medium' THEN 'Moyenne'
-                                    ELSE 'Inconnue'
-                                    END AS severity,
-                                -- Extraire les parties du véhicule mentionnées
-                                ARRAY(
-                                        SELECT unnest(
-                                                       REGEXP_SPLIT_TO_ARRAY(
-                                                               LOWER(damage_description),
-                                                               '[^a-z]+'
-                                                       )
-                                               )
-                                        WHERE unnest(
-                                                      REGEXP_SPLIT_TO_ARRAY(
-                                                              LOWER(damage_description),
-                                                              '[^a-z]+'
-                                                      )
-                                              ) ~ '^(door|bumper|hood|trunk|window|tire|wheel|mirror|light)s?$'
-                                )       AS affected_parts
-                         FROM DamageReport
-                         WHERE damage_description IS NOT NULL)
-SELECT severity,
-       COUNT(*)                                   AS report_count,
-       ARRAY_AGG(DISTINCT unnest(affected_parts)) AS common_parts
-FROM damage_analysis
-GROUP BY severity;
-```
-
-### Modèles d’extraction de données
-
-#### Extraction de données structurées depuis du texte
-
-```sql
--- Extraire les informations de kilométrage des descriptions de maintenance
-SELECT maintenance_id,
-       description,
-       -- Extraire les mentions de kilométrage
-       CASE
-           WHEN description ~ '(\d{1,6})\s*(mile|mi|k|km)' THEN
-               (REGEXP_MATCHES(description, '(\d{1,6})\s*(mile|mi|k|km)', 'i'))[1]
-           ELSE NULL
-           END AS extracted_mileage,
-       -- Extraire les dates mentionnées dans le texte
-       CASE
-           WHEN description ~ '(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})' THEN
-               REGEXP_MATCHES(description, '(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})')
-           ELSE NULL
-           END AS mentioned_date_parts
-FROM MaintenanceRecord
-WHERE description IS NOT NULL;
+SELECT email
+FROM utilisateurs
+WHERE email ~ '@.*\.(com|fr)$';
+-- @ : contient un arobase
+-- .* : n'importe quoi
+-- \. : un point (on met un backslash car le point seul est un métacaractère)
+-- (com|fr) : soit com, soit fr
+-- $ : à la fin de la chaîne
 ```
 
 ---
 
-## Considérations de performance
+### C. Niveau Avancé (Optionnel pour les étudiants)
 
-### Stratégies d’indexation
+Pour les besoins de l'analyse de données, PostgreSQL propose des fonctions puissantes pour manipuler les résultats des
+Regex.
 
-#### Index partiels avec regex
+#### 1. `regexp_matches()` : Extraction de données
 
-```sql
--- Créer un index pour les motifs fréquemment recherchés
-CREATE INDEX idx_customer_email_domain
-    ON Customer ((REGEXP_MATCHES(email, '^[^@]+@([^.]+\..+)$'))[1])
-    WHERE email ~ '^[^@]+@[^.]+\..+$';
-
--- Index pour les recherches de numéros de téléphone (après standardisation)
-CREATE INDEX idx_customer_phone_digits
-    ON Customer (REGEXP_REPLACE(phone, '[^0-9]', '', 'g'))
-    WHERE phone IS NOT NULL;
-```
-
-#### Index fonctionnels
+Cette fonction permet de "capturer" une partie du texte.
 
 ```sql
--- Index sur les données nettoyées/standardisées
-CREATE INDEX idx_car_plate_clean
-    ON Car (UPPER(REGEXP_REPLACE(license_plate, '[^A-Z0-9]', '', 'g')));
+-- On veut extraire uniquement le prénom d'une colonne 'nom_complet' (format "Prénom Nom")
+SELECT regexp_matches('Jean Dupont', '^(\w+) \w+$');
+-- Retourne : 'Jean'
 ```
 
-### Conseils d’optimisation des requêtes
+#### 2. `regexp_replace()` : Modification de texte
 
-1. **Utilisez d’abord des motifs simples**
+Permet de nettoyer une colonne en remplaçant un motif par autre chose.
 
 ```sql
--- Bon : Filtrer d’abord avec des conditions simples
-SELECT *
-FROM Customer
-WHERE email LIKE '%@gmail.com' -- Filtre rapide
-  AND email ~ '^[a-zA-Z0-9._%+-]+@gmail\.com$';
--- Regex précis
-
--- À éviter : Commencer par un regex complexe sur de grandes tables
+-- On veut enlever tous les tirets d'un numéro de téléphone
+SELECT regexp_replace('06-12-34-56-78', '-', '');
+-- Retourne : '0612345678'
 ```
 
-2. **Limiter la portée du regex**
+#### 3. Les Groupes de capture (Backreferences)
+
+On peut utiliser les parenthèses pour isoler des morceaux et les réutiliser.
 
 ```sql
--- Bon : Limiter d’abord le jeu de données
-SELECT *
-FROM Customer
-WHERE LENGTH(phone) = 10 -- Comparaison numérique rapide
-  AND phone ~ '^\d{10}$';
--- Regex sur un sous-ensemble plus petit
-
--- Bon : Utiliser des clauses WHERE pour limiter l’application du regex
-SELECT *
-FROM MaintenanceRecord
-WHERE service_type = 'Changement d’huile' -- Filtre compatible avec les index
-  AND description ~* 'synthetic|conventional'; -- Regex sur un sous-ensemble
+-- Inverser le nom et le prénom (Format: "Prénom Nom" -> "Nom, Prénom")
+SELECT regexp_replace('Jean Dupont', '^(\w+) (\w+)$', '\2, \1');
+-- \1 est le premier groupe, \2 le deuxième.
+-- Retourne : 'Dupont, Jean'
 ```
 
-3. **Motifs compilés**
-   Dans le code applicatif, compilez les motifs regex une fois et réutilisez-les plutôt que de les compiler pour chaque
-   requête.
+# Exercices : Maîtriser les Expressions Régulières
 
-### Pièges courants de performance
-
-1. **Évitez les caractères génériques en début de regex**
-
-```sql
--- Lent : Motif qui ne peut pas utiliser efficacement les index
-SELECT *
-FROM Customer
-WHERE name ~ '.*john.*';
-
--- Mieux : Motif plus spécifique
-SELECT *
-FROM Customer
-WHERE name ~* '^john|john$|\sjohn\s';
-```
-
-2. **Soyez précis avec les quantificateurs**
-
-```sql
--- Lent : Correspondance gourmande
-SELECT *
-FROM Description
-WHERE text ~ '.*error.*details.*';
-
--- Mieux : Plus spécifique
-SELECT *
-FROM Description
-WHERE text ~ 'error.{1,50}details';
-```
+**Consignes :** Pour chaque exercice, déterminez la **Regex** (le motif) qui permettrait de valider ou de trouver la
+"Donnée cible" dans une chaîne de texte.
 
 ---
 
-## Résumé
+## Section A : Niveau Simple (Fondamentaux)
 
-Les expressions régulières en SQL, notamment dans PostgreSQL, offrent des capacités puissantes pour :
+*Objectif : Utiliser les ancres (`^`, `$`), les classes de caractères (`[]`, `\d`) et les quantificateurs de base.*
 
-- **Validation des données** – Garantir la qualité et la conformité des formats
-- **Traitement de texte** – Nettoyer, standardiser et transformer les données textuelles
-- **Correspondance de motifs** – Trouver des motifs complexes que LIKE ne peut pas gérer
-- **Extraction de données** – Extraire des informations spécifiques depuis du texte non structuré
-- **Amélioration des recherches** – Offrir des capacités de recherche flexibles et précises
+**Exercice 1 : Le code produit**
 
-**Points clés à retenir :**
+* **Contexte :** Vous devez identifier des codes produits qui commencent obligatoirement par la lettre 'P' (majuscule)
+  suivie d'exactement 3 chiffres.
+* **Donnée cible :** `P123`
+* **Votre Regex :** ____________________
 
-1. PostgreSQL propose le support regex SQL le plus complet
-2. Pensez toujours aux implications de performance et utilisez judicieusement les index
-3. Combinez les regex avec les filtres SQL traditionnels pour une performance optimale
-4. Utilisez les regex pour la qualité des données et la validation dans les processus ETL
-5. Documentez les motifs complexes pour faciliter la maintenance
+**Exercice 2 : L'identifiant utilisateur**
 
-**Bonnes pratiques :**
+* **Contexte :** Un système demande un identifiant composé de seulement 5 lettres minuscules (pas de chiffres, pas de
+  majuscules).
+* **Donnée cible :** `abcde`
+* **Votre Regex :** ____________________
 
-- Commencez par des motifs simples et ajoutez de la complexité au besoin
-- Testez soigneusement les motifs regex avec des cas limites
-- Utilisez les regex pour la validation mais stockez les données nettoyées séparément
-- Envisagez de créer des fonctions utilitaires pour les motifs couramment utilisés
-- Équilibrez la complexité des regex avec la performance des requêtes
+**Exercice 3 : La catégorie de prix**
 
-Les expressions régulières transforment SQL d’un simple langage de requête en un outil puissant de traitement de texte,
-permettant des analyses et manipulations de données sophistiquées impossibles avec le SQL standard seul.
+* **Contexte :** Vous cherchez des cellules qui ne contiennent qu'un seul caractère, et ce caractère doit être un
+  chiffre.
+* **Donnée cible :** `5`
+* **Votre Regex :** ____________________
+
+**Exercice 4 : Le mot de passe minimaliste**
+
+* **Contexte :** Un champ de test accepte soit le mot "Oui", soit le mot "Non" (attention à la casse : il doit être
+  identique).
+* **Donnée cible :** `Oui`
+* **Votre Regex :** ____________________
+
+---
+
+## Section B : Niveau Complexe (Combinaisons et Classes)
+
+*Objectif : Utiliser les parenthèses `()`, le "OU" `|`, les plages `{n,m}`, et l'échappement `\`.*
+
+**Exercice 5 : Le format de téléphone simplifié**
+
+* **Contexte :** Vous voulez repérer des numéros de téléphone formatés avec des tirets, composés de deux groupes de deux
+  chiffres, séparés par un tiret (ex: 12-34).
+* **Donnée cible :** `12-34`
+* **Votre Regex :** ____________________
+
+**Exercice 6 : La validation de prix européen**
+
+* **Contexte :** Un prix peut être écrit avec un point ou une virgule pour séparer les décimales (ex: `19.99` ou
+  `19,99`). On veut capturer le montant avec deux chiffres après la virgule/point.
+* **Donnée cible :** `19,99`
+* **Votre Regex :** ____________________
+
+**Exercice 7 : L'extension de fichier**
+
+* **Contexte :** Vous cherchez des fichiers qui finissent soit par `.jpg`, soit par `.png`, soit par `.gif`.
+* **Donnée cible :** `image.png`
+* **Votre Regex :** ____________________
+
+**Exercice 8 : L'identifiant alphanumérique complexe**
+
+* **Contexte :** Un code d'inventaire est composé de 2 lettres suivies d'un tiret, puis de 3 à 5 chiffres.
+* **Donnée cible :** `AB-12345`
+* **Votre Regex :** ____________________
+
+---
+
+## Section C : Niveau Avancé (Fonctions de manipulation)
+
+*Objectif : Préparer l'utilisation de `regexp_replace` et `regexp_matches`.*
+
+**Exercice 9 : Le nettoyage de texte (Substitution)**
+
+* **Contexte :** Vous avez une colonne `adresse_client` qui contient des espaces inutiles entre les mots. Vous voulez
+  utiliser `regexp_replace` pour remplacer chaque espace par un tiret `-`.
+* **Donnée cible :** `Rue de la Paix` $\rightarrow$ `Rue-de-la-Paix`
+* **Votre Regex (le motif à chercher) :** ____________________
+
+**Exercice 10 : L'extraction de données (Capture)**
+
+* **Contexte :** Vous avez une colonne `description_produit` qui contient : "Réf: 9982 - Produit Bleu". Vous voulez
+  extraire uniquement le numéro de référence (les chiffres) en utilisant des groupes de capture.
+* **Donnée cible :** `9982`
+* **Votre Regex (incluant les parenthèses pour la capture) :** ____________________
+
+---
+---
+
+# Correction
+
+**Section A :**
+
+1. `^P\d{3}$`
+2. `^[a-z]{5}$`
+3. `^\d$`
+4. `^(Oui|Non)$`
+
+**Section B :**
+
+5. `^\d{2}-\d{2}$`
+6. `^\d+[\.,]\d{2}$`
+7. `\.(jpg|png|gif)$`
+8. `^[A-Z]{2}-\d{3,5}$`
+
+**Section C :**
+
+9. ` ` (un espace) ou `\s`
+10. `Réf: (\d+)` (Le groupe de capture est `(\d+)`)
+
+
 
 
 -------
 
 ??? info "Utilisation de l'IA"
-      Page rédigée en partie avec l'aide d'un assistant IA, principalement à l'aide de Perplexity AI. L'IA a été 
-      utilisée pour générer des explications, des exemples et/ou des suggestions de structure. Toutes les informations 
-      ont été vérifiées, éditées et complétées par l'auteur.
+    Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des
+    explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
+    été vérifiées, éditées et complétées par l'auteur.

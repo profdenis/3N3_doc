@@ -457,18 +457,18 @@ possible d'effectuer cette conversion en utilisant la fonction EXTRACT avec l'un
 éventuellement d'un CAST si nécessaire.
 
 ??? note "Citations"
-- [1] https://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres
-- [2] https://www.postgresql.org/docs/8.1/functions-formatting.html
-- [3] https://www.alibabacloud.com/blog/how-to-convert-a-postgresql-time-interval-to-a-numeric-value_598990
-- [4] https://www.postgresql.org/message-id/20180914134014.18a9cf7d%40wrkhors.com
-- [5] https://github.com/cockroachdb/cockroach/issues/43272
-- [6] https://www.postgresql.org/docs/9.3/datatype-numeric.html
+      - [1] https://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres
+      - [2] https://www.postgresql.org/docs/8.1/functions-formatting.html
+      - [3] https://www.alibabacloud.com/blog/how-to-convert-a-postgresql-time-interval-to-a-numeric-value_598990
+      - [4] https://www.postgresql.org/message-id/20180914134014.18a9cf7d%40wrkhors.com
+      - [5] https://github.com/cockroachdb/cockroach/issues/43272
+      - [6] https://www.postgresql.org/docs/9.3/datatype-numeric.html
 
 
 
 -------
 
 ??? info "Utilisation de l'IA"
-Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des
-explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
-été vérifiées, éditées et complétées par l'auteur.
+    Page rédigée en partie avec l'aide d'un assistant IA. L'IA a été utilisée pour générer des
+    explications, des exemples et/ou des suggestions de structure. Toutes les informations ont
+    été vérifiées, éditées et complétées par l'auteur.
