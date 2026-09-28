@@ -49,14 +49,6 @@ Une Regex est un langage formel très puissant qui définit un modèle de recher
 
 ### La syntaxe de base (Les métacaractères)
 
-C'est une excellente observation. Effectivement, le rendu du symbole `|` a été altéré par le formatage et l'absence de
-certains symboles rendait le tableau incomplet pour comprendre les exemples qui suivaient.
-
-Voici le tableau de la syntaxe de base mis à jour, plus complet et corrigé, incluant les parenthèses, les accolades et
-le caractère d'échappement.
-
-### Syntaxe de base des Expressions Régulières (Regex)
-
 | Symbole | Nom                   | Signification                                             | Exemple                                                            |
 |:--------|:----------------------|:----------------------------------------------------------|:-------------------------------------------------------------------|
 | `.`     | Point                 | N'importe quel caractère unique (sauf saut de ligne)      | `c.t` $\rightarrow$ cat, cot, c8t                                  |
