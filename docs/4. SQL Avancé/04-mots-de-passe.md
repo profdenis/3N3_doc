@@ -3,12 +3,14 @@
 ## Distinction des Types d'Utilisateurs
 
 **Utilisateurs de l'Application Web**
+
 - Stockés dans, par exemple, la table `users` de la base de données
 - S'authentifient via l'interface web
 - Leurs identifiants et mots de passe sont gérés par l'application
 - Leurs permissions sont gérées au niveau de l'application
 
 **Utilisateurs de la Base de Données**
+
 - Créés directement dans PostgreSQL
 - Utilisés pour la connexion à la base de données
 - Gérés par l'administrateur de la base de données
@@ -17,6 +19,7 @@
 ## Bonnes Pratiques
 
 **Configuration de l'Application**
+
 - Créer un seul utilisateur PostgreSQL dédié pour l'application (ex: `web_app`)
 - Cet utilisateur unique sert d'intermédiaire entre l'application et la base de données
 - Ne pas créer un utilisateur PostgreSQL pour chaque utilisateur de l'application
@@ -32,12 +35,14 @@ GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO web_app;
 ```
 
 **Sécurité**
+
 - L'application doit agir comme gardien d'accès aux données
 - Limiter les privilèges de l'utilisateur PostgreSQL aux opérations strictement nécessaires
 - Ne jamais donner les droits superutilisateur à l'utilisateur de l'application
 - Implémenter un système de contrôle d'accès au niveau de l'application
 
 **Authentification des Utilisateurs Web**
+
 - Gérer l'authentification des utilisateurs web via la table `users`
 - Utiliser des sessions ou des tokens pour maintenir l'état de connexion
 - Implémenter une politique de mots de passe forts

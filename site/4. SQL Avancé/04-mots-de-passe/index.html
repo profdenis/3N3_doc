@@ -2796,21 +2796,27 @@
 
 <h1 id="gestion-des-mots-de-passe-dapplication-dans-une-bd">Gestion des mots de passe d&rsquo;application dans une BD<a class="headerlink" href="#gestion-des-mots-de-passe-dapplication-dans-une-bd" title="Permanent link">&para;</a></h1>
 <h2 id="distinction-des-types-dutilisateurs">Distinction des Types d&rsquo;Utilisateurs<a class="headerlink" href="#distinction-des-types-dutilisateurs" title="Permanent link">&para;</a></h2>
-<p><strong>Utilisateurs de l&rsquo;Application Web</strong>
-- Stockés dans, par exemple, la table <code>users</code> de la base de données
-- S&rsquo;authentifient via l&rsquo;interface web
-- Leurs identifiants et mots de passe sont gérés par l&rsquo;application
-- Leurs permissions sont gérées au niveau de l&rsquo;application</p>
-<p><strong>Utilisateurs de la Base de Données</strong>
-- Créés directement dans PostgreSQL
-- Utilisés pour la connexion à la base de données
-- Gérés par l&rsquo;administrateur de la base de données
-- Leurs permissions sont gérées via les commandes GRANT/REVOKE</p>
+<p><strong>Utilisateurs de l&rsquo;Application Web</strong></p>
+<ul>
+<li>Stockés dans, par exemple, la table <code>users</code> de la base de données</li>
+<li>S&rsquo;authentifient via l&rsquo;interface web</li>
+<li>Leurs identifiants et mots de passe sont gérés par l&rsquo;application</li>
+<li>Leurs permissions sont gérées au niveau de l&rsquo;application</li>
+</ul>
+<p><strong>Utilisateurs de la Base de Données</strong></p>
+<ul>
+<li>Créés directement dans PostgreSQL</li>
+<li>Utilisés pour la connexion à la base de données</li>
+<li>Gérés par l&rsquo;administrateur de la base de données</li>
+<li>Leurs permissions sont gérées via les commandes GRANT/REVOKE</li>
+</ul>
 <h2 id="bonnes-pratiques">Bonnes Pratiques<a class="headerlink" href="#bonnes-pratiques" title="Permanent link">&para;</a></h2>
-<p><strong>Configuration de l&rsquo;Application</strong>
-- Créer un seul utilisateur PostgreSQL dédié pour l&rsquo;application (ex: <code>web_app</code>)
-- Cet utilisateur unique sert d&rsquo;intermédiaire entre l&rsquo;application et la base de données
-- Ne pas créer un utilisateur PostgreSQL pour chaque utilisateur de l&rsquo;application</p>
+<p><strong>Configuration de l&rsquo;Application</strong></p>
+<ul>
+<li>Créer un seul utilisateur PostgreSQL dédié pour l&rsquo;application (ex: <code>web_app</code>)</li>
+<li>Cet utilisateur unique sert d&rsquo;intermédiaire entre l&rsquo;application et la base de données</li>
+<li>Ne pas créer un utilisateur PostgreSQL pour chaque utilisateur de l&rsquo;application</li>
+</ul>
 <p><strong>Exemple de Configuration</strong>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- Création de l'utilisateur pour l'application</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">web_app</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">LOGIN</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">'mot_de_passe_securise'</span><span class="p">;</span>
@@ -2819,16 +2825,20 @@
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">web_app</span><span class="p">;</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">USAGE</span><span class="p">,</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="n">SEQUENCES</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">web_app</span><span class="p">;</span>
 </span></code></pre></div></p>
-<p><strong>Sécurité</strong>
-- L&rsquo;application doit agir comme gardien d&rsquo;accès aux données
-- Limiter les privilèges de l&rsquo;utilisateur PostgreSQL aux opérations strictement nécessaires
-- Ne jamais donner les droits superutilisateur à l&rsquo;utilisateur de l&rsquo;application
-- Implémenter un système de contrôle d&rsquo;accès au niveau de l&rsquo;application</p>
-<p><strong>Authentification des Utilisateurs Web</strong>
-- Gérer l&rsquo;authentification des utilisateurs web via la table <code>users</code>
-- Utiliser des sessions ou des tokens pour maintenir l&rsquo;état de connexion
-- Implémenter une politique de mots de passe forts
-- Stocker uniquement les hachages des mots de passe, jamais en clair</p>
+<p><strong>Sécurité</strong></p>
+<ul>
+<li>L&rsquo;application doit agir comme gardien d&rsquo;accès aux données</li>
+<li>Limiter les privilèges de l&rsquo;utilisateur PostgreSQL aux opérations strictement nécessaires</li>
+<li>Ne jamais donner les droits superutilisateur à l&rsquo;utilisateur de l&rsquo;application</li>
+<li>Implémenter un système de contrôle d&rsquo;accès au niveau de l&rsquo;application</li>
+</ul>
+<p><strong>Authentification des Utilisateurs Web</strong></p>
+<ul>
+<li>Gérer l&rsquo;authentification des utilisateurs web via la table <code>users</code></li>
+<li>Utiliser des sessions ou des tokens pour maintenir l&rsquo;état de connexion</li>
+<li>Implémenter une politique de mots de passe forts</li>
+<li>Stocker uniquement les hachages des mots de passe, jamais en clair</li>
+</ul>
 <p>Cette approche permet une séparation claire des responsabilités tout en maintenant un niveau de sécurité élevé pour 
 l&rsquo;application et la base de données.</p>
 <h2 id="exemple">Exemple<a class="headerlink" href="#exemple" title="Permanent link">&para;</a></h2>
