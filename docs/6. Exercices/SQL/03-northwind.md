@@ -315,7 +315,7 @@ LIMIT 1;
 </details>
 <br>
 
-Difficulté : 2
+Difficulté : 3
 <details>
     <summary>Code</summary>
     
@@ -593,7 +593,7 @@ LIMIT 5;
 </details>
 <br>
 
-Difficulté : 3
+Difficulté : 4
 <details>
     <summary>Code</summary>
     
@@ -749,7 +749,7 @@ ORDER BY employee_rank, employee_name;
 
 ### 33. Identifiez les clients qui ont commandé tous les produits d'une catégorie spécifique (par exemple, 'Beverages').
 
-Difficulté : 4
+Difficulté : 5
 <details>
     <summary>Code</summary>
     
@@ -827,7 +827,7 @@ ORDER BY p1.product_name, p2.product_name;
 
 ### 36. Calculez le pourcentage de contribution de chaque produit au chiffre d'affaires total.
 
-Difficulté : 4
+Difficulté : 5
 <details>
     <summary>Code</summary>
     
@@ -854,7 +854,7 @@ ORDER BY revenue_percentage DESC;
 
 ### 37. Identifiez les clients qui ont augmenté leurs achats d'une année à l'autre.
 
-Difficulté : 4
+Difficulté : 5
 <details>
     <summary>Code</summary>
     
@@ -941,7 +941,7 @@ ORDER BY sl.start_date;
 
 ### 39. Calculez le temps moyen entre les commandes pour chaque client.
 
-Difficulté : 4
+Difficulté : 5
 <details>
     <summary>Code</summary>
     
