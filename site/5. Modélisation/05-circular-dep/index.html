@@ -1832,7 +1832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01b-enit%C3%A9s-faibles/" class="md-nav__link">
+      <a href="../01b-entit%C3%A9s-faibles/" class="md-nav__link">
         
   
   
@@ -1867,35 +1867,7 @@
   <span class="md-ellipsis">
     
   
-    Différentes notations pour les DEA
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02b-resume-notation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Guide de Modélisation de Données (PlantUML)
+    Guide de Modélisation et Notations (PlantUML)
   
 
     
@@ -1951,7 +1923,7 @@
   <span class="md-ellipsis">
     
   
-    Conversion d&rsquo;un diagramme EA en schéma relationnel
+    Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données
   
 
     
@@ -2336,14 +2308,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-objet-relationel/" class="md-nav__link">
+      <a href="../07-objet-relationnel/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Modèle objet-relationel
+    Modèle objet-relationnel
   
 
     
@@ -3349,7 +3321,7 @@ par la suite.</p>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">department_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Department</span><span class="w"> </span><span class="p">(</span><span class="n">department_id</span><span class="p">)</span>
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">);</span>
 </span></code></pre></div>
-<p><strong>Étape 4 :</strong> Ajoutez l&rsquo;association de clé étrangère manquante à l&rsquo;aide de ALTER TABLE</p>
+<p><strong>Étape 4 :</strong> Ajoutez la contrainte de clé étrangère manquante à l&rsquo;aide de ALTER TABLE</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">-- Ajoutez la colonne manager_id</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Department</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">manager_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span>
@@ -3729,7 +3701,7 @@ utilisateur doit avoir un meilleur ami ?</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../04-ea-vers-relationnel/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Conversion d&amp;rsquo;un diagramme EA en schéma relationnel">
+          <a href="../04-ea-vers-relationnel/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3739,7 +3711,7 @@ utilisateur doit avoir un meilleur ami ?</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Conversion d&rsquo;un diagramme EA en schéma relationnel
+                Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données
               </div>
             </div>
           </a>

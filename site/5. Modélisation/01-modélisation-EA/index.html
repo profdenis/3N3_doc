@@ -14,7 +14,7 @@
         <link rel="prev" href="../../4.%20SQL%20Avanc%C3%A9/08-backups/">
       
       
-        <link rel="next" href="../01b-enit%C3%A9s-faibles/">
+        <link rel="next" href="../01b-entit%C3%A9s-faibles/">
       
       
         
@@ -2035,7 +2035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01b-enit%C3%A9s-faibles/" class="md-nav__link">
+      <a href="../01b-entit%C3%A9s-faibles/" class="md-nav__link">
         
   
   
@@ -2070,35 +2070,7 @@
   <span class="md-ellipsis">
     
   
-    Différentes notations pour les DEA
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02b-resume-notation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Guide de Modélisation de Données (PlantUML)
+    Guide de Modélisation et Notations (PlantUML)
   
 
     
@@ -2154,7 +2126,7 @@
   <span class="md-ellipsis">
     
   
-    Conversion d&rsquo;un diagramme EA en schéma relationnel
+    Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données
   
 
     
@@ -2231,14 +2203,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-objet-relationel/" class="md-nav__link">
+      <a href="../07-objet-relationnel/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Modèle objet-relationel
+    Modèle objet-relationnel
   
 
     
@@ -3006,8 +2978,32 @@
 <ul>
 <li><em>Modèle de données relationnel</em> (ou <em>modèle relationnel</em>)</li>
 <li><em>Modèle Entité-Association</em> (ou <em>Modèle EA</em>)</li>
-<li>Exemples</li>
+<li>Démarche de modélisation (Conceptuel, Logique, Physique)</li>
+<li>Exemples de notations</li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Précision terminologique : « Relation » vs « Association » (<em>Relation</em> vs <em>Relationship</em>)</p>
+<p>Dans le langage courant et dans la documentation traduite de l&rsquo;anglais, il existe une confusion très fréquente entre les mots <strong>relation</strong> et <strong>association</strong>. Cette confusion provient des faux-amis entre le français et l&rsquo;anglais :</p>
+<ul>
+<li><strong>En anglais</strong> :<ul>
+<li><strong><em>Relation</em></strong> désigne formellement une <strong>relation mathématique</strong>, c&rsquo;est-à-dire une <strong>table</strong> dans le modèle relationnel inventé par Edgar F. Codd.</li>
+<li><strong><em>Relationship</em></strong> désigne le <strong>lien conceptuel ou métier</strong> unissant deux entités.</li>
+</ul>
+</li>
+<li><strong>En français</strong> :<ul>
+<li>On traduit <strong><em>relation</em></strong> par <strong>relation</strong> : dans les bases de données relationnelles, une <em>relation</em> est une <strong>table</strong> (un ensemble de lignes ou tuples avec des colonnes ou attributs).</li>
+<li>On traduit <strong><em>relationship</em></strong> par <strong>association</strong> : le rapport existant entre deux entités (par exemple : un <code>Client</code> <em>passe</em> une <code>Commande</code>).</li>
+</ul>
+</li>
+</ul>
+<p>C&rsquo;est pour cette raison qu&rsquo;il faut impérativement parler de <strong>Modèle Entité-Association</strong> (ou <strong>Diagramme Entité-Association</strong>, en abrégé <strong>DEA</strong>) et <strong>non pas</strong> de <em>modèle entité-relation</em> :</p>
+<ul>
+<li>Dire <em>entité-relation</em> entretiendrait la confusion entre la table (relation au sens de Codd) et le lien métier (association).</li>
+<li>Une <strong>entité</strong> modélise un objet du monde réel (ex. : <code>Étudiant</code>, <code>Cours</code>).</li>
+<li>Une <strong>association</strong> modélise le lien sémantique entre deux entités (ex. : <code>suit</code>, <code>enseigne</code>).</li>
+<li>Une <strong>relation</strong> (au sens relationnel) est la structure de données finale (la table SQL avec ses n-uplets).</li>
+</ul>
+</div>
 <h2 id="modele-relationnel">Modèle Relationnel<a class="headerlink" href="#modele-relationnel" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Relation (table)</strong> : table à deux dimensions, ensemble (et non liste) de
@@ -3042,45 +3038,48 @@
 <h2 id="etapes-pour-creer-une-nouvelle-base-de-donnees">Étapes pour créer une nouvelle base de données<a class="headerlink" href="#etapes-pour-creer-une-nouvelle-base-de-donnees" title="Permanent link">&para;</a></h2>
 <ol type="1">
 <li>
-<p><strong>Modèles Conceptuels</strong> et <strong>Logiques</strong> : modéliser (ou concevoir) la base de
-   données au niveau <em>conceptuel</em> et <em>logique</em></p>
+<p><strong>Modèle Conceptuel de Données (MCD)</strong> : diagramme de travail (ou brouillon)</p>
 <ul>
-<li>nous pouvons utiliser la notation traditionnelle <strong>ERD</strong>, ou</li>
-<li>la notation <strong>UML</strong>, ou</li>
-<li>d&rsquo;autres notations <a href="../02-notation/">notation.md</a></li>
-<li>le modèle <em>conceptuel</em> est très général, comme une première ébauche, se
-  concentrant uniquement sur les entités et les associations</li>
-<li>le modèle <em>logique</em> ajoute des types de données et des contraintes au
-  modèle <em>conceptuel</em></li>
+<li>permet d&rsquo;esquisser rapidement le domaine métier avec les parties prenantes</li>
+<li>se concentre uniquement sur les grandes entités et les associations</li>
+<li>ne contient ni types de données détaillés, ni clés étrangères</li>
 </ul>
 </li>
 <li>
-<p><strong>Modèle de Données Relationnel</strong>, aussi appelé <strong>Modèle Physique</strong> :
-   convertir le modèle logique en modèle de données relationnel</p>
+<p><strong>Modèle Logique de Données (MLD / DEA final)</strong> :</p>
 <ul>
-<li>nous pourrions utiliser d&rsquo;autres modèles de données, tels que le modèle
-  <em>objet-relationnel</em> ou d&rsquo;autres modèles non relationnels (OO, NoSQL, &hellip;)</li>
-<li>le modèle relationnel est le modèle le plus courant, et il ne peut pas
-  être ignoré lors de l&rsquo;apprentissage des bases de données</li>
+<li>version finale, complète et validée du <strong>Diagramme Entité-Association (DEA)</strong></li>
+<li>définit précisément les entités, leurs attributs et leurs identifiants</li>
+<li>conserve des entités (pas de tables) et des associations directes, y compris les associations plusieurs-à-plusieurs (<span class="arithmatex">\(N:M\)</span>)</li>
+<li><strong>ne contient aucune clé étrangère</strong> (la clé étrangère n&rsquo;apparaît qu&rsquo;au niveau physique)</li>
+<li>peut être représenté selon la notation traditionnelle du DEA ou selon la notation <strong>UML</strong> (voir <a href="../02-notation/">notations</a>)</li>
 </ul>
 </li>
 <li>
-<p><strong>Création d&rsquo;Instance de Base de Données</strong> : générer les instructions SQL
-   nécessaires <code>CREATE TABLE</code> et autres pour créer une instance de base de
-   données, et la remplir avec des données</p>
+<p><strong>Modèle Physique de Données (MPD)</strong> :</p>
+<ul>
+<li>conversion du modèle logique en modèle de données relationnel</li>
+<li>est composé de <strong>tables</strong> (et non plus d&rsquo;entités) et de colonnes</li>
+<li>chaque association plusieurs-à-plusieurs devient une table d&rsquo;association (table de jonction)</li>
+<li>les associations sont traduites par des <strong>clés primaires (<code>PK</code>)</strong> et des <strong>clés étrangères (<code>FK</code>)</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Création de la Base de Données (SQL)</strong> :</p>
+<ul>
+<li>génération des instructions SQL <code>CREATE TABLE</code> avec types de données SQL et contraintes d&rsquo;intégrité référentielle</li>
+<li>respect de l&rsquo;ordre de création des tables (tri topologique selon les dépendances de clés étrangères)</li>
+<li>remplissage initial et exploitation (requêtes <code>SELECT</code>, mises à jour, &hellip;)</li>
+</ul>
 </li>
 </ol>
-<ul>
-<li>Une fois la base de données créée, vous pouvez commencer à l&rsquo;utiliser (
-  instructions <code>SELECT</code>, mises à jour de données, &hellip;)</li>
-</ul>
 <h3 id="modele-entite-association-ea">Modèle Entité-Association (EA)<a class="headerlink" href="#modele-entite-association-ea" title="Permanent link">&para;</a></h3>
 <h4 id="notation-traditionnelle">Notation Traditionnelle<a class="headerlink" href="#notation-traditionnelle" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Ensembles d&rsquo;entités</strong> : rectangles</li>
-<li><strong>Ensembles de associations</strong> : losanges</li>
+<li><strong>Ensembles d&rsquo;associations</strong> : losanges</li>
 <li><strong>Attributs</strong> : ovales</li>
-<li><strong>Flèches</strong> pour connecter les ensembles de associations aux ensembles
+<li><strong>Flèches</strong> pour connecter les ensembles d&rsquo;associations aux ensembles
   d&rsquo;entités :<ul>
 <li><em>triangle noir plein</em> : au plus 1</li>
 <li><em>triangle rond ouvert</em> ou <em>triangle transparent</em> : exactement 1</li>
@@ -3167,7 +3166,7 @@
         
         
           
-          <a href="../01b-enit%C3%A9s-faibles/" class="md-footer__link md-footer__link--next" aria-label="Next: Les Entités Faibles">
+          <a href="../01b-entit%C3%A9s-faibles/" class="md-footer__link md-footer__link--next" aria-label="Next: Les Entités Faibles">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next

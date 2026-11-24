@@ -205,7 +205,7 @@ CREATE TABLE Project
 );
 ```
 
-**Étape 4 :** Ajoutez l'association de clé étrangère manquante à l'aide de ALTER TABLE
+**Étape 4 :** Ajoutez la contrainte de clé étrangère manquante à l'aide de ALTER TABLE
 
 ```sql
 -- Ajoutez la colonne manager_id

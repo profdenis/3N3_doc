@@ -16,8 +16,8 @@ associée.
 2. **Clé Partielle** : L'identification d'une entité faible nécessite une clé
    partielle (un ensemble d'attributs propres à l'entité faible) en combinaison
    avec la clé primaire de l'entité forte.
-3. **Relation d'Identification** : Une relation spéciale, souvent appelée
-   relation d'identification, relie l'entité faible à son entité forte.
+3. **Association d'Identification** : Une association spéciale, souvent appelée
+   association d'identification, relie l'entité faible à son entité forte.
 
 ## Exemple
 
@@ -33,7 +33,7 @@ Considérons une base de données pour une bibliothèque. Nous avons deux entit�
 ## Comparaison avec la Conception Orientée Objet (OO) en UML
 
 En conception orientée objet avec UML (Unified Modeling Language), les concepts
-d'entités faibles et fortes peuvent être comparés aux relations de composition
+d'entités faibles et fortes peuvent être comparés aux associations de composition
 et d'agrégation.
 
 - **Composition** : Similaire aux entités faibles, une classe composante ne peut

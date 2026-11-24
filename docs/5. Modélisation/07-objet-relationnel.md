@@ -1,4 +1,4 @@
-# Modèle objet-relationel
+# Modèle objet-relationnel
 
 _ORDBMS_ : Object-Relational DBMS
 
@@ -233,7 +233,7 @@ FROM users u
 1. Les jointures peuvent être lentes.
 2. Mais sans normalisation, les données peuvent être redondantes et des
    anomalies peuvent apparaître.
-3. Une SGDB `object-relationalle` (SGBDOR, ou ORDBMS) peut aider.
+3. Un SGBD objet-relationnel (SGBDOR, ou ORDBMS) peut aider.
 
 ## Contacts dénormalisés
 

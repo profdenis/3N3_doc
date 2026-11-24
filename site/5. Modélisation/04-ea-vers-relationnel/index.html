@@ -25,7 +25,7 @@
     
     
       
-        <title>Conversion d’un diagramme EA en schéma relationnel - Cours de bases de données</title>
+        <title>Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données - Cours de bases de données</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#conversion-dun-diagramme-ea-en-schema-relationnel" class="md-skip">
+        <a href="#du-modele-logique-dea-au-modele-physique-et-a-la-base-de-donnees" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Conversion d&rsquo;un diagramme EA en schéma relationnel
+              Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données
             
           </span>
         </div>
@@ -1832,7 +1832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01b-enit%C3%A9s-faibles/" class="md-nav__link">
+      <a href="../01b-entit%C3%A9s-faibles/" class="md-nav__link">
         
   
   
@@ -1867,35 +1867,7 @@
   <span class="md-ellipsis">
     
   
-    Différentes notations pour les DEA
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02b-resume-notation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Guide de Modélisation de Données (PlantUML)
+    Guide de Modélisation et Notations (PlantUML)
   
 
     
@@ -1960,7 +1932,7 @@
   <span class="md-ellipsis">
     
   
-    Conversion d&rsquo;un diagramme EA en schéma relationnel
+    Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données
   
 
     
@@ -1978,7 +1950,7 @@
   <span class="md-ellipsis">
     
   
-    Conversion d&rsquo;un diagramme EA en schéma relationnel
+    Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données
   
 
     
@@ -2004,10 +1976,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#schema-relationnel" class="md-nav__link">
+  <a href="#1-la-demarche-de-modelisation-en-trois-niveaux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Schéma relationnel
+        1. La démarche de modélisation en trois niveaux
       
     </span>
   </a>
@@ -2015,44 +1987,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#les-colonnes-faisant-partie-dune-cle-etrangere-sont-suivies-dun" class="md-nav__link">
+  <a href="#2-regles-de-transformation-du-logique-dea-au-physique-mpd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        les colonnes faisant partie d&rsquo;une clé étrangère sont suivies d&rsquo;un *
+        2. Règles de transformation : du Logique (DEA) au Physique (MPD)
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#etapes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Étapes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exemples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exemples
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exemples">
+    <nav class="md-nav" aria-label="2. Règles de transformation : du Logique (DEA) au Physique (MPD)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#contacts" class="md-nav__link">
+  <a href="#regle-1-les-entites-deviennent-des-tables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contacts
+        Règle 1 : Les entités deviennent des tables
       
     </span>
   </a>
@@ -2060,10 +2010,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#simple-bank" class="md-nav__link">
+  <a href="#regle-2-les-associations-plusieurs-a-plusieurs-nm-deviennent-des-tables-dassociation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Simple Bank
+        Règle 2 : Les associations plusieurs-à-plusieurs (\(N:M\)) deviennent des tables d&rsquo;association
       
     </span>
   </a>
@@ -2071,10 +2021,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#college" class="md-nav__link">
+  <a href="#regle-3-les-associations-un-a-plusieurs-1n-deviennent-des-cles-etrangeres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Collège
+        Règle 3 : Les associations un-à-plusieurs (\(1:N\)) deviennent des clés étrangères
       
     </span>
   </a>
@@ -2082,10 +2032,50 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#music" class="md-nav__link">
+  <a href="#regle-4-les-associations-un-a-un-11-deviennent-des-cles-etrangeres-uniques" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Music
+        Règle 4 : Les associations un-à-un (\(1:1\)) deviennent des clés étrangères uniques
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-exemples-de-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Exemples de conversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Exemples de conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-1-contacts-et-appels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 1 : Contacts et Appels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 1 : Contacts et Appels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
       
     </span>
   </a>
@@ -2093,10 +2083,238 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#appartments" class="md-nav__link">
+  <a href="#modele-physique-mpd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Appartments
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-2-banque-simple-simple-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 2 : Banque Simple (Simple Bank)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 2 : Banque Simple (Simple Bank)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-physique-mpd_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-3-college" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 3 : Collège
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 3 : Collège">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-physique-mpd_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-4-droits-dauteur-de-musique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 4 : Droits d&rsquo;auteur de Musique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 4 : Droits d’auteur de Musique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-physique-mpd_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-5-gestion-dimmeubles-et-appartements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 5 : Gestion d&rsquo;immeubles et appartements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 5 : Gestion d’immeubles et appartements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-physique-mpd_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-creation-de-la-base-de-donnees-en-sql-ddl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Création de la base de données en SQL (DDL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Création de la base de données en SQL (DDL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordre-de-creation-des-tables-et-tri-topologique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordre de création des tables et tri topologique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordre de création des tables et tri topologique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quest-ce-quun-tri-topologique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qu&rsquo;est-ce qu&rsquo;un tri topologique ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-complet-dimplementation-sql-simple-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple complet d&rsquo;implémentation SQL : Simple Bank
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-faire-en-presence-de-dependances-circulaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Que faire en présence de dépendances circulaires ?
       
     </span>
   </a>
@@ -2180,14 +2398,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-objet-relationel/" class="md-nav__link">
+      <a href="../07-objet-relationnel/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Modèle objet-relationel
+    Modèle objet-relationnel
   
 
     
@@ -2728,10 +2946,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#schema-relationnel" class="md-nav__link">
+  <a href="#1-la-demarche-de-modelisation-en-trois-niveaux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Schéma relationnel
+        1. La démarche de modélisation en trois niveaux
       
     </span>
   </a>
@@ -2739,44 +2957,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#les-colonnes-faisant-partie-dune-cle-etrangere-sont-suivies-dun" class="md-nav__link">
+  <a href="#2-regles-de-transformation-du-logique-dea-au-physique-mpd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        les colonnes faisant partie d&rsquo;une clé étrangère sont suivies d&rsquo;un *
+        2. Règles de transformation : du Logique (DEA) au Physique (MPD)
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#etapes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Étapes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exemples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exemples
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exemples">
+    <nav class="md-nav" aria-label="2. Règles de transformation : du Logique (DEA) au Physique (MPD)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#contacts" class="md-nav__link">
+  <a href="#regle-1-les-entites-deviennent-des-tables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contacts
+        Règle 1 : Les entités deviennent des tables
       
     </span>
   </a>
@@ -2784,10 +2980,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#simple-bank" class="md-nav__link">
+  <a href="#regle-2-les-associations-plusieurs-a-plusieurs-nm-deviennent-des-tables-dassociation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Simple Bank
+        Règle 2 : Les associations plusieurs-à-plusieurs (\(N:M\)) deviennent des tables d&rsquo;association
       
     </span>
   </a>
@@ -2795,10 +2991,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#college" class="md-nav__link">
+  <a href="#regle-3-les-associations-un-a-plusieurs-1n-deviennent-des-cles-etrangeres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Collège
+        Règle 3 : Les associations un-à-plusieurs (\(1:N\)) deviennent des clés étrangères
       
     </span>
   </a>
@@ -2806,10 +3002,50 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#music" class="md-nav__link">
+  <a href="#regle-4-les-associations-un-a-un-11-deviennent-des-cles-etrangeres-uniques" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Music
+        Règle 4 : Les associations un-à-un (\(1:1\)) deviennent des clés étrangères uniques
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-exemples-de-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Exemples de conversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Exemples de conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-1-contacts-et-appels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 1 : Contacts et Appels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 1 : Contacts et Appels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
       
     </span>
   </a>
@@ -2817,10 +3053,238 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#appartments" class="md-nav__link">
+  <a href="#modele-physique-mpd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Appartments
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-2-banque-simple-simple-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 2 : Banque Simple (Simple Bank)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 2 : Banque Simple (Simple Bank)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-physique-mpd_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-3-college" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 3 : Collège
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 3 : Collège">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-physique-mpd_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-4-droits-dauteur-de-musique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 4 : Droits d&rsquo;auteur de Musique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 4 : Droits d’auteur de Musique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-physique-mpd_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-5-gestion-dimmeubles-et-appartements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple 5 : Gestion d&rsquo;immeubles et appartements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemple 5 : Gestion d’immeubles et appartements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-logique-dea_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Logique (DEA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-physique-mpd_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Physique (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-creation-de-la-base-de-donnees-en-sql-ddl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Création de la base de données en SQL (DDL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Création de la base de données en SQL (DDL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordre-de-creation-des-tables-et-tri-topologique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordre de création des tables et tri topologique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordre de création des tables et tri topologique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quest-ce-quun-tri-topologique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qu&rsquo;est-ce qu&rsquo;un tri topologique ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-complet-dimplementation-sql-simple-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple complet d&rsquo;implémentation SQL : Simple Bank
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-faire-en-presence-de-dependances-circulaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Que faire en présence de dépendances circulaires ?
       
     </span>
   </a>
@@ -2900,165 +3364,400 @@
   
 
 
-<h1 id="conversion-dun-diagramme-ea-en-schema-relationnel">Conversion d&rsquo;un diagramme EA en schéma relationnel<a class="headerlink" href="#conversion-dun-diagramme-ea-en-schema-relationnel" title="Permanent link">&para;</a></h1>
-<h2 id="schema-relationnel">Schéma relationnel<a class="headerlink" href="#schema-relationnel" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Schéma relationnel (modèle de données relationnel)</strong> : ensemble de schémas
-  de tables</li>
-<li>
-<p><strong>Schéma de table</strong> :</p>
-<ul>
-<li><em>forme basique</em> : nom de la table et ensemble de noms de colonnes<ul>
-<li><code>employee(emp_id, name, address, dept_id)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Schéma de table</strong> :</p>
-<ul>
-<li><em>forme détaillée</em> : nom de la table et ensemble de noms de colonnes plus
-  types de données et clés primaires, et parfois d&rsquo;autres contraintes telles
-  que <code>NOT NULL</code><ul>
-<li>les colonnes faisant partie de la clé primaire sont soit soulignées,
-  soit en majuscules<ul>
-<li>pour éviter des problèmes avec certains SGBD, écrivez les noms des
-  tables et des colonnes uniquement en minuscules dans les
-  instructions <code>CREATE TABLE</code></li>
-</ul>
-</li>
-<li>
-<h2 id="les-colonnes-faisant-partie-dune-cle-etrangere-sont-suivies-dun">les colonnes faisant partie d&rsquo;une clé étrangère sont suivies d&rsquo;un *<a class="headerlink" href="#les-colonnes-faisant-partie-dune-cle-etrangere-sont-suivies-dun" title="Permanent link">&para;</a></h2>
-<em>exemple</em> : <code>employee(EMP_ID integer, name text, address text, dept_id* integer)</code></li>
-</ul>
-</li>
-<li>d&rsquo;autres formes intermédiaires entre les deux précédentes sont également
-  possibles</li>
-</ul>
-</li>
-<li><strong>Diagramme physique</strong> : à partir d&rsquo;un diagramme logique, convertir toutes les
-  relations en clés étrangères et entités supplémentaires (ou tables) si
-  nécessaire</li>
-</ul>
-<h2 id="etapes">Étapes<a class="headerlink" href="#etapes" title="Permanent link">&para;</a></h2>
+<h1 id="du-modele-logique-dea-au-modele-physique-et-a-la-base-de-donnees">Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données<a class="headerlink" href="#du-modele-logique-dea-au-modele-physique-et-a-la-base-de-donnees" title="Permanent link">&para;</a></h1>
+<p>Ce document présente la transition pragmatique entre le <strong>Modèle Logique</strong> (la version finale et détaillée du diagramme
+entité-association) et le <strong>Modèle Physique de Données (MPD)</strong>, puis son implémentation concrète sous forme de tables
+relationnelles via des instructions SQL <code>CREATE TABLE</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Rappel terminologique : « Association » vs « Relation »</p>
+<p>Dans un <strong>Modèle Entité-Association (DEA)</strong>, le lien sémantique unissant deux entités est une <strong>association</strong> (<em>relationship</em> en anglais). Le mot <strong>relation</strong> (<em>relation</em> en anglais) est quant à lui réservé au modèle relationnel pour désigner une <strong>table</strong> de données. Ainsi, on transforme des <em>associations</em> conceptuelles/logiques en tables ou en contraintes de clés étrangères au sein d&rsquo;un schéma <em>relationnel</em>.</p>
+</div>
+<hr />
+<h2 id="1-la-demarche-de-modelisation-en-trois-niveaux">1. La démarche de modélisation en trois niveaux<a class="headerlink" href="#1-la-demarche-de-modelisation-en-trois-niveaux" title="Permanent link">&para;</a></h2>
+<p>Dans une approche moderne et efficace de conception de bases de données, nous distinguons trois étapes clés
+successives :</p>
 <ol type="1">
 <li>
-<p>Chaque entité du diagramme ER sera une table dans le schéma relationnel</p>
+<p><strong>Le Modèle Conceptuel de Données (MCD) — Le diagramme de travail (brouillon)</strong> :</p>
 <ul>
-<li>tous les attributs de l&rsquo;entité deviennent des colonnes dans le schéma de table</li>
-<li>les attributs de clé primaire deviennent des colonnes de clé primaire dans le schéma de table</li>
+<li>Il s&rsquo;agit d&rsquo;une première ébauche pour explorer le domaine métier avec les parties prenantes.</li>
+<li>On y identifie les grandes entités du domaine et les associations fondamentales, sans se soucier des détails
+  techniques (types de données SQL, clés étrangères ou contraintes précises).</li>
 </ul>
 </li>
 <li>
-<p>Chaque association plusieurs-à-plusieurs sera une table</p>
+<p><strong>Le Modèle Logique de Données (MLD / DEA final)</strong> :</p>
 <ul>
-<li>les attributs de l&rsquo;association sont ajoutés au schéma de table</li>
-<li>ajouter une colonne de clé étrangère (ou des colonnes) pour chaque table
-  impliquée dans l&rsquo;association</li>
-<li>choisir une clé primaire parmi les colonnes actuelles, ou ajouter de
-  nouvelles colonnes de clé primaire (comme une colonne ID)</li>
+<li>C&rsquo;est la version finale, stabilisée et complète du <strong>Diagramme Entité-Association (DEA)</strong>.</li>
+<li>Il contient des <strong>entités</strong> (et non des tables).</li>
+<li>Il définit les attributs, les types de données conceptuels et les identifiants (clés primaires).</li>
+<li>Il conserve des associations directes, y compris les <strong>associations plusieurs-à-plusieurs (<span class="arithmatex">\(N:M\)</span>)</strong>.</li>
+<li><strong>Aucune clé étrangère n&rsquo;apparaît à ce niveau</strong> : la clé étrangère est un mécanisme purement technique propre au
+  modèle relationnel.</li>
+</ul>
+</li>
+<li>
+<p><strong>Le Modèle Physique de Données (MPD)</strong> :</p>
+<ul>
+<li>Il s&rsquo;agit de la traduction directe du modèle logique en vue de son implémentation dans un SGBD relationnel.</li>
+<li>Il est constitué de <strong>tables</strong> (et non plus d&rsquo;entités) et de colonnes.</li>
+<li>Les types de données deviennent des types SQL concrets (<code>INT</code>, <code>VARCHAR(100)</code>, <code>DECIMAL(10,2)</code>, <code>DATE</code>, etc.).</li>
+<li>Toutes les associations sont désormais matérialisées par des <strong>clés étrangères (<code>FK</code>)</strong> ou des tables dédiées.</li>
+<li>Chaque association plusieurs-à-plusieurs est transformée en une <strong>table d&rsquo;association</strong> (ou table de jonction).</li>
 </ul>
 </li>
 </ol>
-<p><strong>Conseil</strong> : comptez le nombre d&rsquo;entités dans le diagramme ER, ajoutez le
-   nombre d&rsquo;associations plusieurs-à-plusieurs, et ce nombre sera le nombre de
-   tables dans le schéma relationnel</p>
-<ol start="3" type="1">
-<li>
-<p>Les associations plusieurs-à-un ne deviendront <strong>PAS</strong> des tables</p>
+<p>Une fois le Modèle Physique validé, l&rsquo;étape finale consiste à générer le script SQL de création (<code>CREATE TABLE</code>,
+contraintes <code>PRIMARY KEY</code>, <code>FOREIGN KEY</code>, <code>NOT NULL</code>, etc.).</p>
+<hr />
+<h2 id="2-regles-de-transformation-du-logique-dea-au-physique-mpd">2. Règles de transformation : du Logique (DEA) au Physique (MPD)<a class="headerlink" href="#2-regles-de-transformation-du-logique-dea-au-physique-mpd" title="Permanent link">&para;</a></h2>
+<p>La conversion d&rsquo;un diagramme logique vers un diagramme physique repose sur quatre règles fondamentales.</p>
+<h3 id="regle-1-les-entites-deviennent-des-tables">Règle 1 : Les entités deviennent des tables<a class="headerlink" href="#regle-1-les-entites-deviennent-des-tables" title="Permanent link">&para;</a></h3>
 <ul>
-<li>à la place, ajoutez une colonne de clé étrangère du côté plusieurs
-  référant la clé primaire du côté un</li>
-<li>si le côté un est en fait <em>exactement un</em>, alors rendez la colonne de clé
-  étrangère <code>NOT NULL</code></li>
+<li>Chaque <strong>entité</strong> du modèle logique devient une <strong>table</strong> dans le modèle physique.</li>
+<li>Tous les attributs de l&rsquo;entité deviennent des <strong>colonnes</strong> dans la table.</li>
+<li>Les identifiants de l&rsquo;entité deviennent les colonnes de la <strong>clé primaire (<code>PK</code>)</strong> de la table.</li>
+</ul>
+<h3 id="regle-2-les-associations-plusieurs-a-plusieurs-nm-deviennent-des-tables-dassociation">Règle 2 : Les associations plusieurs-à-plusieurs (<span class="arithmatex">\(N:M\)</span>) deviennent des tables d&rsquo;association<a class="headerlink" href="#regle-2-les-associations-plusieurs-a-plusieurs-nm-deviennent-des-tables-dassociation" title="Permanent link">&para;</a></h3>
+<p>Dans le modèle relationnel, deux tables ne peuvent pas être directement associées par une association
+plusieurs-à-plusieurs sans violer la première forme normale ou introduire des redondances incohérentes.</p>
+<ul>
+<li>Chaque association <strong>plusieurs-à-plusieurs</strong> (<span class="arithmatex">\(* \dots *\)</span> ou <span class="arithmatex">\(N:M\)</span>) devient une <strong>nouvelle table</strong> (table
+  d&rsquo;association ou table de jonction).</li>
+<li>Cette table contient au minimum deux colonnes de <strong>clés étrangères (<code>FK</code>)</strong>, chacune pointant vers la clé primaire
+  d&rsquo;une des tables impliquées dans l&rsquo;association.</li>
+<li>La clé primaire (<code>PK</code>) de la table d&rsquo;association est couramment composée de la combinaison de ces clés étrangères (clé
+  primaire composite), ou d&rsquo;un identifiant numérique propre.</li>
+<li>Si l&rsquo;association possédait des attributs propres dans le modèle logique (ex. : une date, une quantité, un
+  pourcentage), ceux-ci deviennent des colonnes de cette nouvelle table.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Règle de comptage</p>
+<p>Nombre minimal de tables dans le schéma relationnel = <strong>Nombre d&rsquo;entités + Nombre d&rsquo;associations plusieurs-à-plusieurs</strong>.</p>
+</div>
+<h3 id="regle-3-les-associations-un-a-plusieurs-1n-deviennent-des-cles-etrangeres">Règle 3 : Les associations un-à-plusieurs (<span class="arithmatex">\(1:N\)</span>) deviennent des clés étrangères<a class="headerlink" href="#regle-3-les-associations-un-a-plusieurs-1n-deviennent-des-cles-etrangeres" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Une association <strong>un-à-plusieurs</strong> ne devient <strong>JAMAIS</strong> une nouvelle table.</li>
+<li>La règle consiste à faire migrer la clé primaire du côté « un » (<span class="arithmatex">\(1\)</span> ou <span class="arithmatex">\(0..1\)</span>) comme <strong>clé étrangère (<code>FK</code>)</strong> dans la
+  table située du côté « plusieurs » (<span class="arithmatex">\(*\)</span>).</li>
+<li><strong>Contrainte de nullité</strong> :<ul>
+<li>Si la cardinalité du côté « un » est obligatoire (<span class="arithmatex">\(1..1\)</span>), la colonne de clé étrangère doit être marquée
+  <code>NOT NULL</code>.</li>
+<li>Si la cardinalité du côté « un » est optionnelle (<span class="arithmatex">\(0..1\)</span>), la colonne de clé étrangère peut accepter la valeur
+  <code>NULL</code>.</li>
 </ul>
 </li>
-<li>
-<p>Les associations un-à-un ne deviendront <strong>PAS</strong> des tables</p>
+</ul>
+<h3 id="regle-4-les-associations-un-a-un-11-deviennent-des-cles-etrangeres-uniques">Règle 4 : Les associations un-à-un (<span class="arithmatex">\(1:1\)</span>) deviennent des clés étrangères uniques<a class="headerlink" href="#regle-4-les-associations-un-a-un-11-deviennent-des-cles-etrangeres-uniques" title="Permanent link">&para;</a></h3>
 <ul>
-<li>traitez les associations un-à-un de manière similaire aux associations
-  plusieurs-à-un, sauf que vous ne prenez qu&rsquo;une des clés primaires comme
-  clé étrangère de l&rsquo;autre côté</li>
-<li>il n&rsquo;y a pas de règle parfaite sur quel côté choisir, cela dépend du
-  contexte</li>
-<li>si c&rsquo;est une association exactement-un-à-au-plus-un, alors généralement la
-  clé étrangère sera du côté au-plus-un (pointant vers le côté
-  exactement-un)</li>
+<li>Une association <strong>un-à-un</strong> ne devient <strong>JAMAIS</strong> une nouvelle table.</li>
+<li>On place une <strong>clé étrangère (<code>FK</code>)</strong> dans l&rsquo;une des deux tables, pointant vers la clé primaire de l&rsquo;autre.</li>
+<li>Pour garantir que l&rsquo;association demeure strictement un-à-un, la colonne de clé étrangère doit obligatoirement être
+  assortie d&rsquo;une contrainte d&rsquo;unicité (<code>UNIQUE</code>).</li>
+<li><strong>Choix du côté</strong> :<ul>
+<li>Si un côté est optionnel (<span class="arithmatex">\(0..1\)</span>) et l&rsquo;autre obligatoire (<span class="arithmatex">\(1..1\)</span>), on place généralement la clé étrangère dans la
+  table du côté optionnel (<span class="arithmatex">\(0..1\)</span>), évitant ainsi d&rsquo;avoir des colonnes avec valeurs <code>NULL</code> dans la table
+  obligatoire.</li>
+<li>Si les deux côtés ont la même cardinalité, le choix dépend de la logique métier et de la table la plus fréquemment
+  consultée.</li>
 </ul>
 </li>
+</ul>
+<hr />
+<h2 id="3-exemples-de-conversion">3. Exemples de conversion<a class="headerlink" href="#3-exemples-de-conversion" title="Permanent link">&para;</a></h2>
+<p>Voyons comment ces règles s&rsquo;appliquent sur des cas concrets en comparant le modèle logique de départ et le modèle
+physique résultant.</p>
+<h3 id="exemple-1-contacts-et-appels">Exemple 1 : Contacts et Appels<a class="headerlink" href="#exemple-1-contacts-et-appels" title="Permanent link">&para;</a></h3>
+<p>Un contact peut recevoir plusieurs appels téléphoniques, mais chaque appel est associé à exactement un contact
+(association <span class="arithmatex">\(1:N\)</span>).</p>
+<h4 id="modele-logique-dea">Modèle Logique (DEA)<a class="headerlink" href="#modele-logique-dea" title="Permanent link">&para;</a></h4>
+<p>Dans le modèle logique, nous avons deux entités reliées par une association <span class="arithmatex">\(1:N\)</span> sans aucune clé étrangère :</p>
+<p><img alt="contacts_uml.png" src="../../images/contacts_uml.png" /></p>
+<h4 id="modele-physique-mpd">Modèle Physique (MPD)<a class="headerlink" href="#modele-physique-mpd" title="Permanent link">&para;</a></h4>
+<p>Application des règles :</p>
+<ol type="1">
+<li>Les entités <code>Contact</code> et <code>Call</code> deviennent des tables.</li>
+<li>L&rsquo;association <span class="arithmatex">\(1:N\)</span> se traduit par l&rsquo;ajout de la colonne <code>contact_id</code> comme clé étrangère dans la table <code>Call</code>. Comme
+   chaque appel provient d&rsquo;un contact existant, elle est marquée <code>NOT NULL</code>.</li>
 </ol>
-<h2 id="exemples">Exemples<a class="headerlink" href="#exemples" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Méthode traditionnelle</strong> : lister seulement le nom des tables et des colonnes</li>
-<li><strong>Méthode alternative</strong> : modifier le diagramme logique pour insérer les clés étrangères et les tables d&rsquo;association</li>
-</ul>
-<h3 id="contacts">Contacts<a class="headerlink" href="#contacts" title="Permanent link">&para;</a></h3>
-<p><img alt="contacts alternative notation" src="../../images/contacts_phys_uml.png" /></p>
-<details>
-    <summary>Réponse</summary>
-    <pre>
-contact(CONTACT_ID, name, phone, address, email)
-call(CALL_ID, phone, date, time, contact_id*)
-    </pre>
+<div class='puml-container'><div class="puml light" style="display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:223px;height:357px;background:#FFFFFF;" width="223px" height="357px" viewBox="0 0 223 357" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="entity" data-qualified-name="Contact" id="ent0001" data-source-line="9"><rect x="7" y="7" width="201.062" height="129.484" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="76.046" cy="23" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M76.89,29.75 L74.437,29.75 L74.437,19.5 L71.296,19.5 L71.296,17.359 L80.031,17.359 L80.031,19.5 L76.89,19.5 L76.89,29.75 Z " fill="#000"/><text x="96.546" y="27.847" fill="#000" font-size="14" textLength="54.469">Contact</text><line x1="8" y1="39" x2="207.062" y2="39" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="52.648" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="55.995" fill="#000" font-size="14" textLength="72.167" text-decoration="underline">contact_id</text><text x="103.617" y="55.995" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="8" y1="63.297" x2="207.062" y2="63.297" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="76.945" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="80.292" fill="#000" font-size="14" textLength="159.455">name : VARCHAR(100)</text><text x="27" y="96.589" fill="#000" font-size="14" textLength="154.656">phone : VARCHAR(20)</text><text x="27" y="112.886" fill="#000" font-size="14" textLength="175.062">address : VARCHAR(255)</text><text x="27" y="129.183" fill="#000" font-size="14" textLength="158.361">email : VARCHAR(100)</text></g><g class="entity" data-qualified-name="Call" id="ent0002" data-source-line="17"><rect x="17.2" y="213.49" width="180.656" height="129.484" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="90.211" cy="229.49" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M91.055,236.24 L88.602,236.24 L88.602,225.99 L85.461,225.99 L85.461,223.849 L94.196,223.849 L94.196,225.99 L91.055,225.99 L91.055,236.24 Z " fill="#000"/><text x="110.711" y="234.337" fill="#000" font-size="14" textLength="26.134">Call</text><line x1="18.2" y1="245.49" x2="196.856" y2="245.49" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="28.2" cy="259.138" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="37.2" y="262.485" fill="#000" font-size="14" textLength="43.832" text-decoration="underline">call_id</text><text x="85.482" y="262.485" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="28.2" cy="275.435" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="37.2" y="278.782" fill="#000" font-size="14" textLength="82.94">date : DATE</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="28.2" cy="291.732" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="37.2" y="295.079" fill="#000" font-size="14" textLength="78.853">time : TIME</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="28.2" cy="308.029" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="37.2" y="311.376" fill="#000" font-size="14" textLength="72.167" font-style="italic">contact_id</text><text x="113.817" y="311.376" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="18.2" y1="318.678" x2="196.856" y2="318.678" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="28.2" cy="332.326" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="37.2" y="335.673" fill="#000" font-size="14" textLength="154.656">phone : VARCHAR(20)</text></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk3" data-source-line="25" data-link-type="association"><path d="M107.53,136.88 C107.53,161.24 107.53,188.98 107.53,213.32" style="stroke:#181818;stroke-width:1;" fill="none" id="Contact-Call" codeLine="25"/><polygon points="112.53,180.056,115.469,171.011,109.591,171.011,112.53,180.056" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="121.53" y="179.557" fill="#000" font-size="13" textLength="67.012">contact_id</text><text x="99.131" y="156.445" fill="#000" font-size="13">1</text><text x="83.274" y="202.474" fill="#000" font-size="13" textLength="23.036">0..*</text></g><?plantuml-src TP1TQyCW58Rl_HMdxYQ6j4i7lIaXa7KD2_jWT66tGw8XCcD2jT0ozj-dCQnPsSwDyhnwV8upnckXE9JPxUCsKBJb4UEw8b19gZKu05G3TX13aa1GHbTvdjaYaAPeDjv_UGYE1993Uaok3sUSUomS5Yb2-aEedkvfw_iNLQTUpKbogAdK73M2SU1jRqxGSjDqJ4zHBRYq17dNJQSChKm4UDnX0fy8R8LMflBiNJ02QoYUIvyCywpXBTjjxhDTi8nZCWHzqwbfS3DoojYUst-O9AkLZtXBXRpizVLZHwLqQdRvxMN1fTH_ZuUC6iVlidBhWH63VbayZI3_Qr8hCNu9u2M6-Hnml5Y469oDFNE-0Uat?></g></svg></div></div>
+
+<details class="note">
+<summary>Code PlantUML</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>@startuml
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>!define TABLE(name,desc) class name as "desc" &lt;&lt; (T,#FFAAAA) &gt;&gt;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>!define PK(x) &lt;u&gt;x&lt;/u&gt;
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>!define FK(x) &lt;i&gt;x&lt;/i&gt;
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>skinparam classIconStyle false
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>hide empty methods
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>hide empty fields
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>TABLE(Contact, "Contact") {
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    *PK(contact_id) : INT
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    *name : VARCHAR(100)
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    phone : VARCHAR(20)
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    address : VARCHAR(255)
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    email : VARCHAR(100)
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>}
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>TABLE(Call, "Call") {
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    *PK(call_id) : INT
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    *phone : VARCHAR(20)
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    *date : DATE
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    *time : TIME
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    *FK(contact_id) : INT
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>}
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>Contact "1" -- "0..*" Call : contact_id &gt;
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>@enduml
+</span></code></pre></div>
 </details>
-<p><br></p>
-<h3 id="simple-bank">Simple Bank<a class="headerlink" href="#simple-bank" title="Permanent link">&para;</a></h3>
+<hr />
+<h3 id="exemple-2-banque-simple-simple-bank">Exemple 2 : Banque Simple (Simple Bank)<a class="headerlink" href="#exemple-2-banque-simple-simple-bank" title="Permanent link">&para;</a></h3>
+<p>Dans une banque :</p>
+<ul>
+<li>Un client peut posséder plusieurs comptes, et un compte peut être détenu par plusieurs clients (association
+  plusieurs-à-plusieurs <span class="arithmatex">\(N:M\)</span>).</li>
+<li>Un compte enregistre plusieurs transactions, mais chaque transaction concerne un seul compte (association
+  un-à-plusieurs <span class="arithmatex">\(1:N\)</span>).</li>
+</ul>
+<h4 id="modele-logique-dea_1">Modèle Logique (DEA)<a class="headerlink" href="#modele-logique-dea_1" title="Permanent link">&para;</a></h4>
 <p><img alt="SimpleBank_uml.png" src="../../images/SimpleBank_uml.png" /></p>
-<details>
-    <summary>Réponse</summary>
-    <pre>
-customer(ID, name, address, phone)
-account(NUMBER, type, balance)
-transaction(ID, code, amount, date, time, description, account_number*)
-customer_account(id*, number*)
-    </pre>
+<h4 id="modele-physique-mpd_1">Modèle Physique (MPD)<a class="headerlink" href="#modele-physique-mpd_1" title="Permanent link">&para;</a></h4>
+<p>Application des règles :</p>
+<ol type="1">
+<li>Les 3 entités (<code>Customer</code>, <code>Account</code>, <code>Transaction</code>) deviennent 3 tables de base.</li>
+<li>L&rsquo;association plusieurs-à-plusieurs entre <code>Customer</code> et <code>Account</code> devient une <span class="arithmatex">\(4^e\)</span> table : <code>Customer_Account</code> (table
+   de liaison avec clé primaire composite).</li>
+<li>L&rsquo;association un-à-plusieurs entre <code>Account</code> et <code>Transaction</code> se traduit par l&rsquo;ajout de <code>account_number</code> comme clé
+   étrangère dans la table <code>Transaction</code>.</li>
+</ol>
+<div class='puml-container'><div class="puml light" style="display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:532px;height:374px;background:#FFFFFF;" width="532px" height="374px" viewBox="0 0 532 374" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="entity" data-qualified-name="Customer" id="ent0001" data-source-line="9"><rect x="7" y="7" width="201.062" height="113.188" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="69.279" cy="23" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M70.123,29.75 L67.669,29.75 L67.669,19.5 L64.529,19.5 L64.529,17.359 L73.263,17.359 L73.263,19.5 L70.123,19.5 L70.123,29.75 Z " fill="#000"/><text x="89.779" y="27.847" fill="#000" font-size="14" textLength="68.004">Customer</text><line x1="8" y1="39" x2="207.062" y2="39" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="52.648" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="55.995" fill="#000" font-size="14" textLength="85.702" text-decoration="underline">customer_id</text><text x="117.152" y="55.995" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="8" y1="63.297" x2="207.062" y2="63.297" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="76.945" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="80.292" fill="#000" font-size="14" textLength="159.455">name : VARCHAR(100)</text><text x="27" y="96.589" fill="#000" font-size="14" textLength="175.062">address : VARCHAR(255)</text><text x="27" y="112.886" fill="#000" font-size="14" textLength="154.656">phone : VARCHAR(20)</text></g><g class="entity" data-qualified-name="Account" id="ent0002" data-source-line="16"><rect x="273.62" y="15.15" width="199.817" height="96.891" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="340.892" cy="31.15" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M341.736,37.9 L339.283,37.9 L339.283,27.65 L336.142,27.65 L336.142,25.509 L344.877,25.509 L344.877,27.65 L341.736,27.65 L341.736,37.9 Z " fill="#000"/><text x="361.392" y="35.997" fill="#000" font-size="14" textLength="56.772">Account</text><line x1="274.62" y1="47.15" x2="472.437" y2="47.15" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="284.62" cy="60.798" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="293.62" y="64.145" fill="#000" font-size="14" textLength="117.414" text-decoration="underline">account_number</text><text x="415.484" y="64.145" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="274.62" y1="71.447" x2="472.437" y2="71.447" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="284.62" cy="85.095" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="293.62" y="88.442" fill="#000" font-size="14" textLength="142.119">type : VARCHAR(50)</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="284.62" cy="101.392" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="293.62" y="104.739" fill="#000" font-size="14" textLength="173.817">balance : DECIMAL(12,2)</text></g><g class="entity" data-qualified-name="Customer_Account" id="ent0003" data-source-line="22"><rect x="48.44" y="241.93" width="180.185" height="72.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="70.824" cy="257.93" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M71.667,264.68 L69.214,264.68 L69.214,254.43 L66.074,254.43 L66.074,252.289 L74.808,252.289 L74.808,254.43 L71.667,254.43 L71.667,264.68 Z " fill="#000"/><text x="86.465" y="262.777" fill="#000" font-size="14" textLength="131.776">Customer_Account</text><line x1="49.44" y1="273.93" x2="227.625" y2="273.93" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="59.44" cy="287.578" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="68.44" y="290.925" fill="#000" font-size="14" textLength="85.702" font-style="italic" text-decoration="underline">customer_id</text><text x="158.592" y="290.925" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="59.44" cy="303.875" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="68.44" y="307.222" fill="#000" font-size="14" textLength="117.414" font-style="italic" text-decoration="underline">account_number</text><text x="190.304" y="307.222" fill="#000" font-size="14" textLength="32.32">: INT</text></g><g class="entity" data-qualified-name="Transaction" id="ent0004" data-source-line="27"><rect x="293.73" y="197.19" width="223.593" height="162.078" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="360.203" cy="213.19" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M361.046,219.94 L358.593,219.94 L358.593,209.69 L355.453,209.69 L355.453,207.549 L364.187,207.549 L364.187,209.69 L361.046,209.69 L361.046,219.94 Z " fill="#000"/><text x="380.703" y="218.037" fill="#000" font-size="14" textLength="82.147">Transaction</text><line x1="294.73" y1="229.19" x2="516.323" y2="229.19" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="304.73" cy="242.838" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="313.73" y="246.185" fill="#000" font-size="14" textLength="98.861" text-decoration="underline">transaction_id</text><text x="417.042" y="246.185" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="304.73" cy="259.135" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="313.73" y="262.482" fill="#000" font-size="14" textLength="82.94">date : DATE</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="304.73" cy="275.432" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="313.73" y="278.779" fill="#000" font-size="14" textLength="78.853">time : TIME</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="304.73" cy="291.729" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="313.73" y="295.076" fill="#000" font-size="14" textLength="117.414" font-style="italic">account_number</text><text x="435.594" y="295.076" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="294.73" y1="302.377" x2="516.323" y2="302.377" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="304.73" cy="316.026" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="313.73" y="319.373" fill="#000" font-size="14" textLength="144.607">code : VARCHAR(20)</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="304.73" cy="332.323" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="313.73" y="335.669" fill="#000" font-size="14" textLength="172.717">amount : DECIMAL(12,2)</text><text x="313.73" y="351.966" fill="#000" font-size="14" textLength="197.593">description : VARCHAR(255)</text></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0003" id="lnk5" data-source-line="37" data-link-type="association"><path d="M105.3,120.3 C104.98,130.25 104.7,140.53 104.53,150.19 C104.4,157.75 103.4,159.72 104.53,167.19 C108.38,192.7 116.98,220.44 124.57,241.69" style="stroke:#181818;stroke-width:1;" fill="none" id="Customer-Customer_Account" codeLine="37"/><polygon points="110.314,163.695,111.798,154.301,105.993,155.222,110.314,163.695" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="118.53" y="163.257" fill="#000" font-size="13" textLength="79.581">customer_id</text><text x="96.557" y="140.2" fill="#000" font-size="13">1</text><text x="97.038" y="230.925" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0003" id="lnk6" data-source-line="38" data-link-type="association"><path d="M302.8,112.39 C286.78,124.17 270.19,137.16 255.53,150.19 C223.5,178.69 190.74,214.99 168.07,241.48" style="stroke:#181818;stroke-width:1;" fill="none" id="Account-Customer_Account" codeLine="38"/><polygon points="256.92,162.216,265.484,158.08,261.418,153.836,256.92,162.216" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="269.53" y="163.257" fill="#000" font-size="13" textLength="109.027">account_number</text><text x="284.777" y="132.03" fill="#000" font-size="13">1</text><text x="148.173" y="230.953" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0004" id="lnk7" data-source-line="39" data-link-type="association"><path d="M380.71,112.32 C384.45,137.17 389.13,168.24 393.41,196.69" style="stroke:#181818;stroke-width:1;" fill="none" id="Account-Transaction" codeLine="39"/><polygon points="395.274,163.701,396.834,154.319,391.022,155.194,395.274,163.701" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="403.53" y="163.257" fill="#000" font-size="13" textLength="109.027">account_number</text><text x="373.156" y="131.951" fill="#000" font-size="13">1</text><text x="368.382" y="186.111" fill="#000" font-size="13" textLength="23.036">0..*</text></g><?plantuml-src XL9RQuCm67ttLtnpBogsQuM-515SLvci7QEJlPOqIMcOHZ4HMiR---9jNjQoFCLpSdBET-8TeKV6AKJ-usPjS9HGcr21JS0n4W9A0900lGHrS5qm8li-27orJF0yxQxHlxqOPnFSmZkx3qK71pNCIfXvcYO-6SzGZfBw_X2d_5rUOWf750kgdHYXG9DCNY2XyfGIqOUEZCOAqUgigqB8DA6v3NgxrKtuqa0jIyN13RXdn8GbXAzHJLKZBU73twsU_PqndytCYa24v5IDt57EOb5JsIdbVOsZ9Dzj3X_ZjE1InMXsWnIenlQyI0uq7mIHbwn_wQB9OHrGZ3WkgQVrAjpw6sFks4xFiHrttrcFeK66O5Z684HDZrAs9tuTennnWR1aALTclQ-1Z-pmSUau9UC2AnmbfU-VKIkE85cLu4VhfZ1MlLmKRckW_2TpbfL-rrxD2cxLh-Pg2mDzhiDa0lfiEhLq6FUe1BtgmDDQ_5_PqFccijVb5T4F?></g></svg></div></div>
+
+<details class="note">
+<summary>Code PlantUML</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@startuml
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>!define TABLE(name,desc) class name as "desc" &lt;&lt; (T,#FFAAAA) &gt;&gt;
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>!define PK(x) &lt;u&gt;x&lt;/u&gt;
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>!define FK(x) &lt;i&gt;x&lt;/i&gt;
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>skinparam classIconStyle false
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>hide empty methods
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>hide empty fields
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>TABLE(Customer, "Customer") {
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    *PK(customer_id) : INT
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    *name : VARCHAR(100)
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    address : VARCHAR(255)
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    phone : VARCHAR(20)
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>}
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>TABLE(Account, "Account") {
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    *PK(account_number) : INT
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    *type : VARCHAR(50)
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    *balance : DECIMAL(12,2)
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>}
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>TABLE(Customer_Account, "Customer_Account") {
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    *PK(FK(customer_id)) : INT
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    *PK(FK(account_number)) : INT
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>}
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>TABLE(Transaction, "Transaction") {
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    *PK(transaction_id) : INT
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    *code : VARCHAR(20)
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    *amount : DECIMAL(12,2)
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    *date : DATE
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    *time : TIME
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>    description : VARCHAR(255)
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>    *FK(account_number) : INT
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>}
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>Customer "1" -- "0..*" Customer_Account : customer_id &gt;
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>Account "1" -- "0..*" Customer_Account : account_number &gt;
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>Account "1" -- "0..*" Transaction : account_number &gt;
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>@enduml
+</span></code></pre></div>
 </details>
-<p><br></p>
-<h3 id="college">Collège<a class="headerlink" href="#college" title="Permanent link">&para;</a></h3>
-<p><img alt="College_phys_uml.png" src="../../images/College_phys_uml.png" /></p>
-<details>
-    <summary>Réponse</summary>
-    <pre>
-Student(STUDENT_ID, name, phone, advisor_id*)
-Lecturer(LECTURER_ID, name, office, rank, phone)
-Course(CODE, name, credits)
-Grade(GRADE_ID, student_id* NOT NULL, 
-      lecturer_id* NOT NULL, 
-      course_code* NOT NULL, 
-      semester, 
-      year, 
-      result)
-    </pre>
-</details>
-<p><br></p>
-<h3 id="music">Music<a class="headerlink" href="#music" title="Permanent link">&para;</a></h3>
-<p><img alt="Music_phys_uml.png" src="../../images/Music_logique_uml.png" /></p>
-<details>
-    <summary>Réponse</summary>
-    <pre>
-writer(WRITER_ID, first_name, last_name, address, pub_id*)
-work(WORK_ID, title, duration, description)
-publisher(PUB_ID, code, name, address)
-act(ACT_ID, name, address)
-concert(CONCERT_ID, date, venue)
-writer_work(WRITER_ID*, WORK_ID*, percentage)
-performance(PERFORMANCE_ID, act_id*, concert_id*, work_id*)
-    </pre>
-</details>
-<p><br></p>
-<h3 id="appartments">Appartments<a class="headerlink" href="#appartments" title="Permanent link">&para;</a></h3>
+<hr />
+<h3 id="exemple-3-college">Exemple 3 : Collège<a class="headerlink" href="#exemple-3-college" title="Permanent link">&para;</a></h3>
+<p>Dans cet exemple :</p>
+<ul>
+<li>Un étudiant a un conseiller qui est un enseignant (association <span class="arithmatex">\(1:N\)</span> entre <code>Lecturer</code> et <code>Student</code>).</li>
+<li>Une note (<code>Grade</code>) relie un étudiant, un enseignant et un cours pour un semestre et une année donnés, avec un
+  résultat.</li>
+</ul>
+<h4 id="modele-logique-dea_2">Modèle Logique (DEA)<a class="headerlink" href="#modele-logique-dea_2" title="Permanent link">&para;</a></h4>
+<p><img alt="College_uml.png" src="../../images/College_uml.png" /></p>
+<h4 id="modele-physique-mpd_2">Modèle Physique (MPD)<a class="headerlink" href="#modele-physique-mpd_2" title="Permanent link">&para;</a></h4>
+<p>Application des règles :</p>
+<ol type="1">
+<li><code>Student</code>, <code>Lecturer</code> et <code>Course</code> deviennent des tables.</li>
+<li>L&rsquo;association de conseiller (<span class="arithmatex">\(1:N\)</span>) insère <code>advisor_id</code> comme clé étrangère dans la table <code>Student</code>.</li>
+<li>L&rsquo;évaluation <code>Grade</code> est modélisée par une table contenant les clés étrangères vers <code>Student</code>, <code>Lecturer</code> et
+   <code>Course</code>, ainsi que ses attributs propres (<code>semester</code>, <code>year</code>, <code>result</code>).</li>
+</ol>
+<div class='puml-container'><div class="puml light" style="display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:620px;height:580px;background:#FFFFFF;" width="620px" height="580px" viewBox="0 0 620 580" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="entity" data-qualified-name="Lecturer" id="ent0001" data-source-line="9"><rect x="88" y="7" width="185.455" height="129.484" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="147.179" cy="23" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M148.022,29.75 L145.569,29.75 L145.569,19.5 L142.429,19.5 L142.429,17.359 L151.163,17.359 L151.163,19.5 L148.022,19.5 L148.022,29.75 Z " fill="#000"/><text x="167.679" y="27.847" fill="#000" font-size="14" textLength="58.598">Lecturer</text><line x1="89" y1="39" x2="272.455" y2="39" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="99" cy="52.648" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="108" y="55.995" fill="#000" font-size="14" textLength="74.464" text-decoration="underline">lecturer_id</text><text x="186.914" y="55.995" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="89" y1="63.297" x2="272.455" y2="63.297" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="99" cy="76.945" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="108" y="80.292" fill="#000" font-size="14" textLength="159.455">name : VARCHAR(100)</text><text x="108" y="96.589" fill="#000" font-size="14" textLength="149.468">office : VARCHAR(20)</text><text x="108" y="112.886" fill="#000" font-size="14" textLength="142.16">rank : VARCHAR(50)</text><text x="108" y="129.183" fill="#000" font-size="14" textLength="154.656">phone : VARCHAR(20)</text></g><g class="entity" data-qualified-name="Student" id="ent0002" data-source-line="17"><rect x="7" y="213.48" width="185.455" height="113.188" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="67.922" cy="229.48" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M68.766,236.23 L66.313,236.23 L66.313,225.98 L63.172,225.98 L63.172,223.839 L71.906,223.839 L71.906,225.98 L68.766,225.98 L68.766,236.23 Z " fill="#000"/><text x="88.422" y="234.327" fill="#000" font-size="14" textLength="55.111">Student</text><line x1="8" y1="245.48" x2="191.455" y2="245.48" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="259.128" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="262.475" fill="#000" font-size="14" textLength="73.295" text-decoration="underline">student_id</text><text x="104.745" y="262.475" fill="#000" font-size="14" textLength="32.32">: INT</text><text x="27" y="278.772" fill="#000" font-size="14" textLength="71.032" font-style="italic">advisor_id</text><text x="102.482" y="278.772" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="8" y1="286.074" x2="191.455" y2="286.074" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="299.722" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="303.069" fill="#000" font-size="14" textLength="159.455">name : VARCHAR(100)</text><text x="27" y="319.366" fill="#000" font-size="14" textLength="154.656">phone : VARCHAR(20)</text></g><g class="entity" data-qualified-name="Course" id="ent0003" data-source-line="24"><rect x="381.52" y="221.63" width="224.406" height="96.891" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="465.035" cy="237.63" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M465.878,244.38 L463.425,244.38 L463.425,234.13 L460.285,234.13 L460.285,231.989 L469.019,231.989 L469.019,234.13 L465.878,234.13 L465.878,244.38 Z " fill="#000"/><text x="485.535" y="242.477" fill="#000" font-size="14" textLength="48.877">Course</text><line x1="382.52" y1="253.63" x2="604.926" y2="253.63" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="392.52" cy="267.278" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="401.52" y="270.625" fill="#000" font-size="14" textLength="84.396">credits : INT</text><line x1="382.52" y1="277.927" x2="604.926" y2="277.927" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="392.52" cy="291.575" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="401.52" y="294.922" fill="#000" font-size="14" textLength="87.562" text-decoration="underline">course_code</text><text x="493.532" y="294.922" fill="#000" font-size="14" textLength="106.395">: VARCHAR(10)</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="392.52" cy="307.872" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="401.52" y="311.219" fill="#000" font-size="14" textLength="159.455">name : VARCHAR(100)</text></g><g class="entity" data-qualified-name="Grade" id="ent0004" data-source-line="30"><rect x="150.52" y="403.67" width="224.406" height="162.078" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="237.131" cy="419.67" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M237.975,426.42 L235.522,426.42 L235.522,416.17 L232.381,416.17 L232.381,414.029 L241.116,414.029 L241.116,416.17 L237.975,416.17 L237.975,426.42 Z " fill="#000"/><text x="257.631" y="424.517" fill="#000" font-size="14" textLength="42.684">Grade</text><line x1="151.52" y1="435.67" x2="373.926" y2="435.67" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="161.52" cy="449.318" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="170.52" y="452.665" fill="#000" font-size="14" textLength="60.498" text-decoration="underline">grade_id</text><text x="235.468" y="452.665" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="161.52" cy="465.615" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="170.52" y="468.962" fill="#000" font-size="14" textLength="73.295" font-style="italic">student_id</text><text x="248.265" y="468.962" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="161.52" cy="481.912" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="170.52" y="485.259" fill="#000" font-size="14" textLength="74.464" font-style="italic">lecturer_id</text><text x="249.434" y="485.259" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="161.52" cy="498.209" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="170.52" y="501.556" fill="#000" font-size="14" textLength="68.004">year : INT</text><line x1="151.52" y1="508.857" x2="373.926" y2="508.857" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="161.52" cy="522.506" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="170.52" y="525.853" fill="#000" font-size="14" textLength="87.562" font-style="italic">course_code</text><text x="262.532" y="525.853" fill="#000" font-size="14" textLength="106.395">: VARCHAR(10)</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="161.52" cy="538.803" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="170.52" y="542.149" fill="#000" font-size="14" textLength="176.155">semester : VARCHAR(10)</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="161.52" cy="555.1" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="170.52" y="558.446" fill="#000" font-size="14" textLength="141.853">result : VARCHAR(5)</text></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk5" data-source-line="40" data-link-type="association"><path d="M154.32,136.76 C144.16,161.38 132.65,189.27 122.83,213.08" style="stroke:#181818;stroke-width:1;" fill="none" id="Lecturer-Student" codeLine="40"/><polygon points="143.823,179.668,149.99,172.428,144.556,170.186,143.823,179.668" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="154.73" y="179.547" fill="#000" font-size="13" textLength="65.958">advisor_id</text><text x="143.009" y="156.766" fill="#000" font-size="13">1</text><text x="101.246" y="202.295" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0004" id="lnk6" data-source-line="41" data-link-type="association"><path d="M125.3,326.91 C133.49,342.61 143.2,359.31 153.73,373.67 C161.04,383.65 169.24,393.59 177.78,403.19" style="stroke:#181818;stroke-width:1;" fill="none" id="Student-Grade" codeLine="41"/><polygon points="161.564,369.356,158.858,360.238,154.016,363.57,161.564,369.356" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="167.73" y="369.737" fill="#000" font-size="13" textLength="68.06">student_id</text><text x="119.946" y="346.826" fill="#000" font-size="13">1</text><text x="146.493" y="392.613" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk7" data-source-line="42" data-link-type="association"><path d="M217.36,136.77 C221.79,146.49 225.77,156.59 228.73,166.48 C252.09,244.77 259.82,338.16 262.17,403.25" style="stroke:#181818;stroke-width:1;" fill="none" id="Lecturer-Grade" codeLine="42"/><polygon points="263.559,275.077,264.957,265.67,259.161,266.645,263.559,275.077" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="271.73" y="274.647" fill="#000" font-size="13" textLength="69.145">lecturer_id</text><text x="212.944" y="156.777" fill="#000" font-size="13">1</text><text x="238.136" y="392.678" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0004" id="lnk8" data-source-line="43" data-link-type="association"><path d="M441.89,318.8 C414.88,343.65 381.13,374.72 350.22,403.17" style="stroke:#181818;stroke-width:1;" fill="none" id="Course-Grade" codeLine="43"/><polygon points="400.051,368.622,408.697,364.66,404.716,360.335,400.051,368.622" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="412.73" y="369.737" fill="#000" font-size="13" textLength="81.307">course_code</text><text x="426.406" y="338.431" fill="#000" font-size="13">1</text><text x="333.753" y="392.591" fill="#000" font-size="13" textLength="23.036">0..*</text></g><?plantuml-src ZPBVJy8m4CVVzrUSyuKIG33nXInB9d5A9CO0yPKqxKqQzeEqdO4O_tUxNz8HflQbpUU-k_lUtQuuHY95M0VtYuTUIXCSS5IC08kfKb00e0hS0hhWUT1R3wx3C327WEyxL_Nthy-z0m4lzm_UJNx2OOL5WONlE6edqZsLDAdoprcMhlGnHeXehD3P2ew0oLuV8K6zpRYoKIGmDiIfl2wGwLoY783RF5q2dmwOqpTsuXfk12SmXVdBkWgLBKtXBLZEde9bRp8UapAGHP5WTkIs3aYQxYnyL-FzDalFvL-DkPNEEQRQUAjVBMkgOlzrTgbImSrmAVyGAhDx_B4motAfq3Ye7Yq3h4GRbd4ahOhaToTz9f4BhSvhFKhAYrBbtQhqNf3pHiFE4OJTUml_jgqmGQLHNeeTaKexdKILnzhUQxc-vbS2T-B2S0ZkU3Jgkr1lqSXF4mVVQN1RN4x1I4yz6cb7uaPhTMt4rSewfDOKmFy6?></g></svg></div></div>
+
+<hr />
+<h3 id="exemple-4-droits-dauteur-de-musique">Exemple 4 : Droits d&rsquo;auteur de Musique<a class="headerlink" href="#exemple-4-droits-dauteur-de-musique" title="Permanent link">&para;</a></h3>
+<p>Dans cet exemple :</p>
+<ul>
+<li>Les auteurs (<code>Writer</code>) peuvent signer chez un éditeur (<code>Publisher</code>, association <span class="arithmatex">\(N:1\)</span>).</li>
+<li>Les auteurs écrivent des œuvres (<code>Work</code>) avec un pourcentage de contribution (association <span class="arithmatex">\(N:M\)</span> porteuse d&rsquo;attribut).</li>
+<li>Les représentations (<code>Performance</code>) associent un groupe (<code>Act</code>), un concert (<code>Concert</code>) et une œuvre (<code>Work</code>).</li>
+</ul>
+<h4 id="modele-logique-dea_3">Modèle Logique (DEA)<a class="headerlink" href="#modele-logique-dea_3" title="Permanent link">&para;</a></h4>
+<p><img alt="Music_logique_uml.png" src="../../images/Music_logique_uml.png" /></p>
+<h4 id="modele-physique-mpd_3">Modèle Physique (MPD)<a class="headerlink" href="#modele-physique-mpd_3" title="Permanent link">&para;</a></h4>
+<p>Application des règles :</p>
+<ol type="1">
+<li><code>Writer</code>, <code>Publisher</code>, <code>Work</code>, <code>Act</code> et <code>Concert</code> forment les tables de base.</li>
+<li><code>Writer</code> reçoit la clé étrangère <code>pub_id</code> référant <code>Publisher</code>.</li>
+<li>L&rsquo;association <span class="arithmatex">\(N:M\)</span> entre <code>Writer</code> et <code>Work</code> devient la table <code>Writer_Work</code>, qui contient les clés étrangères
+   <code>writer_id</code>, <code>work_id</code> et l&rsquo;attribut <code>percentage</code>.</li>
+<li>L&rsquo;association ternaire d&rsquo;exécution devient la table <code>Performance</code> avec les clés étrangères <code>act_id</code>, <code>concert_id</code> et
+   <code>work_id</code>.</li>
+</ol>
+<div class='puml-container'><div class="puml light" style="display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:900px;height:523px;background:#FFFFFF;" width="900px" height="523px" viewBox="0 0 900 523" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="entity" data-qualified-name="Publisher" id="ent0001" data-source-line="9"><rect x="11.92" y="7" width="201.062" height="113.188" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="75.942" cy="23" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M76.786,29.75 L74.333,29.75 L74.333,19.5 L71.192,19.5 L71.192,17.359 L79.926,17.359 L79.926,19.5 L76.786,19.5 L76.786,29.75 Z " fill="#000"/><text x="96.442" y="27.847" fill="#000" font-size="14" textLength="64.518">Publisher</text><line x1="12.92" y1="39" x2="211.982" y2="39" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="22.92" cy="52.648" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="31.92" y="55.995" fill="#000" font-size="14" textLength="46.423" text-decoration="underline">pub_id</text><text x="82.793" y="55.995" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="12.92" y1="63.297" x2="211.982" y2="63.297" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="22.92" cy="76.945" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="31.92" y="80.292" fill="#000" font-size="14" textLength="144.607">code : VARCHAR(20)</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="22.92" cy="93.242" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="31.92" y="96.589" fill="#000" font-size="14" textLength="159.455">name : VARCHAR(100)</text><text x="31.92" y="112.886" fill="#000" font-size="14" textLength="175.062">address : VARCHAR(255)</text></g><g class="entity" data-qualified-name="Writer" id="ent0002" data-source-line="16"><rect x="7" y="197.19" width="210.905" height="129.484" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="86.529" cy="213.19" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M87.373,219.94 L84.92,219.94 L84.92,209.69 L81.779,209.69 L81.779,207.549 L90.514,207.549 L90.514,209.69 L87.373,209.69 L87.373,219.94 Z " fill="#000"/><text x="107.029" y="218.037" fill="#000" font-size="14" textLength="43.347">Writer</text><line x1="8" y1="229.19" x2="216.905" y2="229.19" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="242.838" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="246.185" fill="#000" font-size="14" textLength="60.73" text-decoration="underline">writer_id</text><text x="92.181" y="246.185" fill="#000" font-size="14" textLength="32.32">: INT</text><text x="27" y="262.482" fill="#000" font-size="14" textLength="46.423" font-style="italic">pub_id</text><text x="77.873" y="262.482" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="8" y1="269.784" x2="216.905" y2="269.784" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="283.432" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="286.779" fill="#000" font-size="14" textLength="184.905">first_name : VARCHAR(50)</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="299.729" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="303.076" fill="#000" font-size="14" textLength="182.8">last_name : VARCHAR(50)</text><text x="27" y="319.373" fill="#000" font-size="14" textLength="175.062">address : VARCHAR(255)</text></g><g class="entity" data-qualified-name="Work" id="ent0003" data-source-line="24"><rect x="252.89" y="205.34" width="173.123" height="113.188" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="317.066" cy="221.34" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M317.91,228.09 L315.456,228.09 L315.456,217.84 L312.316,217.84 L312.316,215.699 L321.05,215.699 L321.05,217.84 L317.91,217.84 L317.91,228.09 Z " fill="#000"/><text x="337.566" y="226.187" fill="#000" font-size="14" textLength="36.271">Work</text><line x1="253.89" y1="237.34" x2="425.013" y2="237.34" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="263.89" cy="250.988" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="272.89" y="254.335" fill="#000" font-size="14" textLength="53.655" text-decoration="underline">work_id</text><text x="330.995" y="254.335" fill="#000" font-size="14" textLength="32.32">: INT</text><text x="272.89" y="270.632" fill="#000" font-size="14" textLength="95.683">duration : INT</text><text x="272.89" y="286.929" fill="#000" font-size="14" textLength="126.998">description : TEXT</text><line x1="253.89" y1="294.231" x2="425.013" y2="294.231" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="263.89" cy="307.879" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="272.89" y="311.226" fill="#000" font-size="14" textLength="147.123">title : VARCHAR(150)</text></g><g class="entity" data-qualified-name="Writer_Work" id="ent0004" data-source-line="31"><rect x="143.55" y="407.82" width="215.8" height="96.891" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="203.891" cy="423.82" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M204.735,430.57 L202.281,430.57 L202.281,420.32 L199.141,420.32 L199.141,418.179 L207.875,418.179 L207.875,420.32 L204.735,420.32 L204.735,430.57 Z " fill="#000"/><text x="224.391" y="428.667" fill="#000" font-size="14" textLength="86.618">Writer_Work</text><line x1="144.55" y1="439.82" x2="358.35" y2="439.82" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="154.55" cy="453.468" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="163.55" y="456.815" fill="#000" font-size="14" textLength="60.73" font-style="italic" text-decoration="underline">writer_id</text><text x="228.731" y="456.815" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="154.55" cy="469.765" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="163.55" y="473.112" fill="#000" font-size="14" textLength="53.655" font-style="italic" text-decoration="underline">work_id</text><text x="221.655" y="473.112" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="144.55" y1="480.414" x2="358.35" y2="480.414" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="154.55" cy="494.062" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="163.55" y="497.409" fill="#000" font-size="14" textLength="189.8">percentage : DECIMAL(5,2)</text></g><g class="entity" data-qualified-name="Act" id="ent0005" data-source-line="37"><rect x="460.92" y="213.48" width="201.062" height="96.891" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="545.819" cy="229.48" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M546.663,236.23 L544.21,236.23 L544.21,225.98 L541.069,225.98 L541.069,223.839 L549.803,223.839 L549.803,225.98 L546.663,225.98 L546.663,236.23 Z " fill="#000"/><text x="566.319" y="234.327" fill="#000" font-size="14" textLength="22.764">Act</text><line x1="461.92" y1="245.48" x2="660.982" y2="245.48" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="471.92" cy="259.128" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="480.92" y="262.475" fill="#000" font-size="14" textLength="41.542" text-decoration="underline">act_id</text><text x="526.912" y="262.475" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="461.92" y1="269.777" x2="660.982" y2="269.777" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="471.92" cy="283.425" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="480.92" y="286.772" fill="#000" font-size="14" textLength="159.455">name : VARCHAR(100)</text><text x="480.92" y="303.069" fill="#000" font-size="14" textLength="175.062">address : VARCHAR(255)</text></g><g class="entity" data-qualified-name="Concert" id="ent0006" data-source-line="43"><rect x="696.95" y="213.48" width="189.01" height="96.891" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="759.82" cy="229.48" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M760.664,236.23 L758.211,236.23 L758.211,225.98 L755.07,225.98 L755.07,223.839 L763.804,223.839 L763.804,225.98 L760.664,225.98 L760.664,236.23 Z " fill="#000"/><text x="780.32" y="234.327" fill="#000" font-size="14" textLength="54.77">Concert</text><line x1="697.95" y1="245.48" x2="884.96" y2="245.48" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="707.95" cy="259.128" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="716.95" y="262.475" fill="#000" font-size="14" textLength="72.468" text-decoration="underline">concert_id</text><text x="793.868" y="262.475" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="707.95" cy="275.425" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="716.95" y="278.772" fill="#000" font-size="14" textLength="82.94">date : DATE</text><line x1="697.95" y1="286.074" x2="884.96" y2="286.074" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="707.95" cy="299.722" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="716.95" y="303.069" fill="#000" font-size="14" textLength="163.01">venue : VARCHAR(100)</text></g><g class="entity" data-qualified-name="Performance" id="ent0007" data-source-line="49"><rect x="475.23" y="403.67" width="172.453" height="105.188" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="513.176" cy="419.67" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M514.02,426.42 L511.567,426.42 L511.567,416.17 L508.426,416.17 L508.426,414.029 L517.16,414.029 L517.16,416.17 L514.02,416.17 L514.02,426.42 Z " fill="#000"/><text x="532.275" y="424.517" fill="#000" font-size="14" textLength="89.462">Performance</text><line x1="476.23" y1="435.67" x2="646.683" y2="435.67" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="486.23" cy="449.318" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="495.23" y="452.665" fill="#000" font-size="14" textLength="109.683" text-decoration="underline">performance_id</text><text x="609.363" y="452.665" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="486.23" cy="465.615" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="495.23" y="468.962" fill="#000" font-size="14" textLength="41.542" font-style="italic">act_id</text><text x="541.222" y="468.962" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="486.23" cy="481.912" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="495.23" y="485.259" fill="#000" font-size="14" textLength="72.468" font-style="italic">concert_id</text><text x="572.148" y="485.259" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="486.23" cy="498.209" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="495.23" y="501.556" fill="#000" font-size="14" textLength="53.655" font-style="italic">work_id</text><text x="553.335" y="501.556" fill="#000" font-size="14" textLength="32.32">: INT</text></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk8" data-source-line="56" data-link-type="association"><path d="M112.45,120.59 C112.45,144.4 112.45,172.28 112.45,196.9" style="stroke:#181818;stroke-width:1;" fill="none" id="Publisher-Writer" codeLine="56"/><polygon points="117.45,163.756,120.389,154.711,114.511,154.711,117.45,163.756" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="126.45" y="163.257" fill="#000" font-size="13" textLength="43.107">pub_id</text><text x="104.003" y="140.122" fill="#000" font-size="13">1</text><text x="88.194" y="186.041" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0004" id="lnk9" data-source-line="57" data-link-type="association"><path d="M158.74,326.98 C177.77,353.31 199.43,383.28 217.02,407.62" style="stroke:#181818;stroke-width:1;" fill="none" id="Writer-Writer_Work" codeLine="57"/><polygon points="198.379,369.289,195.463,360.236,190.699,363.679,198.379,369.289" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="204.45" y="369.737" fill="#000" font-size="13" textLength="56.393">writer_id</text><text x="155.115" y="346.535" fill="#000" font-size="13">1</text><text x="187.564" y="396.801" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0004" id="lnk10" data-source-line="58" data-link-type="association"><path d="M313.88,318.82 C301.04,346.88 285.65,380.53 273.36,407.39" style="stroke:#181818;stroke-width:1;" fill="none" id="Work-Writer_Work" codeLine="58"/><polygon points="298.37,369.783,304.805,362.781,299.46,360.335,298.37,369.783" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="309.45" y="369.737" fill="#000" font-size="13" textLength="49.823">work_id</text><text x="302.292" y="338.742" fill="#000" font-size="13">1</text><text x="251.761" y="396.89" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0007" id="lnk11" data-source-line="59" data-link-type="association"><path d="M561.45,310.47 C561.45,338.62 561.45,374.3 561.45,403.2" style="stroke:#181818;stroke-width:1;" fill="none" id="Act-Performance" codeLine="59"/><polygon points="566.45,370.236,569.389,361.191,563.511,361.191,566.45,370.236" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="575.45" y="369.737" fill="#000" font-size="13" textLength="38.575">act_id</text><text x="552.906" y="330.428" fill="#000" font-size="13">1</text><text x="536.978" y="392.516" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0006" data-entity-2="ent0007" id="lnk12" data-source-line="60" data-link-type="association"><path d="M734.3,310.72 C700.64,338.87 658.04,374.49 623.56,403.33" style="stroke:#181818;stroke-width:1;" fill="none" id="Concert-Performance" codeLine="60"/><polygon points="677.614,368.444,686.438,364.896,682.668,360.387,677.614,368.444" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="690.45" y="369.737" fill="#000" font-size="13" textLength="67.292">concert_id</text><text x="718.101" y="330.36" fill="#000" font-size="13">1</text><text x="607.046" y="392.662" fill="#000" font-size="13" textLength="23.036">0..*</text></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0007" id="lnk13" data-source-line="61" data-link-type="association"><path d="M403.96,318.82 C434.69,345.44 471.21,377.08 501.35,403.19" style="stroke:#181818;stroke-width:1;" fill="none" id="Work-Performance" codeLine="61"/><polygon points="472.229,368.51,467.317,360.366,463.468,364.809,472.229,368.51" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="477.45" y="369.737" fill="#000" font-size="13" textLength="49.823">work_id</text><text x="403.351" y="338.742" fill="#000" font-size="13">1</text><text x="469.178" y="392.504" fill="#000" font-size="13" textLength="23.036">0..*</text></g><?plantuml-src dPDVRvim5CNV-HItx0Mgj4ihvQMAa5WMj6ZT57Lewrla6hDOvPziixMQ-jrtZGbWD-b3UKZCyO7pk_UQiupbl6AGnfzkrq55IZRBcAGXq8982Le08i7NeW_B9GJfx4EIn7Y544NUMV_yzclm5CAoZPwM7zjHJepCjSmZpvEFl6g88ALv_uRMrG_rN338II6Pj-SP0rOswXbAflPr9gTIpbc1YcTOj-r3mUMUYHdumzeFuPy7U9qZKDC-x7WMmWrilgT6fJM-xGP-ndUhB_5TS3qFZTxLEUfNytw3P9bWs8V98uj5wBqS87u9hZe2ix3Y_tQIIv1p8TNEoLiSEB0f9pTFiEYjn2rs1Ap5eyR3FniE1HTDSLLONJWaPwqWYjVLnApFW-1DhwRh-zHjokuGFTvP1CcqGnP7lzaJMbiD4vHLYlpMd9_Ngyst-3POpAud8ucfmbJyjT88LMwvxvtvggue4pgaNrb1r6XkM4PKXnodQoFyOLNxAdx8s3AHrw8a-2vzlCSx-u2FkfkN72qvEScNl3eIo39yLk1V-N1n0VxyylBS1pDIz9b31v7NAyTitUJHEmnRsxNqfjcme1K7wJWdtK2dgHAD_J3UD8_57uUmtGF4Vm00?></g></svg></div></div>
+
+<hr />
+<h3 id="exemple-5-gestion-dimmeubles-et-appartements">Exemple 5 : Gestion d&rsquo;immeubles et appartements<a class="headerlink" href="#exemple-5-gestion-dimmeubles-et-appartements" title="Permanent link">&para;</a></h3>
+<p>Dans cet exemple :</p>
+<ul>
+<li>Un immeuble (<code>Building</code>) contient plusieurs appartements (<code>Apartment</code>). Un appartement est une entité dépendante de
+  son immeuble.</li>
+<li>Un bail (<code>Lease</code>) concerne un appartement spécifique.</li>
+<li>Plusieurs locataires (<code>Tenant</code>) peuvent signer un même bail (association <span class="arithmatex">\(N:M\)</span>).</li>
+</ul>
+<h4 id="modele-logique-dea_4">Modèle Logique (DEA)<a class="headerlink" href="#modele-logique-dea_4" title="Permanent link">&para;</a></h4>
+<p><img alt="ER_apartment_building_uml.png" src="../../images/ER_apartment_building_uml.png" /></p>
+<h4 id="modele-physique-mpd_4">Modèle Physique (MPD)<a class="headerlink" href="#modele-physique-mpd_4" title="Permanent link">&para;</a></h4>
+<p>Application des règles :</p>
+<ol type="1">
+<li><code>Building</code> devient une table.</li>
+<li><code>Apartment</code> possède une clé primaire composite (<code>building_id</code>, <code>number</code>) où <code>building_id</code> est aussi une clé étrangère
+   vers <code>Building</code>.</li>
+<li><code>Lease</code> référence directement l&rsquo;appartement via sa clé étrangère composite (<code>building_id</code>, <code>apartment_number</code>).</li>
+<li>L&rsquo;association entre <code>Tenant</code> et <code>Lease</code> devient la table d&rsquo;association <code>Tenant_Lease</code>.</li>
+</ol>
 <p><img alt="ER_apartment_building_phys_uml.png" src="../../images/ER_apartment_building_phys_uml.png" /></p>
-<details>
-    <summary>Réponse</summary>
-    <pre>
-building(BUILDING_ID, name, address, managed)
-apartment(BUILDING_ID*, NUMBER, date_available, asking_rent, managed)
-tenant(TENANT_ID, first_name, last_name, employer, work_phone)
-lease(LEASE_ID, building_id*, apartment_number*, rent, end_of_lease)
-tenant_lease(tenant_id*, lease_id*)
-    </pre>
-</details>
-<p><br></p>
+<hr />
+<h2 id="4-creation-de-la-base-de-donnees-en-sql-ddl">4. Création de la base de données en SQL (DDL)<a class="headerlink" href="#4-creation-de-la-base-de-donnees-en-sql-ddl" title="Permanent link">&para;</a></h2>
+<p>Une fois le Modèle Physique validé, nous pouvons générer les instructions SQL de définition des données
+(<code>CREATE TABLE</code>).</p>
+<h3 id="ordre-de-creation-des-tables-et-tri-topologique">Ordre de création des tables et tri topologique<a class="headerlink" href="#ordre-de-creation-des-tables-et-tri-topologique" title="Permanent link">&para;</a></h3>
+<p>Lors de l&rsquo;exécution d&rsquo;un script SQL de création, une règle stricte d&rsquo;intégrité référentielle s&rsquo;applique : <strong>une
+table <span class="arithmatex">\(A\)</span> ne peut référencer une table <span class="arithmatex">\(B\)</span> via une clé étrangère que si la table <span class="arithmatex">\(B\)</span> a déjà été créée</strong>.</p>
+<p>Pour déterminer l&rsquo;ordre exact dans lequel exécuter les instructions <code>CREATE TABLE</code>, on utilise un <strong>tri topologique</strong>.</p>
+<h4 id="quest-ce-quun-tri-topologique">Qu&rsquo;est-ce qu&rsquo;un tri topologique ?<a class="headerlink" href="#quest-ce-quun-tri-topologique" title="Permanent link">&para;</a></h4>
+<p>Dans la théorie des graphes, si l&rsquo;on représente les tables comme les sommets d&rsquo;un graphe orienté et les dépendances de
+clés étrangères comme des flèches (<span class="arithmatex">\(A \rightarrow B\)</span> signifiant que la table <span class="arithmatex">\(A\)</span> référence la table <span class="arithmatex">\(B\)</span>), le <strong>tri
+topologique</strong> est un ordonnancement linéaire de tous les sommets tel que chaque table référencée apparaisse
+obligatoirement <strong>avant</strong> les tables qui en dépendent.</p>
+<p>Ce tri est possible dès lors que le graphe est un <strong>graphe orienté acyclique</strong> (DAG — <em>Directed Acyclic Graph</em>),
+c&rsquo;est-à-dire sans boucle de dépendances.</p>
+<p>La stratégie pratique est simple :</p>
+<ol type="1">
+<li><strong>Étape 1</strong> : Créer en premier les tables indépendantes (qui n&rsquo;ont aucune clé étrangère).</li>
+<li><strong>Étape 2</strong> : Créer ensuite les tables qui ne dépendent que des tables déjà créées.</li>
+<li><strong>Étape 3</strong> : Créer en dernier les tables d&rsquo;association (qui dépendent de plusieurs tables préexistantes).</li>
+</ol>
+<p>Lors de la suppression des tables (<code>DROP TABLE</code>), l&rsquo;ordre est exactement l&rsquo;<strong>inverse</strong> du tri topologique (on supprime
+d&rsquo;abord les tables dépendantes, puis les tables indépendantes).</p>
+<hr />
+<h3 id="exemple-complet-dimplementation-sql-simple-bank">Exemple complet d&rsquo;implémentation SQL : Simple Bank<a class="headerlink" href="#exemple-complet-dimplementation-sql-simple-bank" title="Permanent link">&para;</a></h3>
+<p>Appliquons le tri topologique au Modèle Physique de <strong>Simple Bank</strong> :</p>
+<ul>
+<li><code>Customer</code> : 0 dépendance</li>
+<li><code>Account</code> : 0 dépendance</li>
+<li><code>Transaction</code> : dépend de <code>Account</code></li>
+<li><code>Customer_Account</code> : dépend de <code>Customer</code> et de <code>Account</code></li>
+</ul>
+<p>Un ordre valide issu du tri topologique est donc :</p>
+<ol type="1">
+<li><code>Customer</code></li>
+<li><code>Account</code></li>
+<li><code>Transaction</code></li>
+<li><code>Customer_Account</code></li>
+</ol>
+<p>Voici le script SQL complet prêt à être exécuté :</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- -------------------------------------------------------------</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">-- 0. Nettoyage initial (ordre inverse du tri topologique)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">-- -------------------------------------------------------------</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">customer_account</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="k">transaction</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">account</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1">-- -------------------------------------------------------------</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">-- 1. Tables indépendantes (racines du graphe de dépendances)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1">-- -------------------------------------------------------------</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">customer</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">(</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="n">customer_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="n">name</span><span class="w">        </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">address</span><span class="w">     </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="n">phone</span><span class="w">       </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="p">);</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">account</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">(</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="n">account_number</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="k">type</span><span class="w">           </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w">    </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="n">balance</span><span class="w">        </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="p">);</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="c1">-- -------------------------------------------------------------</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="c1">-- 2. Tables dépendantes d'une table existante</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="c1">-- -------------------------------------------------------------</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">transaction</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="p">(</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="n">transaction_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">    </span><span class="n">code</span><span class="w">           </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w">    </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="n">amount</span><span class="w">         </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">    </span><span class="nb">date</span><span class="w">           </span><span class="nb">DATE</span><span class="w">           </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">    </span><span class="k">time</span><span class="w">           </span><span class="k">TIME</span><span class="w">           </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="n">description</span><span class="w">    </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">    </span><span class="n">account_number</span><span class="w"> </span><span class="nb">INT</span><span class="w">            </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_transaction_account</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">        </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">account_number</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="p">(</span><span class="n">account_number</span><span class="p">)</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="p">);</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="c1">-- -------------------------------------------------------------</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="c1">-- 3. Tables d'association (dépendantes de plusieurs tables)</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="c1">-- -------------------------------------------------------------</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">customer_account</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="p">(</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">    </span><span class="n">customer_id</span><span class="w">    </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">    </span><span class="n">account_number</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="n">account_number</span><span class="p">),</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_ca_customer</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">        </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">            </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="p">,</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_ca_account</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="w">        </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">account_number</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="p">(</span><span class="n">account_number</span><span class="p">)</span>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">            </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="p">);</span>
+</span></code></pre></div>
+<hr />
+<h3 id="que-faire-en-presence-de-dependances-circulaires">Que faire en présence de dépendances circulaires ?<a class="headerlink" href="#que-faire-en-presence-de-dependances-circulaires" title="Permanent link">&para;</a></h3>
+<p>Si deux tables se référencent mutuellement (par exemple, un <code>Employee</code> appartient à un <code>Department</code>, et un <code>Department</code>
+a pour responsable un <code>Employee</code>), le graphe de dépendances contient un cycle. Dans ce cas, <strong>aucun tri topologique
+strict n&rsquo;est possible</strong>.</p>
+<p>Pour résoudre cette situation :</p>
+<ol type="1">
+<li>On rompt temporairement la boucle lors de la création : on crée la première table sans sa clé étrangère circulaire.</li>
+<li>On crée la seconde table avec sa clé étrangère vers la première.</li>
+<li>On rétablit la contrainte circulaire sur la première table à l&rsquo;aide d&rsquo;une instruction
+   <code>ALTER TABLE ... ADD CONSTRAINT ... FOREIGN KEY</code>.</li>
+</ol>
+<p>Pour voir l&rsquo;implémentation détaillée et les stratégies de gestion des cycles, consultez les sections dédiées :</p>
+<ul>
+<li><a href="../05-circular-dep/">Gestion des dépendances circulaires</a></li>
+<li><a href="../06-cycles/">Cycles entre les tables Utilisateurs et Profil</a></li>
+</ul>
 
 
 

@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://profdenis.github.io/3N3_doc/5.%20Mod%C3%A9lisation/02-notation/">
       
       
-        <link rel="prev" href="../01b-enit%C3%A9s-faibles/">
+        <link rel="prev" href="../01b-entit%C3%A9s-faibles/">
       
       
-        <link rel="next" href="../02b-resume-notation/">
+        <link rel="next" href="../03-exemples/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Différentes notations pour les DEA - Cours de bases de données</title>
+        <title>Guide de Modélisation et Notations (PlantUML) - Cours de bases de données</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#differentes-notations-pour-les-dea" class="md-skip">
+        <a href="#guide-de-modelisation-et-notations-plantuml" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Différentes notations pour les DEA
+              Guide de Modélisation et Notations (PlantUML)
             
           </span>
         </div>
@@ -1832,7 +1832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01b-enit%C3%A9s-faibles/" class="md-nav__link">
+      <a href="../01b-entit%C3%A9s-faibles/" class="md-nav__link">
         
   
   
@@ -1876,7 +1876,7 @@
   <span class="md-ellipsis">
     
   
-    Différentes notations pour les DEA
+    Guide de Modélisation et Notations (PlantUML)
   
 
     
@@ -1894,7 +1894,7 @@
   <span class="md-ellipsis">
     
   
-    Différentes notations pour les DEA
+    Guide de Modélisation et Notations (PlantUML)
   
 
     
@@ -1920,22 +1920,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#notation-traditionnelle-du-diagramme-entite-association" class="md-nav__link">
+  <a href="#1-notation-et-standards-du-cours-obligatoire" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notation traditionnelle du diagramme entité-association
+        1. Notation et standards du cours (Obligatoire)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Notation traditionnelle du diagramme entité-association">
+    <nav class="md-nav" aria-label="1. Notation et standards du cours (Obligatoire)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#diagramme-avec-etiquettes" class="md-nav__link">
+  <a href="#11-principes-generaux-de-style" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diagramme avec étiquettes
+        1.1. Principes généraux de style
       
     </span>
   </a>
@@ -1943,72 +1943,55 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#diagramme-sans-etiquettes" class="md-nav__link">
+  <a href="#12-les-trois-niveaux-de-modelisation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diagramme sans étiquettes
+        1.2. Les trois niveaux de modélisation
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#utilisation-des-cardinalites-ou-multiplicites-a-la-place" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#13-la-demarche-de-modelisation-pas-a-pas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Utilisation des cardinalités (ou multiplicités) à la place
+        1.3. La démarche de modélisation pas à pas
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#notation-en-pied-de-corbeau" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#14-modele-logique-de-donnees-mld-dea" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notation en pied-de-corbeau
+        1.4. Modèle Logique de Données (MLD / DEA)
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#differents-types-de-diagrammes-ea-avec-plantuml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Différents types de diagrammes EA avec PlantUML
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Différents types de diagrammes EA avec PlantUML">
+    <nav class="md-nav" aria-label="1.4. Modèle Logique de Données (MLD / DEA)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#base-de-donnees-de-contacts" class="md-nav__link">
+  <a href="#syntaxe-plantuml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Base de données de contacts
+        Syntaxe PlantUML
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Base de données de contacts">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#diagramme-de-base-conceptuel" class="md-nav__link">
+  <a href="#exemple-complet-mld" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diagramme de base (Conceptuel)
+        Exemple complet (MLD)
       
     </span>
   </a>
@@ -2021,10 +2004,127 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#avec-types-de-donnees-et-contraintes-logique" class="md-nav__link">
+  <a href="#15-modele-physique-de-donnees-mpd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Avec types de données et contraintes (Logique)
+        1.5. Modèle Physique de Données (MPD)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5. Modèle Physique de Données (MPD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macros-et-definitions-semantiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Macros et définitions sémantiques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regles-de-notation-du-mpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Règles de notation du MPD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-complet-mpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple complet (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-synthese-comparative-mld-vs-mpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6. Synthèse comparative : MLD vs MPD
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-autres-notations-et-representations-historiques-optionnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Autres notations et représentations historiques (Optionnel)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Autres notations et représentations historiques (Optionnel)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-notation-traditionnelle-du-diagramme-entite-association-avec-fleches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Notation traditionnelle du diagramme entité-association avec flèches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Notation traditionnelle du diagramme entité-association avec flèches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-avec-boites-de-notes-explicatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple avec boîtes de notes explicatives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-avec-etiquettes-directionnelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple avec étiquettes directionnelles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-notation-en-patte-de-corbeau-crows-foot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Notation en « patte de corbeau » (Crow&rsquo;s Foot)
       
     </span>
   </a>
@@ -2040,34 +2140,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02b-resume-notation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Guide de Modélisation de Données (PlantUML)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2115,7 +2187,7 @@
   <span class="md-ellipsis">
     
   
-    Conversion d&rsquo;un diagramme EA en schéma relationnel
+    Du Modèle Logique (DEA) au Modèle Physique et à la Base de Données
   
 
     
@@ -2192,14 +2264,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../07-objet-relationel/" class="md-nav__link">
+      <a href="../07-objet-relationnel/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Modèle objet-relationel
+    Modèle objet-relationnel
   
 
     
@@ -2740,22 +2812,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#notation-traditionnelle-du-diagramme-entite-association" class="md-nav__link">
+  <a href="#1-notation-et-standards-du-cours-obligatoire" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notation traditionnelle du diagramme entité-association
+        1. Notation et standards du cours (Obligatoire)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Notation traditionnelle du diagramme entité-association">
+    <nav class="md-nav" aria-label="1. Notation et standards du cours (Obligatoire)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#diagramme-avec-etiquettes" class="md-nav__link">
+  <a href="#11-principes-generaux-de-style" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diagramme avec étiquettes
+        1.1. Principes généraux de style
       
     </span>
   </a>
@@ -2763,72 +2835,55 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#diagramme-sans-etiquettes" class="md-nav__link">
+  <a href="#12-les-trois-niveaux-de-modelisation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diagramme sans étiquettes
+        1.2. Les trois niveaux de modélisation
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#utilisation-des-cardinalites-ou-multiplicites-a-la-place" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#13-la-demarche-de-modelisation-pas-a-pas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Utilisation des cardinalités (ou multiplicités) à la place
+        1.3. La démarche de modélisation pas à pas
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#notation-en-pied-de-corbeau" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#14-modele-logique-de-donnees-mld-dea" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notation en pied-de-corbeau
+        1.4. Modèle Logique de Données (MLD / DEA)
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#differents-types-de-diagrammes-ea-avec-plantuml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Différents types de diagrammes EA avec PlantUML
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Différents types de diagrammes EA avec PlantUML">
+    <nav class="md-nav" aria-label="1.4. Modèle Logique de Données (MLD / DEA)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#base-de-donnees-de-contacts" class="md-nav__link">
+  <a href="#syntaxe-plantuml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Base de données de contacts
+        Syntaxe PlantUML
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Base de données de contacts">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#diagramme-de-base-conceptuel" class="md-nav__link">
+  <a href="#exemple-complet-mld" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diagramme de base (Conceptuel)
+        Exemple complet (MLD)
       
     </span>
   </a>
@@ -2841,10 +2896,127 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#avec-types-de-donnees-et-contraintes-logique" class="md-nav__link">
+  <a href="#15-modele-physique-de-donnees-mpd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Avec types de données et contraintes (Logique)
+        1.5. Modèle Physique de Données (MPD)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5. Modèle Physique de Données (MPD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macros-et-definitions-semantiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Macros et définitions sémantiques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regles-de-notation-du-mpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Règles de notation du MPD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-complet-mpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple complet (MPD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-synthese-comparative-mld-vs-mpd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6. Synthèse comparative : MLD vs MPD
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-autres-notations-et-representations-historiques-optionnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Autres notations et représentations historiques (Optionnel)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Autres notations et représentations historiques (Optionnel)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-notation-traditionnelle-du-diagramme-entite-association-avec-fleches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Notation traditionnelle du diagramme entité-association avec flèches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1. Notation traditionnelle du diagramme entité-association avec flèches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-avec-boites-de-notes-explicatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple avec boîtes de notes explicatives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-avec-etiquettes-directionnelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple avec étiquettes directionnelles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-notation-en-patte-de-corbeau-crows-foot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Notation en « patte de corbeau » (Crow&rsquo;s Foot)
       
     </span>
   </a>
@@ -2924,230 +3096,361 @@
   
 
 
-<h1 id="differentes-notations-pour-les-dea">Différentes notations pour les DEA<a class="headerlink" href="#differentes-notations-pour-les-dea" title="Permanent link">&para;</a></h1>
-<h2 id="notation-traditionnelle-du-diagramme-entite-association">Notation traditionnelle du diagramme entité-association<a class="headerlink" href="#notation-traditionnelle-du-diagramme-entite-association" title="Permanent link">&para;</a></h2>
-<p><strong>Remarque</strong> : il est difficile d&rsquo;inclure des losanges pour les associations
-avec PlantUML, mais nous pouvons nommer les associations avec une étiquette. Les
-étiquettes ne sont pas utilisées dans le premier diagramme en raison des boîtes
-de notes proches des associations. Le deuxième diagramme montre les étiquettes
-des associations au lieu des boîtes de notes.</p>
-<p>Nous incluons généralement des boîtes de notes uniquement dans certains cas, pas
-sur toutes les associations. Il est souvent recommandé de nommer les
-associations pour clarifier leur objectif ou leur signification, non seulement
-en utilisant la notation traditionnelle ERD, mais aussi avec d&rsquo;autres notations.</p>
-<h3 id="diagramme-avec-etiquettes">Diagramme avec étiquettes<a class="headerlink" href="#diagramme-avec-etiquettes" title="Permanent link">&para;</a></h3>
-<details>
-    <summary>Code</summary>
-
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>@startuml
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>T1 -- T2
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>note on link: plusieurs-à-plusieurs\nentre T1 et T2
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>T2 --&gt; T3
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>note on link: plusieurs-à-un\nentre T2 et T3
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>T3 --|&gt; T4
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>note on link: plusieurs-à-exactement-un\nentre T3 et T4
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>T2 &lt;-&gt; T5
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>note on link: un-à-un\nentre T2 et T5
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>T5 &lt;|--|&gt; T6
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>note on link: exactement-un-à-exactement-un\nentre T5 et T6
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>@enduml
-</span></code></pre></div>
-
-</details>
-<p><img alt="Diagramme avec étiquettes" src="../../images/notation1.png" /></p>
-<h3 id="diagramme-sans-etiquettes">Diagramme sans étiquettes<a class="headerlink" href="#diagramme-sans-etiquettes" title="Permanent link">&para;</a></h3>
-<p>Nous pouvons inclure <code>&lt;</code> ou <code>&gt;</code> dans les étiquettes pour aider à lire
-l&rsquo;association plus facilement. Ce n&rsquo;est pas très utile dans cet exemple
-générique, mais ce sera utile dans les exemples spécifiques.</p>
-<details>
-    <summary>Code</summary>
-
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@startuml
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>T1 -- T2: rel_1
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>T2 --&gt; T3: rel_2 &gt;
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>T3 --|&gt; T4: rel_3 &gt;
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>T2 &lt;-&gt; T5: &lt; rel_4
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>T5 &lt;|--|&gt; T6: rel_5
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>@enduml
-</span></code></pre></div>
-
-</details>
-<p><img alt="notation2.png" src="../../images/notation2.png" /></p>
-<h2 id="utilisation-des-cardinalites-ou-multiplicites-a-la-place">Utilisation des cardinalités (ou multiplicités) à la place<a class="headerlink" href="#utilisation-des-cardinalites-ou-multiplicites-a-la-place" title="Permanent link">&para;</a></h2>
-<p><strong>Remarques</strong> :</p>
+<h1 id="guide-de-modelisation-et-notations-plantuml">Guide de Modélisation et Notations (PlantUML)<a class="headerlink" href="#guide-de-modelisation-et-notations-plantuml" title="Permanent link">&para;</a></h1>
+<p>Ce document rassemble l&rsquo;ensemble des règles et notations de modélisation pour la conception de bases de données avec <strong>PlantUML</strong>. </p>
+<p>Il est divisé en deux parties :</p>
+<ol type="1">
+<li><strong>La notation officielle du cours</strong> : standard obligatoire à maîtriser et à appliquer pour l&rsquo;ensemble des exercices, travaux pratiques et examens.</li>
+<li><strong>Les autres notations et représentations historiques</strong> : section d&rsquo;ouverture pour la culture générale, strictement optionnelle et non autorisée lors des évaluations.</li>
+</ol>
+<hr />
+<h2 id="1-notation-et-standards-du-cours-obligatoire">1. Notation et standards du cours (Obligatoire)<a class="headerlink" href="#1-notation-et-standards-du-cours-obligatoire" title="Permanent link">&para;</a></h2>
+<p>Dans ce cours, nous utilisons une <strong>notation UML avec cardinalités et multiplicités numériques</strong> (ex. : <code>1</code>, <code>0..1</code>, <code>1..*</code>, <code>0..*</code>), plus rigoureuse et universelle, plutôt que la notation en « pattes de corbeau » (<em>Crow&rsquo;s Foot</em>) ou les flèches d&rsquo;héritage.</p>
+<h3 id="11-principes-generaux-de-style">1.1. Principes généraux de style<a class="headerlink" href="#11-principes-generaux-de-style" title="Permanent link">&para;</a></h3>
 <ul>
+<li><strong>Notation des cardinalités :</strong> Utilisation exclusive des multiplicités UML sous forme de chaînes numériques aux extrémités des relations (ex. : <code>"1" -- "0..*"</code>).</li>
+<li><strong>Épuration visuelle :</strong> Utilisation systématique des directives <code>hide empty methods</code> et <code>hide empty fields</code> pour masquer les sections inutilisées des classes UML et produire des diagrammes centrés sur les données.</li>
+<li><strong>Sémantique rigoureuse :</strong> Distinction explicite entre le <strong>Modèle Logique (MLD / DEA)</strong> et le <strong>Modèle Physique (MPD)</strong> via des macros PlantUML dédiées.</li>
+</ul>
+<h3 id="12-les-trois-niveaux-de-modelisation">1.2. Les trois niveaux de modélisation<a class="headerlink" href="#12-les-trois-niveaux-de-modelisation" title="Permanent link">&para;</a></h3>
+<p>Pour rappel, la conception d&rsquo;une base de données s&rsquo;effectue en trois étapes progressives :</p>
+<ol type="1">
+<li><strong>Modèle Conceptuel de Données (MCD)</strong> :<ul>
+<li>Diagramme de travail ou de cadrage initial (brouillon).</li>
+<li>Très épuré, centré uniquement sur les entités métier et leurs associations directes.</li>
+<li>Sans types de données SQL, sans colonnes techniques et sans clés étrangères.</li>
+</ul>
+</li>
+<li><strong>Modèle Logique de Données (MLD / DEA final)</strong> :<ul>
+<li>Version finale, validée et complète du <strong>Diagramme Entité-Association (DEA)</strong>.</li>
+<li>Décrit les entités, leurs attributs avec types conceptuels, et les contraintes d&rsquo;obligation.</li>
+<li>Conserve des <strong>entités</strong> et des <strong>associations</strong> directes (y compris les associations plusieurs-à-plusieurs <span class="arithmatex">\(N:M\)</span>).</li>
+<li><strong>Ne contient aucune clé étrangère</strong> (ce concept technique n&rsquo;existe pas encore à ce niveau).</li>
+</ul>
+</li>
+<li><strong>Modèle Physique de Données (MPD)</strong> :<ul>
+<li>Traduction directe vers le modèle relationnel prêt pour l&rsquo;implémentation dans un SGBD.</li>
+<li>Contient des <strong>tables</strong> (et non plus des entités) avec des types SQL précis.</li>
+<li>Les associations plusieurs-à-plusieurs sont converties en <strong>tables d&rsquo;association</strong> (ou tables de jonction).</li>
+<li>Toutes les associations sont matérialisées par des <strong>clés primaires (<code>PK</code>)</strong> et des <strong>clés étrangères (<code>FK</code>)</strong>.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="13-la-demarche-de-modelisation-pas-a-pas">1.3. La démarche de modélisation pas à pas<a class="headerlink" href="#13-la-demarche-de-modelisation-pas-a-pas" title="Permanent link">&para;</a></h3>
+<p>En pratique, la conception d&rsquo;un modèle de données ne s&rsquo;effectue pas d&rsquo;un seul bloc. On procède de manière incrémentale à travers <strong>cinq étapes principales</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Une démarche flexible et itérative</p>
+<p>Ce processus de modélisation est conçu pour être appliqué <strong>de façon pragmatique et flexible</strong>, et non comme un carcan strict ou absolu. Lors d&rsquo;un projet réel, il est tout à fait naturel de faire des allers-retours entre les étapes (par exemple, ajuster une association lorsqu&rsquo;un nouvel attribut est découvert, ou scinder une entité complexe).</p>
+</div>
+<ol type="1">
 <li>
-<p><code>*</code> peut être remplacé par <code>n</code>, ou parfois <code>m</code>.</p>
+<p><strong>Identification des entités</strong> :</p>
+<ul>
+<li>À partir de l&rsquo;analyse du domaine métier ou de la lecture du cahier des charges, on commence par repérer les concepts clés, les objets du monde réel, les personnes ou les notions qui possèdent une existence autonome et sur lesquels on souhaite conserver des données.</li>
+<li><em>Exemples :</em> <code>Client</code>, <code>Compte</code>, <code>Étudiant</code>, <code>Cours</code>, <code>Enseignant</code>.</li>
+</ul>
 </li>
 <li>
-<p>C&rsquo;est la notation préférée, avec des étiquettes ajoutées sur les associations
-  si nécessaire.</p>
+<p><strong>Identification des associations (sans cardinalités)</strong> :</p>
+<ul>
+<li>On recherche les liens sémantiques reliant ces entités entre elles, souvent révélés par les verbes d&rsquo;action ou d&rsquo;état dans les règles de gestion.</li>
+<li><em>Exemples :</em> un <code>Client</code> <em>possède</em> un <code>Compte</code> ; un <code>Étudiant</code> <em>est conseillé par</em> un <code>Enseignant</code>.</li>
+<li>À ce stade, on trace simplement les lignes reliant les entités afin de construire le squelette relationnel du domaine, <strong>sans encore se préoccuper des quantités ou cardinalités</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ajout des cardinalités (multiplicités)</strong> :</p>
+<ul>
+<li>On quantifie la nature de chaque lien : combien d&rsquo;occurrences d&rsquo;une entité peuvent être associées à une occurrence de l&rsquo;autre entité ?</li>
+<li><strong>La règle d&rsquo;or pour déterminer les cardinalités :</strong>
+    Pour toute association reliant deux entités <span class="arithmatex">\(A\)</span> et <span class="arithmatex">\(B\)</span> :<ol type="1">
+<li><strong>Fixer une instance particulière d&rsquo;un côté :</strong> On se place mentalement du côté de l&rsquo;entité <span class="arithmatex">\(A\)</span>, et on imagine <strong>un seul élément précis</strong> de cette entité (ex. : « <em>Je pense à UN client particulier</em> » ou « <em>UN compte bancaire précis</em> »).</li>
+<li><strong>Poser la question vers l&rsquo;autre côté :</strong> On se demande : <em>« À combien d&rsquo;éléments de l&rsquo;entité <span class="arithmatex">\(B\)</span> (au minimum et au maximum) cet élément particulier de <span class="arithmatex">\(A\)</span> peut-il être associé ? »</em>. La réponse (ex. : <code>0..1</code>, <code>1</code>, <code>0..*</code>, <code>1..*</code>) s&rsquo;inscrit <strong>du côté de l&rsquo;entité <span class="arithmatex">\(B\)</span></strong>.</li>
+<li><strong>Répéter le raisonnement dans l&rsquo;autre sens :</strong> On se place ensuite du côté de l&rsquo;entité <span class="arithmatex">\(B\)</span>, on fixe <strong>une instance particulière</strong> de <span class="arithmatex">\(B\)</span>, et on se demande à combien d&rsquo;éléments de <span class="arithmatex">\(A\)</span> elle correspond au minimum et au maximum. La réponse s&rsquo;inscrit <strong>du côté de l&rsquo;entité <span class="arithmatex">\(A\)</span></strong>.</li>
+<li><strong>Généraliser :</strong> On applique méthodiquement cette règle à chaque association du diagramme.</li>
+</ol>
 </li>
 </ul>
+</li>
+<li>
+<p><strong>Ajout des attributs (Modèle Conceptuel complet)</strong> :</p>
+<ul>
+<li>On enrichit chaque entité avec ses propriétés descriptives (données textuelles, montants, dates, etc.).</li>
+<li>À la fin de cette quatrième étape, le <strong>Modèle Conceptuel de Données (MCD)</strong> est complet. C&rsquo;est le diagramme de travail idéal pour échanger avec les parties prenantes et valider les besoins métier sans jargon technique.</li>
+</ul>
+</li>
+<li>
+<p><strong>Vers le Modèle Logique : ajout des types et des contraintes</strong> :</p>
+<ul>
+<li>Pour formaliser le brouillon conceptuel et produire le <strong>Modèle Logique de Données (MLD / DEA final)</strong> :<ul>
+<li>On attribue des types de données conceptuels (<code>INT</code>, <code>VARCHAR</code>, <code>DECIMAL</code>, <code>DATE</code>, etc.).</li>
+<li>On détermine l&rsquo;identifiant unique ou clé primaire (<code>PK</code>, ou souligné / astérisque).</li>
+<li>On spécifie les contraintes de nullité : identification des attributs obligatoires (précédés d&rsquo;un astérisque <code>*</code> / non-nuls) et des attributs optionnels (pouvant accepter la valeur <code>NULL</code>).</li>
+</ul>
+</li>
+<li><strong>Rappel fondamental :</strong> À ce niveau, le diagramme ne contient <strong>aucune clé étrangère</strong> ! Les associations directes (y compris plusieurs-à-plusieurs <span class="arithmatex">\(N:M\)</span>) sont préservées.</li>
+</ul>
+</li>
+</ol>
+<p><em>(La transition ultérieure vers le </em><em>Modèle Physique (MPD)</em><em> convertira les entités en tables, les associations <span class="arithmatex">\(N:M\)</span> en tables de jonction, et matérialisera les liens par des clés étrangères).</em></p>
+<hr />
+<h3 id="14-modele-logique-de-donnees-mld-dea">1.4. Modèle Logique de Données (MLD / DEA)<a class="headerlink" href="#14-modele-logique-de-donnees-mld-dea" title="Permanent link">&para;</a></h3>
+<p>Le modèle logique décrit les entités métier et leurs <strong>associations</strong> de manière abstraite, sans introduire de détails d&rsquo;implémentation ni de clés étrangères techniques.</p>
+<h4 id="syntaxe-plantuml">Syntaxe PlantUML<a class="headerlink" href="#syntaxe-plantuml" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Entités :</strong> Mot-clé natif <code>entity</code>. PlantUML ajoute automatiquement l&rsquo;icône de stéréotype <strong>(E)</strong>.</li>
+<li><strong>Attributs :</strong> Liste simple des propriétés métier avec leur type conceptuel. Un attribut obligatoire est préfixé d&rsquo;une étoile <code>*</code> (qui s&rsquo;affiche sous forme de cercle plein).</li>
+<li><strong>Associations :</strong> Liens directs entre entités avec multiplicités UML (<code>"1" -- "0..*"</code>) et étiquettes directionnelles (ex. <code>: passe &gt;</code>).</li>
+</ul>
+<h4 id="exemple-complet-mld">Exemple complet (MLD)<a class="headerlink" href="#exemple-complet-mld" title="Permanent link">&para;</a></h4>
 <details>
-    <summary>Code</summary>
+<summary>Code source PlantUML</summary>
 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>@startuml
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>T1 "*" -- "*" T2
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>note on link: plusieurs-à-plusieurs\nentre T1 et T2
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>T2 "*" -- "0..1" T3
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>note on link: plusieurs-à-un\nentre T2 et T3
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>T3 "*" -- "1" T4
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>note on link: plusieurs-à-exactement-un\nentre T3 et T4
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>T2 "0..1" - "0..1" T5
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>note on link: un-à-un\nentre T2 et T5
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>T5 "1" -- "1" T6
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>note on link: exactement-un-à-exactement-un\nentre T5 et T6
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>T3 "1..*" - "1..*" T6
-</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>note on link: au-moins-un-à-au-moins-un\nentre T3 et T6
-</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
-</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>@enduml
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>@startuml
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>skinparam classIconStyle true
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>hide empty methods
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>hide empty fields
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>entity Client {
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    *id_client : INT
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    *nom : VARCHAR
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    *email : VARCHAR
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>}
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>entity Commande {
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    *id_commande : INT
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    *date : DATE
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>}
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>Client "1" -- "0..*" Commande : passe &gt;
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>@enduml
 </span></code></pre></div>
 
 </details>
-<p><img alt="notation3.png" src="../../images/notation3.png" /></p>
-<h2 id="notation-en-pied-de-corbeau">Notation en pied-de-corbeau<a class="headerlink" href="#notation-en-pied-de-corbeau" title="Permanent link">&para;</a></h2>
+
+<div class='puml-container'><div class="puml light" style="display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:183px;height:260px;background:#FFFFFF;" width="183px" height="260px" viewBox="0 0 183 260" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="entity" data-qualified-name="Client" id="ent0001" data-source-line="5"><rect x="14.16" y="7" width="146.716" height="88.891" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="63.003" cy="23" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M67.112,29 L59.393,29 L59.393,16.609 L67.112,16.609 L67.112,18.766 L61.847,18.766 L61.847,21.438 L66.612,21.438 L66.612,23.594 L61.847,23.594 L61.847,26.844 L67.112,26.844 L67.112,29 Z " fill="#000"/><text x="83.503" y="27.847" fill="#000" font-size="14" textLength="40.53">Client</text><line x1="15.16" y1="39" x2="159.876" y2="39" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="25.16" cy="52.648" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="34.16" y="55.995" fill="#000" font-size="14" textLength="94.999">id_client : INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="25.16" cy="68.945" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="34.16" y="72.292" fill="#000" font-size="14" textLength="113.183">nom : VARCHAR</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="25.16" cy="85.242" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="34.16" y="88.589" fill="#000" font-size="14" textLength="120.716">email : VARCHAR</text></g><g class="entity" data-qualified-name="Commande" id="ent0002" data-source-line="11"><rect x="7" y="172.89" width="161.037" height="72.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="43.811" cy="188.89" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M47.92,194.89 L40.202,194.89 L40.202,182.499 L47.92,182.499 L47.92,184.656 L42.655,184.656 L42.655,187.328 L47.42,187.328 L47.42,189.484 L42.655,189.484 L42.655,192.734 L47.92,192.734 L47.92,194.89 Z " fill="#000"/><text x="62.658" y="193.737" fill="#000" font-size="14" textLength="80.568">Commande</text><line x1="8" y1="204.89" x2="167.037" y2="204.89" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="218.538" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="221.885" fill="#000" font-size="14" textLength="135.037">id_commande : INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="234.835" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="238.182" fill="#000" font-size="14" textLength="82.94">date : DATE</text></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk3" data-source-line="16" data-link-type="association"><path d="M87.52,96.24 C87.52,120.35 87.52,149.89 87.52,172.57" style="stroke:#181818;stroke-width:1;" fill="none" id="Client-Commande" codeLine="16"/><polygon points="92.52,139.456,95.459,130.411,89.581,130.411,92.52,139.456" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="101.52" y="138.957" fill="#000" font-size="13" textLength="37.762">passe</text><text x="78.953" y="115.997" fill="#000" font-size="13">1</text><text x="62.475" y="161.79" fill="#000" font-size="13" textLength="23.036">0..*</text></g><?plantuml-src JO_12i8m38RlUuhGus13hpi8Omhkuc4EhrBMo89DMzPw6EAxsp5bpId_1_cI-2SP9oV9C6ZfVJjOSmspHWZJ2xEH50Ao2pCmXj4gdw87eOuaGnCenaPJxE2TGQoSr7rOGGNjfL-XiHpZhUwQSzsj25cIJk1dyrbcQUAsnFX7YLF9iEHZtP-MuTyLOY-WA43ioZ8Ncwe25xz4E7m1?></g></svg></div></div>
+
+<hr />
+<h3 id="15-modele-physique-de-donnees-mpd">1.5. Modèle Physique de Données (MPD)<a class="headerlink" href="#15-modele-physique-de-donnees-mpd" title="Permanent link">&para;</a></h3>
+<p>Le modèle physique est directement préparé pour la rédaction des instructions SQL <code>CREATE TABLE</code>. Il inclut les types de données SQL exacts, les clés primaires et étrangères, ainsi que les contraintes d&rsquo;intégrité.</p>
+<h4 id="macros-et-definitions-semantiques">Macros et définitions sémantiques<a class="headerlink" href="#macros-et-definitions-semantiques" title="Permanent link">&para;</a></h4>
+<p>Pour distinguer clairement les tables physiques des entités logiques, nous utilisons un ensemble de macros standardisées :</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>!define TABLE(name,desc) class name as "desc" &lt;&lt; (T,#FFAAAA) &gt;&gt;
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>!define PK(x) &lt;u&gt;x&lt;/u&gt;
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>!define FK(x) &lt;i&gt;x&lt;/i&gt;
+</span></code></pre></div>
+<ul>
+<li><code>TABLE(name, desc)</code> : Définit une table relationnelle avec un stéréotype et une icône rouge <strong>(T)</strong>.</li>
+<li><code>PK(nom)</code> : Marque une <strong>Clé Primaire</strong> en soulignant le nom de la colonne.</li>
+<li><code>FK(nom)</code> : Marque une <strong>Clé Étrangère</strong> en affichant le nom de la colonne en italique.</li>
+</ul>
+<h4 id="regles-de-notation-du-mpd">Règles de notation du MPD<a class="headerlink" href="#regles-de-notation-du-mpd" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Tables :</strong> Déclarées avec la macro <code>TABLE</code>.</li>
+<li><strong>Icône :</strong> Directive <code>skinparam classIconStyle false</code> pour permettre l&rsquo;affichage de notre icône personnalisée <strong>(T)</strong>.</li>
+<li><strong>Types de données :</strong> Types SQL précis du SGBD cible (ex. : <code>INT</code>, <code>VARCHAR(50)</code>, <code>TIMESTAMP</code>, <code>DECIMAL(10,2)</code>).</li>
+<li><strong>Clés étrangères :</strong> Chaque colonne de clé étrangère doit être explicitement déclarée dans la table avec <code>FK(...)</code>.</li>
+<li><strong>Liens :</strong> La relation entre tables pointe explicitement vers la colonne de clé étrangère (ex. <code>: user_id &gt;</code>).</li>
+<li><strong>Valeurs obligatoires :</strong> Un astérisque <code>*</code> précède toute colonne non nulle (<code>NOT NULL</code>).</li>
+</ul>
+<h4 id="exemple-complet-mpd">Exemple complet (MPD)<a class="headerlink" href="#exemple-complet-mpd" title="Permanent link">&para;</a></h4>
 <details>
-    <summary>Code</summary>
+<summary>Code source PlantUML</summary>
+
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>@startuml
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>!define TABLE(name,desc) class name as "desc" &lt;&lt; (T,#FFAAAA) &gt;&gt;
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>!define PK(x) &lt;u&gt;x&lt;/u&gt;
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>!define FK(x) &lt;i&gt;x&lt;/i&gt;
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>skinparam classIconStyle false
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>hide empty methods
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>hide empty fields
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>TABLE(USERS, "Utilisateurs") {
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    *PK(id_user) : INT
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    *username : VARCHAR(50)
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    *email : VARCHAR(100)
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>}
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>TABLE(ORDERS, "Commandes") {
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    *PK(id_order) : INT
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    *FK(user_id) : INT
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    *order_date : DATETIME
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>}
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>USERS "1" -- "0..*" ORDERS : user_id &gt;
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>@enduml
+</span></code></pre></div>
+
+</details>
+
+<div class='puml-container'><div class="puml light" style="display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:229px;height:284px;background:#FFFFFF;" width="229px" height="284px" viewBox="0 0 229 284" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="entity" data-qualified-name="USERS" id="ent0001" data-source-line="9"><rect x="7" y="7" width="207.084" height="96.891" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="66.64" cy="23" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M67.484,29.75 L65.031,29.75 L65.031,19.5 L61.89,19.5 L61.89,17.359 L70.625,17.359 L70.625,19.5 L67.484,19.5 L67.484,29.75 Z " fill="#000"/><text x="87.14" y="27.847" fill="#000" font-size="14" textLength="79.304">Utilisateurs</text><line x1="8" y1="39" x2="213.084" y2="39" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="52.648" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="55.995" fill="#000" font-size="14" textLength="50.313" text-decoration="underline">id_user</text><text x="81.763" y="55.995" fill="#000" font-size="14" textLength="32.32">: INT</text><line x1="8" y1="63.297" x2="213.084" y2="63.297" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="76.945" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="80.292" fill="#000" font-size="14" textLength="181.084">username : VARCHAR(50)</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="18" cy="93.242" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="27" y="96.589" fill="#000" font-size="14" textLength="158.361">email : VARCHAR(100)</text></g><g class="entity" data-qualified-name="ORDERS" id="ent0002" data-source-line="15"><rect x="16.98" y="180.89" width="187.123" height="88.891" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="62.36" cy="196.89" rx="11" ry="11" fill="#FAA" style="stroke:#181818;stroke-width:1;"/><path d="M63.204,203.64 L60.751,203.64 L60.751,193.39 L57.61,193.39 L57.61,191.249 L66.345,191.249 L66.345,193.39 L63.204,193.39 L63.204,203.64 Z " fill="#000"/><text x="82.86" y="201.737" fill="#000" font-size="14" textLength="87.862">Commandes</text><line x1="17.98" y1="212.89" x2="203.103" y2="212.89" style="stroke:#181818;stroke-width:0.5;"/><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="27.98" cy="226.538" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="36.98" y="229.885" fill="#000" font-size="14" textLength="57.354" text-decoration="underline">id_order</text><text x="98.784" y="229.885" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="27.98" cy="242.835" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="36.98" y="246.182" fill="#000" font-size="14" textLength="50.313" font-style="italic">user_id</text><text x="91.743" y="246.182" fill="#000" font-size="14" textLength="32.32">: INT</text><g data-visibility-modifier="IE_MANDATORY"><ellipse cx="27.98" cy="259.132" rx="3" ry="3" fill="#000" style="stroke:#000;stroke-width:1;"/></g><text x="36.98" y="262.479" fill="#000" font-size="14" textLength="161.123">order_date : DATETIME</text></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk3" data-source-line="21" data-link-type="association"><path d="M110.54,104.11 C110.54,128.15 110.54,157.11 110.54,180.58" style="stroke:#181818;stroke-width:1;" fill="none" id="USERS-ORDERS" codeLine="21"/><polygon points="115.54,147.456,118.479,138.411,112.601,138.411,115.54,147.456" fill="#000" style="stroke:#000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="124.54" y="146.957" fill="#000" font-size="13" textLength="46.719">user_id</text><text x="101.996" y="124.084" fill="#000" font-size="13">1</text><text x="85.853" y="169.982" fill="#000" font-size="13" textLength="23.036">0..*</text></g><?plantuml-src NP1DRuCm38Rl-HLkTe6ATlImIuMGM0iQsbS5T5SK4QD6Iw0Y8BMQzjyNIATrzV6nu-TrPXnhqI0KqUDBx3HCeSTHLovKacaD8m2cWOwGGX20KtXtIHAPSY4CoUpoVlVid5m8Xl0Kt0z_EB5OZ5Y4XEXFqHnPnvJTdrPja_TdYL0pgP4S14T0TUpFeB0_j5nVergWD8JOhFiypd8FwBuNKcZMuz1fwi8N0LDpaqVmSj3OkR26zAsmU0JJJMluYBBDKvGv3xvhUwYOa5UDbMywtx-wzsnhVPjMATQO_xYLjHs_iPdhHs4f-3yy3PRSH3Pq6nLnaRx6esaw2UYAmc81r5ykvnIirmnUDa7u0m00?></g></svg></div></div>
+
+<hr />
+<h3 id="16-synthese-comparative-mld-vs-mpd">1.6. Synthèse comparative : MLD vs MPD<a class="headerlink" href="#16-synthese-comparative-mld-vs-mpd" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Élément</th>
+<th style="text-align: left;">Niveau Logique (MLD / DEA)</th>
+<th style="text-align: left;">Niveau Physique (MPD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Concept de base</strong></td>
+<td style="text-align: left;"><code>entity</code> (Entité métier)</td>
+<td style="text-align: left;"><code>TABLE</code> (Table relationnelle)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Icône visuelle</strong></td>
+<td style="text-align: left;"><strong>(E)</strong> (automatique PlantUML)</td>
+<td style="text-align: left;"><strong>(T)</strong> (macro personnalisée)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lien</strong></td>
+<td style="text-align: left;">Association directe avec sens de lecture</td>
+<td style="text-align: left;">Relation de clé étrangère (<code>FK</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Clé Primaire</strong></td>
+<td style="text-align: left;">Nom d&rsquo;attribut identifiant (ou préfixé <code>*</code>)</td>
+<td style="text-align: left;"><code>PK(colonne)</code> (souligné)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Clé Étrangère</strong></td>
+<td style="text-align: left;"><em>Absente (n&rsquo;existe pas dans le MLD)</em></td>
+<td style="text-align: left;"><code>FK(colonne)</code> (en italique)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Types de données</strong></td>
+<td style="text-align: left;">Types conceptuels génériques</td>
+<td style="text-align: left;">Types SQL concrets (<code>INT</code>, <code>VARCHAR(...)</code>, &hellip;)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Relations N:M</strong></td>
+<td style="text-align: left;">Association directe plusieurs-à-plusieurs</td>
+<td style="text-align: left;">Table d&rsquo;association dédiée avec deux clés étrangères</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-autres-notations-et-representations-historiques-optionnel">2. Autres notations et représentations historiques (Optionnel)<a class="headerlink" href="#2-autres-notations-et-representations-historiques-optionnel" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Section optionnelle — Non autorisée pour les travaux et examens</p>
+<p>La compréhension des notations présentées dans cette section est <strong>strictement optionnelle</strong>. Elles sont documentées ici uniquement à titre d&rsquo;information historique et de culture générale, afin de vous permettre de lire d&rsquo;anciens documents ou des schémas rencontrés en entreprise ou dans la littérature.</p>
+<p><strong>Consigne pour le cours</strong> : Vous <strong>ne devez pas</strong> utiliser ces notations dans le cadre de vos devoirs, travaux de session ou examens. Seule la notation UML du cours (section 1 ci-dessus) est acceptée et fera l&rsquo;objet d&rsquo;évaluations.</p>
+</div>
+<h3 id="21-notation-traditionnelle-du-diagramme-entite-association-avec-fleches">2.1. Notation traditionnelle du diagramme entité-association avec flèches<a class="headerlink" href="#21-notation-traditionnelle-du-diagramme-entite-association-avec-fleches" title="Permanent link">&para;</a></h3>
+<p>Historiquement, le modèle Entité-Association formalisé par Peter Chen utilisait des losanges pour les associations et des formes géométriques pour les attributs. Dans les outils textuels comme PlantUML, certains auteurs ont tenté d&rsquo;utiliser des flèches pour indiquer les cardinalités maximales :</p>
+<ul>
+<li>Une extrémité sans flèche : plusieurs (<span class="arithmatex">\(\dots \dots *\)</span>)</li>
+<li>Une flèche simple (<code>--&gt;</code>) : au plus un (<span class="arithmatex">\(\dots \dots 0..1\)</span>)</li>
+<li>Une flèche fermée (<code>--|&gt;</code>) : exactement un (<span class="arithmatex">\(\dots \dots 1\)</span>)</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Attention au piège de syntaxe dans PlantUML</p>
+<p>Dans PlantUML, la syntaxe <code>--|&gt;</code> génère un triangle blanc qui représente traditionnellement en UML <strong>l&rsquo;héritage</strong> (spécialisation / généralisation de classes). Utiliser cette flèche pour signifier une cardinalité « 1 » crée une confusion majeure et est <strong>fortement proscrit</strong>.</p>
+</div>
+<h4 id="exemple-avec-boites-de-notes-explicatives">Exemple avec boîtes de notes explicatives<a class="headerlink" href="#exemple-avec-boites-de-notes-explicatives" title="Permanent link">&para;</a></h4>
+<details>
+<summary>Code source PlantUML</summary>
 
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>@startuml
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>T1 }o--o{ T2
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>T1 -- T2
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>note on link: plusieurs-à-plusieurs\nentre T1 et T2
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>T2 }o--o| T3
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>T2 --&gt; T3
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>note on link: plusieurs-à-un\nentre T2 et T3
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>T3 }o--|| T4
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>T3 --|&gt; T4
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>note on link: plusieurs-à-exactement-un\nentre T3 et T4
 </span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>T2 |o-o| T5
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>T2 &lt;-&gt; T5
 </span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>note on link: un-à-un\nentre T2 et T5
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>T5 ||--|| T6
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>T5 &lt;|--|&gt; T6
 </span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
 </span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>note on link: exactement-un-à-exactement-un\nentre T5 et T6
 </span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>T3 }|-|{ T6
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>note on link: au-moins-un-à-au-moins-un\nentre T3 et T6
-</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>@enduml
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>@enduml
 </span></code></pre></div>
 
 </details>
-<p><img alt="notation4.png" src="../../images/notation4.png" /></p>
-<h2 id="differents-types-de-diagrammes-ea-avec-plantuml">Différents types de diagrammes EA avec PlantUML<a class="headerlink" href="#differents-types-de-diagrammes-ea-avec-plantuml" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Il existe différents types de DEA :<ul>
-<li><strong>conceptuel</strong></li>
-<li><strong>logique</strong></li>
-<li><strong>physique</strong></li>
-</ul>
-</li>
-<li>Les modèles <em>conceptuels</em> et <em>logiques</em> ne contiennent pas de clés étrangères.
-  Il y a des associations, qui seront éventuellement converties en clés
-  étrangères, et peut-être en tables, à une étape ultérieure, généralement dans
-  les modèles physiques.</li>
-<li>Les modèles <em>conceptuels</em> sont très basiques, sans types de données ni
-  contraintes.</li>
-<li>Les types de données et les contraintes sont généralement ajoutés aux modèles
-  <em>logiques</em>.</li>
-<li>Les associations sont traduites en tables et en clés étrangères dans les
-  modèles <em>physiques</em>. Les diagrammes produits par Datagrip peuvent être
-  considérés comme des modèles <em>physiques</em>, rétro-conçus à partir d&rsquo;une base de
-  données existante.</li>
-</ul>
-<h3 id="base-de-donnees-de-contacts">Base de données de contacts<a class="headerlink" href="#base-de-donnees-de-contacts" title="Permanent link">&para;</a></h3>
-<h4 id="diagramme-de-base-conceptuel">Diagramme de base (Conceptuel)<a class="headerlink" href="#diagramme-de-base-conceptuel" title="Permanent link">&para;</a></h4>
+
+<p><img alt="Diagramme avec étiquettes" src="../../images/notation1.png" /></p>
+<h4 id="exemple-avec-etiquettes-directionnelles">Exemple avec étiquettes directionnelles<a class="headerlink" href="#exemple-avec-etiquettes-directionnelles" title="Permanent link">&para;</a></h4>
 <details>
-    <summary>Code</summary>
+<summary>Code source PlantUML</summary>
 
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>@startuml
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>entity Call {
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    call_id
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    --
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    phone
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    datetime
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>}
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>T1 -- T2: rel_1
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>T2 --&gt; T3: rel_2 &gt;
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>T3 --|&gt; T4: rel_3 &gt;
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>entity Contact {
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    contact_id
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    --
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    name
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    phone
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    address
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    email
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>}
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>Call "*" -- "0..1" Contact : "            "
-</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>@enduml
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>T2 &lt;-&gt; T5: &lt; rel_4
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>T5 &lt;|--|&gt; T6: rel_5
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>@enduml
 </span></code></pre></div>
 
 </details>
-<p><img alt="notation5.png" src="../../images/notation5.png" /></p>
-<h3 id="avec-types-de-donnees-et-contraintes-logique">Avec types de données et contraintes (Logique)<a class="headerlink" href="#avec-types-de-donnees-et-contraintes-logique" title="Permanent link">&para;</a></h3>
-<p>Le cercle avant un nom de colonne signifie <strong>obligatoire</strong>, et l&rsquo;absence de ce
-cercle signifie <strong>optionnel</strong>.</p>
+
+<p><img alt="notation2.png" src="../../images/notation2.png" /></p>
+<hr />
+<h3 id="22-notation-en-patte-de-corbeau-crows-foot">2.2. Notation en « patte de corbeau » (<em>Crow&rsquo;s Foot</em>)<a class="headerlink" href="#22-notation-en-patte-de-corbeau-crows-foot" title="Permanent link">&para;</a></h3>
+<p>La notation en patte de corbeau (conçue par Gordon Everest et popularisée par Clive Finkelstein et James Martin) est encore très répandue dans de nombreux logiciels de modélisation de bases de données (comme MySQL Workbench ou Oracle SQL Developer Data Modeler).</p>
+<p>Elle utilise des symboles graphiques à l&rsquo;extrémité des liens :
+* Une barre transversale <code>|</code> pour 1.
+* Deux barres <code>||</code> pour exactement 1 (1 et 1 seul).
+* Un cercle <code>o</code> pour zéro (optionnel).
+* Une patte trifurquée <code>}</code> pour plusieurs (<span class="arithmatex">\(N\)</span>).</p>
 <details>
-    <summary>Code</summary>
+<summary>Code source PlantUML (Crow's Foot)</summary>
 
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>@startuml
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>entity Call {
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    * call_id : INT
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    --
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    phone : VARCHAR
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    datetime : DATETIME
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>}
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>T1 }o--o{ T2
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>note on link: plusieurs-à-plusieurs (0..* à 0..*)\nentre T1 et T2
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>T2 }o--o| T3
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>entity Contact {
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    * contact_id : INT
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    --
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    name : VARCHAR
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    phone : VARCHAR
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    address : VARCHAR
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    email : VARCHAR
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>}
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
-</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>Call "*" -- "0..1" Contact : "            "
-</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>@enduml
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>note on link: plusieurs-à-un (0..* à 0..1)\nentre T2 et T3
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>T3 }o--|| T4
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>note on link: plusieurs-à-exactement-un (0..* à 1)\nentre T3 et T4
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>T2 |o-o| T5
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>note on link: un-à-un optionnel (0..1 à 0..1)\nentre T2 et T5
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>T5 ||--|| T6
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>note on link: exactement-un-à-exactement-un (1 à 1)\nentre T5 et T6
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>T3 }|-|{ T6
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>note on link: au-moins-un-à-au-moins-un (1..* à 1..*)\nentre T3 et T6
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>@enduml
 </span></code></pre></div>
 
 </details>
-<p><img alt="notation6.png" src="../../images/notation6.png" /></p>
+
+<p><img alt="notation4.png" src="../../images/notation4.png" /></p>
+<p>Bien qu&rsquo;expressive visuellement, cette notation est moins commode à manipuler en code texte et offre moins d&rsquo;uniformité avec les diagrammes de classes UML que la notation adoptée dans ce cours.</p>
 
 
 
@@ -3183,7 +3486,7 @@ cercle signifie <strong>optionnel</strong>.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../01b-enit%C3%A9s-faibles/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Les Entités Faibles">
+          <a href="../01b-entit%C3%A9s-faibles/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Les Entités Faibles">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3200,13 +3503,13 @@ cercle signifie <strong>optionnel</strong>.</p>
         
         
           
-          <a href="../02b-resume-notation/" class="md-footer__link md-footer__link--next" aria-label="Next: Guide de Modélisation de Données (PlantUML)">
+          <a href="../03-exemples/" class="md-footer__link md-footer__link--next" aria-label="Next: Exemples">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Guide de Modélisation de Données (PlantUML)
+                Exemples
               </div>
             </div>
             <div class="md-footer__button md-icon">
